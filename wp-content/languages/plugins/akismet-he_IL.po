@@ -1,0 +1,614 @@
+# Translation of Development in Hebrew
+# This file is distributed under the same license as the Development package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2015-04-22 10:35:52+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: GlotPress/1.0-alpha-1000\n"
+"Project-Id-Version: Development\n"
+
+#: views/notice.php:94
+msgid "The key you entered could not be verified."
+msgstr "לא ניתן לאמת את המפתח שהוזן."
+
+#: views/config.php:86
+msgid "Your Web server cannot make SSL requests; contact your Web host and ask them to add support for SSL requests."
+msgstr "השרת אינו יכול לבצע בקשות SSL; יש ליצור קשר עם מנהל האתר כדי להוסיף תמיכה בבקשות SSL."
+
+#: views/config.php:92
+msgid "Temporarily disabled."
+msgstr "לא פעיל זמנית."
+
+#: views/config.php:95
+msgid "All systems functional."
+msgstr "כל פונקיות המערכת."
+
+#: views/config.php:95
+msgid "Enabled."
+msgstr "פעיל."
+
+#: views/config.php:83 views/config.php:86
+msgid "Disabled."
+msgstr "לא פעיל."
+
+#: views/config.php:76
+msgid "SSL Status"
+msgstr "סטטוס SSL"
+
+#. Plugin URI of the plugin/theme
+msgid "http://akismet.com/"
+msgstr "http://akismet.com/"
+
+#: class.akismet-admin.php:781
+msgid "Please check your <a href=\"%s\">Akismet configuration</a> and contact your web host if problems persist."
+msgstr "נא לבדוק את <a href=\"%s\">ההגדרות של אקיזמט</a> וליצור קשר עם ספק האחסון אם הבעיה ממשיכה."
+
+#: views/notice.php:21
+msgid "Some comments have not yet been checked for spam by Akismet. They have been temporarily held for moderation and will automatically be rechecked later."
+msgstr "ישנן מספר תגובות שעדיין לא נבדקו על ידי אקיזמט. הן מופיעות כרגע כממתינות לאישור, עד לבדיקה שתיעשה באופן אוטומטי מאוחר יותר. "
+
+#: views/notice.php:43
+msgid "Your web host or server administrator has disabled PHP&#8217;s <code>gethostbynamel</code> functions.  <strong>Akismet cannot work correctly until this is fixed.</strong>  Please contact your web host or firewall administrator and give them <a href=\"%s\" target=\"_blank\">this information about Akismet&#8217;s system requirements</a>."
+msgstr "חברת האחסון או מנהל השרת שלך ביטלו את אפשרות השימוש בפקודות <code>gethostbynamel</code> של PHP.  <strong>לא ניתן להפעיל את אקיזמט עד שבעיה זו תתוקן.</strong>  נא ליצור קשר עם חברת האחסון או מנהל השרת שלך, ולספק להם את<a href=\"%s\" target=\"_blank\">המידע הזה אודות דרישות המערכת של אקיזמט</a>."
+
+#: views/start.php:77
+msgid "Activate Akismet"
+msgstr "להפעיל את אקיזמט"
+
+#: views/start.php:80
+msgid "Get your API key"
+msgstr "לקבל מפתח API"
+
+#: views/start.php:64 views/start.php:85
+msgid "If you already know your API key."
+msgstr "אם ידוע לך מפתח ה-API שלך."
+
+#: views/start.php:78
+msgid "Log in or create an account to get your API key."
+msgstr "להכנס למערכת או ליצור חשבון כדי לקבל מפתח API."
+
+#: views/start.php:28
+msgid "Reactivate Akismet"
+msgstr "להפעיל מחדש את אקיזמט"
+
+#: views/start.php:22
+msgid "Your subscription for %s is cancelled"
+msgstr "המנוי שלך עבור %s בוטל"
+
+#: views/notice.php:72
+msgid "There is a problem with your key."
+msgstr "יש בעיה עם המפתח שלך."
+
+#: views/config.php:182
+msgid "Cancelled"
+msgstr "מבוטל"
+
+#: views/config.php:184
+msgid "Suspended"
+msgstr "מושהה"
+
+#: views/config.php:186
+msgid "Missing"
+msgstr "חסר"
+
+#: views/config.php:188
+msgid "No Subscription Found"
+msgstr "לא נמצא מנוי"
+
+#: views/config.php:190
+msgid "Active"
+msgstr "פעיל"
+
+#: class.akismet-admin.php:196 views/config.php:114
+msgid "Strictness"
+msgstr "רמת סינון"
+
+#: views/config.php:118
+msgid "Silently discard the worst and most pervasive spam so I never see it."
+msgstr "למחוק מייד את הספאם הנפוץ והגרוע ביותר כך שלא אראה אותו לעולם."
+
+#: views/config.php:119
+msgid "Always put spam in the Spam folder for review."
+msgstr "תמיד להעביר את כל הספאם לתיקיית הספאם לצורך מעקב."
+
+#: class.akismet-admin.php:196
+msgid "Choose to either discard the worst spam automatically or to always put all spam in spam folder."
+msgstr "ניתן לבחור מחיקה אוטומטית של הספאם הגרוע ביותר, או לחלופין להשאירו בתיקיית הספאם."
+
+#: class.akismet-admin.php:195 views/config.php:105
+msgid "Comments"
+msgstr "תגובות"
+
+#: views/notice.php:77
+msgid "Your subscription is missing."
+msgstr "המנוי לא נמצא."
+
+#: views/notice.php:86
+msgid "Your Akismet account has been successfully set up and activated. Happy blogging!"
+msgstr "חשבון האקיזמט של הוגדר והופעל בהצלחה."
+
+#: views/notice.php:27
+msgid "Akismet %s requires WordPress 3.0 or higher."
+msgstr "אקיזמט %s פועל רק תחת וורדפרס 3.0 או גרסאות חדשות יותר."
+
+#: views/notice.php:90
+msgid "The key you entered is invalid. Please double-check it."
+msgstr "המפתח שהוזן אינו תקין."
+
+#: views/notice.php:42
+msgid "Network functions are disabled."
+msgstr "פונקציות הרשת לא זמינות."
+
+#: views/notice.php:20
+msgid "Akismet has detected a problem."
+msgstr "בעיה באקיזמט."
+
+#. Author URI of the plugin/theme
+msgid "http://automattic.com/wordpress-plugins/"
+msgstr "http://automattic.com/wordpress-plugins/"
+
+#. Author of the plugin/theme
+msgid "Automattic"
+msgstr "Automattic"
+
+#: views/notice.php:62
+msgid "Your subscription is suspended."
+msgstr "המנוי שלך מושהה."
+
+#: views/notice.php:57
+msgid "Your subscription is cancelled."
+msgstr "המנוי שלך מבוטל."
+
+#: views/start.php:70 views/start.php:91
+msgid "Use this key"
+msgstr "להשתמש במפתח זה"
+
+#: views/start.php:59
+msgid "Register a different email address"
+msgstr "להרשם עם כתובת אימייל אחרת"
+
+#: views/start.php:63 views/start.php:84
+msgid "Manually enter an API key"
+msgstr "להזין מפתח API באופן ידני"
+
+#: views/start.php:7 views/start.php:21 views/start.php:34 views/start.php:43
+msgid "Connected via Jetpack"
+msgstr "מחובר באמצעות Jetpack"
+
+#: views/start.php:50
+msgid "Use this Akismet account"
+msgstr "להתשמש בחשבון אקיזמט זה"
+
+#: views/start.php:56
+msgid "Create a new API key with a different email address"
+msgstr "ליצור מפתח API חדש עם כתובת אימייל אחרת"
+
+#: views/start.php:57
+msgid "Use this option if you want to setup a new Akismet account."
+msgstr "בחר/י באופציה זו אם ברצונך ליצור חשבון אקיזמט חדש."
+
+#: views/start.php:14
+msgid "Register Akismet"
+msgstr "להרשם לאקיזמט"
+
+#: views/notice.php:30
+msgid "Akismet Error Code: %s"
+msgstr "קוד שגיאה של אקיזמט: %s"
+
+#. translators: the placeholder is a clickable URL that leads to more
+#. information regarding an error code.
+#: views/notice.php:35
+msgid "For more information: %s"
+msgstr "למידע נוסף: %s"
+
+#: views/notice.php:52
+msgid "Please update your payment details."
+msgstr "נא לעדכן את אמצעי התשלום."
+
+#: views/notice.php:47
+msgid "We can&#8217;t connect to your site."
+msgstr "לא הצלחנו להתחבר לאתר שלך."
+
+#: views/start.php:37
+msgid "Contact Akismet support"
+msgstr "ליצור קשר עם התמיכה של אקיזמט"
+
+#: views/strict.php:5
+msgid "Safe: always put spam in the Spam folder for review."
+msgstr "מצב בטוח: תמיד להעביר את הספאם לתייקיית הספאם לצורך בקרה."
+
+#: views/notice.php:63 views/notice.php:73
+msgid "Please contact <a href=\"%s\" target=\"_blank\">Akismet support</a> for assistance."
+msgstr "נא ליצור קשר עם <a href=\"%s\" target=\"_blank\">התמיכה של אקיזמט</a> לעזרה."
+
+#: views/notice.php:68
+msgid "You can help us fight spam and upgrade your account by <a href=\"%s\" target=\"_blank\">contributing a token amount</a>."
+msgstr "תוכל/י לעזור לנו להילחם בספאם ולשדרג את המנוי שלך <a href=\"%s\" target=\"_blank\">באמצעות תשלום סמלי</a>."
+
+#: views/start.php:4
+msgid "Akismet eliminates the comment and trackback spam you get on your site. Register your email address below to get started."
+msgstr "אקיזמט מזהה ומוחק תגובות ספאם באתר שלך. כדי להתחיל, יש להזין את כתובת האימייל שלך."
+
+#: views/config.php:117 views/strict.php:2 views/strict.php:3
+msgid "Akismet anti-spam strictness"
+msgstr "רמת ההגנה של אקיזמט"
+
+#: views/start.php:18 views/start.php:32
+msgid "Akismet eliminates the comment and trackback spam you get on your site."
+msgstr "אקיזמט מחסל את הספאם בתגובות והטראקבקים באתר שלך."
+
+#: views/start.php:35
+msgid "Your subscription for %s is suspended"
+msgstr "המנוי שלך עבור %s מושהה"
+
+#: views/start.php:36
+msgid "No worries! Get in touch and we&#8217;ll help sort this out."
+msgstr "אין צורך לדאוג! צרו עמנו קשר ואני נפתור את הבעיה."
+
+#: views/strict.php:4
+msgid "Strict: silently discard the worst and most pervasive spam."
+msgstr "מצב קשוח: למחוק מיידית את הספאם הגרוע והנפוץ ביותר."
+
+#: views/notice.php:48
+msgid "Your firewall may be blocking us. Please contact your host and refer to <a href=\"%s\" target=\"_blank\">our guide about firewalls</a>."
+msgstr "יתכן והפיירוול (חומת אש) בשרת שלך חוסם אותנו. צור קשר עם חברת האחסון שלך, והפנה אותם <a href=\"%s\" target=\"_blank\">למדריך שלנו אודות פירוולים</a>."
+
+#: views/start.php:40 views/start.php:74
+msgid "Akismet eliminates the comment and trackback spam you get on your site. To setup Akismet, select one of the options below."
+msgstr "אקיזמט מונע טרקבקים ותגובות ספאם באתר שלך. כדי להגדיר את אקיזמט, יש לבחור את מהאפשרויות שלהלן."
+
+#: views/notice.php:53
+msgid "We cannot process your transaction. Please contact your bank for assistance, and <a href=\"%s\" target=\"_blank\">update your payment details</a>."
+msgstr "לא הצלחנו לבצע את החיוב. נא צור קשר עם חברת האשראי או הבנק לסיוע, ועדכן <a href=\"%s\" target=\"_blank\">את פרטי התשלום שלך</a> כנדרש."
+
+#: views/notice.php:58
+msgid "Please visit the <a href=\"%s\" target=\"_blank\">Akismet account page</a> to reactivate your subscription."
+msgstr "כדי להפעיל מחדש את המנוי, יש לעבור <a href=\"%s\" target=\"_blank\">לעמוד החשבון של אקיזמט</a>."
+
+#: views/notice.php:11
+msgid "Activate your Akismet account"
+msgstr "הפעל חשבון אקיזמט"
+
+#: views/notice.php:14
+msgid "<strong>Almost done</strong> - activate your account and say goodbye to comment spam"
+msgstr "<strong>התהליך כמעט הסתיים</strong> - יש להפעיל את החשבון ולהגיד שלום לדואר זבל"
+
+#: views/config.php:109
+msgid "Show approved comments"
+msgstr "הצג תגובות שאושרו"
+
+#: class.akismet-admin.php:443
+msgid "Awaiting spam check"
+msgstr "ממתין לבדיקת ספאם"
+
+#: class.akismet-widget.php:12
+msgid "Akismet Widget"
+msgstr "וידג'ט אקיזמט"
+
+#: class.akismet-widget.php:13
+msgid "Display the number of spam comments Akismet has caught"
+msgstr "הצג את מספר תגובות הזבל שאקיזמט איתר."
+
+#: class.akismet-widget.php:98
+msgid "<strong class=\"count\">%1$s spam</strong> blocked by <strong>Akismet</strong>"
+msgid_plural "<strong class=\"count\">%1$s spam</strong> blocked by <strong>Akismet</strong>"
+msgstr[0] "<strong class=\"count\">תגובת זבל %1$s</strong> נחסמה על ידי <strong>אקיזמט</strong>"
+msgstr[1] "<strong class=\"count\">%1$s תגובות זבל</strong> נחסמו על ידי <strong>אקיזמט</strong>"
+
+#: class.akismet-admin.php:69 class.akismet-admin.php:191
+#: class.akismet-admin.php:589 views/config.php:60 views/stats.php:2
+msgid "Settings"
+msgstr "הגדרות"
+
+#: class.akismet-admin.php:223
+msgid "Cheatin&#8217; uh?"
+msgstr "מרמה, אה?"
+
+#: class.akismet-admin.php:294
+msgid "<a href=\"%1$s\">Akismet</a> has protected your site from %2$s spam comment already. "
+msgid_plural "<a href=\"%1$s\">Akismet</a> has protected your site from %2$s spam comments already. "
+msgstr[0] "<a href=\"%1$s\">אקיזמט</a> סינן %2$s תגובות זבל."
+msgstr[1] "<a href=\"%1$s\">אקיזמט</a> סינן %2$s תגובות זבל."
+
+#: class.akismet-admin.php:447
+msgid "Flagged as spam by Akismet"
+msgstr "תגובת זבל"
+
+#: class.akismet-admin.php:467
+msgid "History"
+msgstr "היסטוריה"
+
+#: class.akismet-admin.php:282
+msgctxt "comments"
+msgid "Spam"
+msgstr "תגובת זבל"
+
+#: class.akismet-admin.php:449
+msgid "Cleared by Akismet"
+msgstr "אושר על ידי אקיזמט"
+
+#: class.akismet-admin.php:53
+msgid "Comment History"
+msgstr "היסטוריית תגובות"
+
+#: class.akismet-admin.php:483
+msgid "%s approved"
+msgid_plural "%s approved"
+msgstr[0] "%s תגובות אושרו"
+msgstr[1] "%s תגובות אושרו"
+
+#: class.akismet-admin.php:543
+msgid "Akismet caught this comment as spam during an automatic retry."
+msgstr "אקיזמט סימן תגובה זו כתגובת זבל במהלך בדיקה אוטומטית."
+
+#: class.akismet-admin.php:563
+msgid "Comment status was changed to %s"
+msgstr "סטאטוס התגובה שונה ל%s"
+
+#: class.akismet-admin.php:546
+msgid "Akismet cleared this comment during an automatic retry."
+msgstr "אקיזמט אישר תגובה זו במהלך סריקה אוטומטית."
+
+#: class.akismet-admin.php:467 class.akismet-admin.php:475
+msgid "View comment history"
+msgstr "צפה בהיסטוריית תגובות"
+
+#. #-#-#-#-#  akismet.pot (Akismet 3.1.2a1)  #-#-#-#-#
+#. Plugin Name of the plugin/theme
+#: class.akismet-admin.php:76 class.akismet-admin.php:78
+#: class.akismet-admin.php:838 views/config.php:3
+msgid "Akismet"
+msgstr "אקיזמט"
+
+#: class.akismet-admin.php:453
+msgid "Flagged as spam by %s"
+msgstr "סומנה כתגובת זבל על ידי %s"
+
+#: class.akismet-admin.php:455
+msgid "Un-spammed by %s"
+msgstr "סומן כתגובת לגיטימית על ידי %s"
+
+#: class.akismet-widget.php:69
+msgid "Spam Blocked"
+msgstr "תגובות נחסמו"
+
+#: class.akismet-widget.php:74
+msgid "Title:"
+msgstr "כותרת:"
+
+#: class.akismet-admin.php:182 class.akismet-admin.php:193
+#: class.akismet-admin.php:205
+msgid "Akismet Configuration"
+msgstr "הגדרות אקיזמט"
+
+#: class.akismet-admin.php:169 views/stats.php:2
+msgid "Akismet Stats"
+msgstr "סטטיסטיקות אקיזמט"
+
+#: class.akismet-admin.php:332
+msgid "Check for Spam"
+msgstr "מצא תגובות זבל"
+
+#: class.akismet-admin.php:577
+msgid "%s ago"
+msgstr "לפני %s"
+
+#: class.akismet-admin.php:129 class.akismet-admin.php:167
+#: class.akismet-admin.php:180
+msgid "Overview"
+msgstr "סקירה"
+
+#: class.akismet-admin.php:215
+msgid "For more information:"
+msgstr "למידע נוסף"
+
+#: views/config.php:208
+msgid "Change"
+msgstr "לשנות"
+
+#: views/config.php:152
+msgid "Save Changes"
+msgstr "שמור שינויים"
+
+#: class.akismet-admin.php:207 views/config.php:177
+msgid "Status"
+msgstr "מצב"
+
+#: class.akismet-admin.php:194
+msgid "Enter/remove an API key."
+msgstr "להזין/להסיר מפתח API."
+
+#: class.akismet-admin.php:217
+msgid "Akismet Support"
+msgstr "התמיכה של אקיזמט"
+
+#: views/config.php:28
+msgid "Accuracy"
+msgstr "דיוק"
+
+#: class.akismet-admin.php:300
+msgid "<a href=\"%s\">Akismet</a> blocks spam from getting to your blog. "
+msgstr "<a href=\"%s\">אקיזמט</a> מונע מתגובות הספאם להגיע לבלוג שלך. "
+
+#: class.akismet-admin.php:131 class.akismet-admin.php:142
+#: class.akismet-admin.php:153
+msgid "Akismet Setup"
+msgstr "התקנת אקיזמט"
+
+#: views/config.php:18
+msgid "Past six months"
+msgstr "בשישה חודשים האחרונים"
+
+#: class.akismet-admin.php:216
+msgid "Akismet FAQ"
+msgstr "שאלות נפוצות של אקיזמט"
+
+#: class.akismet-admin.php:105
+msgid "Removing..."
+msgstr "מסיר..."
+
+#: class.akismet-admin.php:868
+msgid "Cleaning up spam takes time."
+msgstr "מחיקת ספאם אורכת זמן."
+
+#: class.akismet-admin.php:203 views/config.php:165
+msgid "Account"
+msgstr "חשבון"
+
+#: class.akismet-admin.php:104
+msgid "Remove this URL"
+msgstr "להסיר כתובת URL"
+
+#: class.akismet-admin.php:106
+msgid "URL removed"
+msgstr "כתובת URL  הוסרה"
+
+#: class.akismet-admin.php:107
+msgid "(undo)"
+msgstr "(לבטל)"
+
+#: class.akismet-admin.php:154
+msgid "If you already have an API key"
+msgstr "אם כבר יש לך מפתח API"
+
+#: class.akismet-admin.php:875
+msgid "Since you joined us, Akismet has saved you %d minutes!"
+msgstr "מאז שהצטרפת אלינו, אקיזמט חסך לך %d דקות!"
+
+#: class.akismet-admin.php:108
+msgid "Re-adding..."
+msgstr "מוסיף מחדש..."
+
+#: class.akismet-admin.php:194 views/config.php:67
+msgid "API Key"
+msgstr "מפתח API"
+
+#: views/config.php:208
+msgid "Upgrade"
+msgstr "לשדרג"
+
+#: views/config.php:121
+msgid "Note:"
+msgstr "הערה:"
+
+#: class.akismet-admin.php:157
+msgid "Click the Use this Key button."
+msgstr "לחצ/י על כפתור ״להשתמש במפתח זה״."
+
+#: class.akismet-admin.php:206 views/config.php:170
+msgid "Subscription Type"
+msgstr "סוג מנוי"
+
+#: views/config.php:20 views/config.php:25
+msgid "Spam blocked"
+msgstr "ספאם שנחסם"
+
+#: views/config.php:23
+msgid "All time"
+msgstr "מצטבר"
+
+#: views/config.php:196
+msgid "Next Billing Date"
+msgstr "תאריך החיוב הבא"
+
+#: class.akismet-admin.php:206
+msgid "The Akismet subscription plan"
+msgstr "תכנית המנוי של אקיזמט"
+
+#: class.akismet-admin.php:156
+msgid "Copy and paste the API key into the text field."
+msgstr "העתק/י והדבק/י את מפתח הAPI לשדה המתאים."
+
+#: class.akismet-admin.php:143
+msgid "You need to enter an API key to activate the Akismet service on your site."
+msgstr "יש צורך להזין מפתח API כדי להפעיל את אקיזמט באתר שלך."
+
+#: class.akismet-admin.php:184
+msgid "On this page, you are able to enter/remove an API key, view account information and view spam stats."
+msgstr "בעמוד זה, ניתן להוסיף או להסיר מפתח API, לראות את פרטי החשבון, וסטטיסטיקה אודות הספאם באתר."
+
+#: class.akismet.php:1011 views/notice.php:27
+msgid "Please <a href=\"%1$s\">upgrade WordPress</a> to a current version, or <a href=\"%2$s\">downgrade to version 2.4 of the Akismet plugin</a>."
+msgstr "נא <a href=\"%1$s\">לשדרג את וורדפרס</a> לגרסה עדכנית, או <a href=\"%2$s\">לחזור לגרסה 2.4 של תוסף אקיזמט</a>."
+
+#: class.akismet-admin.php:284
+msgid "<a href=\"%1$s\">Akismet</a> has protected your site from <a href=\"%2$s\">%3$s spam comment</a>."
+msgid_plural "<a href=\"%1$s\">Akismet</a> has protected your site from <a href=\"%2$s\">%3$s spam comments</a>."
+msgstr[0] "<a href=\"%1$s\">אקיזמט</a> הגן על האתר שלך מפני <a href=\"%2$s\">תגובת ספאם אחת</a>."
+msgstr[1] "<a href=\"%1$s\">אקיזמט</a> הגן על האתר שלך מפני <a href=\"%2$s\">%3$s תגובות ספאם</a>."
+
+#: class.akismet-admin.php:195
+msgid "Show the number of approved comments beside each comment author in the comments list page."
+msgstr "להציג את מספר התגובות שאושרו ליד השם של כתובת התגובה בעמוד רשימת התגובות."
+
+#: class.akismet-admin.php:133
+msgid "On this page, you are able to setup the Akismet plugin."
+msgstr "בעמוד זה ניתן להגדיר את תוסף אקיזמט."
+
+#: class.akismet-admin.php:151
+msgid "Enter an API Key"
+msgstr "הזנת מפתח API"
+
+#: views/config.php:32
+msgid "%s missed spam, %s false positive"
+msgid_plural "%s missed spam, %s false positives"
+msgstr[0] "ספאם אחד התפספס, %s זיהוי שגוי"
+msgstr[1] "%s ספאם שפוספסו, %s זיהויים שגויים"
+
+#: class.akismet-admin.php:871
+msgid "Since you joined us, Akismet has saved you %s days!"
+msgstr "מאז שהצטרפת אלינו, אקיזמט חסך לך %s ימים!"
+
+#: views/config.php:146
+msgid "Disconnect this account"
+msgstr "לנתק חשבון זה"
+
+#: class.akismet.php:1011
+msgid "Akismet %s requires WordPress %s or higher."
+msgstr "לאקיזמט %s נדרשת גרסת וורדפרס %s או מעלה."
+
+#: class.akismet-admin.php:140
+msgid "New to Akismet"
+msgstr "חדש עם אקיזמט"
+
+#: class.akismet-admin.php:144
+msgid "Signup for an account on %s to get an API Key."
+msgstr "להרשם לחשבון באתר %s ולקבל מפתח API."
+
+#: class.akismet-admin.php:171
+msgid "On this page, you are able to view stats on spam filtered on your site."
+msgstr "בעמוד הזה ניתן לראות סטטיסטיקה אודות הספאם שסונן באתר שלך."
+
+#: views/config.php:109
+msgid "Show the number of approved comments beside each comment author"
+msgstr "להציג את מספר התגובות המאושרות ליד שם כותב התגובה"
+
+#: class.akismet-admin.php:207
+msgid "The subscription status - active, cancelled or suspended"
+msgstr "מצב המנוי - פעיל, מבוטל, או מושהה."
+
+#: class.akismet-admin.php:873
+msgid "Since you joined us, Akismet has saved you %d hours!"
+msgstr "מאז שהצטרפת אלינו, אקיזמט חסך לך %d שעות!"
+
+#: class.akismet-admin.php:306
+msgid "There&#8217;s <a href=\"%2$s\">%1$s comment</a> in your spam queue right now."
+msgid_plural "There are <a href=\"%2$s\">%1$s comments</a> in your spam queue right now."
+msgstr[0] "כרגע ממתינה <a href=\"%2$s\">תגובת אחת</a> לבדיקת ספאם."
+msgstr[1] "כרגע ממתינות <a href=\"%2$s\">%1$s תגובות</a> לבדיקת ספאם."
+
+#: class.akismet-admin.php:132 class.akismet-admin.php:170
+#: class.akismet-admin.php:183
+msgid "Akismet filters out your comment and trackback spam for you, so you can focus on more important things."
+msgstr "אקיזמט מסנן את תגובות הספאם בשבילך, כדי שיהיה לך יותר זמן לדברים החשובים באמת."
+
+#: class.akismet-admin.php:312
+msgid "There&#8217;s nothing in your <a href='%s'>spam queue</a> at the moment."
+msgstr "אין כרגע תגובות<a href='%s'>ממתינות</a> לבדיקת ספאם."
+
+#: views/config.php:12
+msgid "Summaries"
+msgstr "סיכומים"
