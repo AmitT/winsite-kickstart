@@ -3,13 +3,13 @@
 Plugin Name: Relative URL
 Plugin URI: http://sparanoid.com/work/relative-url/
 Description: Relative URL applies wp_make_link_relative function to links (posts, categories, pages and etc.) to convert them to relative URLs. Useful for developers when debugging local WordPress instance on a mobile device (iPad. iPhone, etc.).
-Version: 0.0.10
+Version: 0.0.11
 Author: Tunghsiao Liu
 Author URI: http://sparanoid.com/
 Author Email: t@sparanoid.com
 License: GPLv2 or later
 
-  Copyright 2014 Tunghsiao Liu, aka. Sparanoid (t@sparanoid.com)
+  Copyright 2015 Tunghsiao Liu, aka. Sparanoid (t@sparanoid.com)
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License, version 2, as
@@ -39,12 +39,14 @@ License: GPLv2 or later
   add_action( 'template_redirect', 'relative_url' );
 
   function relative_url() {
-    // Don't do anything if:
-    // - In feed
-    // - In sitemap by WordPress SEO plugin
-    if ( is_feed() || get_query_var( 'sitemap' ) )
-      return;
     $filters = array(
+      'bloginfo_url',
+      'the_permalink',
+      'wp_list_pages',
+      'wp_list_categories',
+      'the_content_more_link',
+      'the_tags',
+      'the_author_posts_link',
       'post_link',       // Normal post link
       'post_type_link',  // Custom post type link
       'page_link',       // Page link
@@ -94,9 +96,18 @@ License: GPLv2 or later
       // 'home_url'
     );
 
+    // Thanks to https://wordpress.org/support/topic/request-only-replace-local-urls
+    $home_url = home_url();
+    $filter_fn = function( $link ) use ( $home_url ) {
+      if ( strpos( $link, $home_url ) === 0 ) {
+        return wp_make_link_relative( $link );
+      } else {
+        return $link;
+      }
+    };
+
     foreach ( $filters as $filter ) {
-      add_filter( $filter, 'wp_make_link_relative' );
+      add_filter( $filter, $filter_fn );
     }
-    home_url($path = '', $scheme = null);
   }
 ?>
