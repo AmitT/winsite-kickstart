@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Development package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2015-05-05 19:33:55+0000\n"
+"PO-Revision-Date: 2015-05-14 21:52:15+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -35,11 +35,11 @@ msgstr "למידע נוסף ראו <a href='https://codex.wordpress.org/Editing_
 
 #: wp-includes/functions.php:3559
 msgid "Please see <a href=\"https://codex.wordpress.org/Debugging_in_WordPress\">Debugging in WordPress</a> for more information."
-msgstr "כנסו ל-<a href=\"https://codex.wordpress.org/Debugging_in_WordPress\">Debugging in WordPress</a> למידע נוסך."
+msgstr "כנסו ל-<a href=\"https://codex.wordpress.org/Debugging_in_WordPress\">Debugging in WordPress</a> למידע נוסף."
 
 #: wp-includes/ms-load.php:426
 msgid "Read the <a target=\"_blank\" href=\"https://codex.wordpress.org/Debugging_a_WordPress_Network\">bug report</a> page. Some of the guidelines there may help you figure out what went wrong."
-msgstr "ההנחיות בעמוד <a target=\"_blank\" href=\"https://codex.wordpress.org/Debugging_a_WordPress_Network\">bug report</a> בקודקס עשויות לעזור לך להבין מה קרה כאן."
+msgstr "ההנחיות בעמוד <a target=\"_blank\" href=\"https://codex.wordpress.org/Debugging_a_WordPress_Network\">דיווח תקלות</a> בקודקס עשויות לעזור להבין מה השתבש."
 
 #: wp-includes/admin-bar.php:130
 msgid "https://codex.wordpress.org/"

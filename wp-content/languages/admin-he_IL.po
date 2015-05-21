@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Administration package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2015-05-05 19:34:54+0000\n"
+"PO-Revision-Date: 2015-05-20 11:02:42+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -692,6 +692,31 @@ msgstr "תרגומים חדשים זמינים."
 msgid "Front Page"
 msgstr "עמוד ראשי"
 
+#: wp-admin/includes/class-wp-upgrader.php:3169
+msgid ""
+"BETA TESTING?\n"
+"=============\n"
+"\n"
+"This debugging email is sent when you are using a development version of WordPress.\n"
+"\n"
+"If you think these failures might be due to a bug in WordPress, could you report it?\n"
+" * Open a thread in the support forums: https://wordpress.org/support/forum/alphabeta\n"
+" * Or, if you're comfortable writing a bug report: https://core.trac.wordpress.org/\n"
+"\n"
+"Thanks! -- The WordPress Team"
+msgstr ""
+"בדיקות בטא?\n"
+"=========\n"
+"\n"
+"דוא\"ל זה נשלח למי שמשתמש בגרסת הפיתוח של וורדפרס.\n"
+"\n"
+"אם לדעתך כשלים בוורדפרס נובעים מתקלות, ניתן לדווח על כך באמצעות:\n"
+" * פתיחת קריאה בפורום התמיכה: https://wordpress.org/support/forum/alphabeta\n"
+" * או כתיבת דיווח על התקלה: https://core.trac.wordpress.org/\n"
+"\n"
+"תודה,\n"
+"צוות וורדפרס"
+
 #: wp-admin/includes/ms.php:337
 msgid ""
 "Howdy ###USERNAME###,\n"
@@ -770,31 +795,6 @@ msgstr "לא ניתן לשמור או לאתר את קובץ ההורדה הזמ
 #: wp-admin/includes/ms.php:479
 msgid "Site Upload Space Quota"
 msgstr "מכסת שטח בשימוש באתר"
-
-#: wp-admin/includes/class-wp-upgrader.php:3169
-msgid ""
-"BETA TESTING?\n"
-"=============\n"
-"\n"
-"This debugging email is sent when you are using a development version of WordPress.\n"
-"\n"
-"If you think these failures might be due to a bug in WordPress, could you report it?\n"
-" * Open a thread in the support forums: https://wordpress.org/support/forum/alphabeta\n"
-" * Or, if you're comfortable writing a bug report: https://core.trac.wordpress.org/\n"
-"\n"
-"Thanks! -- The WordPress Team"
-msgstr ""
-"בדיקות בטא?\n"
-"=========\n"
-"\n"
-"דוא\"ל זה נשלח למי שמשתמש בגרסת הפיתוח של וורדפרס.\n"
-"\n"
-"אם לדעתך כשלים בוורדפרס נובעים מבאגים, ניתן לדווח על כך באמצעות:\n"
-" * פתיחת קריאה בפורום התמיכה: https://wordpress.org/support/forum/alphabeta\n"
-" * או כתיבת דיווח על הבאג: https://core.trac.wordpress.org/\n"
-"\n"
-"תודה,\n"
-"צוות וורדפרס"
 
 #: wp-admin/includes/class-wp-upgrader.php:3187
 msgid ""
@@ -1333,6 +1333,11 @@ msgstr "אנחנו עומדים להשתמש במידע הזה על מנת לי�
 msgid "The grid view for the Media Library requires JavaScript. <a href=\"upload.php?mode=list\">Switch to the list view</a>."
 msgstr "תצוגת הרשת של ספריית המדיה דורשת JavaScript. <a href=\"upload.php?mode=list\">חזרה לתצוגת רשימה</a>."
 
+#: wp-admin/includes/class-wp-terms-list-table.php:146
+msgctxt "Number/count of items"
+msgid "Count"
+msgstr "כמות"
+
 #: wp-admin/includes/class-wp-plugin-install-list-table.php:431
 msgid "More Details"
 msgstr "פרטים נוספים"
@@ -1388,11 +1393,6 @@ msgstr "סקירות"
 #: wp-admin/includes/plugin-install.php:526
 msgid "Donate to this plugin &#187;"
 msgstr "תרומה לתוסף"
-
-#: wp-admin/includes/class-wp-terms-list-table.php:146
-msgctxt "Number/count of items"
-msgid "Count"
-msgstr "ספירה"
 
 #: wp-admin/includes/class-wp-upgrader.php:3022
 msgid "The WordPress team is willing to help you. Forward this email to %s and the team will work with you to make sure your site is working."
@@ -2409,7 +2409,7 @@ msgstr "הוספת פריטים מהעמודה הימנית."
 
 #: wp-admin/includes/plugin-install.php:135
 msgid "Plugins extend and expand the functionality of WordPress. You may automatically install plugins from the <a href=\"%1$s\">WordPress Plugin Directory</a> or upload a plugin in .zip format via <a href=\"%2$s\">this page</a>."
-msgstr "ניתן להרחיב את אפשרויות של וורדפרס באמצעות תוספים. אם תרצו להתקין תוספים בצורה אוטומטית תעשו זאת באמצעות <a href=\"%1$s\">מאגר התוספים של וורדפרס</a> או באמצעות העלאת קובץ .zip באמצעות <a href=\"%2$s\">עמוד זה</a>."
+msgstr "ניתן להרחיב את אפשרויות של וורדפרס באמצעות תוספים. אם תרצו להתקין תוספים בצורה אוטומטית תעשו זאת באמצעות <a href=\"%1$s\">ספריית התוספים של וורדפרס</a> או באמצעות העלאת קובץ .zip באמצעות <a href=\"%2$s\">עמוד זה</a>."
 
 #. Plugin URI of the plugin/theme
 msgid "http://wordpress.org/plugins/hello-dolly/"
@@ -4086,7 +4086,7 @@ msgstr "ישנם שינויים שלא נשמרו והם יכלו לאיבוד. 
 
 #: wp-admin/import.php:23
 msgid "In previous versions of WordPress, all importers were built-in. They have been turned into plugins since most people only use them once or infrequently."
-msgstr "בגרסאות קודמות של וורדפרס, כלי היבוא היו מובנים במערכת. מאחר מרבית המשתמשים לא עשו בהם שימוש תקוף, כלי היבוא הופרדו מהמערכת והפכו לתוספים חיצוניים הניתנים להורדה ממאגר התוספים."
+msgstr "בגרסאות קודמות של וורדפרס, כלי היבוא היו מובנים במערכת. מאחר מרבית המשתמשים לא עשו בהם שימוש תקוף, כלי היבוא הופרדו מהמערכת והפכו לתוספים חיצוניים הניתנים להורדה מספריית התוספים."
 
 #: wp-admin/custom-header.php:742 wp-admin/custom-header.php:866
 #: wp-admin/custom-header.php:1170
@@ -4142,32 +4142,32 @@ msgstr "מפתחים תורמים"
 msgid "Show Toolbar when viewing site"
 msgstr "הצג סרגל כלים כשצופים באתר"
 
+#: wp-admin/about.php:47 wp-admin/about.php:51 wp-admin/about.php:178
+msgid "For more information, see <a href=\"%s\">the release notes</a>."
+msgstr "למידע נוסף, ראו <a href=\"%s\">הודעת שחרור</a>."
+
 #. translators: 1: WordPress version number, 2: plural number of bugs.
 #: wp-admin/about.php:167
 msgid "<strong>Version %1$s</strong> addressed %2$s bug."
 msgid_plural "<strong>Version %1$s</strong> addressed %2$s bugs."
-msgstr[0] "<strong>גרסה %1$s</strong> מטפלת בבאג %2$s."
-msgstr[1] "<strong>גרסה %1$s</strong> מטפלת ב-%2$s באגים."
-
-#. translators: 1: WordPress version number, 2: plural number of bugs. Singular
-#. security issue.
-#: wp-admin/about.php:171
-msgid "<strong>Version %1$s</strong> addressed a security issue and fixed %2$s bug."
-msgid_plural "<strong>Version %1$s</strong> addressed a security issue and fixed %2$s bugs."
-msgstr[0] "<strong>גרסה %1$s</strong> מטפלת בסוגיית אבטחה ובבאג %2$s."
-msgstr[1] "<strong>גרסה %1$s</strong> מטפלת בסוגיית אבטחה וב-%2$s באגים."
+msgstr[0] "<strong>גרסה %1$s</strong> מטפלת בתקלה %2$s."
+msgstr[1] "<strong>גרסה %1$s</strong> מטפלת ב-%2$s תקלות."
 
 #. translators: 1: WordPress version number, 2: plural number of bugs. More
 #. than one security issue.
 #: wp-admin/about.php:45 wp-admin/about.php:175
 msgid "<strong>Version %1$s</strong> addressed some security issues and fixed %2$s bug."
 msgid_plural "<strong>Version %1$s</strong> addressed some security issues and fixed %2$s bugs."
-msgstr[0] "<strong>גרסה %1$s</strong> מטפלת במספר סוגיות אבטחה ובבאג %2$s."
-msgstr[1] "<strong>גרסה %1$s</strong> מטפלת במספר סוגיות אבטחה וב-%2$s באגים."
+msgstr[0] "<strong>גרסה %1$s</strong> מטפלת במספר סוגיות אבטחה ובתקלה %2$s."
+msgstr[1] "<strong>גרסה %1$s</strong> מטפלת במספר סוגיות אבטחה וב-%2$s תקלות."
 
-#: wp-admin/about.php:47 wp-admin/about.php:51 wp-admin/about.php:178
-msgid "For more information, see <a href=\"%s\">the release notes</a>."
-msgstr "למידע נוסף, ראו <a href=\"%s\">הודעת שחרור</a>."
+#. translators: 1: WordPress version number, 2: plural number of bugs. Singular
+#. security issue.
+#: wp-admin/about.php:171
+msgid "<strong>Version %1$s</strong> addressed a security issue and fixed %2$s bug."
+msgid_plural "<strong>Version %1$s</strong> addressed a security issue and fixed %2$s bugs."
+msgstr[0] "<strong>גרסה %1$s</strong> מטפלת בסוגיית אבטחה ובתקלה %2$s."
+msgstr[1] "<strong>גרסה %1$s</strong> מטפלת בסוגיית אבטחה וב-%2$s תקלות."
 
 #: wp-admin/index.php:32
 msgid "Welcome to your WordPress Dashboard! This is the screen you will see when you log in to your site, and gives you access to all the site management features of WordPress. You can get help for any screen by clicking the Help tab in the upper corner."
@@ -4302,10 +4302,6 @@ msgstr "סקירה בסיסית של תפקידי משתמש וההרשאות ש
 msgid "This screen provides access to all of your posts. You can customize the display of this screen to suit your workflow."
 msgstr "מסך זה מאפשר גישה לכל הפוסטים באתר. ניתן להתאים את תצוגת המסך כדי שיתאים לצורת העבודה שלך."
 
-#: wp-admin/plugin-install.php:73
-msgid "Plugins hook into WordPress to extend its functionality with custom features. Plugins are developed independently from the core WordPress application by thousands of developers all over the world. All plugins in the official <a href=\"%s\" target=\"_blank\">WordPress.org Plugin Directory</a> are compatible with the license WordPress uses. You can find new plugins to install by searching or browsing the Directory right here in your own Plugins section."
-msgstr "תוספים מרחיבים את היכולות של וורדפרס ומוסיפים לאתר אפשרויות וכלים חדשים. אפשר להתקין תוספים מתוך <a href=\"%s\" target=\"_blank\">מאגר התוספים הרשמי</a> ישירות מתוך האתר, או להתקין ידנית תוספים ממקורות אחרים."
-
 #: wp-admin/tools.php:104
 msgid "If you want to convert your categories to tags (or vice versa), use the <a href=\"%s\">Categories and Tags Converter</a> available from the Import screen."
 msgstr "להמרת קטגוריות לתגיות (או להפך), עשו שימוש ב<a href=\"%s\">ממיר קטגוריות ותגיות</a> הזמין במסך היבוא."
@@ -4317,6 +4313,10 @@ msgstr "יש להקצות סיסמה למשתמש החדש, אותה הוא יו
 #: wp-admin/edit.php:205
 msgid "You can also edit or move multiple posts to the trash at once. Select the posts you want to act on using the checkboxes, then select the action you want to take from the Bulk Actions menu and click Apply."
 msgstr "ניתן גם לערוך או למחוק מספר פוסטים. יש לבחור את הפוסטים ולבצע עליהם עריכה קבוצתית."
+
+#: wp-admin/plugin-install.php:73
+msgid "Plugins hook into WordPress to extend its functionality with custom features. Plugins are developed independently from the core WordPress application by thousands of developers all over the world. All plugins in the official <a href=\"%s\" target=\"_blank\">WordPress.org Plugin Directory</a> are compatible with the license WordPress uses. You can find new plugins to install by searching or browsing the Directory right here in your own Plugins section."
+msgstr "תוספים מרחיבים את היכולות של וורדפרס ומוסיפים לאתר אפשרויות וכלים חדשים. אפשר להתקין תוספים מתוך <a href=\"%s\" target=\"_blank\">ספריית התוספים הרשמית</a> ישירות מתוך האתר, או להתקין ידנית תוספים ממקורות אחרים."
 
 #: wp-admin/themes.php:70
 msgid "Adding Themes"
@@ -5024,7 +5024,7 @@ msgstr "אייקונים"
 
 #: wp-admin/theme-install.php:74
 msgid "You can find additional themes for your site by using the Theme Browser/Installer on this screen, which will display themes from the <a href=\"%s\" target=\"_blank\">WordPress.org Theme Directory</a>. These themes are designed and developed by third parties, are available free of charge, and are compatible with the license WordPress uses."
-msgstr "ישנן תבניות נוספות שאפשר להשתמש בהן באתר זה - בלשונית התקנת התבניות. תבניות מגיעות <a href=\"%s\" target=\"_blank\">ממאגר התבניות הרשמי</a> של וורדפרס. המאגר מציע אלפי תבניות חינמיות, המפותחות על ידי מפתחים חיצוניים, ותואמות לתנאי הרישוי של וורדפרס."
+msgstr "ישנן תבניות נוספות שאפשר להשתמש בהן באתר זה - בלשונית התקנת התבניות. תבניות מגיעות <a href=\"%s\" target=\"_blank\">מספריית התבניות הרשמית</a> של וורדפרס. הספרייה מציעה אלפי תבניות חינמיות, המפותחות על ידי מפתחים חיצוניים, ותואמות לתנאי הרישוי של וורדפרס."
 
 #: wp-admin/update-core.php:51
 msgid "Re-install Now"
@@ -5073,7 +5073,7 @@ msgstr "אנחנו שמחים כשאנשים מדברים על וורדפרס, �
 
 #: wp-admin/freedoms.php:52
 msgid "Every plugin and theme in WordPress.org&#8217;s directory is 100%% GPL or a similarly free and compatible license, so you can feel safe finding <a href=\"%1$s\">plugins</a> and <a href=\"%2$s\">themes</a> there. If you get a plugin or theme from another source, make sure to <a href=\"%3$s\">ask them if it&#8217;s GPL</a> first. If they don&#8217;t respect the WordPress license, we don&#8217;t recommend them."
-msgstr "כל התוספים והתבניות במאגר הרשמי של וורדפרס מופצים תחת רישיון GPL או ברישיון מקביל, לכן ניתן להוריד משם <a href=\"%1$s\">תוספים</a> <a href=\"%2$s\">ותבניות</a> ללא חשש. אם הורדתם תוסף או תבנית ממקור אחר, כדאי לוודא שהם מופצים תחת <a href=\"%3$s\">תנאי רישיון GPL</a>. אנו לא ממליצים להשתמש בתוספים ותבניות שלא מכבדים רישיון GPL."
+msgstr "כל התוספים והתבניות בספרייה הרשמית של וורדפרס מופצים תחת רישיון GPL או ברישיון מקביל, לכן ניתן להוריד משם <a href=\"%1$s\">תוספים</a> <a href=\"%2$s\">ותבניות</a> ללא חשש. אם הורדתם תוסף או תבנית ממקור אחר, כדאי לוודא שהם מופצים תחת <a href=\"%3$s\">תנאי רישיון GPL</a>. אנו לא ממליצים להשתמש בתוספים ותבניות שלא מכבדים רישיון GPL."
 
 #: wp-admin/freedoms.php:36
 msgid "WordPress is Free and open source software, built by a distributed community of mostly volunteer developers from around the world. WordPress comes with some awesome, worldview-changing rights courtesy of its <a href=\"%s\">license</a>, the GPL."
@@ -5666,7 +5666,7 @@ msgstr "שמירה"
 
 #: wp-admin/plugins.php:379
 msgid "You can find additional plugins for your site by using the <a href=\"%1$s\">Plugin Browser/Installer</a> functionality or by browsing the <a href=\"%2$s\" target=\"_blank\">WordPress Plugin Directory</a> directly and installing new plugins manually. To manually install a plugin you generally just need to upload the plugin file into your <code>/wp-content/plugins</code> directory. Once a plugin has been installed, you can activate it here."
-msgstr "אפשר למצוא תוספים חדשים ולהתקין אותם על ידי חיפוש <a href=\"%1$s\">במאגר התוספים של וורדפרס</a>, או להוריד תוספים <a href=\"%2$s\" target=\"_blank\">באתר התוספים</a> ולהתקין אותם ידנית. להתקנה ידנית, צריך רק להעלות את קבצי התוסף לספרייה <code>/wp-content/plugins</code>. אחרי ההתקנה, אפשר להפעיל את התוסף בעמוד זה."
+msgstr "אפשר למצוא תוספים חדשים ולהתקין אותם על ידי חיפוש <a href=\"%1$s\">בספריית התוספים של וורדפרס</a>, או להוריד תוספים <a href=\"%2$s\" target=\"_blank\">באתר התוספים</a> ולהתקין אותם ידנית. להתקנה ידנית, צריך רק להעלות את קבצי התוסף לספרייה <code>/wp-content/plugins</code>. אחרי ההתקנה, אפשר להפעיל את התוסף בעמוד זה."
 
 #: wp-admin/edit-link-form.php:60
 msgid "XFN stands for <a href=\"http://gmpg.org/xfn/\" target=\"_blank\">XHTML Friends Network</a>, which is optional. WordPress allows the generation of XFN attributes to show how you are related to the authors/owners of the site to which you are linking."
@@ -9615,10 +9615,6 @@ msgstr "לחץ כדי לערוך חלק זה בקישור"
 msgid "The name is how it appears on your site."
 msgstr "השם שיוצג באתר."
 
-#: wp-admin/edit-tag-form.php:107 wp-admin/edit-tags.php:464
-msgid "The &#8220;slug&#8221; is the URL-friendly version of the name. It is usually all lowercase and contains only letters, numbers, and hyphens."
-msgstr "המזהה בכתובת ה-URL. המזהה יכול להכיל רק אותיות, מספרים ומקפים."
-
 #: wp-admin/includes/class-wp-links-list-table.php:150
 #: wp-admin/includes/class-wp-media-list-table.php:322
 #: wp-admin/includes/class-wp-media-list-table.php:340
@@ -9635,10 +9631,6 @@ msgstr "מכתובת URL ברשת"
 #: wp-admin/includes/media.php:1048 wp-admin/includes/media.php:1201
 msgid "File URL"
 msgstr "כתובת URL לקובץ"
-
-#: wp-admin/includes/plugin-install.php:475
-msgid "WordPress.org Plugin Page &#187;"
-msgstr "עמוד התוסף במאגר התוספים"
 
 #: wp-admin/edit-link-form.php:14
 msgid "<a href=\"%s\">Links</a> / Edit Link"
@@ -10252,10 +10244,6 @@ msgstr "נפוצות ביותר"
 msgid "Popular tags"
 msgstr "תגיות נפוצות"
 
-#: wp-admin/includes/plugin-install.php:140
-msgid "You may also browse based on the most popular tags in the Plugin Directory:"
-msgstr "אפשר לעיין בתוספים לפי התגיות הנפוצות ביותר במאגר:"
-
 #: wp-admin/edit-tags.php:342
 msgid "<strong>Note:</strong><br />Deleting a category does not delete the posts in that category. Instead, posts that were only assigned to the deleted category are set to the category <strong>%s</strong>."
 msgstr "<strong>שימו לב:</strong><br />מחיקת קטגוריה לא מוחקת את הפוסטים שמשויכים אליה. במקום זאת, פוסטים שהיו משוייכים לקטגוריה שנמחקה עוברים לקטגוריית ברירת המחדל <strong>%s</strong>."
@@ -10422,6 +10410,18 @@ msgstr "מחיקה"
 #: wp-admin/includes/template.php:725
 msgid "Add Custom Field"
 msgstr "הוספת שדה מיוחד"
+
+#: wp-admin/includes/plugin-install.php:140
+msgid "You may also browse based on the most popular tags in the Plugin Directory:"
+msgstr "ניתן לעיין בתוספים לפי התגיות הנפוצות ביותר:"
+
+#: wp-admin/includes/plugin-install.php:475
+msgid "WordPress.org Plugin Page &#187;"
+msgstr "עמוד התוסף בספריית התוספים"
+
+#: wp-admin/edit-tag-form.php:107 wp-admin/edit-tags.php:464
+msgid "The &#8220;slug&#8221; is the URL-friendly version of the name. It is usually all lowercase and contains only letters, numbers, and hyphens."
+msgstr "המזהה שיוצג בכתובת ה-URL. יכול להכיל רק אותיות, מספרים ומקפים."
 
 #: wp-admin/update.php:214
 msgid "Install Themes"
