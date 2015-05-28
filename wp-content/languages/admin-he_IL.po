@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Administration package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2015-05-20 11:02:42+0000\n"
+"PO-Revision-Date: 2015-05-26 19:32:58+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -571,6 +571,10 @@ msgstr "הסתר הגדרות פוסט"
 msgid "In the editing area the Tab key enters a tab character. To move below this area by pressing Tab, press the Esc key followed by the Tab key. In some cases the Esc key will need to be pressed twice before the Tab key will allow you to continue."
 msgstr "באזור העריכה לחיצה על מקש Tab מוסיפה הזחה. כדי לעבור לתפריט הבא במסך יש ללחוץ על מקש Esc ואחריו על מקש Tab. במקרים מסוימים יש ללחוץ פעמיים על מקש Esc לפני שלחיצה על מקש Tab יאפשר לעבור לתפריט הבא."
 
+#: wp-admin/includes/template.php:1702
+msgid "Posts Page"
+msgstr "עמוד פוסטים"
+
 #: wp-admin/ms-delete-site.php:45
 msgid ""
 "Howdy ###USERNAME###,\n"
@@ -675,10 +679,6 @@ msgstr "פתח את \"פרסם את זה\""
 #: wp-admin/tools.php:46
 msgid "Install Press This"
 msgstr "התקן את \"פרסם את זה\""
-
-#: wp-admin/includes/template.php:1702
-msgid "Posts Page"
-msgstr "עמוד פוסטים:"
 
 #: wp-admin/includes/screen.php:1136
 msgid "Number of items per page:"
@@ -1225,7 +1225,7 @@ msgstr "כל הקבצים שהעליתם מופיעים בספריית המדי�
 
 #: wp-admin/plugin-install.php:48
 msgid "Add Plugins"
-msgstr "הוספת תוספים"
+msgstr "הוספת תוסף"
 
 #: wp-admin/options-general.php:366
 msgid "Note:"
@@ -1485,18 +1485,18 @@ msgstr "כל סוגי התגובות"
 #: wp-admin/theme-install.php:135
 msgctxt "themes"
 msgid "Featured"
-msgstr "נבחרות"
+msgstr "נבחרים"
 
 #: wp-admin/theme-install.php:136
 msgctxt "themes"
 msgid "Popular"
-msgstr "פופולריות"
+msgstr "פופולריים"
 
 #: wp-admin/includes/class-wp-theme-install-list-table.php:46
 #: wp-admin/theme-install.php:137
 msgctxt "themes"
 msgid "Latest"
-msgstr "אחרונות"
+msgstr "אחרונים"
 
 #: wp-admin/users.php:252
 msgid "Delete all content."
@@ -1535,6 +1535,10 @@ msgstr "הסרה מאפשרת למחוק משתמש מהאתר. היא אינה 
 msgid "<strong>Box Controls</strong> - Click the title bar of the box to expand or collapse it. Some boxes added by plugins may have configurable content, and will show a &#8220;Configure&#8221; link in the title bar if you hover over it."
 msgstr "<strong>בקרת תיבות</strong> - לחיצה על שורת הכותרת של התיבה מרחיבה או מכווצת אותה. תיבות המתווספות על ידי תוספים חיצוניים עשויות להכיל אפשרויות להגדרות מתקדמות, במקרה כזה אם מרחפים על הכותרת יוצג קישור \"הגדרות\"."
 
+#: wp-admin/theme-install.php:23
+msgid "Add Themes"
+msgstr "הוספת תבנית"
+
 #: wp-admin/theme-install.php:48
 msgid "Search themes..."
 msgstr "חיפוש תבניות..."
@@ -1542,10 +1546,6 @@ msgstr "חיפוש תבניות..."
 #: wp-admin/theme-install.php:47
 msgid "Search Themes"
 msgstr "חיפוש תבניות"
-
-#: wp-admin/theme-install.php:23
-msgid "Add Themes"
-msgstr "הוספת תבניות"
 
 #: wp-admin/index.php:67
 msgid "<strong>At A Glance</strong> - Displays a summary of the content on your site and identifies which theme and version of WordPress you are using."
@@ -2409,7 +2409,7 @@ msgstr "הוספת פריטים מהעמודה הימנית."
 
 #: wp-admin/includes/plugin-install.php:135
 msgid "Plugins extend and expand the functionality of WordPress. You may automatically install plugins from the <a href=\"%1$s\">WordPress Plugin Directory</a> or upload a plugin in .zip format via <a href=\"%2$s\">this page</a>."
-msgstr "ניתן להרחיב את אפשרויות של וורדפרס באמצעות תוספים. אם תרצו להתקין תוספים בצורה אוטומטית תעשו זאת באמצעות <a href=\"%1$s\">ספריית התוספים של וורדפרס</a> או באמצעות העלאת קובץ .zip באמצעות <a href=\"%2$s\">עמוד זה</a>."
+msgstr "ניתן להרחיב את אפשרויות של וורדפרס באמצעות תוספים. אם תרצו להתקין תוספים בצורה אוטומטית תעשו זאת באמצעות <a href=\"%1$s\">ספריית התוספים של וורדפרס</a> או באמצעות העלאת קובץ zip באמצעות <a href=\"%2$s\">עמוד זה</a>."
 
 #. Plugin URI of the plugin/theme
 msgid "http://wordpress.org/plugins/hello-dolly/"
@@ -4254,10 +4254,6 @@ msgstr "אישור תגובות"
 msgid "Attaching Files"
 msgstr "הוספת קבצים"
 
-#: wp-admin/plugin-install.php:77
-msgid "Adding Plugins"
-msgstr "הוספת תוספים"
-
 #: wp-admin/edit.php:179
 msgid "Screen Content"
 msgstr "תוכן מסך"
@@ -4314,13 +4310,17 @@ msgstr "יש להקצות סיסמה למשתמש החדש, אותה הוא יו
 msgid "You can also edit or move multiple posts to the trash at once. Select the posts you want to act on using the checkboxes, then select the action you want to take from the Bulk Actions menu and click Apply."
 msgstr "ניתן גם לערוך או למחוק מספר פוסטים. יש לבחור את הפוסטים ולבצע עליהם עריכה קבוצתית."
 
-#: wp-admin/plugin-install.php:73
-msgid "Plugins hook into WordPress to extend its functionality with custom features. Plugins are developed independently from the core WordPress application by thousands of developers all over the world. All plugins in the official <a href=\"%s\" target=\"_blank\">WordPress.org Plugin Directory</a> are compatible with the license WordPress uses. You can find new plugins to install by searching or browsing the Directory right here in your own Plugins section."
-msgstr "תוספים מרחיבים את היכולות של וורדפרס ומוסיפים לאתר אפשרויות וכלים חדשים. אפשר להתקין תוספים מתוך <a href=\"%s\" target=\"_blank\">ספריית התוספים הרשמית</a> ישירות מתוך האתר, או להתקין ידנית תוספים ממקורות אחרים."
+#: wp-admin/plugin-install.php:77
+msgid "Adding Plugins"
+msgstr "הוספת תוסף"
 
 #: wp-admin/themes.php:70
 msgid "Adding Themes"
-msgstr "הוספת תבניות"
+msgstr "הוספת תבנית"
+
+#: wp-admin/plugin-install.php:73
+msgid "Plugins hook into WordPress to extend its functionality with custom features. Plugins are developed independently from the core WordPress application by thousands of developers all over the world. All plugins in the official <a href=\"%s\" target=\"_blank\">WordPress.org Plugin Directory</a> are compatible with the license WordPress uses. You can find new plugins to install by searching or browsing the Directory right here in your own Plugins section."
+msgstr "תוספים מרחיבים את היכולות של וורדפרס ומוסיפים לאתר אפשרויות וכלים חדשים. אפשר להתקין תוספים מתוך <a href=\"%s\" target=\"_blank\">ספריית התוספים הרשמית</a> ישירות מתוך האתר, או להתקין ידנית תוספים ממקורות אחרים."
 
 #: wp-admin/options-permalink.php:28 wp-admin/options-permalink.php:200
 msgid "Common Settings"
@@ -8376,6 +8376,11 @@ msgstr "הגדרות ברירות מחדל"
 msgid "Maximum Rating"
 msgstr "דירוג מרבי לצנזורה"
 
+#: wp-admin/includes/class-wp-plugin-install-list-table.php:67
+msgctxt "Plugin Installer"
+msgid "Featured"
+msgstr "מובחרים"
+
 #: wp-admin/options-general.php:199
 msgid "<abbr title=\"Coordinated Universal Time\">UTC</abbr> time is <code>%s</code>"
 msgstr "הזמן הנוכחי לפי שעון <abbr title=\"Coordinated Universal Time\">UTC</abbr> הינו <code>%s</code>"
@@ -8459,11 +8464,6 @@ msgstr "אם יש לך בכונן הקשיח תבנית בפורמט &lrm;.zip, 
 #: wp-admin/options-writing.php:65
 msgid "WordPress should correct invalidly nested XHTML automatically"
 msgstr "תיקון אוטומטי של שגיאות קינון בתגיות XHTML"
-
-#: wp-admin/includes/class-wp-plugin-install-list-table.php:67
-msgctxt "Plugin Installer"
-msgid "Featured"
-msgstr "נבחרים"
 
 #: wp-admin/comment.php:134
 msgid "You are about to approve the following comment:"
