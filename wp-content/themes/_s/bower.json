@@ -1,0 +1,30 @@
+{
+  "name": "_s",
+  "version": "0.0.1",
+  "homepage": "https://github.com/AmitT/wp-kickstart",
+  "authors": [
+    "AmitT <amitprobable@gmail.com>"
+  ],
+  "description": "A Starter Theme for Winsite Projects",
+  "main": "index.php",
+  "moduleType": [
+    "amd",
+    "es6",
+    "globals",
+    "node",
+    "yui"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "modernizr": "2.8.2",
+    "bootstrap-sass-official": "3.3.4",
+    "bootstrap-rtl": ""
+  },
+}
