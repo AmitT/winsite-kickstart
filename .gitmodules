@@ -1,3 +1,3 @@
 [submodule "wp-content/themes/podium"]
 	path = wp-content/themes/podium
-	url = ../podium.git
+	url = https://github.com/AmitT/podium
