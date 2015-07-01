@@ -61,6 +61,15 @@ define('NONCE_SALT',       'Q<tU6_9vMOeKFC`E>YcnTvX`E@bR<Gc6+&Jc!L.hdt[sxxr2/^8l
  */
 $table_prefix  = 'wpks_';
 
+/**
+ * For developers: WordPress debugging mode.
+ *
+ * Change this to true to enable the display of notices during development.
+ * It is strongly recommended that plugin and theme developers use WP_DEBUG
+ * in their development environments.
+ */
+define('WP_DEBUG', false);
+
 /* That's all, stop editing! Happy blogging. */
 
 /** Absolute path to the WordPress directory. */
@@ -70,15 +79,6 @@ if ( !defined('ABSPATH') )
 /** Sets up WordPress vars and included files. */
 require_once(ABSPATH . 'wp-settings.php');
 
-
-/**
- * For developers: WordPress debugging mode.
- *
- * Change this to true to enable the display of notices during development.
- * It is strongly recommended that plugin and theme developers use WP_DEBUG
- * in their development environments.
- */
-define('WP_DEBUG', true);
 /** Limit post revisions to 5. */
 define( 'WP_POST_REVISIONS', 5);
 /** disallow wp files editor. */
