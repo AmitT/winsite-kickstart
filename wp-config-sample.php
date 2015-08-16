@@ -78,9 +78,3 @@ if ( !defined('ABSPATH') )
 
 /** Sets up WordPress vars and included files. */
 require_once(ABSPATH . 'wp-settings.php');
-/** Limit post revisions to 5. */
-define( 'WP_POST_REVISIONS', 5);
-/** disallow wp files editor. */
-define( 'DISALLOW_FILE_EDIT', true );
-/** Activate DEV DNV for sage + gulp. */
-define('WP_ENV', 'development');
