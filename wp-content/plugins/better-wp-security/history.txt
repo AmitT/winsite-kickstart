@@ -418,3 +418,7 @@
 	Bug Fix: Fixed issues with PHP blocking in uploads directory not working with certain non-standard setups.
 	Bug Fix: Minor change to fix a warning that can appear after changing the Content Directory.
 	Bug Fix: Fixed a PHP fatal error that could occur on some servers when adding a ban to the site's .htaccess or nginx.conf file.
+5.0.0 - 2015-09-14 - Chris Jean
+	New Feature: Added malware scanning provided by Sucuri SiteCheck.
+5.0.1 - 2015-09-15 - Chris Jean
+	Compatibility Fix: Added support for ITSEC_TEST_MALWARE_SCAN_DISABLE_SSLVERIFY. Setting it to true can bypass "SSL peer certificate or SSH remote key was not OK" errors on servers with bad SSL configurations.

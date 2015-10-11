@@ -171,7 +171,7 @@ class ITSEC_Tweaks {
 
 			if ( $user->nickname == $user->user_login ) {
 
-				$errors->add( 'user_error', __( 'Your Nickname must be different than your login name. Please choose a different Nickname.', 'it-l10n-better-wp-security' ) );
+				$errors->add( 'user_error', __( 'Your Nickname must be different than your login name. Please choose a different Nickname.', 'better-wp-security' ) );
 
 			} else {
 
@@ -189,7 +189,7 @@ class ITSEC_Tweaks {
 
 		} else {
 
-			$errors->add( 'user_error', __( 'A Nickname is required. Please choose a nickname or fill out your first and last name.', 'it-l10n-better-wp-security' ) );
+			$errors->add( 'user_error', __( 'A Nickname is required. Please choose a nickname or fill out your first and last name.', 'better-wp-security' ) );
 
 		}
 
