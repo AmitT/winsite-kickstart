@@ -1,14 +1,14 @@
-# Translation of Development in Hebrew
-# This file is distributed under the same license as the Development package.
+# Translation of 4.3.x in Hebrew
+# This file is distributed under the same license as the 4.3.x package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2015-08-17 15:13:38+0000\n"
+"PO-Revision-Date: 2015-10-03 20:07:26+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: GlotPress/1.0-alpha-1100\n"
-"Project-Id-Version: Development\n"
+"Project-Id-Version: 4.3.x\n"
 
 #. translators: 'rtl' or 'ltr'. This sets the text direction for WordPress.
 #: wp-includes/locale.php:185
@@ -33,7 +33,7 @@ msgstr "הפעלת מחלקה: %s"
 #. Asian characters), enter 'characters_excluding_spaces' or
 #. 'characters_including_spaces'. Otherwise, enter 'words'. Do not translate
 #. into your own language.
-#: wp-includes/formatting.php:2862 wp-includes/script-loader.php:409
+#: wp-includes/formatting.php:2864 wp-includes/script-loader.php:409
 msgctxt "Word count type. Do not translate!"
 msgid "words"
 msgstr "words"
@@ -96,11 +96,11 @@ msgstr "אפשרויות תפריט"
 msgid "Registration confirmation will be e-mailed to you."
 msgstr "פרטי רישום ישלחו לאימייל שלך."
 
-#: wp-includes/script-loader.php:378
+#: wp-includes/script-loader.php:379
 msgid "Hide"
 msgstr "להסתיר"
 
-#: wp-includes/script-loader.php:377
+#: wp-includes/script-loader.php:378
 msgid "Show"
 msgstr "להציג"
 
@@ -154,7 +154,7 @@ msgstr "סמל אתר משמש לתצוגת האתר בדפדפן או באפל�
 
 #: wp-includes/class-wp-customize-manager.php:1334
 msgid "Site Identity"
-msgstr "מזהה אתר"
+msgstr "פרטי אתר"
 
 #. translators: 1: Title of a menu item, 2: Type of a menu item
 #: wp-includes/class-wp-customize-nav-menus.php:668
@@ -181,7 +181,7 @@ msgstr "פג תוקפו של הקישור לאיפוס הסיסמה. ניתן ל
 msgid "Username may not be longer than 60 characters."
 msgstr "שם המשתמש אינו יכול להכיל יותר מ 60 תווים."
 
-#: wp-includes/pluggable.php:1730
+#: wp-includes/pluggable.php:1740
 msgid "To set your password, visit the following address:"
 msgstr "לאיפוס סיסמה, גשו לקישור הבא:"
 
@@ -961,7 +961,7 @@ msgstr "קישורים"
 msgid "<strong>Could not find site %1$s.</strong> Searched for table %2$s in database %3$s. Is that right?"
 msgstr "<strong>אתר %1$s לא נמצא.</strong> בוצע חיפוש טבלת %2$s בבסיס הנתונים %3$s. זה נשמע נכון?"
 
-#: wp-includes/media.php:3042
+#: wp-includes/media.php:3044
 msgid "Drag and drop to reorder media files."
 msgstr "יש לגרור את קבצי המדיה כדי לשנות מיקום."
 
@@ -1165,7 +1165,7 @@ msgctxt "verb"
 msgid "Trash"
 msgstr "מחיקה"
 
-#: wp-includes/media.php:3060
+#: wp-includes/media.php:3062
 msgctxt "noun"
 msgid "Trash"
 msgstr "פח"
@@ -1371,11 +1371,11 @@ msgstr "ברירת מחדל"
 msgid "<strong>You have successfully updated WordPress!</strong> Please log back in to see what&#8217;s new."
 msgstr "<strong>עדכון הוורדפרס בוצע בהצלחה!</strong> יש להתחבר שוב כדי לראות מה חדש."
 
-#: wp-includes/media.php:3068
+#: wp-includes/media.php:3070
 msgid "Untrash Selected"
 msgstr "שחזר פריטים נבחרים"
 
-#: wp-includes/media.php:3067
+#: wp-includes/media.php:3069
 msgid "Trash Selected"
 msgstr "מחיקת נבחרים"
 
@@ -1383,7 +1383,7 @@ msgstr "מחיקת נבחרים"
 msgid "Untrash"
 msgstr "שחזר"
 
-#: wp-includes/media.php:3064
+#: wp-includes/media.php:3066
 msgid ""
 "You are about to trash these items.\n"
 "  'Cancel' to stop, 'OK' to delete."
@@ -1395,15 +1395,15 @@ msgstr ""
 msgid "Press return or enter to open this panel"
 msgstr "לחץ \"אנטר\" על מנת לפתוח פאנל זה"
 
-#: wp-includes/media.php:3065
+#: wp-includes/media.php:3067
 msgid "Bulk Select"
 msgstr "בחירה קבוצתית"
 
-#: wp-includes/media.php:3066
+#: wp-includes/media.php:3068
 msgid "Cancel Selection"
 msgstr "ביטול בחירה"
 
-#: wp-includes/media.php:3069
+#: wp-includes/media.php:3071
 msgid "Delete Selected"
 msgstr "מחיקת נבחרים"
 
@@ -1439,15 +1439,15 @@ msgstr "גודל הקובץ:"
 msgid "Uploaded By"
 msgstr "הועלה על ידי"
 
-#: wp-includes/media.php:3072
+#: wp-includes/media.php:3074
 msgid "Filter by date"
 msgstr "סינון על פי תאריך"
 
-#: wp-includes/media.php:3073
+#: wp-includes/media.php:3075
 msgid "Filter by type"
 msgstr "סינון על פי סוג"
 
-#: wp-includes/media.php:3074
+#: wp-includes/media.php:3076
 msgid "Search Media"
 msgstr "חיפוש מדיה"
 
@@ -1471,11 +1471,11 @@ msgstr "עריכת פריט מדיה הבא"
 msgid "Dimensions:"
 msgstr "מידות:"
 
-#: wp-includes/media.php:3056
+#: wp-includes/media.php:3058
 msgid "All dates"
 msgstr "כל התאריכים"
 
-#: wp-includes/media.php:3059
+#: wp-includes/media.php:3061
 msgid "Unattached"
 msgstr "לא משויך"
 
@@ -1515,11 +1515,11 @@ msgstr "תצוגת רשת"
 msgid "View attachment page"
 msgstr "צפה בעמוד הקובץ המצורף"
 
-#: wp-includes/media.php:1520
+#: wp-includes/media.php:1522
 msgid "Bitrate"
 msgstr "תעבורת נתונים"
 
-#: wp-includes/media.php:1521
+#: wp-includes/media.php:1523
 msgid "Bitrate Mode"
 msgstr "מצב תעבורת נתונים"
 
@@ -1527,7 +1527,7 @@ msgstr "מצב תעבורת נתונים"
 msgid "Bitrate:"
 msgstr "תעבורת נתונים:"
 
-#: wp-includes/media.php:3063
+#: wp-includes/media.php:3065
 msgid ""
 "You are about to permanently delete these items.\n"
 "  'Cancel' to stop, 'OK' to delete."
@@ -1601,49 +1601,49 @@ msgid "<strong>ERROR</strong>: Cookies are blocked or not supported by your brow
 msgstr "<strong>שגיאה</strong>: העוגיות חסומות או לא נתמכות על ידי הדפדפן. יש <a href=\"%s\">להפעיל עוגיות</a> כדי להשתמש בוורדפרס."
 
 #: wp-includes/media-template.php:389 wp-includes/media-template.php:569
-#: wp-includes/media.php:1511
+#: wp-includes/media.php:1513
 msgid "Artist"
 msgstr "מבצע"
 
 #: wp-includes/media-template.php:390 wp-includes/media-template.php:570
-#: wp-includes/media.php:1512
+#: wp-includes/media.php:1514
 msgid "Album"
 msgstr "אלבום"
 
-#: wp-includes/media.php:1516
+#: wp-includes/media.php:1518
 msgid "Genre"
 msgstr "ז'אנר"
 
-#: wp-includes/media.php:1517
+#: wp-includes/media.php:1519
 msgid "Year"
 msgstr "שנה"
 
-#: wp-includes/media.php:1518
+#: wp-includes/media.php:1520
 msgctxt "video or audio"
 msgid "Length"
 msgstr "אורך"
 
-#: wp-includes/media.php:3111
+#: wp-includes/media.php:3113
 msgid "There has been an error cropping your image."
 msgstr "אירעה שגיאה בחיתוך התמונה."
 
-#: wp-includes/media.php:3131
+#: wp-includes/media.php:3133
 msgid "&#8592; Cancel Audio Playlist"
 msgstr "&#8592; ביטול פלייליסט אודיו"
 
-#: wp-includes/media.php:3132
+#: wp-includes/media.php:3134
 msgid "Insert audio playlist"
 msgstr "להכניס פלייליסט אודיו"
 
-#: wp-includes/media.php:3133
+#: wp-includes/media.php:3135
 msgid "Update audio playlist"
 msgstr "עדכון פלייליסט אודיו"
 
-#: wp-includes/media.php:3134
+#: wp-includes/media.php:3136
 msgid "Add to audio playlist"
 msgstr "הוספה אל פלייליסט אודיו"
 
-#: wp-includes/media.php:3135
+#: wp-includes/media.php:3137
 msgid "Add to Audio Playlist"
 msgstr "הוספה אל פלייליסט אודיו"
 
@@ -1671,7 +1671,7 @@ msgstr "הגדרות תצוגה"
 msgid "Font Family"
 msgstr "גופן"
 
-#: wp-includes/media-template.php:241 wp-includes/media.php:3110
+#: wp-includes/media-template.php:241 wp-includes/media.php:3112
 msgid "Suggested image dimensions:"
 msgstr "מימדי תמונה מוצעים:"
 
@@ -1683,7 +1683,7 @@ msgstr "עריכת מקור"
 msgid "Split table cell"
 msgstr "פיצול תא בטבלה"
 
-#: wp-includes/media.php:3130
+#: wp-includes/media.php:3132
 msgid "Edit Audio Playlist"
 msgstr "עריכת פלייליסט אודיו"
 
@@ -1757,7 +1757,7 @@ msgstr "רצועות (כתוביות, כותרות, תיאורים, פרקים �
 msgid "Move to another area&hellip;"
 msgstr "להעביר לאזור אחר&hellip;"
 
-#: wp-includes/media.php:3109
+#: wp-includes/media.php:3111
 msgid "Cropping&hellip;"
 msgstr "חיתוך&hellip;"
 
@@ -2005,92 +2005,92 @@ msgstr "הוספת מקורות אלטרנטיביים עבור מקסימום �
 msgid "Autoplay"
 msgstr "הפעלה אוטומטית"
 
-#: wp-includes/media.php:3099
+#: wp-includes/media.php:3101
 msgid "Replace Image"
 msgstr "החלפת תמונה"
 
-#: wp-includes/media.php:3100 wp-includes/media.php:3117
-#: wp-includes/media.php:3123
+#: wp-includes/media.php:3102 wp-includes/media.php:3119
+#: wp-includes/media.php:3125
 msgid "Cancel Edit"
 msgstr "ביטול עריכה"
 
-#: wp-includes/class-wp-customize-control.php:924 wp-includes/media.php:3104
+#: wp-includes/class-wp-customize-control.php:924 wp-includes/media.php:3106
 msgid "Choose Image"
 msgstr "בחירת תמונה"
 
-#: wp-includes/media.php:3105
+#: wp-includes/media.php:3107
 msgid "Select and Crop"
 msgstr "לבחור ולחתוך"
 
-#: wp-includes/media.php:3106
+#: wp-includes/media.php:3108
 msgid "Skip Cropping"
 msgstr "לדלג על החיתוך"
 
-#: wp-includes/media.php:3107
+#: wp-includes/media.php:3109
 msgid "Crop Image"
 msgstr "חיתוך תמונה"
 
-#: wp-includes/media.php:3108
+#: wp-includes/media.php:3110
 msgid "Crop your image"
 msgstr "לחתוך תמונה"
 
-#: wp-includes/media.php:3114
+#: wp-includes/media.php:3116
 msgid "Audio Details"
 msgstr "פרטי אודיו"
 
-#: wp-includes/media.php:3115
+#: wp-includes/media.php:3117
 msgid "Replace Audio"
 msgstr "החלפת אודיו"
 
-#: wp-includes/media.php:3116
+#: wp-includes/media.php:3118
 msgid "Add Audio Source"
 msgstr "הוספת מקור אודיו"
 
-#: wp-includes/media.php:3120
+#: wp-includes/media.php:3122
 msgid "Video Details"
 msgstr "פרטי וידאו"
 
-#: wp-includes/media.php:3121
+#: wp-includes/media.php:3123
 msgid "Replace Video"
 msgstr "החלפת וידאו"
 
-#: wp-includes/media.php:3122
+#: wp-includes/media.php:3124
 msgid "Add Video Source"
 msgstr "הוספת מקור וידאו"
 
-#: wp-includes/media.php:3125
+#: wp-includes/media.php:3127
 msgid "Add Subtitles"
 msgstr "הוספת כתוביות"
 
-#: wp-includes/media.php:3139
+#: wp-includes/media.php:3141
 msgid "Create Video Playlist"
 msgstr "יצירת פלייליסט וידאו"
 
-#: wp-includes/media.php:3140
+#: wp-includes/media.php:3142
 msgid "Edit Video Playlist"
 msgstr "עריכת פלייליסט וידאו"
 
-#: wp-includes/media.php:3142
+#: wp-includes/media.php:3144
 msgid "Insert video playlist"
 msgstr "להכניס פלייליסט וידאו"
 
-#: wp-includes/media.php:3143
+#: wp-includes/media.php:3145
 msgid "Update video playlist"
 msgstr "עדכון פלייליסט וידאו"
 
-#: wp-includes/media.php:3144
+#: wp-includes/media.php:3146
 msgid "Add to video playlist"
 msgstr "הוספה לפלייליסט וידאו"
 
-#: wp-includes/media.php:3145
+#: wp-includes/media.php:3147
 msgid "Add to Video Playlist"
 msgstr "הוספה לפלייליסט וידאו"
 
-#: wp-includes/media.php:3129
+#: wp-includes/media.php:3131
 msgid "Create Audio Playlist"
 msgstr "יצירת פלייליסט אודיו"
 
-#: wp-includes/media.php:3141
+#: wp-includes/media.php:3143
 msgid "&#8592; Cancel Video Playlist"
 msgstr "ביטול פלייליסט וידאו"
 
@@ -2106,19 +2106,19 @@ msgstr "הגדרות פלייליסט"
 msgid "Show Images"
 msgstr "הצגת תמונות"
 
-#: wp-includes/media.php:3138
+#: wp-includes/media.php:3140
 msgid "Drag and drop to reorder videos."
 msgstr "יש לגרור את הוידאו כדי לשנות מיקום."
 
-#: wp-includes/media.php:3128
+#: wp-includes/media.php:3130
 msgid "Drag and drop to reorder tracks."
 msgstr "יש לגרור את הקבצים כדי לשנות מיקום."
 
-#: wp-includes/media.php:3052
+#: wp-includes/media.php:3054
 msgid "Create a new playlist"
 msgstr "יצירת פלייליסט חדש"
 
-#: wp-includes/media.php:3053
+#: wp-includes/media.php:3055
 msgid "Create a new video playlist"
 msgstr "יצירת פלייליסט וידאו חדש"
 
@@ -2126,7 +2126,7 @@ msgstr "יצירת פלייליסט וידאו חדש"
 #: wp-includes/class-wp-customize-panel.php:369
 #: wp-includes/class-wp-customize-panel.php:459
 #: wp-includes/class-wp-customize-section.php:356
-#: wp-includes/class-wp-customize-widgets.php:688 wp-includes/media.php:3036
+#: wp-includes/class-wp-customize-widgets.php:688 wp-includes/media.php:3038
 msgid "Back"
 msgstr "חזרה"
 
@@ -2139,7 +2139,7 @@ msgstr "חיפוש"
 msgid "Show Artist Name in Tracklist"
 msgstr "הצגת שם מבצע בפלייליסט"
 
-#: wp-includes/media.php:3098
+#: wp-includes/media.php:3100
 msgid "Image Details"
 msgstr "פרטי תמונה"
 
@@ -2155,22 +2155,22 @@ msgstr "תמונת נגן"
 msgid "There are no associated subtitles."
 msgstr "אין כתוביות משוייכות."
 
-#: wp-includes/media.php:3124
+#: wp-includes/media.php:3126
 msgid "Select Poster Image"
 msgstr "בחירת תמונת נגן"
 
 #. translators: used to join items in a list with more than 2 items
-#: wp-includes/formatting.php:3897
+#: wp-includes/formatting.php:3899
 msgid "%s, %s"
 msgstr "%s, %s"
 
 #. translators: used to join last two items in a list with more than 2 times
-#: wp-includes/formatting.php:3899
+#: wp-includes/formatting.php:3901
 msgid "%s, and %s"
 msgstr "%s, ו%s"
 
 #. translators: used to join items in a list with only 2 items
-#: wp-includes/formatting.php:3901
+#: wp-includes/formatting.php:3903
 msgid "%s and %s"
 msgstr "%s ו%s"
 
@@ -2332,7 +2332,7 @@ msgstr "להדביק קוד הטמעה מתחת:"
 msgid "Embed"
 msgstr "הטמעה"
 
-#: wp-includes/media-template.php:892 wp-includes/media.php:3034
+#: wp-includes/media-template.php:892 wp-includes/media.php:3036
 msgid "Replace"
 msgstr "להחליף"
 
@@ -2697,19 +2697,19 @@ msgstr "בטל השתקה"
 msgid "Captions/Subtitles"
 msgstr "כתוביות"
 
-#: wp-includes/formatting.php:2754
+#: wp-includes/formatting.php:2756
 msgid "%s week"
 msgid_plural "%s weeks"
 msgstr[0] "שבוע %s"
 msgstr[1] "%s שבועות"
 
-#: wp-includes/formatting.php:2759
+#: wp-includes/formatting.php:2761
 msgid "%s month"
 msgid_plural "%s months"
 msgstr[0] "חודש %s"
 msgstr[1] "%s חודשים"
 
-#: wp-includes/formatting.php:2764
+#: wp-includes/formatting.php:2766
 msgid "%s year"
 msgid_plural "%s years"
 msgstr[0] "שנה %s"
@@ -2881,11 +2881,11 @@ msgstr "מסגרת תמונה&hellip;"
 #. If there is not a word you can use in your language to avoid issues with
 #. the 		   lack of plural support here, turn it into "selected: %d" then
 #. translate it.
-#: wp-includes/media.php:3041
+#: wp-includes/media.php:3043
 msgid "%d selected"
 msgstr "%d נבחרו"
 
-#: wp-includes/media.php:3081
+#: wp-includes/media.php:3083
 msgid "Insert from URL"
 msgstr "להכניס מכתובת באינטרנט"
 
@@ -2894,15 +2894,15 @@ msgctxt "Links widget"
 msgid "Random"
 msgstr "אקראי"
 
-#: wp-includes/media.php:3094
+#: wp-includes/media.php:3096
 msgid "Add to Gallery"
 msgstr "הוספה לגלריה"
 
-#: wp-includes/media-template.php:1236 wp-includes/media.php:3057
+#: wp-includes/media-template.php:1236 wp-includes/media.php:3059
 msgid "No items found."
 msgstr "פריט לא נמצא."
 
-#: wp-includes/media.php:3095
+#: wp-includes/media.php:3097
 msgid "Reverse order"
 msgstr "הפוך סדר"
 
@@ -2919,7 +2919,7 @@ msgstr "ביטול בחירה"
 msgid "Sorry, that file cannot be edited."
 msgstr "סליחה, קובץ זה אינו ניתן לעריכה."
 
-#: wp-includes/media.php:3062
+#: wp-includes/media.php:3064
 msgid ""
 "You are about to permanently delete this item.\n"
 "  'Cancel' to stop, 'OK' to delete."
@@ -2928,7 +2928,7 @@ msgstr ""
 "לחוץ 'ביטול' למניעת המחיקה, או 'אישור' למחיקת הפריט."
 
 #: wp-includes/media-template.php:442 wp-includes/media-template.php:544
-#: wp-includes/media.php:3070
+#: wp-includes/media.php:3072
 msgid "Delete Permanently"
 msgstr "למחוק לצמיתות"
 
@@ -2944,7 +2944,7 @@ msgstr "התעלם משגיאות"
 msgid "Uploading"
 msgstr "מעלה"
 
-#: wp-includes/media.php:2556
+#: wp-includes/media.php:2558
 msgid "No editor could be selected."
 msgstr "לא ניתן לבחור עורך."
 
@@ -2982,11 +2982,11 @@ msgstr[1] "תמונות <span class=\"count\">(%s)</span>"
 msgid "Manage Audio"
 msgstr "ניהול אודיו"
 
-#: wp-includes/media.php:3061
+#: wp-includes/media.php:3063
 msgid "Uploaded to this page"
 msgstr "משוייך לעמוד"
 
-#: wp-includes/media.php:3058
+#: wp-includes/media.php:3060
 msgid "Insert into page"
 msgstr "להכניס לתוכן"
 
@@ -2994,15 +2994,15 @@ msgstr "להכניס לתוכן"
 msgid "Audio"
 msgstr "אודיו"
 
-#: wp-includes/media.php:3055
+#: wp-includes/media.php:3057
 msgid "All media items"
 msgstr "כל פריטי המדיה"
 
-#: wp-includes/media.php:3061
+#: wp-includes/media.php:3063
 msgid "Uploaded to this post"
 msgstr "משוייך לפוסט"
 
-#: wp-includes/media.php:3054
+#: wp-includes/media.php:3056
 msgid "&#8592; Return to library"
 msgstr "חזרה לספרייה"
 
@@ -3015,7 +3015,7 @@ msgstr "כתובת מותאמת אישית"
 msgid "Columns"
 msgstr "טורים"
 
-#: wp-includes/media-template.php:500 wp-includes/media.php:3078
+#: wp-includes/media-template.php:500 wp-includes/media.php:3080
 msgid "Attachment Details"
 msgstr "פרטים"
 
@@ -3025,7 +3025,7 @@ msgid "Alt Text"
 msgstr "טקסט חלופי"
 
 #: wp-includes/media-template.php:696 wp-includes/media-template.php:771
-#: wp-includes/media-template.php:945 wp-includes/media.php:2787
+#: wp-includes/media-template.php:945 wp-includes/media.php:2789
 msgid "Large"
 msgstr "גדול"
 
@@ -3037,11 +3037,11 @@ msgstr "הגדרות גלריה"
 msgid "Attachment Display Settings"
 msgstr "הגדרות תצוגה"
 
-#: wp-includes/media.php:3046
+#: wp-includes/media.php:3048
 msgid "Upload Images"
 msgstr "העלאת קבצים"
 
-#: wp-includes/media.php:3090
+#: wp-includes/media.php:3092
 msgid "&#8592; Cancel Gallery"
 msgstr "ביטול גלריה"
 
@@ -3049,7 +3049,7 @@ msgstr "ביטול גלריה"
 msgid "WordPress &rsaquo; Success"
 msgstr "וורדפרס &lsaquo; הצלחה"
 
-#: wp-includes/media.php:3045
+#: wp-includes/media.php:3047
 msgid "Upload Files"
 msgstr "העלאת קבצים"
 
@@ -3057,7 +3057,7 @@ msgstr "העלאת קבצים"
 msgid "Drop files anywhere to upload"
 msgstr "יש לשחרר את הקבצים במקום כלשהו בכדי להעלות"
 
-#: wp-includes/media.php:3091
+#: wp-includes/media.php:3093
 msgid "Insert gallery"
 msgstr "להכניס גלריה"
 
@@ -3065,11 +3065,11 @@ msgstr "להכניס גלריה"
 msgid "Drop files to upload"
 msgstr "גרור לכאן קבצים כדי להעלותם לאתר"
 
-#: wp-includes/media.php:3049
+#: wp-includes/media.php:3051
 msgid "Media Library"
 msgstr "ספריית מדיה"
 
-#: wp-includes/media.php:3088
+#: wp-includes/media.php:3090
 msgid "Create Gallery"
 msgstr "יצירת גלרייה"
 
@@ -3148,7 +3148,7 @@ msgstr "תיאור קובץ שמע&hellip;"
 msgid "Describe this media file&hellip;"
 msgstr "תיאור קובץ מדיה&hellip;"
 
-#: wp-includes/media.php:3092
+#: wp-includes/media.php:3094
 msgid "Update gallery"
 msgstr "עדכון גלריה"
 
@@ -3202,7 +3202,7 @@ msgstr "הקובץ איננו קובץ תמונה."
 msgid "Could not read image size."
 msgstr "לא ניתן לקרוא את גודל התמונה."
 
-#: wp-includes/media.php:3051
+#: wp-includes/media.php:3053
 msgid "Create a new gallery"
 msgstr "גלריה חדשה"
 
@@ -3224,7 +3224,7 @@ msgstr "%1$s %2$s"
 msgid "Whoops, the provided date is invalid."
 msgstr "התאריך לא תקני."
 
-#: wp-includes/media.php:3050
+#: wp-includes/media.php:3052
 msgid "Insert Media"
 msgstr "הוספת מדיה"
 
@@ -3232,11 +3232,7 @@ msgstr "הוספת מדיה"
 msgid "Could not insert term relationship into the database"
 msgstr "לא ניתן להכניס למסד הנתונים קשרי טקסונומיה."
 
-#: wp-includes/post.php:59
-msgid "View Attachment Page"
-msgstr "צפייה בעמוד הנספח"
-
-#: wp-includes/media.php:3058
+#: wp-includes/media.php:3060
 msgid "Insert into post"
 msgstr "להוסיף לתוכן"
 
@@ -3244,9 +3240,13 @@ msgstr "להוסיף לתוכן"
 msgid "Select Color"
 msgstr "בחירת צבע"
 
-#: wp-includes/media.php:3093
+#: wp-includes/media.php:3095
 msgid "Add to gallery"
 msgstr "הוספה לגלריה"
+
+#: wp-includes/post.php:59
+msgid "View Attachment Page"
+msgstr "צפה בעמוד הקובץ המצורף"
 
 #: wp-includes/class-wp-xmlrpc-server.php:250
 msgid "XML-RPC services are disabled on this site."
@@ -3466,17 +3466,17 @@ msgstr "ללא חזרה"
 msgid "Scroll"
 msgstr "גלילה"
 
-#: wp-includes/class-wp-customize-manager.php:1472
-msgid "Tile Horizontally"
-msgstr "חזרה אופקית"
-
 #: wp-includes/class-wp-customize-manager.php:1473
 msgid "Tile Vertically"
-msgstr "חזרה אנכית"
+msgstr "אריח אנכי"
+
+#: wp-includes/class-wp-customize-manager.php:1472
+msgid "Tile Horizontally"
+msgstr "אריח אופקי"
 
 #: wp-includes/class-wp-customize-manager.php:1471
 msgid "Tile"
-msgstr "חזרה אופקית ואנכית"
+msgstr "אריח"
 
 #: wp-includes/class-wp-customize-manager.php:1552
 msgid "Front page"
@@ -3495,7 +3495,7 @@ msgstr "קבצים מותרים"
 #: wp-includes/class-wp-customize-control.php:1754
 #: wp-includes/class-wp-customize-widgets.php:653
 #: wp-includes/class-wp-editor.php:1035 wp-includes/media-template.php:473
-#: wp-includes/media.php:3035
+#: wp-includes/media.php:3037
 msgid "Remove"
 msgstr "הסרה"
 
@@ -3550,7 +3550,7 @@ msgstr "הורה לא קיים."
 
 #: wp-includes/class-wp-xmlrpc-server.php:1931
 msgid "This taxonomy is not hierarchical so you can't set a parent."
-msgstr "הטקסונומיה אינה בעלת מבנה היררכי, לכן לא ניתן להגדיר לה הורה."
+msgstr "הטקסונומיה איננה היררכיית, לכן לא ניתן להגדיר לה הורה."
 
 #: wp-includes/default-widgets.php:204
 msgid "Select Link Category:"
@@ -3614,7 +3614,7 @@ msgstr "סגור"
 
 #: wp-includes/class-wp-customize-control.php:481
 #: wp-includes/class-wp-customize-nav-menus.php:480
-#: wp-includes/default-widgets.php:1593
+#: wp-includes/default-widgets.php:1592
 msgid "&mdash; Select &mdash;"
 msgstr "&mdash; בחירה &mdash;"
 
@@ -3757,7 +3757,7 @@ msgid "&#8217;"
 msgstr "'"
 
 #. translators: opening curly double quote
-#: wp-includes/formatting.php:88 wp-includes/formatting.php:4148
+#: wp-includes/formatting.php:88 wp-includes/formatting.php:4150
 msgctxt "opening curly double quote"
 msgid "&#8220;"
 msgstr "&quot;"
@@ -3902,7 +3902,7 @@ msgstr "פורום תמיכה"
 msgid "Documentation"
 msgstr "תיעוד"
 
-#: wp-includes/formatting.php:2851 wp-includes/general-template.php:2853
+#: wp-includes/formatting.php:2853 wp-includes/general-template.php:2853
 msgid "&hellip;"
 msgstr "&hellip;"
 
@@ -3962,7 +3962,7 @@ msgctxt "admin color scheme"
 msgid "Blue"
 msgstr "כחול"
 
-#: wp-includes/formatting.php:3683
+#: wp-includes/formatting.php:3685
 msgid "The timezone you have entered is not valid. Please select a valid timezone."
 msgstr "אזור הזמן שנבחר אינו קיים. יש לבחור אזור זמן תקין."
 
@@ -4313,7 +4313,7 @@ msgstr "שם לקטגוריית קישורים חדשה"
 
 #: wp-includes/taxonomy.php:101
 msgid "Update Link Category"
-msgstr "עדכון"
+msgstr "עדכון קטגוריית קישור"
 
 #: wp-includes/admin-bar.php:385
 msgid "Network Admin"
@@ -4337,15 +4337,15 @@ msgctxt "Multisite active signup type"
 msgid "none"
 msgstr "סגורה"
 
-#: wp-signup.php:661
-msgctxt "Multisite active signup type"
-msgid "user"
-msgstr "פתוחה למשתמשים חדשים"
-
 #: wp-signup.php:660
 msgctxt "Multisite active signup type"
 msgid "blog"
 msgstr "פתוח לאתרים חדשים של משתמשים קיימים"
+
+#: wp-signup.php:661
+msgctxt "Multisite active signup type"
+msgid "user"
+msgstr "משתמש"
 
 #: wp-includes/default-widgets.php:1500
 msgid "Custom Menu"
@@ -4489,10 +4489,6 @@ msgstr "כל התגיות"
 msgid "Add New Tag"
 msgstr "תגית חדשה"
 
-#: wp-includes/taxonomy.php:506
-msgid "Update Tag"
-msgstr "עדכון"
-
 #: wp-includes/taxonomy.php:503
 msgid "Parent Category:"
 msgstr "הורה:"
@@ -4500,6 +4496,10 @@ msgstr "הורה:"
 #: wp-includes/taxonomy.php:502
 msgid "Parent Category"
 msgstr "הורה"
+
+#: wp-includes/taxonomy.php:506
+msgid "Update Tag"
+msgstr "עדכון תגית"
 
 #: wp-signup.php:635
 msgid "Wait a little longer. Sometimes delivery of email can be delayed by processes outside of our control."
@@ -4630,7 +4630,7 @@ msgstr "אין לך הרשאות לפרסום עמודים."
 msgid "Sorry, site names may not contain the character &#8220;_&#8221;!"
 msgstr "אי אפשר להשתמש בקו תחתון (_) בכתובת."
 
-#: wp-includes/pluggable.php:1705
+#: wp-includes/pluggable.php:1715
 msgid "New user registration on your site %s:"
 msgstr "רישום משתמשים חדשים באתר %s:"
 
@@ -4660,10 +4660,6 @@ msgstr ""
 "כשהאתר יופעל, אפשר לראות אותו כאן:\n"
 "\n"
 "%s"
-
-#: wp-includes/ms-functions.php:1006
-msgid "The site is already active."
-msgstr "האתר הזה הופעל כבר."
 
 #: wp-includes/ms-functions.php:1158
 msgid "Could not create site."
@@ -4723,6 +4719,10 @@ msgstr "כתובת זו תפוסה בשלב זה, אולי היא תתפנה ב�
 msgid "Sorry, you must be able to edit posts on this site in order to view tags."
 msgstr "אין לך הרשאות לערוך פוסטים, ולכן גם רשימת התגיות חסומה."
 
+#: wp-includes/ms-functions.php:1006
+msgid "The site is already active."
+msgstr "האתר כבר הופעל."
+
 #: wp-includes/ms-load.php:106
 msgid "This site has been archived or suspended."
 msgstr "האתר הזה הוקפא או הועבר לארכיון."
@@ -4739,15 +4739,15 @@ msgstr "כבר קיים תפריט בשם <strong>%s</strong>‏."
 msgid "The given object ID is not that of a menu item."
 msgstr "The given object ID is not that of a menu item."
 
-#: wp-includes/formatting.php:3514
+#: wp-includes/formatting.php:3516
 msgid "The email address entered did not appear to be a valid email address. Please enter a valid email address."
 msgstr "כתובת האימייל שהוזנה איננה כתובת אימייל תקינה. יש לנסות שנית."
 
-#: wp-includes/formatting.php:3615
+#: wp-includes/formatting.php:3617
 msgid "The WordPress address you entered did not appear to be a valid URL. Please enter a valid URL."
 msgstr "כתובת וורדפרס שהוזנה איננה כתובת תקינה. יש לנסות שנית."
 
-#: wp-includes/formatting.php:3628
+#: wp-includes/formatting.php:3630
 msgid "The Site address you entered did not appear to be a valid URL. Please enter a valid URL."
 msgstr "כתובת האתר שהוזנה איננה כתובת תקינה. יש לנסות שנית."
 
@@ -4856,7 +4856,7 @@ msgstr "תפריטים"
 msgid "Links for %s"
 msgstr "קישורים של %s"
 
-#: wp-includes/default-widgets.php:1583
+#: wp-includes/default-widgets.php:1582
 msgid "No menus have been created yet. <a href=\"%s\">Create some</a>."
 msgstr "אין כאן <a href=\"%s\">תפריטים</a> שאפשר להשתמש בהם."
 
@@ -4984,7 +4984,7 @@ msgstr "פינגבאק חדש בפוסט \"%s\" ממתין לאישור"
 msgid "New pingback on your post \"%s\""
 msgstr "פינגבאק חדש בפוסט \"%s\""
 
-#: wp-includes/default-widgets.php:1591
+#: wp-includes/default-widgets.php:1590
 msgid "Select Menu:"
 msgstr "תפריט:"
 
@@ -5381,19 +5381,19 @@ msgid "By: %s"
 msgstr "מאת: %s"
 
 #. translators: min=minute
-#: wp-includes/formatting.php:2739
+#: wp-includes/formatting.php:2741
 msgid "%s min"
 msgid_plural "%s mins"
 msgstr[0] "דקה אחת"
 msgstr[1] "%s דקות"
 
-#: wp-includes/formatting.php:2744
+#: wp-includes/formatting.php:2746
 msgid "%s hour"
 msgid_plural "%s hours"
 msgstr[0] "שעה אחת"
 msgstr[1] "%s שעות"
 
-#: wp-includes/formatting.php:2749
+#: wp-includes/formatting.php:2751
 msgid "%s day"
 msgid_plural "%s days"
 msgstr[0] "יום אחד"
@@ -5442,7 +5442,7 @@ msgid "Page not found"
 msgstr "העמוד לא נמצא"
 
 #. translators: 1: month name, 2: 4-digit year
-#: wp-includes/general-template.php:1475 wp-includes/media.php:2968
+#: wp-includes/general-template.php:1475 wp-includes/media.php:2970
 msgid "%1$s %2$d"
 msgstr "%1$s %2$d"
 
@@ -5500,11 +5500,6 @@ msgstr "&laquo; אחורה"
 #: wp-includes/class-http.php:198
 msgid "User has blocked requests through HTTP."
 msgstr "המשתמש חסם את הגישה ב-HTTP"
-
-#: wp-includes/class-http.php:826 wp-includes/class-http.php:1518
-#: wp-includes/class-http.php:1557
-msgid "Too many redirects."
-msgstr "Too many redirects."
 
 #: wp-includes/class-http.php:1099 wp-includes/class-http.php:1475
 msgid "Could not open handle for fopen() to %s"
@@ -5807,7 +5802,7 @@ msgstr "מסך מלא"
 msgid "Mute"
 msgstr "להשתיק"
 
-#: wp-includes/media.php:3089
+#: wp-includes/media.php:3091
 msgid "Edit Gallery"
 msgstr "הגדרות גלריה"
 
@@ -5957,14 +5952,14 @@ msgstr "לאשר: %s"
 msgid "[%1$s] Please moderate: \"%2$s\""
 msgstr "[%1$s] צריך לאשר: \"%2$s\""
 
-#: wp-includes/pluggable.php:1706 wp-includes/pluggable.php:1729
+#: wp-includes/pluggable.php:1716 wp-includes/pluggable.php:1739
 #: wp-login.php:371
 msgid "Username: %s"
 msgstr ""
 "שם משתמש:\n"
 "%s"
 
-#: wp-includes/pluggable.php:1709
+#: wp-includes/pluggable.php:1719
 msgid "[%s] New User Registration"
 msgstr "[%s] רישום משתמשים חדשים"
 
@@ -6523,10 +6518,6 @@ msgstr "לא ניתן להכניס את הפוסט לבסיס הנתונים"
 msgid "An error occurred in the upload. Please try again later."
 msgstr "העלאת הקובץ לא הושלמה. יש לנסות שנית."
 
-#: wp-includes/script-loader.php:278
-msgid "Upload failed."
-msgstr "ההעלאה נכשלה."
-
 #: wp-includes/script-loader.php:616
 msgid "Could not set that as the thumbnail image. Try a different attachment."
 msgstr "לא ניתן להגדיר את התמונה הזו כתמונה מוקטנת. יש לבחור קובץ אחר."
@@ -6784,7 +6775,7 @@ msgstr "למחוק טבלה"
 msgid "Delete row"
 msgstr "למחוק שורה"
 
-#: wp-includes/pluggable.php:1735
+#: wp-includes/pluggable.php:1745
 msgid "[%s] Your username and password info"
 msgstr "[%s] פרטי משתמש וסיסמה"
 
@@ -6860,6 +6851,15 @@ msgstr "תקציר טראקבאק:"
 msgid "Pingback excerpt: "
 msgstr "תקציר פינגבאק:"
 
+#: wp-includes/script-loader.php:278
+msgid "Upload failed."
+msgstr "העלאה נכשלה."
+
+#: wp-includes/class-http.php:826 wp-includes/class-http.php:1518
+#: wp-includes/class-http.php:1557
+msgid "Too many redirects."
+msgstr "יותר מדי הפניות."
+
 #: wp-includes/class-wp-customize-panel.php:375
 #: wp-includes/class-wp-customize-panel.php:469
 msgid "Help"
@@ -6907,7 +6907,7 @@ msgstr "עורך ויזואלי"
 #: wp-includes/default-widgets.php:555 wp-includes/default-widgets.php:624
 #: wp-includes/default-widgets.php:758 wp-includes/default-widgets.php:907
 #: wp-includes/default-widgets.php:1075 wp-includes/default-widgets.php:1465
-#: wp-includes/default-widgets.php:1587
+#: wp-includes/default-widgets.php:1586
 msgid "Title:"
 msgstr "כותרת:"
 
@@ -7200,7 +7200,7 @@ msgstr "הזנת <abbr title=\"Really Simple Syndication\">RSS</abbr> לתגוב
 msgid "Separate tags with commas"
 msgstr "להפריד תגיות בפסיקים"
 
-#: wp-includes/category-template.php:1305
+#: wp-includes/category-template.php:1306
 msgid "Tags: "
 msgstr "תגיות: "
 
@@ -7408,7 +7408,7 @@ msgid "Right"
 msgstr "לימין"
 
 #: wp-includes/media-template.php:695 wp-includes/media-template.php:770
-#: wp-includes/media-template.php:944 wp-includes/media.php:2786
+#: wp-includes/media-template.php:944 wp-includes/media.php:2788
 msgid "Medium"
 msgstr "בינוני"
 
@@ -7476,18 +7476,18 @@ msgstr "עריכת מדיה"
 msgid "New Post"
 msgstr "פוסט חדש"
 
-#: wp-includes/media.php:2761 wp-includes/script-loader.php:396
+#: wp-includes/media.php:2763 wp-includes/script-loader.php:396
 #: wp-includes/script-loader.php:547
 msgid "(no title)"
 msgstr "(אין כותרת)"
 
 #: wp-includes/media-template.php:697 wp-includes/media-template.php:772
-#: wp-includes/media-template.php:946 wp-includes/media.php:2788
+#: wp-includes/media-template.php:946 wp-includes/media.php:2790
 msgid "Full Size"
 msgstr "גודל מלא"
 
 #: wp-includes/pluggable.php:1465 wp-includes/pluggable.php:1595
-#: wp-includes/pluggable.php:1707
+#: wp-includes/pluggable.php:1717
 msgid "E-mail: %s"
 msgstr ""
 "כתובת אימייל:\n"
@@ -7525,11 +7525,11 @@ msgstr "תמונת כותרת"
 #: wp-includes/class-wp-customize-control.php:1704
 #: wp-includes/class-wp-customize-nav-menus.php:737
 #: wp-includes/class-wp-editor.php:1407 wp-includes/media-template.php:377
-#: wp-includes/media-template.php:557 wp-includes/media.php:3028
+#: wp-includes/media-template.php:557 wp-includes/media.php:3030
 msgid "URL"
 msgstr "כתובת URL"
 
-#: wp-includes/class-wp-customize-widgets.php:651 wp-includes/media.php:3071
+#: wp-includes/class-wp-customize-widgets.php:651 wp-includes/media.php:3073
 msgid "Apply"
 msgstr "החל"
 
@@ -7538,7 +7538,7 @@ msgid "Image URL"
 msgstr "כתובת URL לתמונה"
 
 #: wp-includes/media-template.php:333 wp-includes/media-template.php:528
-#: wp-includes/media.php:3101
+#: wp-includes/media.php:3103
 msgid "Edit Image"
 msgstr "עריכת תמונה"
 
@@ -7568,7 +7568,7 @@ msgid "Search Categories"
 msgstr "חיפוש קטגוריות"
 
 #: wp-includes/admin-bar.php:785 wp-includes/admin-bar.php:786
-#: wp-includes/class-wp-editor.php:1420 wp-includes/media.php:3030
+#: wp-includes/class-wp-editor.php:1420 wp-includes/media.php:3032
 msgid "Search"
 msgstr "חיפוש"
 
@@ -7589,7 +7589,7 @@ msgid "Save as Pending"
 msgstr "שמור והמתן לאישור"
 
 #: wp-includes/class-wp-editor.php:860 wp-includes/class-wp-editor.php:1445
-#: wp-includes/media.php:3032 wp-includes/script-loader.php:380
+#: wp-includes/media.php:3034 wp-includes/script-loader.php:380
 #: wp-includes/script-loader.php:428 wp-includes/script-loader.php:491
 msgid "Cancel"
 msgstr "בטל"
@@ -7607,7 +7607,7 @@ msgid "Invalid file type"
 msgstr "סוג קובץ לא תקני"
 
 #: wp-includes/media-template.php:694 wp-includes/media-template.php:769
-#: wp-includes/media-template.php:943 wp-includes/media.php:2785
+#: wp-includes/media-template.php:943 wp-includes/media.php:2787
 msgid "Thumbnail"
 msgstr "תמונה מוקטנת"
 
@@ -7645,7 +7645,7 @@ msgstr "להוסיף או להסיר תגיות"
 msgid "Edit Tag"
 msgstr "עריכת תגית"
 
-#: wp-includes/media.php:3029
+#: wp-includes/media.php:3031
 msgid "Add Media"
 msgstr "הוספת מדיה"
 
@@ -7653,15 +7653,11 @@ msgstr "הוספת מדיה"
 msgid "Add Link"
 msgstr "הוספת קישור"
 
-#: wp-includes/media.php:3031
+#: wp-includes/media.php:3033
 msgid "Select"
 msgstr "בחירה"
 
-#: wp-includes/taxonomy.php:506
-msgid "Update Category"
-msgstr "עדכון"
-
-#: wp-includes/media.php:3033 wp-includes/script-loader.php:394
+#: wp-includes/media.php:3035 wp-includes/script-loader.php:394
 #: wp-includes/script-loader.php:501
 msgid "Update"
 msgstr "עדכון"
@@ -7670,9 +7666,13 @@ msgstr "עדכון"
 msgid "Save Draft"
 msgstr "שמירת טיוטה"
 
-#: wp-includes/media.php:3075
+#: wp-includes/media.php:3077
 msgid "No media attachments found."
 msgstr "לא נמצאו קבצי מדיה מצורפים."
+
+#: wp-includes/taxonomy.php:506
+msgid "Update Category"
+msgstr "עדכון קטגוריה"
 
 #: wp-includes/class-wp-editor.php:884 wp-includes/media-template.php:383
 #: wp-includes/media-template.php:563 wp-includes/revision.php:31
