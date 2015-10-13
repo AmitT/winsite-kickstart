@@ -1,5 +1,6 @@
 *.zip
 *.log
+*.psd
 .htaccess
 sitemap.xml
 sitemap.xml.gz
