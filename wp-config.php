@@ -83,5 +83,5 @@ define('WP_DEBUG', true);
 define( 'WP_POST_REVISIONS', 5);
 /** disallow wp files editor. */
 define( 'DISALLOW_FILE_EDIT', true );
-/** Activate DEV DNV for sage + gulp.  */
-define('WP_ENV', 'development');
+/** Activate DEV DNV for sage + gulp.
+define('WP_ENV', 'development'); */
