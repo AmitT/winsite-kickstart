@@ -410,8 +410,6 @@ if ( ! class_exists( 'ITSEC_Core' ) ) {
 
 			}
 
-			$this->load_textdomain();
-
 			//builds admin menus after modules are loaded
 			if ( is_admin() ) {
 
@@ -511,28 +509,6 @@ if ( ! class_exists( 'ITSEC_Core' ) ) {
 
 			add_action( 'itsec_wpconfig_metabox', array( $itsec_files, 'config_metabox_contents' ) );
 			add_action( 'itsec_rewrite_metabox', array( $itsec_files, 'rewrite_metabox_contents' ) );
-		}
-		
-		/**
-		 * Load the text translations.
-		 *
-		 * The translations are loaded from WP_LANG_DIR/plugins/
-		 */
-		private function load_textdomain() {
-			$plugin_dir = dirname( dirname( __FILE__ ) );
-			
-			if ( is_dir( "$plugin_dir/pro" ) ) {
-				$plugin_name = 'ithemes-security-pro';
-				$domain = 'it-l10n-ithemes-security-pro';
-			} else {
-				$plugin_name = 'better-wp-security';
-				$domain = 'better-wp-security';
-			}
-			
-			$locale = apply_filters( 'plugin_locale', get_locale(), 'better-wp-security' );
-			
-			load_textdomain( 'better-wp-security', WP_LANG_DIR . "/plugins/$plugin_name/$domain-$locale.mo" );
-			load_plugin_textdomain( 'better-wp-security', false, basename( $plugin_dir ) . '/lang/' );
 		}
 		
 		/**

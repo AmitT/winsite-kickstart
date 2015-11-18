@@ -391,32 +391,60 @@ class ITSEC_Tweaks_Admin {
 
 		if ( isset( $this->settings['disable_xmlrpc'] ) && $this->settings['disable_xmlrpc'] === true ) {
 
-			$log_type = 2;
+			$setting = 2;
 
 		} elseif ( ! isset( $this->settings['disable_xmlrpc'] ) || ( isset( $this->settings['disable_xmlrpc'] ) && $this->settings['disable_xmlrpc'] === false ) ) {
 
-			$log_type = 0;
+			$setting = 0;
 
 		} elseif ( isset( $this->settings['disable_xmlrpc'] ) ) {
 
-			$log_type = $this->settings['disable_xmlrpc'];
+			$setting = $this->settings['disable_xmlrpc'];
 
 		}
 
-		echo '<select id="itsec_tweaks_server_disable_xmlrpc" name="itsec_tweaks[disable_xmlrpc]">';
+		echo '<p>' . sprintf( __( 'WordPress\'s XML-RPC feature allows external services to access and modify content on the site. Common example of services that make use of XML-RPC are <a href="%1$s">the Jetpack plugin</a>, <a href="%2$s">the WordPress mobile app</a>, and <a href="%3$s">pingbacks</a>. If the site does not use a service that requires XML-RPC, select the "Disable XML-RPC" setting as disabling XML-RPC prevents attackers from using the feature to attack the site.', 'better-wp-security' ), esc_url( 'https://jetpack.me/' ), esc_url( 'https://apps.wordpress.org/' ), esc_url( 'https://make.wordpress.org/support/user-manual/building-your-wordpress-community/trackbacks-and-pingbacks/#pingbacks' ) ) . '</p>';
 
-		echo '<option value="0" ' . selected( $log_type, '0' ) . '>' . __( 'Off', 'better-wp-security' ) . '</option>';
-		echo '<option value="1" ' . selected( $log_type, '1' ) . '>' . __( 'Only Disable Trackbacks/Pingbacks', 'better-wp-security' ) . '</option>';
-		echo '<option value="2" ' . selected( $log_type, '2' ) . '>' . __( 'Completely Disable XML-RPC', 'better-wp-security' ) . '</option>';
-		echo '</select>';
-		echo '<label for="itsec_tweaks_server_disable_xmlrpc"> ' . __( 'Disable XML-RPC', 'better-wp-security' ) . '</label>';
+		echo '<p><select id="itsec_tweaks_server_disable_xmlrpc" name="itsec_tweaks[disable_xmlrpc]">';
+		echo '<option value="2" ' . selected( $setting, '2' ) . '>' . __( 'Disable XML-RPC (recommended)', 'better-wp-security' ) . '</option>';
+		echo '<option value="1" ' . selected( $setting, '1' ) . '>' . __( 'Disable Pingbacks', 'better-wp-security' ) . '</option>';
+		echo '<option value="0" ' . selected( $setting, '0' ) . '>' . __( 'Enable XML-RPC', 'better-wp-security' ) . '</option>';
+		echo '</select></p>';
+		
 		printf(
-			'<p class="description"><ul><li>%s</li><li>%s</li><li>%s</li></ul></p>',
-			__( 'Off = XML-RPC is fully enabled and will function as normal.', 'better-wp-security' ),
-			__( 'Only Disable Trackbacks/Pingbacks = Your site will not be susceptible to denial of service attacks via the trackback/pingback feature. Other XML-RPC features will work as normal. You need this if you require features such as Jetpack or the WordPress Mobile app.', 'better-wp-security' ),
-			__( 'Completely Disable XML-RPC is the safest, XML-RPC will be completely disabled by your webserver. This will prevent features such as Jetpack that require XML-RPC from working.', 'better-wp-security' )
+			'<ul><li>%s</li><li>%s</li><li>%s</li></ul>',
+			__( '<strong>Disable XML-RPC</strong> - XML-RPC is disabled on the site. This setting is highly recommended if Jetpack, the WordPress mobile app, pingbacks, and other services that use XML-RPC are not used.', 'better-wp-security' ),
+			__( '<strong>Disable Pingbacks</strong> - Only disable pingbacks. Other XML-RPC features will work as normal. Select this setting if you require features such as Jetpack or the WordPress Mobile app.', 'better-wp-security' ),
+			__( '<strong>Enable XML-RPC</strong> - XML-RPC is fully enabled and will function as normal. Use this setting only if the site must have unrestricted use of XML-RPC.', 'better-wp-security' )
 		);
 
+	}
+
+	/**
+	 * Setting to control whether multiple authentications per XML-RPC request are allowed.
+	 *
+	 * @since 5.1.0
+	 *
+	 * @return void
+	 */
+	public function tweaks_wordpress_allow_xmlrpc_multiauth() {
+		if ( isset( $this->settings['allow_xmlrpc_multiauth'] ) ) {
+			$setting = (bool) $this->settings['allow_xmlrpc_multiauth'];
+		} else {
+			$setting = true;
+		}
+
+		echo '<p>' . sprintf( __( 'WordPress\'s XML-RPC feature allows hundreds of username and password guesses per request. Use the recommended "Block" setting below to prevent attackers from exploiting this feature.', 'better-wp-security' ) ) . '</p>';
+
+		echo '<p><select id="itsec_tweaks_server_allow_xmlrpc_multiauth" name="itsec_tweaks[allow_xmlrpc_multiauth]">';
+		echo '<option value="0" ' . selected( $setting, false ) . '>' . __( 'Block (recommended)', 'better-wp-security' ) . '</option>';
+		echo '<option value="1" ' . selected( $setting, true ) . '>' . __( 'Allow', 'better-wp-security' ) . '</option>';
+		echo '</select></p>';
+
+		echo '<ul>';
+		echo '<li>' . __( '<strong>Block</strong> - Blocks XML-RPC requests that contain multiple login attempts. This setting is highly recommended.', 'better-wp-security' ) . '</li>';
+		echo '<li>' . __( '<strong>Allow</strong> - Allows XML-RPC requests that contain multiple login attempts. Only use this setting if a service requires it.', 'better-wp-security' ) . '</li>';
+		echo '</ul>';
 	}
 
 	/**
@@ -1259,6 +1287,22 @@ class ITSEC_Tweaks_Admin {
 
 		array_push( $statuses[ $status_array ], $status );
 
+		if ( ! isset( $this->settings['allow_xmlrpc_multiauth'] ) || true === $this->settings['allow_xmlrpc_multiauth'] ) {
+			$status_array = 'high';
+			$status       = array(
+				'text' => __( 'XML-RPC requests can try multiple authentication attempts per request. Attackers can use this to speed up their brute force attacks.', 'better-wp-security' ),
+				'link' => '#itsec_tweaks_server_allow_xmlrpc_multiauth',
+			);
+		} else {
+			$status_array = 'safe-high';
+			$status       = array(
+				'text' => __( 'XML-RPC requests with multiple authentication attempts are blocked.', 'better-wp-security' ),
+				'link' => '#itsec_tweaks_server_allow_xmlrpc_multiauth',
+			);
+		}
+		
+		array_push( $statuses[ $status_array ], $status );
+
 		if ( isset( $this->settings['uploads_php'] ) && $this->settings['uploads_php'] === true ) {
 
 			$status_array = 'safe-medium';
@@ -1511,6 +1555,14 @@ class ITSEC_Tweaks_Admin {
 		);
 
 		add_settings_field(
+			'itsec_tweaks[allow_xmlrpc_multiauth]',
+			__( 'Multiple Authentication Attempts per XML-RPC Request', 'better-wp-security' ),
+			array( $this, 'tweaks_wordpress_allow_xmlrpc_multiauth' ),
+			'security_page_toplevel_page_itsec_settings',
+			'tweaks_wordpress'
+		);
+
+		add_settings_field(
 			'itsec_tweaks[safe_jquery]',
 			__( 'Replace jQuery With a Safe Version', 'better-wp-security' ),
 			array( $this, 'tweaks_wordpress_safe_jquery' ),
@@ -1742,11 +1794,16 @@ class ITSEC_Tweaks_Admin {
 		$input['comment_spam']                = ( isset( $input['comment_spam'] ) && intval( $input['comment_spam'] == 1 ) ? true : false );
 		$input['file_editor']                 = ( isset( $input['file_editor'] ) && intval( $input['file_editor'] == 1 ) ? true : false );
 		$input['disable_xmlrpc']              = isset( $input['disable_xmlrpc'] ) ? intval( $input['disable_xmlrpc'] ) : 0;
+		$input['allow_xmlrpc_multiauth']      = isset( $input['allow_xmlrpc_multiauth'] ) ? (bool) $input['allow_xmlrpc_multiauth'] : true;
 		$input['uploads_php']                 = ( isset( $input['uploads_php'] ) && intval( $input['uploads_php'] == 1 ) ? true : false );
 		$input['safe_jquery']                 = ( isset( $input['safe_jquery'] ) && intval( $input['safe_jquery'] == 1 ) ? true : false );
 		$input['login_errors']                = ( isset( $input['login_errors'] ) && intval( $input['login_errors'] == 1 ) ? true : false );
 		$input['force_unique_nicename']       = ( isset( $input['force_unique_nicename'] ) && intval( $input['force_unique_nicename'] == 1 ) ? true : false );
 		$input['disable_unused_author_pages'] = ( isset( $input['disable_unused_author_pages'] ) && intval( $input['disable_unused_author_pages'] == 1 ) ? true : false );
+
+		if ( ! isset( $this->settings['allow_xmlrpc_multiauth'] ) ) {
+			$this->settings['allow_xmlrpc_multiauth'] = null;
+		}
 
 		if (
 			( $input['protect_files'] !== $this->settings['protect_files'] ||
@@ -1756,6 +1813,7 @@ class ITSEC_Tweaks_Admin {
 			  $input['non_english_characters'] !== $this->settings['non_english_characters'] ||
 			  $input['comment_spam'] !== $this->settings['comment_spam'] ||
 			  $input['disable_xmlrpc'] !== $this->settings['disable_xmlrpc'] ||
+			  $input['allow_xmlrpc_multiauth'] !== $this->settings['allow_xmlrpc_multiauth'] ||
 			  $input['uploads_php'] !== $this->settings['uploads_php']
 			) ||
 			isset( $itsec_globals['settings']['write_files'] ) && $itsec_globals['settings']['write_files'] === true
@@ -1862,6 +1920,7 @@ class ITSEC_Tweaks_Admin {
 			'comment_spam'                => '0:b',
 			'file_editor'                 => '0:b',
 			'disable_xmlrpc'              => '0:b',
+			'allow_xmlrpc_multiauth'      => '0:b',
 			'core_updates'                => '0:b',
 			'plugin_updates'              => '0:b',
 			'theme_updates'               => '0:b',

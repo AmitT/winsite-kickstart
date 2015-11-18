@@ -563,91 +563,76 @@ class ITSEC_Ban_Users_Admin {
 
 		global $itsec_globals;
 
-		$no_errors = false; //start out assuming they entered a bad IP somewhere
+		$has_errors = false;
 
 		//Sanitize checkbox features
 		$input['enabled'] = ( isset( $input['enabled'] ) && intval( $input['enabled'] == 1 ) ? true : false );
 		$input['default'] = ( isset( $input['default'] ) && intval( $input['default'] == 1 ) ? true : false );
 
-		//process agent list
-		if ( isset( $input['agent_list'] ) && ! is_array( $input['agent_list'] ) ) {
-
-			$agents = explode( PHP_EOL, $input['agent_list'] );
-
-		} elseif ( isset( $input['agent_list'] ) ) {
-
+		if ( isset( $input['agent_list'] ) && is_string( $input['agent_list'] ) ) {
+			$agents = preg_split( '/(?<!\r)\n|\r(?!\n)|(?<!\r)\r\n|\r\r\n/', trim( $input['agent_list'] ) );
+		} else if ( isset( $input['agent_list'] ) && is_array( $input['agent_list'] ) ) {
 			$agents = $input['agent_list'];
-
 		} else {
-
 			$agents = array();
-
 		}
 
 		$good_agents = array();
 
 		foreach ( $agents as $agent ) {
-			$good_agents[] = trim( sanitize_text_field( $agent ) );
+			$agent = trim( sanitize_text_field( $agent ) );
+			
+			if ( ! empty( $agent ) ) {
+				$good_agents[] = $agent;
+			}
 		}
 
-		$input['agent_list'] = $good_agents;
+		$input['agent_list'] = array_unique( $good_agents );
 
-		//Process hosts list
-		if ( isset( $input['host_list'] ) && ! is_array( $input['host_list'] ) ) {
 
-			$addresses = explode( PHP_EOL, $input['host_list'] );
-
-		} elseif ( isset( $input['host_list'] ) ) {
-
+		if ( isset( $input['host_list'] ) && is_string( $input['host_list'] ) ) {
+			$addresses = preg_split( '/(?<!\r)\n|\r(?!\n)|(?<!\r)\r\n|\r\r\n/', trim( $input['host_list'] ) );
+		} else if ( isset( $input['host_list'] ) && is_array( $input['host_list'] ) ) {
 			$addresses = $input['host_list'];
-
 		} else {
-
 			$addresses = array();
-
 		}
 
+		if ( ! class_exists( 'ITSEC_Ban_Users' ) ) {
+			require( dirname( __FILE__ ) . '/class-itsec-ban-users.php' );
+		}
+		
 		$bad_ips   = array();
 		$white_ips = array();
 		$raw_ips   = array();
-
+		
 		foreach ( $addresses as $index => $address ) {
-
-			if ( strlen( trim( $address ) ) > 0 ) {
-
-				if ( ITSEC_Lib::validates_ip_address( $address ) === false ) {
-
-					$bad_ips[] = trim( filter_var( $address, FILTER_SANITIZE_STRING ) );
-
-				}
-
-				if ( ! class_exists( 'ITSEC_Ban_Users' ) ) {
-					require( dirname( __FILE__ ) . '/class-itsec-ban-users.php' );
-				}
-
-				if ( ITSEC_Ban_Users::is_ip_whitelisted( $address, null, true ) ) {
-
-					$white_ips[] = trim( filter_var( $address, FILTER_SANITIZE_STRING ) );
-
-				}
-
-				$raw_ips[] = trim( filter_var( $address, FILTER_SANITIZE_STRING ) );
-
-			} else {
-				unset( $addresses[$index] );
+			$address = trim( $address );
+			
+			if ( empty( $address ) ) {
+				continue;
 			}
-
+			
+			if ( ! ITSEC_Lib::validates_ip_address( $address ) ) {
+				$bad_ips[] = trim( filter_var( $address, FILTER_SANITIZE_STRING ) );
+			}
+			
+			if ( ITSEC_Ban_Users::is_ip_whitelisted( $address, null, true ) ) {
+				$white_ips[] = trim( filter_var( $address, FILTER_SANITIZE_STRING ) );
+			}
+			
+			$raw_ips[] = trim( filter_var( $address, FILTER_SANITIZE_STRING ) );
 		}
 
 		$raw_ips = array_unique( $raw_ips );
 
-		if ( sizeof( $bad_ips ) > 0 ) {
+		if ( ! empty( $bad_ips ) ) {
 
 			$input['enabled'] = false; //disable ban users list
 
 			$type = 'error';
 
-			if ( $no_errors === true ) {
+			if ( ! $has_errors ) {
 				$message = sprintf( '%s<br /><br />', __( 'Note that the ban users feature has been disabled until the following errors are corrected:', 'better-wp-security' ) );
 			}
 
@@ -657,9 +642,7 @@ class ITSEC_Ban_Users_Admin {
 
 			add_settings_error( 'itsec', esc_attr( 'settings_updated' ), $message, $type );
 
-		} else {
-
-			$no_errors = true;
+			$has_errors = true;
 
 		}
 
@@ -669,7 +652,7 @@ class ITSEC_Ban_Users_Admin {
 
 			$type = 'error';
 
-			if ( $no_errors === true ) {
+			if ( ! $has_errors ) {
 				$message = sprintf( '%s<br /><br />', __( 'Note that the ban users feature has been disabled until the following errors are corrected:', 'better-wp-security' ) );
 			}
 
@@ -679,15 +662,13 @@ class ITSEC_Ban_Users_Admin {
 
 			add_settings_error( 'itsec', esc_attr( 'settings_updated' ), $message, $type );
 
-		} else {
-
-			$no_errors = true;
+			$has_errors = true;
 
 		}
 
 		$input['host_list'] = $raw_ips;
 
-		if ( $no_errors === true ) {
+		if ( ! $has_errors ) {
 
 			if (
 				! isset( $type ) &&
@@ -697,11 +678,10 @@ class ITSEC_Ban_Users_Admin {
 					$input['default'] !== $this->settings['default'] ||
 					$input['agent_list'] !== $this->settings['agent_list']
 				) ||
-				isset( $itsec_globals['settings']['write_files'] ) && $itsec_globals['settings']['write_files'] === true
+				isset( $itsec_globals['settings']['write_files'] ) &&
+				true === $itsec_globals['settings']['write_files']
 			) {
-
 				add_site_option( 'itsec_rewrites_changed', true );
-
 			}
 
 		}

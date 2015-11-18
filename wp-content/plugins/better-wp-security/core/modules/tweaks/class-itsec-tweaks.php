@@ -3,12 +3,17 @@
 class ITSEC_Tweaks {
 
 	private $settings;
+	private $first_xmlrpc_credentials;
 
 	function run() {
 
 		$this->settings = get_site_option( 'itsec_tweaks' );
 
 		if ( ! defined( 'WP_CLI' ) || false === WP_CLI ) { //don't risk blocking anything with WP_CLI
+			// Functional code for the allow_xmlrpc_multiauth setting.
+			if ( defined( 'XMLRPC_REQUEST' ) && XMLRPC_REQUEST ) {
+				$this->handle_xmlrpc_request();
+			}
 
 			//remove wlmanifest link if turned on
 			if ( isset( $this->settings['wlwmanifest_header'] ) && $this->settings['wlwmanifest_header'] == true ) {
@@ -88,6 +93,33 @@ class ITSEC_Tweaks {
 
 		}
 
+	}
+
+	public function handle_xmlrpc_request() {
+		if ( ! isset( $this->settings['allow_xmlrpc_multiauth'] ) || true === $this->settings['allow_xmlrpc_multiauth'] ) {
+			return;
+		}
+		
+		add_filter( 'authenticate', array( $this, 'block_multiauth_attempts' ), 0, 3 );
+	}
+	
+	public function block_multiauth_attempts( $filter_val, $username, $password ) {
+		if ( empty( $this->first_xmlrpc_credentials ) ) {
+			$this->first_xmlrpc_credentials = array(
+				$username,
+				$password
+			);
+			
+			return $filter_var;
+		}
+		
+		if ( $username === $this->first_xmlrpc_credentials[0] && $password === $this->first_xmlrpc_credentials[1] ) {
+			return $filter_var;
+		}
+		
+		status_header( 405 );
+		header( 'Content-Type: text/plain' );
+		die( __( 'XML-RPC services are disabled on this site.' ) );
 	}
 
 	public function current_jquery() {
