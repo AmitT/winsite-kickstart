@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Administration package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2015-08-17 15:07:48+0000\n"
+"PO-Revision-Date: 2015-10-22 08:59:41+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -7889,11 +7889,6 @@ msgstr "אין קובץ כזה. כדאי לבדוק את השם ולנסות ש�
 msgid "Clear List"
 msgstr "נקה רשימה"
 
-#: wp-admin/includes/class-wp-plugins-list-table.php:366
-#: wp-admin/includes/class-wp-plugins-list-table.php:490
-msgid "Network Deactivate"
-msgstr "כבה לכל הרשת"
-
 #: wp-admin/plugins.php:445
 msgid "No out of date plugins were selected."
 msgstr "לא נבחרו תוספים לשדרוג."
@@ -8279,6 +8274,11 @@ msgstr "אם יש לך בכונן הקשיח תבנית בפורמט &lrm;.zip, 
 #: wp-admin/options-writing.php:66
 msgid "WordPress should correct invalidly nested XHTML automatically"
 msgstr "תיקון אוטומטי של שגיאות קינון בתגיות XHTML"
+
+#: wp-admin/includes/class-wp-plugins-list-table.php:366
+#: wp-admin/includes/class-wp-plugins-list-table.php:490
+msgid "Network Deactivate"
+msgstr "כיבוי לכל הרשת"
 
 #: wp-admin/comment.php:137
 msgid "You are about to approve the following comment:"
