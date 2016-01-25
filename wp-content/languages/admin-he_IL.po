@@ -16,79 +16,79 @@ msgstr "העדכון בוצע! וורדפרס %s הופכת את האתר לרס
 
 #. translators: 1: WP_Term class name, WP_Comment class name, WP_Network class
 #. name
-#: wp-admin/about.php:177
+#: wp-admin/about.php:185
 msgid "New %1$s, %2$s, and %3$s objects make interacting with terms, comments, and networks more predictable and intuitive in code."
 msgstr "האובייקטים החדשים %1$s, %2$s, ו-%3$s יוצרים בקוד אינטראקציה טובה ואינטואיטיבית יותר עם מונחים, תגובות ורשתות."
 
-#: wp-admin/about.php:174
+#: wp-admin/about.php:182
 msgid "Term, comment, and network objects"
 msgstr "אובייקטים למונחים, תגובות ורשתות"
 
 #. translators: WP_Comment_Query class name
-#: wp-admin/about.php:170
+#: wp-admin/about.php:178
 msgid "Comment queries now have cache handling to improve performance. New arguments in %s make crafting robust comment queries simpler."
 msgstr "שאילתות של תגובות מטפלות מעתה במטמון כדי לשפר את הביצועים. ארגומנטים חדשים ב-%s מאפשרים ליצור שאילתות פשוטות ומורכבות יותר."
 
-#: wp-admin/about.php:167
+#: wp-admin/about.php:175
 msgid "Comment query improvements"
 msgstr "שיפור שאילתת התגובות"
 
 #. translators: WordPress REST API plugin link
-#: wp-admin/about.php:148
+#: wp-admin/about.php:156
 msgid "Infrastructure is the first part of a multi-stage rollout for the REST API. Inclusion of core endpoints is targeted for an upcoming release. To get a sneak peek of the core endpoints, and for more information on extending the REST API, check out the official %s plugin."
 msgstr "תשתית היא החלק הראשון בתהליך רב-שלבי של ה-REST API. בגרסה הבאה מתוכננת הוספה של נקודות קצה לליבת וורדפרס. כדי לקבל הצצה למנגנון נקודות הקצה, ולקבלת מידע נוסף על הרחבת ה-REST API, הורידו את התוסף הרשמי %s."
 
-#: wp-admin/about.php:156
+#: wp-admin/about.php:164
 msgid "Term meta"
 msgstr "שדות נוספים בטקסונומיות"
 
 #. translators: 1: add_term_meta() docs link, 2: get_term_meta() docs link, 3:
 #. update_term_meta() docs link
-#: wp-admin/about.php:159
+#: wp-admin/about.php:167
 msgid "Terms now support metadata, just like posts. See %1$s, %2$s, and %3$s for more information."
 msgstr "הטקסונומיות תומכות בשדות נוספים, בדומה לפוסטים. למידע נוסף ראו %1$s, %2$s ו-%3$s."
 
-#: wp-admin/about.php:131
+#: wp-admin/about.php:139
 msgid "Infrastructure for the REST API has been integrated into core, marking a new era in developing with WordPress. The REST API serves to provide developers with a path forward for building and extending RESTful APIs on top of WordPress."
 msgstr "התשתית של מנגנון ה-REST API שולבה אל תוך ליבת וורדפרס, דבר המסמל עידן חדש בפיתוח וורדפרס. מנגנון זה מספק למפתחים כלים מתקדמים לבניית או הרחבת RESTful APIs מעל וורדפרס."
 
-#: wp-admin/about.php:129
+#: wp-admin/about.php:137
 msgid "REST API infrastructure"
 msgstr "תשתית REST API"
 
-#: wp-admin/about.php:118
+#: wp-admin/about.php:126
 msgid "In addition to post embeds, WordPress 4.4 also adds support for five new oEmbed providers: Cloudup, Reddit&nbsp;Comments, ReverbNation, Speaker&nbsp;Deck, and VideoPress."
 msgstr "בנוסף להטמעת פוסטים, וורדפרס 4.4 הוסיפה תמיכה בחמש ספקי oEmbed חדשים. Cloudup, Reddit&nbsp;Comments, ReverbNation, Speaker&nbsp;Deck, וכן VideoPress."
 
-#: wp-admin/about.php:117
+#: wp-admin/about.php:125
 msgid "Even more embed providers"
 msgstr "עוד יותר ספקי הטמעות"
 
-#: wp-admin/about.php:104
+#: wp-admin/about.php:112
 msgid "Now you can embed your posts on other sites, even other WordPress sites. Simply drop a post URL into the editor and see an instant embed preview, complete with the title, excerpt, and featured image if you&#8217;ve set one. We&#8217;ll even include your site icon and links for comments and sharing."
 msgstr "מעכשיו ניתן להטמיע את התכנים שלכם באתרים אחרים, אפילו באתרי וורדפרס אחרים. פשוט הדביקו את כתובת הפוסט בעורך ותראו באופן מיידי תצוגה מקדימה הכוללת כותרת, תיאור, ותמונה הראשית - אם הגדרתם אחת. המערכת אפילו מציגה את סמל האתר, קישורים לתגובות ואפשרות לשיתוף והטמעה."
 
-#: wp-admin/about.php:103
+#: wp-admin/about.php:111
 msgid "Embed your WordPress content"
 msgstr "הטמיעו את התכנים שלכם"
 
-#: wp-admin/about.php:90
+#: wp-admin/about.php:98
 msgid "WordPress now takes a smarter approach to displaying appropriate image sizes on any device, ensuring a perfect fit every time. You don&#8217;t need to do anything to your theme, it just works."
 msgstr "וורדפרס נוקטת בגישה חכמה להצגת תמונות בגדלים מותאים לכל מכשיר, כדי להבטיח התאמה מושלמת בכל פעם. לא צריך לשנות שום דבר בתבנית, זה פשוט עובד."
 
-#: wp-admin/about.php:89
+#: wp-admin/about.php:97
 msgid "Responsive images"
 msgstr "תמונות רספונסיביות"
 
-#: wp-admin/about.php:67
+#: wp-admin/about.php:75
 msgid "Twenty Sixteen was built to look great on any device. A fluid grid design, flexible header, fun color schemes, and more, will make your content shine."
 msgstr "התבנית נבנתה כדאי להיראות טוב בכל מכשירי הקצה. עם עיצוב רספונסיבי, כותרות גמישות, ערכות צבעים מוכנות, ועוד, התבנית תבליט את התכנים שלכם."
 
-#: wp-admin/about.php:66
+#: wp-admin/about.php:74
 msgid "Our newest default theme, Twenty Sixteen, is a modern take on a classic blog design."
 msgstr "תבנית ברירת המחדל החדשה, Twenty Sixteen, היא תבנית מודרנית על עיצוב בלוג קלאסי."
 
-#: wp-admin/about.php:59
+#: wp-admin/about.php:67
 msgid "Twenty Sixteen"
 msgstr "Twenty Sixteen"
 
@@ -112,7 +112,7 @@ msgid "Welcome to %s. This is your first post. Edit or delete it, then start blo
 msgstr "ברוכים הבאים אל %s. זה הפוסט הראשון באתר. אפשר למחוק או לערוך אותו, ולהתחיל לכתוב."
 
 #. translators: %s: WordPress version number
-#: wp-admin/about.php:214
+#: wp-admin/about.php:222
 msgid "<strong>Version %s</strong> addressed one security issue."
 msgstr "<strong>גרסה %s</strong> מטפלת בסוגיית אבטחה אחת."
 
@@ -129,15 +129,15 @@ msgstr "ניתן לשנות את צלמית המשתמש ב<a href=\"%s\">גרב
 msgid "Profile Picture"
 msgstr "צלמית משתמש"
 
-#: wp-admin/about.php:211
+#: wp-admin/about.php:219
 msgid "Maintenance and Security Releases"
 msgstr "גרסת אבטחה ותחזוקה"
 
-#: wp-admin/about.php:208
+#: wp-admin/about.php:216
 msgid "Security Releases"
 msgstr "גרסת אבטחה"
 
-#: wp-admin/about.php:205
+#: wp-admin/about.php:213
 msgid "Maintenance Releases"
 msgstr "גרסת תחזוקה"
 
@@ -975,7 +975,7 @@ msgstr "בתגובה על %s."
 msgid "You&rsquo;re using the auto-generated password for your account. Would you like to change it?"
 msgstr "חשבון זה משתמש בסיסמה שנוצרה באופן אוטומטי. האם תרצה לשנות אותה?"
 
-#: wp-admin/users.php:360
+#: wp-admin/users.php:361
 msgid "You have specified this user for removal:"
 msgstr "משתמש זה הוגדר להסרה: "
 
@@ -1547,11 +1547,11 @@ msgstr "תפריט ראשי"
 msgid "Enter the location on the server where the public and private keys are located. If a passphrase is needed, enter that in the password field above."
 msgstr "יש להזין את המיקום בשרת היכן שנמצא המפתח הציבורי והפרטי. אם נדרשת סיסמת אימות, יש להזין אותה בשדה הסיסמה."
 
-#: wp-admin/users.php:241
+#: wp-admin/users.php:242
 msgid "You have specified these users for deletion:"
 msgstr "משתמשים שסומנו למחיקה:"
 
-#: wp-admin/users.php:266
+#: wp-admin/users.php:267
 msgid "What should be done with content owned by these users?"
 msgstr "מה לעשות עם התכנים של המשתמשים?"
 
@@ -1567,7 +1567,7 @@ msgid_plural "%d media attachments moved to the trash."
 msgstr[0] "קובץ מדיה %d הועבר לפח."
 msgstr[1] "%d קבצי מדיה הועברו לפח."
 
-#: wp-admin/users.php:419
+#: wp-admin/users.php:420
 msgid "%s user deleted."
 msgid_plural "%s users deleted."
 msgstr[0] "משתמש %s נמחק."
@@ -1969,7 +1969,7 @@ msgstr "ההמלצות מבוססות על תוספים המותקנים באת�
 msgid "Log Out Everywhere"
 msgstr "התנתק בכל מקום"
 
-#: wp-admin/about.php:65
+#: wp-admin/about.php:73
 msgid "Introducing Twenty Sixteen"
 msgstr "הכירו את Twenty Sixteen"
 
@@ -2429,7 +2429,7 @@ msgctxt "themes"
 msgid "Latest"
 msgstr "אחרונים"
 
-#: wp-admin/includes/ms.php:1055 wp-admin/users.php:270
+#: wp-admin/includes/ms.php:1055 wp-admin/users.php:271
 msgid "Delete all content."
 msgstr "מחיקת כל התוכן."
 
@@ -2442,7 +2442,7 @@ msgstr "פרטים &amp; תצוגה מקדימה"
 msgid "&larr; Return to editor"
 msgstr "חזרה אל עריכת פוסט"
 
-#: wp-admin/users.php:264
+#: wp-admin/users.php:265
 msgid "What should be done with content owned by this user?"
 msgstr "מה לעשות עם התכנים של המשתמש?"
 
@@ -2450,7 +2450,7 @@ msgstr "מה לעשות עם התכנים של המשתמש?"
 msgid "https://wordpress.org/support/forum/how-to-and-troubleshooting"
 msgstr "https://wordpress.org/support/forum/how-to-and-troubleshooting"
 
-#: wp-admin/includes/ms.php:1057 wp-admin/users.php:272
+#: wp-admin/includes/ms.php:1057 wp-admin/users.php:273
 msgid "Attribute all content to:"
 msgstr "שייך את כל התוכן אל:"
 
@@ -3781,19 +3781,19 @@ msgstr "כתובת הקובץ:"
 msgid "In the <strong>In Response To</strong> column, there are three elements. The text is the name of the post that inspired the comment, and links to the post editor for that entry. The View Post link leads to that post on your live site. The small bubble with the number in it shows the number of approved comments that post has received. If there are pending comments, a red notification circle with the number of pending comments is displayed. Clicking the notification circle will filter the comments screen to show only pending comments on that post."
 msgstr "בטור <strong>בתגובה על</strong>, ישנם שלושה אלמנטים. הטקסט הוא השם של הפוסט בו נכתבה התגובה. הקישור \"הצג פוסט\" מוביל לפוסט באתר. הבועה הקטנה מציגה את מספר התגובות המאושרות. אם הבועה אפורה, כל התגובות מאושרות. אם הבועה כחולה, קיימות תגובות הממתינות לאישור. לחיצה על הבועה תציג רק את התגובות ששייכות לאותו הפוסט."
 
-#: wp-admin/users.php:252 wp-admin/users.php:376
+#: wp-admin/users.php:253 wp-admin/users.php:377
 msgid "ID #%1$s: %2$s"
 msgstr "ID #%1$s: %2$s"
 
-#: wp-admin/users.php:250
+#: wp-admin/users.php:251
 msgid "ID #%1$s: %2$s <strong>The current user will not be deleted.</strong>"
 msgstr "ID #%1$s: %2$s <strong>המשתמש הנוכחי לא ימחק.</strong>"
 
-#: wp-admin/users.php:372
+#: wp-admin/users.php:373
 msgid "ID #%1$s: %2$s <strong>The current user will not be removed.</strong>"
 msgstr "ID #%1$s: %2$s <strong>המשתמש הנוכחי לא יוסר.</strong>"
 
-#: wp-admin/users.php:374
+#: wp-admin/users.php:375
 msgid "ID #%1$s: %2$s <strong>You don't have permission to remove this user.</strong>"
 msgstr "ID #%1$s: %2$s <strong>אין לך הרשאות להסיר את המשתמש.</strong>"
 
@@ -3801,7 +3801,7 @@ msgstr "ID #%1$s: %2$s <strong>אין לך הרשאות להסיר את המשת
 msgid "Used: %1$s%% of %2$s"
 msgstr "בשימוש: %1$s%% מתוך %2$s"
 
-#: wp-admin/users.php:234
+#: wp-admin/users.php:235
 msgid "Please select an option."
 msgstr "נא לבחור אפשרות."
 
@@ -4183,11 +4183,11 @@ msgstr "בקובץ ההגדרות <code>wp-config.php</code> שדה קידומת
 msgid "Revert to the <strong>Browser Uploader</strong> by clicking the link below the drag and drop box."
 msgstr "החלף ל<strong>מעלה הקבצים של הדפדפן</strong> על ידי לחיצה על קישור מתחת לאזור גרירת התמונות."
 
-#: wp-admin/users.php:417
+#: wp-admin/users.php:418
 msgid "User deleted."
 msgstr "משתמש נמחק."
 
-#: wp-admin/users.php:425
+#: wp-admin/users.php:426
 msgid "New user created. <a href=\"%s\">Edit user</a>"
 msgstr "משתמש חדש נוצר. <a href=\"%s\">ערוך פרטי משתמש</a>"
 
@@ -4949,12 +4949,12 @@ msgid "Show Toolbar when viewing site"
 msgstr "הצג סרגל כלים כשצופים באתר"
 
 #. translators: %s: Codex URL
-#: wp-admin/about.php:231
+#: wp-admin/about.php:55 wp-admin/about.php:239
 msgid "For more information, see <a href=\"%s\">the release notes</a>."
 msgstr "למידע נוסף, ראו <a href=\"%s\">הודעת שחרור</a>."
 
 #. translators: 1: WordPress version number, 2: plural number of bugs.
-#: wp-admin/about.php:219
+#: wp-admin/about.php:227
 msgid "<strong>Version %1$s</strong> addressed %2$s bug."
 msgid_plural "<strong>Version %1$s</strong> addressed %2$s bugs."
 msgstr[0] "<strong>גרסה %1$s</strong> מטפלת בתקלה %2$s."
@@ -4962,7 +4962,7 @@ msgstr[1] "<strong>גרסה %1$s</strong> מטפלת ב-%2$s תקלות."
 
 #. translators: 1: WordPress version number, 2: plural number of bugs. More
 #. than one security issue.
-#: wp-admin/about.php:227
+#: wp-admin/about.php:53 wp-admin/about.php:235
 msgid "<strong>Version %1$s</strong> addressed some security issues and fixed %2$s bug."
 msgid_plural "<strong>Version %1$s</strong> addressed some security issues and fixed %2$s bugs."
 msgstr[0] "<strong>גרסה %1$s</strong> מטפלת במספר סוגיות אבטחה ובתקלה %2$s."
@@ -4970,7 +4970,7 @@ msgstr[1] "<strong>גרסה %1$s</strong> מטפלת במספר סוגיות א�
 
 #. translators: 1: WordPress version number, 2: plural number of bugs. Singular
 #. security issue.
-#: wp-admin/about.php:223
+#: wp-admin/about.php:231
 msgid "<strong>Version %1$s</strong> addressed a security issue and fixed %2$s bug."
 msgid_plural "<strong>Version %1$s</strong> addressed a security issue and fixed %2$s bugs."
 msgstr[0] "<strong>גרסה %1$s</strong> מטפלת בסוגיית אבטחה ובתקלה %2$s."
@@ -4984,20 +4984,22 @@ msgstr "ברוכים הבאים ללוח הבקרה של וורדפרס! מסך 
 msgid "What&#8217;s New"
 msgstr "מה חדש"
 
-#: wp-admin/about.php:207
+#: wp-admin/about.php:215
 msgid "Security Release"
 msgstr "גרסת אבטחה"
 
-#: wp-admin/about.php:204
+#: wp-admin/about.php:212
 msgid "Maintenance Release"
 msgstr "גרסת תחזוקה"
 
-#: wp-admin/about.php:210
+#: wp-admin/about.php:52 wp-admin/about.php:218
 msgid "Maintenance and Security Release"
-msgstr "גרסת אבטחה ותחזוקה"
+msgid_plural "Maintenance and Security Releases"
+msgstr[0] "גרסת אבטחה ותחזוקה"
+msgstr[1] "גרסאות אבטחה ותחזוקה"
 
 #. translators: %s: WordPress version number
-#: wp-admin/about.php:216
+#: wp-admin/about.php:224
 msgid "<strong>Version %s</strong> addressed some security issues."
 msgstr "<strong>גרסה %s</strong> מטפלת בסוגיות אבטחה."
 
@@ -5005,7 +5007,7 @@ msgstr "<strong>גרסה %s</strong> מטפלת בסוגיות אבטחה."
 msgid "This screen allows you to choose your permalink structure. You can choose from common settings or create custom URL structures."
 msgstr "מסך זה מאפשר להגדיר מבנה קישורים רצוי. ניתן לבחור מבין ההגדרות הנפוצות או ליצור מבנה מותאם אישית."
 
-#: wp-admin/about.php:189
+#: wp-admin/about.php:197
 msgid "Return to Updates"
 msgstr "חזרה לשדרוגים"
 
@@ -5297,11 +5299,11 @@ msgstr "כנראה החדרה ישירה של wp-admin/includes/template.php ע�
 msgid "Welcome to WordPress %s"
 msgstr "ברוכים הבאים לוורדפרס %s"
 
-#: wp-admin/about.php:189
+#: wp-admin/about.php:197
 msgid "Return to Dashboard &rarr; Updates"
 msgstr "חזרה לשדרוגים"
 
-#: wp-admin/about.php:192
+#: wp-admin/about.php:200
 msgid "Go to Dashboard &rarr; Home"
 msgstr "חזרה ללוח הבקרה"
 
@@ -5313,7 +5315,7 @@ msgstr "וורדפרס נוצרה על ידי אנשים בעלי תשוקה מ�
 msgid "Core Developers"
 msgstr "מפתחי ליבה"
 
-#: wp-admin/about.php:125
+#: wp-admin/about.php:133
 msgid "Under the Hood"
 msgstr "מאחורי הקלעים"
 
@@ -5522,7 +5524,7 @@ msgid "Install"
 msgstr "התקנה"
 
 #: wp-admin/menu.php:220 wp-admin/menu.php:222 wp-admin/user-edit.php:194
-#: wp-admin/users.php:474
+#: wp-admin/users.php:475
 msgctxt "user"
 msgid "Add New"
 msgstr "משתמש חדש"
@@ -5545,7 +5547,7 @@ msgid "Settings saved."
 msgstr "הגדרות נשמרו."
 
 #: wp-admin/includes/dashboard.php:406 wp-admin/includes/dashboard.php:408
-#: wp-admin/users.php:487
+#: wp-admin/users.php:488
 msgid "Search Users"
 msgstr "חיפוש משתמשים"
 
@@ -5578,7 +5580,7 @@ msgstr "אין לך הרשאות לנהל הגדרות באתר זה."
 #. translators: %s: search keywords
 #: wp-admin/edit-comments.php:197 wp-admin/edit-tags.php:311
 #: wp-admin/edit.php:307 wp-admin/link-manager.php:78 wp-admin/plugins.php:515
-#: wp-admin/upload.php:224 wp-admin/users.php:480
+#: wp-admin/upload.php:224 wp-admin/users.php:481
 msgid "Search results for &#8220;%s&#8221;"
 msgstr "תוצאות חיפוש עבור &#8220;%s&#8221;"
 
@@ -5589,7 +5591,7 @@ msgid_plural "Update Available <span class=\"count\">(%s)</span>"
 msgstr[0] "עדכונים זמינים <span class=\"count\">(%s)</span>"
 msgstr[1] "עדכונים זמינים <span class=\"count\">(%s)</span>"
 
-#: wp-admin/includes/ms.php:1085 wp-admin/users.php:286
+#: wp-admin/includes/ms.php:1085 wp-admin/users.php:287
 msgid "Confirm Deletion"
 msgstr "אישור מחיקה"
 
@@ -5597,8 +5599,8 @@ msgstr "אישור מחיקה"
 msgid "Plugins %s"
 msgstr "תוספים %s"
 
-#: wp-admin/users.php:300 wp-admin/users.php:308 wp-admin/users.php:335
-#: wp-admin/users.php:343
+#: wp-admin/users.php:301 wp-admin/users.php:309 wp-admin/users.php:336
+#: wp-admin/users.php:344
 msgid "You can&#8217;t remove users."
 msgstr "אינך יכול למחוק משתמשים."
 
@@ -5625,7 +5627,7 @@ msgstr "עורך"
 msgid "Add Existing User"
 msgstr "הוספת משתמש קיים"
 
-#: wp-admin/users.php:444
+#: wp-admin/users.php:445
 msgid "User removed from this site."
 msgstr "משתמש הוסר מהאתר."
 
@@ -5638,7 +5640,7 @@ msgstr "<strong>%1$s</strong> מאת <em>%2$s</em>"
 msgid "Click to view entire list of files which will be deleted"
 msgstr "הצג את רשימת הקבצים המלאה"
 
-#: wp-admin/users.php:433
+#: wp-admin/users.php:434
 msgid "Changed roles."
 msgstr "התפקידים שונו."
 
@@ -5986,7 +5988,7 @@ msgstr "<strong>אקראי</strong>: הצג בכל פעם תמונה אחרת."
 msgid "Layout"
 msgstr "פריסה"
 
-#: wp-admin/users.php:239
+#: wp-admin/users.php:240
 msgid "You have specified this user for deletion:"
 msgstr "מחיקת משתמש:"
 
@@ -6011,7 +6013,7 @@ msgstr "ייתכן שהתוסף הזה פועל באתרים אחרים ברשת
 msgid "You cannot delete a plugin while it is active on the main site."
 msgstr "לא ניתן למחוק תוסף בעודו פעיל באתר הראשי"
 
-#: wp-admin/user-edit.php:196 wp-admin/users.php:476
+#: wp-admin/user-edit.php:196 wp-admin/users.php:477
 msgctxt "user"
 msgid "Add Existing"
 msgstr "הוספת משתמש קיים"
@@ -6620,7 +6622,7 @@ msgid "Home: %s"
 msgstr "דף הבית: %s"
 
 #: wp-admin/import.php:57 wp-admin/includes/network.php:105
-#: wp-admin/includes/network.php:122 wp-admin/users.php:234
+#: wp-admin/includes/network.php:122 wp-admin/users.php:235
 msgid "ERROR:"
 msgstr "שגיאה:"
 
@@ -6993,7 +6995,7 @@ msgstr "חדשות וורדפרס"
 msgid "&mdash; No role for this site &mdash;"
 msgstr "&mdash; ללא תפקיד &mdash;"
 
-#: wp-admin/users.php:357
+#: wp-admin/users.php:358
 msgid "Remove Users from Site"
 msgstr "להסיר משתמשים מהאתר"
 
@@ -7129,15 +7131,15 @@ msgstr "הסרת תמונת הרקע"
 msgid "Display Options"
 msgstr "אפשרויות תצוגה"
 
-#: wp-admin/users.php:362
+#: wp-admin/users.php:363
 msgid "You have specified these users for removal:"
 msgstr "ביקשת להסיר את המשתמשים הבאים:"
 
-#: wp-admin/users.php:384
+#: wp-admin/users.php:385
 msgid "Confirm Removal"
 msgstr "לאשר את ההסרה"
 
-#: wp-admin/users.php:386
+#: wp-admin/users.php:387
 msgid "There are no valid users selected for removal."
 msgstr "לא בחרת אף משתמש שאפשר להסיר."
 
@@ -7145,7 +7147,7 @@ msgstr "לא בחרת אף משתמש שאפשר להסיר."
 msgid "You can&#8217;t delete that user."
 msgstr "אין לך הרשאות מתאימות למחיקת משתמש זה."
 
-#: wp-admin/users.php:448
+#: wp-admin/users.php:449
 msgid "Other users have been removed."
 msgstr "המשתמשים הוסרו."
 
@@ -7153,7 +7155,7 @@ msgstr "המשתמשים הוסרו."
 msgid "User deletion is not allowed from this screen."
 msgstr "לא ניתן למחוק משתמשים ממסך זה."
 
-#: wp-admin/users.php:447
+#: wp-admin/users.php:448
 msgid "You can't remove the current user."
 msgstr "לא ניתן להסיר את המשתמש הנוכחי."
 
@@ -7450,7 +7452,7 @@ msgstr "באזור הזמן הזה אין שעון קיץ."
 msgid "Inactive:"
 msgstr "לא פעיל:"
 
-#: wp-admin/about.php:192
+#: wp-admin/about.php:200
 msgid "Go to Dashboard"
 msgstr "חזרה ללוח הבקרה"
 
@@ -8037,15 +8039,15 @@ msgstr "שם פרטי"
 msgid "Last Name"
 msgstr "שם משפחה"
 
-#: wp-admin/users.php:288
+#: wp-admin/users.php:289
 msgid "There are no valid users selected for deletion."
 msgstr "לא נבחרו משתמשים תקינים שאפשר למחוק."
 
-#: wp-admin/users.php:437
+#: wp-admin/users.php:438
 msgid "Other user roles have been changed."
 msgstr "השינויים בתפקידי המשתמשים האחרים נשמרו."
 
-#: wp-admin/users.php:441
+#: wp-admin/users.php:442
 msgid "Other users have been deleted."
 msgstr "המשתמשים האחרים נמחקו."
 
@@ -8170,7 +8172,7 @@ msgstr "עדכון קובץ"
 msgid "You can&#8217;t delete users."
 msgstr "אין לך הרשמת מתאימות למחיקת משתמשים."
 
-#: wp-admin/users.php:436
+#: wp-admin/users.php:437
 msgid "The current user&#8217;s role must have user editing capabilities."
 msgstr "אין לך הרשאות מתאימות לעריכת משתמשים."
 
@@ -8495,7 +8497,7 @@ msgstr[1] "%d קבצים שוייכו מחדש."
 msgid "Change role to&hellip;"
 msgstr "שינוי תפקיד ל&hellip;"
 
-#: wp-admin/users.php:429
+#: wp-admin/users.php:430
 msgid "New user created."
 msgstr "יצירת משתמש חדש."
 
@@ -8649,7 +8651,7 @@ msgstr "<strong>אזהרה:</strong> לא ניתן לבחור שני עמודי�
 msgid "Files of this type are not editable."
 msgstr "לא ניתן לערוך קבצים מהסוג הזה."
 
-#: wp-admin/users.php:440
+#: wp-admin/users.php:441
 msgid "You can&#8217;t delete the current user."
 msgstr "לא ניתן למחוק משתמש פעיל."
 
@@ -8744,7 +8746,7 @@ msgstr "שלום-עולם"
 msgid "Plugin Files"
 msgstr "קובצי תוספים"
 
-#: wp-admin/users.php:231
+#: wp-admin/users.php:232
 msgid "Delete Users"
 msgstr "מחיקת משתמשים"
 
