@@ -7,7 +7,7 @@ class AAL_Hook_Posts extends AAL_Hook_Base {
 		$title = get_the_title( $post );
 		
 		if ( empty( $title ) )
-			$title = __( '(no title)', 'aryo-aal' );
+			$title = __( '(no title)', 'aryo-activity-log' );
 		
 		return $title;
 	}
@@ -23,7 +23,7 @@ class AAL_Hook_Posts extends AAL_Hook_Base {
 		}
 		elseif ( 'trash' === $new_status ) {
 			// page was deleted.
-			$action = 'deleted';
+			$action = 'trashed';
 		}
 		else {
 			// page updated. i guess.
