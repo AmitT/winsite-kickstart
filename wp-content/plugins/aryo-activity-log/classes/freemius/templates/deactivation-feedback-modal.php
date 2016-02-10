@@ -5,6 +5,11 @@
 	 * @license     http://opensource.org/licenses/gpl-2.0.php GNU Public License
 	 * @since       1.1.2
 	 */
+
+	if ( ! defined( 'ABSPATH' ) ) {
+		exit;
+	}
+
     $slug         = $VARS['slug'];
     $fs           = freemius( $slug );
     
@@ -19,7 +24,7 @@
 		$reasons_list_items_html .= '<li class="' . $list_item_classes . '" data-input-type="' . $reason['input_type'] . '" data-input-placeholder="' . $reason['input_placeholder'] . '"><label><span><input type="radio" name="selected-reason" value="' . $reason['id'] . '"/></span><span>' . $reason['text'] . '</span></label></li>';
 	}
 	?>
-	<script>
+	<script type="text/javascript">
 		(function( $ ) {
 			var reasonsHtml		= <?php echo json_encode( $reasons_list_items_html ); ?>,
 				modalHtml		=

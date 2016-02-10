@@ -120,8 +120,6 @@
 
 	#endregion Core Redirect (copied from BuddyPress) -----------------------------------------
 
-	#region
-
 	if ( ! function_exists( '__fs' ) ) {
 		global $fs_text_overrides;
 
@@ -146,7 +144,7 @@
 			global $fs_text, $fs_text_overrides;
 
 			if ( ! isset( $fs_text ) ) {
-				require_once( dirname( __FILE__ ) . '/i18n.php' );
+				require_once( ( defined( 'WP_FS__DIR_INCLUDES' ) ? WP_FS__DIR_INCLUDES : dirname( __FILE__ ) ) . '/i18n.php' );
 			}
 
 			if ( isset( $fs_text_overrides[ $slug ] ) &&
@@ -197,8 +195,38 @@
 		}
 	}
 
+	if ( ! function_exists( 'fs_get_ip' ) ) {
+		/**
+		 * Get client IP.
+		 *
+		 * @author Vova Feldman (@svovaf)
+		 * @since  1.1.2
+		 *
+		 * @return string|null
+		 */
+		function fs_get_ip() {
+			$fields = array(
+				'HTTP_CF_CONNECTING_IP',
+				'HTTP_CLIENT_IP',
+				'HTTP_X_FORWARDED_FOR',
+				'HTTP_X_FORWARDED',
+				'HTTP_FORWARDED_FOR',
+				'HTTP_FORWARDED',
+				'REMOTE_ADDR',
+			);
+
+			foreach ( $fields as $ip_field ) {
+				if ( ! empty( $_SERVER[ $ip_field ] ) ) {
+					return $_SERVER[ $ip_field ];
+				}
+			}
+
+			return null;
+		}
+	}
+
 	/**
-	 * Leverage backtrace to find caller plugin file path.
+	 * Leverage backtrace to find caller plugin main file path.
 	 *
 	 * @author Vova Feldman (@svovaf)
 	 * @since  1.0.6
@@ -238,6 +266,8 @@
 
 		return $plugin_file;
 	}
+
+	require_once dirname( __FILE__ ) . '/supplements/fs-essential-functions-1.1.7.1.php';
 
 	/**
 	 * Update SDK newest version reference.
@@ -281,6 +311,13 @@
 	 */
 	function fs_newest_sdk_plugin_first() {
 		global $fs_active_plugins;
+
+		/**
+		 * @todo Multi-site network activated plugin are always loaded prior to site plugins so if there's a a plugin activated in the network mode that has an older version of the SDK of another plugin which is site activated that has new SDK version, the fs-essential-functions.php will be loaded from the older SDK. Same thing about MU plugins (loaded even before network activated plugins).
+		 *
+		 * @link https://github.com/Freemius/wordpress-sdk/issues/26
+		 */
+//		$active_sitewide_plugins = get_site_option( 'active_sitewide_plugins' );
 
 		$active_plugins        = get_option( 'active_plugins' );
 		$newest_sdk_plugin_key = array_search( $fs_active_plugins->newest->plugin_path, $active_plugins );
@@ -337,3 +374,30 @@
 			fs_update_sdk_newest_version( $newest_sdk_path, $newest_sdk_data->plugin_path );
 		}
 	}
+
+	#region Actions / Filters -----------------------------------------
+
+	/**
+	 * Apply filter for specific plugin.
+	 *
+	 * @author Vova Feldman (@svovaf)
+	 * @since  1.0.9
+	 *
+	 * @param string $slug  Plugin slug
+	 * @param string $tag   The name of the filter hook.
+	 * @param mixed  $value The value on which the filters hooked to `$tag` are applied on.
+	 *
+	 * @return mixed The filtered value after all hooked functions are applied to it.
+	 *
+	 * @uses   apply_filters()
+	 */
+	function fs_apply_filter( $slug, $tag, $value ) {
+		$args = func_get_args();
+
+		return call_user_func_array( 'apply_filters', array_merge(
+				array( 'fs_' . $tag . '_' . $slug ),
+				array_slice( $args, 2 ) )
+		);
+	}
+
+	#endregion Actions / Filters -----------------------------------------

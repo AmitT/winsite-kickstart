@@ -10,7 +10,7 @@
 		exit;
 	}
 
-	$this_sdk_version = '1.1.6.2';
+	$this_sdk_version = '1.1.7.1';
 
 	#region SDK Selection Logic --------------------------------------------------------------------
 
@@ -40,6 +40,10 @@
 		}
 	}
 
+	if ( ! function_exists( 'fs_find_direct_caller_plugin_file' ) ) {
+		require_once dirname( __FILE__ ) . '/includes/supplements/fs-essential-functions-1.1.7.1.php';
+	}
+
 	// Update current SDK info based on the SDK path.
 	if ( ! isset( $fs_active_plugins->plugins[ $this_sdk_relative_path ] ) ||
 	     $this_sdk_version != $fs_active_plugins->plugins[ $this_sdk_relative_path ]->version
@@ -47,7 +51,7 @@
 		$fs_active_plugins->plugins[ $this_sdk_relative_path ] = (object) array(
 			'version'     => $this_sdk_version,
 			'timestamp'   => time(),
-			'plugin_path' => plugin_basename( fs_find_caller_plugin_file() ),
+			'plugin_path' => plugin_basename( fs_find_direct_caller_plugin_file( __FILE__ ) ),
 		);
 	}
 
@@ -57,14 +61,14 @@
 		/**
 		 * This will be executed only once, for the first time a Freemius powered plugin is activated.
 		 */
-		fs_update_sdk_newest_version( $this_sdk_relative_path );
+		fs_update_sdk_newest_version( $this_sdk_relative_path, $fs_active_plugins->plugins[ $this_sdk_relative_path ]->plugin_path );
 
 		$is_current_sdk_newest = true;
 	} else if ( version_compare( $fs_active_plugins->newest->version, $this_sdk_version, '<' ) ) {
 		/**
 		 * Current SDK is newer than the newest stored SDK.
 		 */
-		fs_update_sdk_newest_version( $this_sdk_relative_path );
+		fs_update_sdk_newest_version( $this_sdk_relative_path, $fs_active_plugins->plugins[ $this_sdk_relative_path ]->plugin_path );
 
 		if ( class_exists( 'Freemius' ) ) {
 			// Older SDK version was already loaded.
@@ -202,6 +206,7 @@
 	 *      fs_connect_message_on_update_{plugin_slug}
 	 *      fs_uninstall_confirmation_message_{plugin_slug}
 	 *      fs_pending_activation_message_{plugin_slug}
+	 *      fs_is_submenu_visible_{plugin_slug}
 	 *
 	 * --------------------------------------------------------
 	 *
@@ -257,6 +262,7 @@
 		require_once WP_FS__DIR_INCLUDES . '/fs-core-functions.php';
 //		require_once WP_FS__DIR_INCLUDES . '/managers/class-fs-abstract-manager.php';
 		require_once WP_FS__DIR_INCLUDES . '/managers/class-fs-option-manager.php';
+		require_once WP_FS__DIR_INCLUDES . '/managers/class-fs-cache-manager.php';
 		require_once WP_FS__DIR_INCLUDES . '/managers/class-fs-admin-notice-manager.php';
 		require_once WP_FS__DIR_INCLUDES . '/managers/class-fs-admin-menu-manager.php';
 		require_once WP_FS__DIR_INCLUDES . '/managers/class-fs-key-value-storage.php';
