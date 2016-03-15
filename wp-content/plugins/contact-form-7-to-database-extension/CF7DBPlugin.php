@@ -140,7 +140,7 @@ class CF7DBPlugin extends CF7DBPluginLifeCycle implements CFDBDateFormatter {
                                     if ($this->isVersionLessThan($savedVersion, '1.4.5')) {
                                         if ($this->isVersionLessThan($savedVersion, '1.3.1')) {
                                             // Version 1.3.1 update
-                                            $tableName = $this->getSubmitsTableName();
+                                            $tableName = $this->getSubmitsTableName_raw();
                                             $wpdb->show_errors();
                                             $upgradeOk &= false !== $wpdb->query("ALTER TABLE `$tableName` ADD COLUMN `field_order` INTEGER");
                                             $upgradeOk &= false !== $wpdb->query("ALTER TABLE `$tableName` ADD COLUMN `file` LONGBLOB");
@@ -164,7 +164,7 @@ class CF7DBPlugin extends CF7DBPluginLifeCycle implements CFDBDateFormatter {
                                     if (!$this->getOption('MaxRows')) {
                                         $this->addOption('MaxRows', '100');
                                     }
-                                    $tableName = $this->getSubmitsTableName();
+                                    $tableName = $this->getSubmitsTableName_raw();
                                     $wpdb->show_errors();
                                     /* $upgradeOk &= false !== */
                                     $wpdb->query("ALTER TABLE `$tableName` MODIFY COLUMN submit_time DECIMAL(16,4) NOT NULL");
@@ -176,31 +176,31 @@ class CF7DBPlugin extends CF7DBPluginLifeCycle implements CFDBDateFormatter {
                                 }
 
                                 // Version 2.0 upgrade
-                                $tableName = $this->getSubmitsTableName();
+                                $tableName = $this->getSubmitsTableName_raw();
                                 $oldTableName = $this->prefixTableName('SUBMITS');
                                 @$wpdb->query("RENAME TABLE `$oldTableName` TO `$tableName`");
                             }
 
                             // Version 2.2 upgrade
-                            $tableName = $this->getSubmitsTableName();
+                            $tableName = $this->getSubmitsTableName_raw();
                             $wpdb->query("ALTER TABLE `$tableName` DROP INDEX `form_name_field_name_idx`");
                             $wpdb->query("ALTER TABLE `$tableName` ADD INDEX `field_name_idx` ( `field_name` )");
                         }
 
                         // Version 2.4.1 upgrade
-                        $tableName = $this->getSubmitsTableName();
+                        $tableName = $this->getSubmitsTableName_raw();
                         $oldTableName = strtolower($tableName);
                         $wpdb->query("RENAME TABLE '$oldTableName' TO '$tableName'");
                     }
                     // Version 2.8.25 update
-                    $tableName = $this->getSTTableName();
+                    $tableName = $this->getSTTableName_raw();
                     $wpdb->show_errors();
                     $wpdb->query("CREATE TABLE IF NOT EXISTS `$tableName` (`submit_time` DECIMAL(16,4) NOT NULL, PRIMARY KEY (submit_time))");
                     $wpdb->hide_errors();
                 }
                 // Version 2.8.29 update
                 // tyring this again b/c was not put into new installs
-                $tableName = $this->getSTTableName();
+                $tableName = $this->getSTTableName_raw();
                 $wpdb->show_errors();
                 $wpdb->query("CREATE TABLE IF NOT EXISTS `$tableName` (`submit_time` DECIMAL(16,4) NOT NULL, PRIMARY KEY (submit_time))");
                 $wpdb->hide_errors();
@@ -224,7 +224,7 @@ class CF7DBPlugin extends CF7DBPluginLifeCycle implements CFDBDateFormatter {
      */
     protected function installDatabaseTables() {
         global $wpdb;
-        $tableName = $this->getSubmitsTableName();
+        $tableName = $this->getSubmitsTableName_raw();
         $wpdb->show_errors();
         $wpdb->query("CREATE TABLE IF NOT EXISTS `$tableName` (
             `submit_time` DECIMAL(16,4) NOT NULL,
@@ -236,7 +236,7 @@ class CF7DBPlugin extends CF7DBPluginLifeCycle implements CFDBDateFormatter {
         $wpdb->query("ALTER TABLE `$tableName` ADD INDEX `submit_time_idx` ( `submit_time` )");
         $wpdb->query("ALTER TABLE `$tableName` ADD INDEX `form_name_idx` ( `form_name` )");
         $wpdb->query("ALTER TABLE `$tableName` ADD INDEX `field_name_idx` ( `field_name` )");
-        $tableName = $this->getSTTableName();
+        $tableName = $this->getSTTableName_raw();
         $wpdb->query("CREATE TABLE IF NOT EXISTS `$tableName` (`submit_time` DECIMAL(16,4) NOT NULL, PRIMARY KEY (submit_time))");
         $wpdb->hide_errors();
     }
@@ -1148,39 +1148,116 @@ class CF7DBPlugin extends CF7DBPluginLifeCycle implements CFDBDateFormatter {
      * @return array of string
      */
     public function getNoSaveFields() {
-        return preg_split('/,|;/', $this->getOption('NoSaveFields'), -1, PREG_SPLIT_NO_EMPTY);
+        return $this->parseOption($this->getOption('NoSaveFields'));
     }
 
     /**
      * @return array of string
      */
     public function getNoSaveForms() {
-        return preg_split('/,|;/', $this->getOption('NoSaveForms'), -1, PREG_SPLIT_NO_EMPTY);
+        return $this->parseOption($this->getOption('NoSaveForms'));
+    }
+
+    /**
+     * Parse option string that is a comma-delimited set of stings (some of which may be regex's with commas in them)
+     * @param $option string
+     * @return array
+     */
+    public function parseOption($option) {
+//        return preg_split('/,|;/', $option, -1, PREG_SPLIT_NO_EMPTY);
+        $values = array();
+        if ($option) {
+            $regex = false;
+            $esc = false;
+            $value = '';
+            $len = strlen($option);
+            for ($i = 0; $i < $len; $i++) {
+
+                if ($regex && !$esc && $option[$i] == '\\') {
+                    $esc = true;
+                    $value .= $option[$i];
+                    continue;
+                }
+
+                if (!$value && $option[$i] == '/') {
+                    $regex = true;
+                    $value .= $option[$i];
+                    continue;
+                }
+
+                if (!$regex) {
+                    if ($option[$i] == ',') {
+                        if ($value) {
+                            $values[] = $value;
+                        }
+                        $value = '';
+                    } else {
+                        $value .= $option[$i];
+                    }
+                } else {
+                    if ($option[$i] == '/' && !$esc) {
+                        $regex = false;
+                    }
+                    $value .= $option[$i];
+                }
+                $esc = false;
+            }
+            if ($value) {
+                $values[] = $value;
+            }
+        }
+        return $values;
     }
 
     /**
      * @return array of string
      */
     public function getSaveCookies() {
-        return preg_split('/,|;/', $this->getOption('SaveCookieNames'), -1, PREG_SPLIT_NO_EMPTY);
+        return $this->parseOption($this->getOption('SaveCookieNames'));
+    }
+
+    /**
+     * @return string
+     */
+    public function getSubmitsTableName_raw() {
+        global $wpdb;
+        return $wpdb->prefix . strtolower($this->prefix('SUBMITS'));
+    }
+
+    public function getSTTableName_raw() {
+        global $wpdb;
+        return $wpdb->prefix . strtolower($this->prefix('ST'));
     }
 
     /**
      * @return string
      */
     public function getSubmitsTableName() {
-        //        $overrideTable = $this->getOption('SubmitTableNameOverride');
-        //        if ($overrideTable && "" != $overrideTable) {
-        //            return $overrideTable;
-        //        }
-        //return strtolower($this->prefixTableName('SUBMITS'));
         global $wpdb;
-        return $wpdb->prefix . strtolower($this->prefix('SUBMITS'));
+        $tableName = $this->getSubmitsTableName_raw();
+        if (! $this->isTableDefined($tableName)) {
+            // This should correct for missing tables and dynamically add them
+            // in multisite configurations
+            $this->installDatabaseTables();
+        }
+        return $tableName;
     }
 
     public function getSTTableName() {
         global $wpdb;
-        return $wpdb->prefix . strtolower($this->prefix('ST'));
+        $tableName = $this->getSTTableName_raw();
+        if (! $this->isTableDefined($tableName)) {
+            // This should correct for missing tables and dynamically add them
+            // in multisite configurations
+            $this->installDatabaseTables();
+        }
+        return $tableName;
+    }
+
+    public function isTableDefined($tableName) {
+        global $wpdb;
+        $rows = $wpdb->get_results("SHOW TABLES LIKE '$tableName'");
+        return !empty($rows);
     }
 
     /**

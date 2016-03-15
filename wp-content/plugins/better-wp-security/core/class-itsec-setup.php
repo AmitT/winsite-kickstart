@@ -169,6 +169,10 @@ class ITSEC_Setup {
 		if ( ! is_dir( $itsec_globals['ithemes_log_dir'] ) ) {
 
 			@mkdir( $itsec_globals['ithemes_log_dir'] );
+			// Make sure we have an index file to block directory listing
+			if ( ! file_exists( path_join( $itsec_globals['ithemes_log_dir'], 'index.php' ) ) ) {
+				file_put_contents( path_join( $itsec_globals['ithemes_log_dir'], 'index.php' ), "<?php\n// Silence is golden." );
+			}
 			$handle = @fopen( $itsec_globals['ithemes_log_dir'] . '/.htaccess', 'w+' );
 			@fwrite( $handle, 'Deny from all' );
 			@fclose( $handle );
@@ -178,6 +182,10 @@ class ITSEC_Setup {
 		if ( ! is_dir( $itsec_globals['ithemes_backup_dir'] ) ) {
 
 			@mkdir( $itsec_globals['ithemes_backup_dir'] );
+			// Make sure we have an index file to block directory listing
+			if ( ! file_exists( path_join( $itsec_globals['ithemes_backup_dir'], 'index.php' ) ) ) {
+				file_put_contents( path_join( $itsec_globals['ithemes_backup_dir'], 'index.php' ), "<?php\n// Silence is golden." );
+			}
 			$handle = @fopen( $itsec_globals['ithemes_backup_dir'] . '/.htaccess', 'w+' );
 			@fwrite( $handle, 'Deny from all' );
 			@fclose( $handle );
@@ -200,7 +208,7 @@ class ITSEC_Setup {
 
 		if ( $options === false || ( isset( $options['log_info'] ) && sizeof( $options ) <= 2 ) ) {
 
-			$this->defaults['log_info'] = substr( sanitize_title( get_bloginfo( 'name' ) ), 0, 20 ) . '-' . ITSEC_Lib::get_random( mt_rand( 0, 10 ) );
+			$this->defaults['log_info'] = substr( sanitize_title( get_bloginfo( 'name' ) ), 0, 20 ) . '-' . wp_generate_password( 30, false );
 
 			$itsec_globals['settings'] = $this->defaults;
 
@@ -231,6 +239,7 @@ class ITSEC_Setup {
 	private function upgrade_execute( $upgrade = false ) {
 
 		global $itsec_old_version, $itsec_globals, $wpdb, $itsec_setup_action;
+		$tables_updated = false;
 
 		$itsec_setup_action = 'upgrade';
 		$itsec_old_version  = $upgrade;
@@ -330,6 +339,7 @@ class ITSEC_Setup {
 		if ( $itsec_old_version < 4030 ) {
 
 			ITSEC_Lib::create_database_tables(); //adds username field to lockouts and temp
+			$tables_updated = true;
 			add_site_option( 'itsec_rewrites_changed', true );
 
 		}
@@ -368,6 +378,40 @@ class ITSEC_Setup {
 				add_site_option( 'itsec_api_nag', true, false );
 			}
 
+		}
+
+		//IPv6 support was added in 4039
+		if ( $itsec_old_version < 4039 && ! $tables_updated ) {
+			ITSEC_Lib::create_database_tables();
+			$tables_updated = true;
+		}
+
+		if ( $itsec_old_version < 4040 ) {
+			$options = get_site_option( 'itsec_global' );
+
+			if ( $options['log_info'] ) {
+				$new_log_info = substr( sanitize_title( get_bloginfo( 'name' ) ), 0, 20 ) . '-' . wp_generate_password( 30, false );
+				$old_file = path_join( $options['log_location'], 'event-log-' . $options['log_info'] . '.log' );
+				$new_file = path_join( $options['log_location'], 'event-log-' . $new_log_info . '.log' );
+
+				// If the file exists already, don't update the location unless we successfully move it.
+				if ( file_exists( $old_file ) && rename( $old_file, $new_file ) ) {
+					$options['log_info'] = $new_log_info;
+				}
+			}
+
+			// Make sure we have an index files to block directory listing in logs directory
+			if ( is_dir( $options['log_location'] ) && ! file_exists( path_join( $options['log_location'], 'index.php' ) ) ) {
+				file_put_contents( path_join( $options['log_location'], 'index.php' ), "<?php\n// Silence is golden." );
+			}
+
+			$backup_options = get_site_option( 'itsec_backup' );
+			// Make sure we have an index files to block directory listing in backups directory
+			if ( is_dir( $backup_options['location'] ) && ! file_exists( path_join( $backup_options['location'], 'index.php' ) ) ) {
+				file_put_contents( path_join( $backup_options['location'], 'index.php' ), "<?php\n// Silence is golden." );
+			}
+
+			update_site_option( 'itsec_global', $options );
 		}
 
 	}

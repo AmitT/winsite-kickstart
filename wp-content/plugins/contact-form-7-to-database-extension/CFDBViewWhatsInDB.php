@@ -208,6 +208,12 @@ class CFDBViewWhatsInDB extends CFDBView {
                 <form name="exportcsv" action="<?php echo $_SERVER['REQUEST_URI']?>">
                     <input type="hidden" name="unbuffered" value="true"/>
                     <select size="1" name="enc">
+                        <option id="xlsx" value="xlsx">
+                            <?php echo htmlspecialchars(__('Excel .xlsx', 'contact-form-7-to-database-extension')); ?>
+                        </option>
+                        <option id="ods" value="ods">
+                            <?php echo htmlspecialchars(__('OpenDocument .ods', 'contact-form-7-to-database-extension')); ?>
+                        </option>
                         <option id="IQY" value="IQY">
                             <?php echo htmlspecialchars(__('Excel Internet Query', 'contact-form-7-to-database-extension')); ?>
                         </option>
