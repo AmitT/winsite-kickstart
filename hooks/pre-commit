@@ -1,3 +1,0 @@
-#!/bin/sh
-mysqldump -u root --skip-extended-insert DB_NAME > DB_NAME.sql
-git add DB_NAME.sql

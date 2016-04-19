@@ -1,2 +1,0 @@
-#!/bin/bash
-mysql -u root DB_NAME < DB_NAME.sql
