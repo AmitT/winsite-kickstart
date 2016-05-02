@@ -1566,6 +1566,14 @@ if ( ! class_exists( 'ITSEC_Core' ) ) {
 			return $this->plugin_file;
 		}
 
+		public static function required_cap() {
+			return apply_filters( 'itsec_cap_required', is_multisite() ? 'manage_network_options' : 'manage_options' );
+		}
+
+		public static function current_user_can_manage() {
+			return current_user_can( self::required_cap() );
+		}
+
 	}
 
 }

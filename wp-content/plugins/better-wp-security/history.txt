@@ -493,3 +493,7 @@
 	Security Fix: No longer using document.location to build 'Show Intro' link in admin - Thanks to David Lodge (Pen Test Partners) for notifying us of this issue.
 	Bug Fix: Fixed some notices when certain multisite options are used on BuddyPress
 	Enhancement: New itsec_white_ips filter to allow plugins that work with external services to whitelist service IPs
+5.3.6 - 2016-04-19 - Chris Jean & Aaron D. Campbell
+	Security Fix: Better caps checks for dismissal of changed file dialog - Thanks to Julio Potier for notifying us of this issue.
+	Bug Fix: Make file change warning dialog text properly translatable
+	Enhancement: Adding 'itsec_log_event' action for logged events

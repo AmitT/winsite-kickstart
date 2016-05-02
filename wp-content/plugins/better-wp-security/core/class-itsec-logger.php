@@ -287,7 +287,7 @@ final class ITSEC_Logger {
 	 */
 	public function log_event( $module, $priority = 5, $data = array(), $host = '', $username = '', $user = '', $url = '', $referrer = '' ) {
 		global $wpdb, $itsec_globals;
-
+		
 		if ( isset( $this->logger_modules[ $module ] ) ) {
 			if ( ! isset( $itsec_globals['settings']['log_type'] ) || $itsec_globals['settings']['log_type'] === 0 || $itsec_globals['settings']['log_type'] == 2 ) {
 				$this->_log_event_to_db( $module, $priority, $data, $host, $username, $user, $url, $referrer );
@@ -298,6 +298,8 @@ final class ITSEC_Logger {
 			}
 
 		}
+
+		do_action( 'itsec_log_event', $module, $priority, $data, $host, $username, $user, $url, $referrer );
 
 	}
 
