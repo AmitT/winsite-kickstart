@@ -7,147 +7,12 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: GlotPress/1.1.0-alpha\n"
+"X-Generator: GlotPress/2.1.0-alpha\n"
 "Project-Id-Version: Stable (latest release)\n"
-
-#: views/config.php:30
-msgid "%s missed spam"
-msgid_plural "%s missed spam"
-msgstr[0] ""
-msgstr[1] ""
-
-#: views/config.php:32
-msgid "%s false positive"
-msgid_plural "%s false positives"
-msgstr[0] ""
-msgstr[1] ""
-
-#: views/start.php:59
-msgid "Use this option to use Akismet independently of your Jetpack connection."
-msgstr ""
-
-#: views/start.php:61
-msgid "Sign up with a different email address"
-msgstr ""
-
-#: views/start.php:65
-msgid "Enter an API key"
-msgstr ""
-
-#: views/start.php:66
-msgid "Already have your key? Enter it here."
-msgstr ""
-
-#: views/start.php:80
-msgid "Log in or sign up now."
-msgstr ""
-
-#: views/start.php:19 views/start.php:34
-msgid "Akismet eliminates spam from your site."
-msgstr ""
-
-#: views/start.php:42 views/start.php:76
-msgid "Akismet eliminates spam from your site. To set up Akismet, select one of the options below."
-msgstr ""
-
-#: views/start.php:52
-msgid "Use this account"
-msgstr ""
-
-#: views/start.php:58
-msgid "Sign up for a plan with a different email address"
-msgstr ""
-
-#: views/notice.php:90
-msgid "Akismet is now activated. Happy blogging!"
-msgstr ""
-
-#: views/start.php:4
-msgid "Akismet eliminates spam from your site. Register below to get started."
-msgstr ""
-
-#: views/start.php:15
-msgid "Register for Akismet"
-msgstr ""
-
-#: views/notice.php:56
-msgid "Please update your payment information."
-msgstr ""
-
-#: views/notice.php:57
-msgid "We cannot process your payment. Please <a href=\"%s\" target=\"_blank\">update your payment details</a>."
-msgstr ""
-
-#: views/notice.php:61
-msgid "Your Akismet plan has been cancelled."
-msgstr ""
-
-#: views/notice.php:66
-msgid "Your Akismet subscription is suspended."
-msgstr ""
-
-#: views/notice.php:81
-msgid "You don&#8217;t have an Akismet plan."
-msgstr ""
-
-#: class.akismet-admin.php:150 class.akismet-admin.php:188
-#: class.akismet-admin.php:201
-msgid "Akismet filters out spam, so you can focus on more important things."
-msgstr ""
-
-#: class.akismet-admin.php:891
-msgid "Akismet has saved you %s day!"
-msgid_plural "Akismet has saved you %s days!"
-msgstr[0] ""
-msgstr[1] ""
-
-#: class.akismet-admin.php:893
-msgid "Akismet has saved you %d hour!"
-msgid_plural "Akismet has saved you %d hours!"
-msgstr[0] ""
-msgstr[1] ""
-
-#: class.akismet-admin.php:895
-msgid "Akismet has saved you %d minute!"
-msgid_plural "Akismet has saved you %d minutes!"
-msgstr[0] ""
-msgstr[1] ""
-
-#: views/notice.php:11
-msgid "<strong>Almost done</strong> - activate Akismet and say goodbye to spam"
-msgstr ""
-
-#: views/notice.php:110
-msgid "Your Pro subscription allows the use of Akismet on only one site. Please <a href=\"%s\" target=\"_blank\">purchase additional Pro subscriptions</a> or upgrade to an Enterprise subscription that allows the use of Akismet on unlimited sites."
-msgstr ""
-
-#: views/notice.php:117
-msgid "To continue your service, <a href=\"%s\" target=\"_blank\">upgrade to an Enterprise subscription</a>, which covers an unlimited number of sites."
-msgstr ""
-
-#: views/notice.php:83
-msgid "In 2012, Akismet began using subscription plans for all accounts (even free ones). A plan has not been assigned to your account, and we&#8217;d appreciate it if you&#8217;d <a href=\"%s\" target=\"_blank\">sign into your account</a> and choose one."
-msgstr ""
-
-#: views/notice.php:85 views/notice.php:112 views/notice.php:119
-msgid "Please <a href=\"%s\" target=\"_blank\">contact our support team</a> with any questions."
-msgstr ""
-
-#: views/notice.php:98
-msgid "Your API key is no longer valid. Please enter a new key or contact support@akismet.com."
-msgstr ""
 
 #: views/notice.php:102
 msgid "The API key you entered could not be verified."
 msgstr "לא ניתן לאמת את המפתח שהוזן."
-
-#: views/notice.php:103
-msgid "The connection to akismet.com could not be established. Please refer to <a href=\"%s\" target=\"_blank\">our guide about firewalls</a> and check your server configuration."
-msgstr ""
-
-#: class.akismet-admin.php:559
-msgid "This comment was reported as not spam."
-msgstr ""
 
 #: views/config.php:72
 msgid "SSL Status"
@@ -164,10 +29,6 @@ msgstr "השרת אינו יכול לבצע בקשות SSL; יש ליצור קש
 #: views/config.php:88
 msgid "Temporarily disabled."
 msgstr "לא פעיל זמנית."
-
-#: views/config.php:88
-msgid "Akismet encountered a problem with a previous SSL request and disabled it temporarily. It will begin using SSL for requests again shortly."
-msgstr ""
 
 #: views/config.php:91
 msgid "Enabled."
@@ -192,10 +53,6 @@ msgstr "Automattic"
 #. Author URI of the plugin/theme
 msgid "http://automattic.com/wordpress-plugins/"
 msgstr "http://automattic.com/wordpress-plugins/"
-
-#. Description of the plugin/theme
-msgid "Used by millions, Akismet is quite possibly the best way in the world to <strong>protect your blog from spam</strong>. It keeps your site protected even while you sleep. To get started: 1) Click the \"Activate\" link to the left of this description, 2) <a href=\"http://akismet.com/get/\">Sign up for an Akismet plan</a> to get an API key, and 3) Go to your Akismet configuration page, and save your API key."
-msgstr ""
 
 #: views/strict.php:14
 msgid "Safe: always put spam in the Spam folder for review."
@@ -252,14 +109,6 @@ msgstr "להפעיל מחדש את אקיזמט"
 #: views/start.php:7 views/start.php:22 views/start.php:36 views/start.php:45
 msgid "Connected via Jetpack"
 msgstr "מחובר באמצעות Jetpack"
-
-#: views/notice.php:115
-msgid "You&#8217;re using Akismet on far too many sites for your Pro subscription."
-msgstr ""
-
-#: views/notice.php:108
-msgid "You&#8217;re using your Akismet key on more sites than your Pro subscription allows."
-msgstr ""
 
 #: views/notice.php:94
 msgid "The key you entered is invalid. Please double-check it."
@@ -442,10 +291,6 @@ msgstr "%s סימן תגובה זו כתגובת זבל."
 #: class.akismet-admin.php:589
 msgid "%1$s changed the comment status to %2$s."
 msgstr "%1$s שינה את הסטטוס של התגובה ל%2$s."
-
-#: class.akismet-admin.php:570
-msgid "Akismet was unable to check this comment (response: %s) but will automatically retry later."
-msgstr ""
 
 #: class.akismet-admin.php:544
 msgid "Comment was caught by wp_blacklist_check."
