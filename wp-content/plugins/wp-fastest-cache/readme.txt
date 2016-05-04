@@ -90,6 +90,20 @@ Setup of this plugin is so easy. You don't need to modify the .htacces file. It 
 
 == Changelog ==
 
+= 0.8.5.7 =
+* <strong>[FEATURE]</strong> Preload
+* to exclude the renamed page of woocommerce
+* to fix path which starts with ./ in css files
+* <strong>[FEATURE]</strong> Compatible with Visual Composer Post Grid
+* application/x-javascript has been added for leverage browser caching
+* to prevent removing newlines from .htaccess
+* <strong>[FEATURE]</strong> Compatible with WP-CLI
+* to add wp-touch mobile user-agent list
+* to exclude facebookexternalhit user-agent
+* <strong>[FEATURE]</strong> Compatible with Any Mobile Theme Switcher
+* <strong>[FEATURE]</strong> CDN for css files
+* to fix the huge size of tmpWpfc problem
+
 = 0.8.5.6 =
 * to combine css files by media attribute
 * to fix lots of disk usage issue

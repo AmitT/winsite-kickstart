@@ -172,25 +172,6 @@
 			return $this->html;
 		}
 
-		public function checkInternal($link){
-			$httpHost = str_replace("www.", "", $_SERVER["HTTP_HOST"]); 
-			if(preg_match("/href=[\"\'](.*?)[\"\']/", $link, $href)){
-
-				if(preg_match("/^\/[^\/]/", $href[1])){
-					return $href[1];
-				}
-
-				if(@strpos($href[1], $httpHost)){
-					return $href[1];
-				}
-
-				if(@strpos($href[1], "fonts.googleapis.com")){
-					return $href[1];
-				}
-			}
-			return false;
-		}
-
 		public function tags_reorder(){
 		    $sorter = array();
 		    $ret = array();
@@ -485,6 +466,31 @@
 	            : '';
 	    }
 
+	    public function checkInternal($link){
+			$httpHost = str_replace("www.", "", $_SERVER["HTTP_HOST"]);
+			
+			if(preg_match("/href=[\"\'](.*?)[\"\']/", $link, $href)){
+
+				if(preg_match("/^\/[^\/]/", $href[1])){
+					return $href[1];
+				}
+
+				if(@strpos($href[1], $httpHost)){
+					return $href[1];
+				}
+
+				// if(preg_match("/fonts\.googleapis\.com/i", $href[1])){
+				// 	//http://fonts.googleapis.com/css?family=Raleway%3A400%2C600
+				// 	if(preg_match("/Raleway/i", $href[1])){
+				// 		return false;
+				// 	}
+
+				// 	return $href[1];
+				// }
+			}
+			return false;
+		}
+
 		public function is_internal_css($url){
 			$http_host = trim($_SERVER["HTTP_HOST"], "www.");
 
@@ -502,15 +508,24 @@
 					return true;
 				}
 
-				if(preg_match("/fonts\.googleapis\.com/i", $url)){
-					return true;
-				}
+				// if(preg_match("/fonts\.googleapis\.com/i", $url)){
+				// 	//http://fonts.googleapis.com/css?family=Raleway%3A400%2C600
+				// 	if(preg_match("/Raleway/i", $url)){
+				// 		return false;
+				// 	}
+
+				// 	return true;
+				// }
 			}
 
 			return false;
 		}
 
 	    public function file_get_contents_curl($url, $version = ""){
+	    	if($data = $this->wpfc->read_file($url)){
+	    		return $data;
+	    	}
+
 			$url = str_replace('&#038;', '&', $url);
 	    	
 	    	if(preg_match("/\.php\?/i", $url)){
@@ -546,7 +561,7 @@
 					if(preg_match("/\<\!DOCTYPE/i", $data) || preg_match("/<\/\s*html\s*>/i", $data)){
 						return false;
 					}else if(!$data){
-						return "<!-- empty -->";
+						return "/* empty */";
 					}else{
 						return $data;	
 					}

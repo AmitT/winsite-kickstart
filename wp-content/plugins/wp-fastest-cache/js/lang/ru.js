@@ -95,7 +95,7 @@ window.wpfc.dictionary = {
 	"Mobile Theme"	: "Мобильная тема",
 	"Image Optimization"	: "Оптимизация изображений",
 	"Optimize Image Tool"	: "Инструмент для оптимизации изображений",
-	"All JPEG"	: "Всего JPEG",
+	"All"	: "Всего",
 	"Pending"	: "Ожидают",
 	"Errors"	: "Ошибки",
 	"Optimized Images"	: "Сжато изображений",
@@ -132,7 +132,7 @@ window.wpfc.dictionary = {
 	"Read More"	: "Читайте подробнее",
 	"[Read More]"	: "[Читайте подробнее]",
 	"Mobile Cache"	: "Мобильный кэш",
-	"Optimize All JPEG"	: "Оптимизировать все JPEG",
+	"Optimize All"	: "Оптимизировать все",
 	"CDN Settings"	: "Настройки CDN",
 	"Only available in Premium version"	: "Доступно только в премиум-версии"
 };

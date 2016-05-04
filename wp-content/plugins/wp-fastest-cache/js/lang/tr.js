@@ -64,7 +64,7 @@ window.wpfc.dictionary = {
 	"Mobile" : "Mobil",
 	"Image Optimization" : "Resim Optimizasyonu",
 	"Optimize Image Tool" : "Resim Optimizasyon Aracı",
-	"All JPEG" : "Tüm JPEG",
+	"All" : "Tüm",
 	"Pending" : "Bekleyenler",
 	"Errors" : "Hatalar",
 	"Optimized Images" : "Optimize Olanlar",

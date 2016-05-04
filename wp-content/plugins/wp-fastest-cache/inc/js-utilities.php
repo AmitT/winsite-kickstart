@@ -211,6 +211,9 @@
 		}
 
 		public function file_get_contents_curl($url) {
+			if($data = $this->wpfc->read_file($url)){
+	    		return $data;
+	    	}
 
 			if(!preg_match("/\.php$/", $url)){
 				$url = $url."?v=".time();

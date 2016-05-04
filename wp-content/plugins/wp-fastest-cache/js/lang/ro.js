@@ -64,7 +64,7 @@ window.wpfc.dictionary = {
 	"Mobile" : "Mobil",
 	"Image Optimization" : "Optimizare imaginio",
 	"Optimize Image Tool" : "Unealta pentru otimizat imagini",
-	"All JPEG" : "Toate JPEG-urile",
+	"All" : "Toate",
 	"Pending" : "In asteptare",
 	"Errors" : "Erori",
 	"Optimized Images" : "Imagini optimizate",

@@ -92,7 +92,7 @@ window.wpfc.dictionary = {
 	"Mobile Theme"                                                                                                                                                      : "モバイルテーマ",
 	"Image Optimization"                                                                                                                                                : "画像の最適化",
 	"Optimize Image Tool"                                                                                                                                               : "画像最適化ツール",
-	"All JPEG"                                                                                                                                                          : "全ての JPEG",
+	"All"                                                                                                                                                          : "全ての",
 	"Pending"                                                                                                                                                           : "保留",
 	"Errors"                                                                                                                                                            : "エラー",
 	"Optimized Images"                                                                                                                                                  : "最適化済",
@@ -127,5 +127,5 @@ window.wpfc.dictionary = {
 	"Read More"                                                                                                                                                         : "もっとみる",
 	"[Read More]"                                                                                                                                                       : "[もっとみる]",
 	"Mobile Cache"                                                                                                                                                      : "モバイルキャッシュ",
-	"Optimize All JPEG"                                                                                                                                                 : "全てのJPEG画像を最適化する",
+	"Optimize All"                                                                                                                                                 : "すべての最適化",
 };

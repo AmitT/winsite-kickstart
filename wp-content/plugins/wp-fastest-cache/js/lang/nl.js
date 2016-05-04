@@ -64,7 +64,7 @@ window.wpfc.dictionary = {
 	"Mobile" : "Mobile",
 	"Image Optimization" : "Afbeeldingen Optimaliseren",
 	"Optimize Image Tool" : "Afbeelding optimalisatie tool",
-	"All JPEG" : "Alle JPEG",
+	"All" : "Alle",
 	"Pending" : "In afwachting",
 	"Errors" : "Fouten",
 	"Optimized Images" : "Geoptimaliseerde afbeeldingen",

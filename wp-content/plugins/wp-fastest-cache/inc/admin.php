@@ -17,6 +17,44 @@
 			$this->addButtonOnEditor();
 			add_action('admin_enqueue_scripts', array($this, 'addJavaScript'));
 			$this->checkActivePlugins();
+
+			if($this->isPluginActive('ninja-forms/ninja-forms.php')){
+				$this->create_auto_cache_timeout("twicedaily", 43200);
+			}
+		}
+
+		public function create_auto_cache_timeout($recurrance, $interval){
+			$exist_cronjob = false;
+			$wpfc_timeout_number = 0;
+
+			$crons = _get_cron_array();
+
+			foreach ((array)$crons as $cron_key => $cron_value) {
+				foreach ( (array) $cron_value as $hook => $events ) {
+					if(preg_match("/^wp\_fastest\_cache(.*)/", $hook, $id)){
+						if(!$id[1] || preg_match("/^\_(\d+)$/", $id[1])){
+							$wpfc_timeout_number++;
+
+							foreach ( (array) $events as $event_key => $event ) {
+								$schedules = wp_get_schedules();
+
+								if(isset($event["args"]) && isset($event["args"][0])){
+									if($event["args"][0] == '{"prefix":"all","content":"all"}'){
+										if($schedules[$event["schedule"]]["interval"] <= $interval){
+											$exist_cronjob = true;
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+
+			if(!$exist_cronjob){
+				$args = array("prefix" => "all", "content" => "all");
+				wp_schedule_event(time(), $recurrance, "wp_fastest_cache_".$wpfc_timeout_number, array(json_encode($args)));
+			}
 		}
 
 		public function get_premium_version(){
@@ -330,9 +368,11 @@
 
 			$htaccess = file_get_contents($path.".htaccess");
 
-			if(defined('DONOTCACHEPAGE')){
-				return array("DONOTCACHEPAGE <label>constant is defined as TRUE. It must be FALSE</label>", "error");
-			}else if(!get_option('permalink_structure')){
+			// if(defined('DONOTCACHEPAGE')){
+			// 	return array("DONOTCACHEPAGE <label>constant is defined as TRUE. It must be FALSE</label>", "error");
+			// }else 
+
+			if(!get_option('permalink_structure')){
 				return array("You have to set <strong><u><a href='".admin_url()."options-permalink.php"."'>permalinks</a></u></strong>", "error");
 			}else if($res = $this->checkSuperCache($path, $htaccess)){
 				return $res;
@@ -342,6 +382,8 @@
 				return $this->warningIncompatible("MobilePress", array("name" => "WPtouch Mobile", "url" => "https://wordpress.org/plugins/wptouch/"));
 			}else if($this->isPluginActive('speed-booster-pack/speed-booster-pack.php')){
 				return array("Speed Booster Pack needs to be deactive<br>", "error");
+			}else if($this->isPluginActive('cdn-enabler/cdn-enabler.php')){
+				return array("CDN Enabler needs to be deactive<br>This plugin has aldready CDN feature", "error");
 			}else if($this->isPluginActive('wp-performance-score-booster/wp-performance-score-booster.php')){
 				return array("WP Performance Score Booster needs to be deactive<br>This plugin has aldready Gzip, Leverage Browser Caching features", "error");
 			}else if($this->isPluginActive('bwp-minify/bwp-minify.php')){
@@ -584,22 +626,23 @@
 			$htaccess_rules = "";
 
 			if($rules_json = get_option("WpFastestCacheExclude")){
-				$rules_std = json_decode($rules_json);
+				if($rules_json != "null"){
+					$rules_std = json_decode($rules_json);
 
-				foreach ($rules_std as $key => $value) {
-					if($value->prefix == "startwith"){
-						$htaccess_rules = $htaccess_rules."RewriteCond %{REQUEST_URI} !^/".$value->content."\n";
-					}
+					foreach ($rules_std as $key => $value) {
+						if($value->prefix == "startwith"){
+							$htaccess_rules = $htaccess_rules."RewriteCond %{REQUEST_URI} !^/".$value->content."\n";
+						}
 
-					if($value->prefix == "contain"){
-						$htaccess_rules = $htaccess_rules."RewriteCond %{REQUEST_URI} !".$value->content."\n";
-					}
+						if($value->prefix == "contain"){
+							$htaccess_rules = $htaccess_rules."RewriteCond %{REQUEST_URI} !".$value->content."\n";
+						}
 
-					if($value->prefix == "exact"){
-						$htaccess_rules = $htaccess_rules."RewriteCond %{REQUEST_URI} !\/".$value->content."\n";
+						if($value->prefix == "exact"){
+							$htaccess_rules = $htaccess_rules."RewriteCond %{REQUEST_URI} !\/".$value->content."\n";
+						}
 					}
 				}
-
 			}
 
 			return $htaccess_rules;
@@ -971,6 +1014,16 @@
 
 									$tester_arr = array("berkatan.com",
 														"tr-TR",
+														"nl-NL",
+														"fr-FR",
+														"es-ES",
+														"stevechaplinphotography.com",
+														"oemperformance.com",
+														"image-restore.co.uk",
+														"technews247.de",
+														"allfacebook.de",
+														"aerospaceengineering.aero",
+														"swankyrecipes.com",
 														"mybettermarriage.com",
 														"webbdo.se",
 														"bellsalaska.com",
@@ -1270,7 +1323,7 @@
 										<ul style="list-style: none outside none;float: left;">
 											<li>
 												<div style="background-color: rgb(29, 107, 157);width:15px;height:15px;float:left;margin-top:4px;border-radius:5px;"></div>
-												<div style="float:left;padding-left:6px;">All JPEG</div>
+												<div style="float:left;padding-left:6px;">All</div>
 												<div style="font-size: 14px; font-weight: bold; color: black; float: left; width: 65%; margin-left: 5px;" id="wpfc-optimized-statics-total_image_number" class="">7196</div>
 											</li>
 											<li>
@@ -1305,7 +1358,7 @@
 												<span id="buy-image-credit">More</span>
 											</li>
 											<li>
-												<input type="submit" class="button-primary" value="Optimize All JPEG" id="wpfc-optimize-images-button" style="width:100%;height:110px;">
+												<input type="submit" class="button-primary" value="Optimize All" id="wpfc-optimize-images-button" style="width:100%;height:110px;">
 											</li>
 										</ul>
 									</div>
@@ -1438,16 +1491,25 @@
 					    				<button class="wpfc-btn primaryCta" id="wpfc-download-premium-button" class="wpfc-btn primaryDisableCta" style="width:200px;">
 					    					<span data-type="download">Download</span>
 					    				</button>
+
+					    				<?php include(WPFC_MAIN_PATH."templates/download.html"); ?> 
+
 					    				<script type="text/javascript">
 					    					jQuery("#wpfc-download-premium-button").click(function(){
-					    						jQuery("#revert-loader-toolbar").show();
-						    					jQuery.get("<?php echo plugins_url('wp-fastest-cache/templates'); ?>/download.html", function( data ) {
-						    						var wpfc_api_url = '<?php echo "http://api.wpfastestcache.net/premium/newdownload/".str_replace(array("http://", "www."), "", $_SERVER["HTTP_HOST"])."/".get_option("WpFc_api_key"); ?>';
-						    						jQuery("body").append(data);
-						    						jQuery("#wpfc-download-now").attr("href", wpfc_api_url);
-						    						Wpfc_Dialog.dialog("wpfc-modal-downloaderror");
-						    						jQuery("#revert-loader-toolbar").hide();
-						    					});
+					    						//jQuery("#revert-loader-toolbar").show();
+
+					    						Wpfc_New_Dialog.dialog("wpfc-modal-downloaderror", {close: "default"});
+
+					    						var wpfc_api_url = '<?php echo "http://api.wpfastestcache.net/premium/newdownload/".str_replace(array("http://", "www."), "", $_SERVER["HTTP_HOST"])."/".get_option("WpFc_api_key"); ?>';
+					    						jQuery("div[id^='wpfc-modal-downloaderror'] a.wpfc-download-now").attr("href", wpfc_api_url);
+
+					    						// jQuery("body").append(data);
+					    						// jQuery("#wpfc-download-now").attr("href", wpfc_api_url);
+					    						// Wpfc_Dialog.dialog("wpfc-modal-downloaderror");
+					    						// jQuery("#revert-loader-toolbar").hide();
+						    					
+						    					// jQuery.get("<?php echo plugins_url('wp-fastest-cache/templates'); ?>/download.html", function( data ) {
+						    					// });
 					    					});
 					    				</script>
 				    				<?php } ?>

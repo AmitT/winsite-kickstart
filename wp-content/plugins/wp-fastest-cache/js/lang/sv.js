@@ -64,7 +64,7 @@ window.wpfc.dictionary = {
     "Mobile" : "Mobil" ,
     "Image Optimization" : "Bildoptimering" ,
     "Optimize Image Tool" : "Bildoptimeringsverktyg" ,
-    "All JPEG" : "All JPEG" ,
+    "All" : "All" ,
     "Pending" : "Avvaktar" ,
     "Errors" : "Fel" ,
     "Optimized Images" : "Optimerade bilder" ,

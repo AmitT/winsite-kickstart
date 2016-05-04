@@ -97,6 +97,10 @@
 					}
 				}
 
+				if(preg_match("/\?/", $_SERVER["REQUEST_URI"]) && !preg_match("/\/\?fdx\_switcher\=true/", $_SERVER["REQUEST_URI"])){ // for WP Mobile Edition
+					return 0;
+				}
+
 				if(preg_match("/(".$this->get_excluded_useragent().")/", $_SERVER['HTTP_USER_AGENT'])){
 					return 0;
 				}
@@ -138,7 +142,7 @@
 				}
 
 				//to show cache version via php if htaccess rewrite rule does not work
-				if($this->cacheFilePath && file_exists($this->cacheFilePath."index.html")){
+				if($this->cacheFilePath && @file_exists($this->cacheFilePath."index.html")){
 					if($content = @file_get_contents($this->cacheFilePath."index.html")){
 						$content = $content."<!-- via php -->";
 						die($content);
@@ -305,8 +309,6 @@
 				return $buffer."<!-- wpfcNOT has been detected -->";
 			}else if(isset($_GET["preview"])){
 				return $buffer."<!-- not cached -->";
-			}else if(preg_match("/\?/", $_SERVER["REQUEST_URI"]) && !preg_match("/\/\?fdx\_switcher\=true/", $_SERVER["REQUEST_URI"])){ // for WP Mobile Edition
-				return $buffer;
 			}else if($this->checkHtml($buffer)){
 				return $buffer."<!-- html is corrupted -->";
 			}else{				

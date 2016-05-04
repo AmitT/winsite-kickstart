@@ -3,7 +3,7 @@
 Plugin Name: WP Fastest Cache
 Plugin URI: http://wordpress.org/plugins/wp-fastest-cache/
 Description: The simplest and fastest WP Cache system
-Version: 0.8.5.6
+Version: 0.8.5.7
 Author: Emre Vona
 Author URI: http://tr.linkedin.com/in/emrevona
 Text Domain: wp-fastest-cache
@@ -77,28 +77,39 @@ GNU General Public License for more details.
 			if(isset($_POST) && isset($_POST["action"]) && $_POST["action"] == "vc_get_vc_grid_data"){
 				if(isset($_POST["vc_post_id"]) && $_POST["vc_post_id"]){
 					if(isset($_POST["_vcnonce"]) && $_POST["_vcnonce"]){
-						include_once ABSPATH."wp-includes/pluggable.php";
+						$this->setCustomInterval();
 
-						if(!wp_verify_nonce($_POST["_vcnonce"], "vc-nonce-vc-public-nonce")){
-							$uri = get_page_uri($_POST["vc_post_id"]);
+						$schedules_rules = array();
+						$exist_cronjob = false;
+						$wpfc_timeout_number = 0;
 
-							$path = $this->getWpContentDir()."/cache/all/".$uri;
-							$mobile_path = $this->getWpContentDir()."/cache/wpfc-mobile-cache/".$uri;
-								
-							if(is_dir($path)){
-								$this->rm_folder_recursively($path);
+						$crons = _get_cron_array();
+
+						foreach ((array)$crons as $cron_key => $cron_value) {
+							foreach ( (array) $cron_value as $hook => $events ) {
+								if(preg_match("/^wp\_fastest\_cache(.*)/", $hook, $id)){
+									if(!$id[1] || preg_match("/^\_(\d+)$/", $id[1])){
+										$wpfc_timeout_number++;
+
+										foreach ( (array) $events as $event_key => $event ) {
+											$schedules = wp_get_schedules();
+
+											if(isset($event["args"]) && isset($event["args"][0])){
+												if($event["args"][0] == '{"prefix":"all","content":"all"}'){
+													if($schedules[$event["schedule"]]["interval"] <= 86400){
+														$exist_cronjob = true;
+													}
+												}
+											}
+										}
+									}
+								}
 							}
+						}
 
-							if(is_dir($mobile_path)){
-								$this->rm_folder_recursively($mobile_path);
-							}
-
-							if(get_option('page_on_front') == $_POST["vc_post_id"]){
-								@unlink($this->getWpContentDir()."/cache/all/index.html");
-								@unlink($this->getWpContentDir()."/cache/wpfc-mobile-cache/index.html");
-							}
-
-							echo '<script>location.reload();</script>';
+						if(!$exist_cronjob){
+							$args = array("prefix" => "all", "content" => "all");
+							wp_schedule_event(time(), "onceaday", "wp_fastest_cache_".$wpfc_timeout_number, array(json_encode($args)));
 						}
 					}
 				}
@@ -429,8 +440,11 @@ GNU General Public License for more details.
 				add_action('admin_menu', array($this, 'register_my_custom_menu_page'));
 			}
 
-			wp_enqueue_script("wpfc-toolbar", plugins_url("wp-fastest-cache/js/toolbar.js"), array(), time(), true);
+			add_action('admin_enqueue_scripts', array($this, 'load_toolbar_js'));
+		}
 
+		public function load_toolbar_js(){
+			wp_enqueue_script("wpfc-toolbar", plugins_url("wp-fastest-cache/js/toolbar.js"), array(), time(), true);
 		}
 
 		public function load_admin_toolbar(){
@@ -1349,6 +1363,23 @@ GNU General Public License for more details.
 			}
 
 			return $matches[0];
+		}
+
+		public function read_file($url){
+			if(!preg_match("/\.php/", $url)){
+				$url = preg_replace("/\?.*/", "", $url);
+				$path = preg_replace("/.+\/wp-content\/(.+)/", WPFC_WP_CONTENT_DIR."/"."$1", $url);
+
+				if(file_exists($path)){
+					$myfile = fopen($path, "r") or die("Unable to open file!");
+					$data = fread($myfile, filesize($path));
+					fclose($myfile);
+
+					return $data;
+				}
+			}
+
+			return false;
 		}
 	}
 

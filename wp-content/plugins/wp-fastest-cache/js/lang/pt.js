@@ -64,7 +64,7 @@ window.wpfc.dictionary = {
    "Mobile" : "Modo Móvel",
    "Image Optimization" : "Otimização de Imagens",
    "Optimize Image Tool" : "Ferramenta de Otimização de Imagens",
-   "All JPEG" : "Todos os JPEG",
+   "All" : "Todos",
    "Pending" : "Pendente",
    "Errors" : "Erros",
    "Optimized Images" : "Imagens Otimizadas",
