@@ -5,7 +5,7 @@
 		private $startTime;
 		private $blockCache = false;
 		private $err = "";
-		private $cacheFilePath = "";
+		public $cacheFilePath = "";
 
 		public function __construct(){
 			//to fix: PHP Notice: Undefined index: HTTP_USER_AGENT
@@ -22,7 +22,7 @@
 
 		public function set_cache_file_path(){
 
-			if($this->isMobile()){
+			if($this->isMobile() && isset($this->options->wpFastestCacheMobile)){
 				if(class_exists("WpFcMobileCache") && isset($this->options->wpFastestCacheMobileTheme)){
 					$wpfc_mobile = new WpFcMobileCache();
 					$this->cacheFilePath = $this->getWpContentDir()."/cache/".$wpfc_mobile->get_folder_name()."".$_SERVER["REQUEST_URI"];
@@ -43,7 +43,6 @@
 			}
 
 			$this->cacheFilePath = $this->cacheFilePath ? rtrim($this->cacheFilePath, "/")."/" : "";
-
 		}
 
 		public function set_cdn(){
@@ -137,7 +136,7 @@
 				}
 
 				if($this->exclude_page()){
-					echo "<!-- Wp Fastest Cache: Exclude Page -->"."\n";
+					//echo "<!-- Wp Fastest Cache: Exclude Page -->"."\n";
 					return 0;
 				}
 
@@ -210,8 +209,10 @@
 				if(preg_match("/page-id-(\d+)/", $buffer, $page_id)){
 					if(function_exists("wc_get_page_id")){
 						$woocommerce_ids = array();
+
+						//wc_get_page_id('product')
 						
-						array_push($woocommerce_ids, wc_get_page_id('cart'), wc_get_page_id('checkout'), wc_get_page_id('receipt'), wc_get_page_id('confirmation'), wc_get_page_id('product'));
+						array_push($woocommerce_ids, wc_get_page_id('cart'), wc_get_page_id('checkout'), wc_get_page_id('receipt'), wc_get_page_id('confirmation'), wc_get_page_id('product-category'));
 
 						if (in_array($page_id[1], $woocommerce_ids)) {
 							return true;
@@ -219,7 +220,9 @@
 					}
 				}
 
-				array_push($list, "\/cart", "\/checkout", "\/receipt", "\/confirmation", "\/product", "\/wc-api\/");
+				//"\/product"
+
+				array_push($list, "\/cart", "\/checkout", "\/receipt", "\/confirmation", "\/product-category", "\/wc-api\/");
 			}
 
 			if(preg_match("/".implode("|", $list)."/i", $_SERVER["REQUEST_URI"])){
@@ -311,6 +314,8 @@
 				return $buffer."<!-- not cached -->";
 			}else if($this->checkHtml($buffer)){
 				return $buffer."<!-- html is corrupted -->";
+			}else if((function_exists("http_response_code")) && (http_response_code() == 301 || http_response_code() == 302)){
+				return $buffer;
 			}else{				
 				$content = $buffer;
 
@@ -390,7 +395,11 @@
 					}
 
 					if(isset($this->options->wpFastestCacheRenderBlocking) && method_exists("WpFastestCachePowerfulHtml", "render_blocking")){
-						$content = $powerful_html->render_blocking($content);
+						if(isset($this->options->wpFastestCacheRenderBlockingCss)){
+							$content = $powerful_html->render_blocking($content, true);
+						}else{
+							$content = $powerful_html->render_blocking($content);
+						}
 					}
 					
 					$content = str_replace("<!--WPFC_FOOTER_START-->", "", $content);
@@ -399,7 +408,7 @@
 						$this->createFolder($this->cacheFilePath, $content);
 					}
 					
-					return $buffer."<!-- need to refresh to see cached version -->";
+					return $content."<!-- need to refresh to see cached version -->";
 				}
 			}
 		}
@@ -494,17 +503,6 @@
 							if (@mkdir($cachFilePath, 0755, true)){
 
 								file_put_contents($cachFilePath."/".$prefix."index.".$extension, $buffer);
-
-								if(defined("WPFC_GZIP_FOR_COMBINED_FILES") && WPFC_GZIP_FOR_COMBINED_FILES){
-									if($gzip){
-										if(in_array($extension, array("css", "js"))){
-											$zp = gzopen($cachFilePath."/".$prefix."index.".$extension.".gz", "w9");
-											gzwrite($zp, $buffer);
-											gzclose($zp);
-										}
-									}
-								}
-		
 								
 								if(class_exists("WpFastestCacheStatics")){
 									if(!preg_match("/After\sCache\sTimeout/i", $_SERVER['HTTP_USER_AGENT'])){
@@ -564,24 +562,17 @@
 		}
 
 		public function isMobile(){
-			if(preg_match("/.*".$this->getMobileUserAgents().".*/i", $_SERVER['HTTP_USER_AGENT'])){
-				return true;
-			}else{
-				return false;
+			foreach ($this->get_mobile_browsers() as $value) {
+				if(preg_match("/".$value."/i", $_SERVER['HTTP_USER_AGENT'])){
+					return true;
+				}
 			}
-		}
-		public function isPluginActive( $plugin ) {
-			return in_array( $plugin, (array) get_option( 'active_plugins', array() ) ) || $this->isPluginActiveForNetwork( $plugin );
-		}
-		public function isPluginActiveForNetwork( $plugin ) {
-			if ( !is_multisite() )
-				return false;
 
-			$plugins = get_site_option( 'active_sitewide_plugins');
-			if ( isset($plugins[$plugin]) )
-				return true;
-
-			return false;
+			foreach ($this->get_operating_systems() as $key => $value) {
+				if(preg_match("/".$value."/i", $_SERVER['HTTP_USER_AGENT'])){
+					return true;
+				}
+			}
 		}
 
 		public function checkWoocommerceSession(){

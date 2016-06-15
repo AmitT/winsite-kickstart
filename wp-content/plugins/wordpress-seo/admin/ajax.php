@@ -19,7 +19,7 @@ if ( ! defined( 'WPSEO_VERSION' ) ) {
  * @param array $results Results array for encoding.
  */
 function wpseo_ajax_json_echo_die( $results ) {
-	echo WPSEO_Utils::json_encode( $results );
+	echo wp_json_encode( $results );
 	die();
 }
 
@@ -322,6 +322,9 @@ function wpseo_upsert_new( $what, $post_id, $new, $original ) {
  * Create an export and return the URL
  */
 function wpseo_get_export() {
+	if ( ! current_user_can( 'manage_options' ) ) {
+		die( '-1' );
+	}
 
 	$include_taxonomy = ( filter_input( INPUT_POST, 'include_taxonomy' ) === 'true' );
 	$export           = new WPSEO_Export( $include_taxonomy );
@@ -355,8 +358,12 @@ function ajax_get_keyword_usage() {
 	$post_id = filter_input( INPUT_POST, 'post_id' );
 	$keyword = filter_input( INPUT_POST, 'keyword' );
 
+	if ( ! current_user_can( 'edit_post', $post_id ) ) {
+		die( '-1' );
+	}
+
 	wp_die(
-		WPSEO_Utils::json_encode( WPSEO_Meta::keyword_usage( $keyword, $post_id ) )
+		wp_json_encode( WPSEO_Meta::keyword_usage( $keyword, $post_id ) )
 	);
 }
 
@@ -368,15 +375,25 @@ add_action( 'wp_ajax_get_focus_keyword_usage',  'ajax_get_keyword_usage' );
 function ajax_get_term_keyword_usage() {
 	$post_id = filter_input( INPUT_POST, 'post_id' );
 	$keyword = filter_input( INPUT_POST, 'keyword' );
-	$taxonomy = filter_input( INPUT_POST, 'taxonomy' );
+	$taxonomyName = filter_input( INPUT_POST, 'taxonomy' );
 
-	$usage = WPSEO_Taxonomy_Meta::get_keyword_usage( $keyword, $post_id, $taxonomy );
+	$taxonomy = get_taxonomy( $taxonomyName );
+
+	if ( ! $taxonomy ) {
+		wp_die( 0 );
+	}
+
+	if ( ! current_user_can( $taxonomy->cap->edit_terms ) ) {
+		wp_die( -1 );
+	}
+
+	$usage = WPSEO_Taxonomy_Meta::get_keyword_usage( $keyword, $post_id, $taxonomyName );
 
 	// Normalize the result so it it the same as the post keyword usage AJAX request.
 	$usage = $usage[ $keyword ];
 
 	wp_die(
-		WPSEO_Utils::json_encode( $usage )
+		wp_json_encode( $usage )
 	);
 }
 

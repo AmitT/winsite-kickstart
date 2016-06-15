@@ -74,10 +74,12 @@
 						$cachFilePath = WPFC_WP_CONTENT_DIR."/cache/wpfc-minified/".$combined_name;
 						$cssLink = str_replace(array("http:", "https:"), "", content_url())."/cache/wpfc-minified/".$combined_name;
 
+						$GLOBALS["wp_fastest_cache"]->images_in_css["name"] = $GLOBALS["wp_fastest_cache"]->images_in_css["name"].$cachFilePath;
+
 						if(is_dir($cachFilePath)){
 							if($cssFiles = @scandir($cachFilePath, 1)){
 
-								$cssFiles[0] = preg_replace("/\.gz$/", "", $cssFiles[0]);
+								$this->set_images_in_css(false);
 
 								$combined_link = '<link rel="stylesheet" type="text/css" href="'.$cssLink."/".$cssFiles[0].'" media="'.$group_value[0]["media"].'"/>';
 							}
@@ -91,15 +93,14 @@
 									$combined_css = preg_replace_callback("/(url)\(([^\)]+)\)/i", array($this->wpfc, 'cdn_replace_urls'), $combined_css);
 								}
 
+								$this->set_images_in_css($combined_css);
+
 								$this->wpfc->createFolder($cachFilePath, $combined_css, "css", time(), true);
-							}
-
-							if(is_dir($cachFilePath)){
-								if($cssFiles = @scandir($cachFilePath, 1)){
-
-									$cssFiles[0] = preg_replace("/\.gz$/", "", $cssFiles[0]);
-									
-									$combined_link = '<link rel="stylesheet" type="text/css" href="'.$cssLink."/".$cssFiles[0].'" media="'.$group_value[0]["media"].'"/>';
+								
+								if(is_dir($cachFilePath)){
+									if($cssFiles = @scandir($cachFilePath, 1)){
+										$combined_link = '<link rel="stylesheet" type="text/css" href="'.$cssLink."/".$cssFiles[0].'" media="'.$group_value[0]["media"].'"/>';
+									}
 								}
 							}
 						}
@@ -159,10 +160,14 @@
 							$minifiedCss = $this->minify($href);
 
 							if($minifiedCss){
+								$this->set_images_in_css($minifiedCss["cssContent"]);
+
 								$prefixLink = str_replace(array("http:", "https:"), "", $minifiedCss["url"]);
 								$text = preg_replace("/href\=[\"\'][^\"\']+[\"\']/", "href='".$prefixLink."'", $text);
 
 								$this->html = substr_replace($this->html, $text, $value["start"], ($value["end"] - $value["start"] + 1));
+
+								$GLOBALS["wp_fastest_cache"]->images_in_css["name"] = $GLOBALS["wp_fastest_cache"]->images_in_css["name"].md5($minifiedCss["url"]);
 							}
 						}
 					}
@@ -397,6 +402,17 @@
 			}
 
 			return $matches[0];
+		}
+
+		public function set_images_in_css($css_content = false){
+			if($css_content){
+				preg_match_all("/url\(([^\)]*)\)/i", $css_content, $out);
+
+				if(isset($out) && isset($out[1]) && isset($out[1][0])){
+					$GLOBALS["wp_fastest_cache"]->images_in_css["images"] = array_merge($GLOBALS["wp_fastest_cache"]->images_in_css["images"], array_unique($out[1]));
+					$GLOBALS["wp_fastest_cache"]->images_in_css["images"] = array_unique($GLOBALS["wp_fastest_cache"]->images_in_css["images"]);
+				}
+			}
 		}
 
 		protected $_inHack = false;

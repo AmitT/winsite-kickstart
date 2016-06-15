@@ -313,6 +313,8 @@
 						var prefix = clone_modal.find("select").attr("name", "wpfc-exclude-rule-prefix").val();
 						var content = clone_modal.find("input").attr("name", "wpfc-exclude-rule-content").val();
 
+						content = self.remove_host_name(content); 
+
 						if(self.is_empty_values(prefix, content)){
 							self.add_line(number + 1, {"prefix" : prefix, "content" : content});
 
@@ -331,12 +333,14 @@
 			});
 		},
 		save: function(callback){
-			var rule_number, prefix, content, rule, rules = [];
+			var self = this, rule_number, prefix, content, rule, rules = [];
 
 			jQuery("form div.wpfc-exclude-rule-line").each(function(i, e){
 				rule_number = jQuery(e).attr("wpfc-exclude-rule-number");
 				prefix = jQuery(e).find("select").val();
 				content = jQuery(e).find("input").val();
+
+				content = self.remove_host_name(content); 
 
 				rules.push({"prefix" : prefix, "content" : content});
 			});
@@ -400,6 +404,13 @@
 			}
 			
 			return false;
+		},
+		remove_host_name: function(content){
+			//to replace the urls which start with http:// or www. or with Host_Name
+			content = content.replace(new RegExp('.*' + location.hostname.replace(/www\./, "") + "\/", "gi"), "");
+			content = content.replace(/\/$/, "");
+
+			return content;
 		}
 	};
 </script>

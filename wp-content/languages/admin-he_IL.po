@@ -26,7 +26,7 @@ msgid "0"
 msgstr "Asia/Jerusalem"
 
 #. translators: %s: wp_add_inline_script()
-#: wp-admin/about.php:163
+#: wp-admin/about.php:166
 msgid "Better support has been added for script header/footer dependencies. New %s enables adding extra code to registered scripts."
 msgstr "תמיכה משופרת לתלות של סקריפטים בהדר/פוטר. הפונקציה החדשה %s מאפשרת להוסיף קוד נוסף לסקריפטים רשומים."
 
@@ -39,98 +39,98 @@ msgid "Release Deputy"
 msgstr "סגן מפתח מוביל בגרסה זו"
 
 #. translators: %s: URL to customizer
-#: wp-admin/about.php:83
+#: wp-admin/about.php:86
 msgid "Preview mobile, tablet, and desktop views directly in the <a href=\"%s\" class=\"load-customize\">customizer</a>."
 msgstr "תצוגה מקדימה במובייל, טאבלט ודסקטופ, <a href=\"%s\" class=\"load-customize\">במסך ההתאמה</a>."
 
-#: wp-admin/about.php:87
+#: wp-admin/about.php:90
 msgid "Preview mobile, tablet, and desktop views directly in the customizer."
 msgstr "תצוגה מקדימה במובייל, טאבלט ודסקטופ, הישר ממסך ההתאמה."
 
-#: wp-admin/about.php:77
+#: wp-admin/about.php:80
 msgid "Make sure your site looks great on all screens!"
 msgstr "וודאו שהאתר נראה טוב בכל המסכים!"
 
 #. translators: %s: URL to the development post of the new feature
-#: wp-admin/about.php:173
+#: wp-admin/about.php:176
 msgid "Embed templates have been split into parts and can be <a href=\"%s\">directly overridden by themes</a> via the template hierarchy."
 msgstr "תבניות הטמעה פוצלו למספר חלקים ועכשיו <a href=\"%s\">תבניות יכולות להחליף אותן</a> באמצעות היררכיית הקבצים."
 
-#: wp-admin/about.php:169
+#: wp-admin/about.php:172
 msgid "Better Embed Templates"
 msgstr "תבניות הטמעה משופרות"
 
 #. translators: 1: URL to Menus section of the customizer, 2: URL to Widgets
 #. section of the customizer
-#: wp-admin/about.php:133
+#: wp-admin/about.php:136
 msgid "See it in action with <a href=\"%1$s\" class=\"load-customize\">Menus</a> or <a href=\"%2$s\" class=\"load-customize\">Widgets</a>."
 msgstr "ראו זאת בפעולה ב<a href=\"%1$s\" class=\"load-customize\">תפריטים</a> או ב<a href=\"%2$s\" class=\"load-customize\">וידג'טים</a>."
 
-#: wp-admin/about.php:152
+#: wp-admin/about.php:155
 msgid "JavaScript Library Updates"
 msgstr "עדכון ספריות ג'אווה סקריפט"
 
-#: wp-admin/about.php:153
+#: wp-admin/about.php:156
 msgid "jQuery 1.12.3, jQuery Migrate 1.4.0, Backbone 1.2.3, and Underscore 1.8.3 are bundled."
 msgstr "jQuery 1.12.3, jQuery Migrate 1.4.0, Backbone 1.2.3, Underscore 1.8.3 כולן ארוזות."
 
-#: wp-admin/about.php:159
+#: wp-admin/about.php:162
 msgid "Script Loader Improvements"
 msgstr "שיפורים בטעינת סקריפטים"
 
 #. translators: %s: URL to the development post of the new feature
-#: wp-admin/about.php:120
+#: wp-admin/about.php:123
 msgid "The customizer now supports a <a href=\"%s\">comprehensive framework</a> for rendering parts of the preview without rewriting your PHP code in JavaScript."
 msgstr "מסך ההתאמה האישית תומך כעת ב<a href=\"%s\">מערכת כוללת</a> המאפשרת עדכון של חלקים מהתצוגה המקדימה מבלי שתדרשו לשכפל את קוד ה-PHP בקוד ה-JavaScript שלכם."
 
 #. translators: %s: URL to Menus section of the customizer
-#: wp-admin/about.php:127
+#: wp-admin/about.php:130
 msgid "See it in action with <a href=\"%s\" class=\"load-customize\">Menus</a>."
 msgstr "ראו זאת בפעולה ב<a href=\"%s\" class=\"load-customize\">תפריטים</a>."
 
-#: wp-admin/about.php:103
+#: wp-admin/about.php:106
 msgid "The Twenty Fifteen and Twenty Sixteen themes have been updated to support custom logos, which can be found in the Site Identity section of the customizer."
 msgstr "תבניות ברירת המחדל Twenty Fifteen ו-Twenty Sixteen עודכנו כדי לתמוך בלוגואים."
 
-#: wp-admin/about.php:142
+#: wp-admin/about.php:145
 msgid "Smart Image Resizing"
 msgstr "שינוי גודל תמונה חכם"
 
 #. translators: %s: URL to the development post of the new feature
-#: wp-admin/about.php:146
+#: wp-admin/about.php:149
 msgid "Generated images now load up to 50&#37; faster with no noticeable quality loss. <a href=\"%s\">It&#8217;s really cool</a>."
 msgstr "התמונות שנוצרות נטענות עד 50% מהר יותר ללא אובדן איכות מורגש. <a href=\"%s\">זה פשוט מדהים</a>."
 
-#: wp-admin/about.php:116
+#: wp-admin/about.php:119
 msgid "Selective Refresh"
 msgstr "רענון סלקטיבי"
 
 #. translators: %s: URL to Site Identity section of the customizer
-#: wp-admin/about.php:99
+#: wp-admin/about.php:102
 msgid "Your theme supports custom logos! Try it out right now in the <a href=\"%s\" class=\"load-customize\">Site Identity</a> section of the customizer."
 msgstr "התבנית שלך תומכת בלוגואים! ניתן לנסות עכשיו, במסך ההתאמה, תחת <a href=\"%s\" class=\"load-customize\">פרטי אתר</a>."
 
-#: wp-admin/about.php:93
+#: wp-admin/about.php:96
 msgid "Custom Logos"
 msgstr "לוגו מותאם"
 
-#: wp-admin/about.php:94
+#: wp-admin/about.php:97
 msgid "Themes can now support logos for your business or brand."
 msgstr "מעתה, תבניות יכולות לתמוך בלוגואים עבור עסקים או מותגים."
 
-#: wp-admin/about.php:66
+#: wp-admin/about.php:69
 msgid "Do you enjoy using formatting shortcuts for lists and headings? Now they&#8217;re even more useful, with horizontal lines and <code>&lt;code&gt;</code>."
 msgstr "האם נהנתם להשתמש בקיצרי עיצוב ליצירת כותרות ורשימות? עכשיו תוכלו ליצור קו אופקי וגם <code>&lt;code&gt;</code>."
 
-#: wp-admin/about.php:73
+#: wp-admin/about.php:76
 msgid "Customization Improvements"
 msgstr "מנגנון התאמה משופר"
 
-#: wp-admin/about.php:76
+#: wp-admin/about.php:79
 msgid "Live Responsive Previews"
 msgstr "תצוגה מקדימה רספונסיבית"
 
-#: wp-admin/about.php:61
+#: wp-admin/about.php:64
 msgid "Stay focused on your writing with a less distracting interface that keeps you in place and allows you to easily link to your content."
 msgstr "הישארו ממוקדים בכתיבה. באמצעות ממשק ללא הסחות דעת, המחזיק אתכם במקום אחד ומאפשר לקשר בקלות לתוכן שלכם."
 
@@ -138,11 +138,11 @@ msgstr "הישארו ממוקדים בכתיבה. באמצעות ממשק ללא
 msgid "Thank you for updating! WordPress %s streamlines your workflow, whether you&#8217;re writing or building your site."
 msgstr "תודה ששדרגת! וורדפרס %s מייעלת את זרימת העבודה, בין אם אתם כותבים תוכן או בונים אתרים."
 
-#: wp-admin/about.php:57
+#: wp-admin/about.php:60
 msgid "Editing Improvements"
 msgstr "שיפורים בעריכה"
 
-#: wp-admin/about.php:60
+#: wp-admin/about.php:63
 msgid "Inline Linking"
 msgstr "קישורים מובנים בעורך"
 
@@ -636,7 +636,7 @@ msgid "(Currently set to: %s)"
 msgstr "(מוגדר עבור: %s)"
 
 #. translators: %s: WordPress version number
-#: wp-admin/about.php:208
+#: wp-admin/about.php:211
 msgid "<strong>Version %s</strong> addressed one security issue."
 msgstr "<strong>גרסה %s</strong> מטפלת בסוגיית אבטחה אחת."
 
@@ -658,15 +658,15 @@ msgstr "https://he.gravatar.com/"
 msgid "Profile Picture"
 msgstr "צלמית משתמש"
 
-#: wp-admin/about.php:199
+#: wp-admin/about.php:202
 msgid "Maintenance Releases"
 msgstr "גרסת תחזוקה"
 
-#: wp-admin/about.php:202
+#: wp-admin/about.php:205
 msgid "Security Releases"
 msgstr "גרסת אבטחה"
 
-#: wp-admin/about.php:205
+#: wp-admin/about.php:42 wp-admin/about.php:208
 msgid "Maintenance and Security Releases"
 msgstr "גרסת אבטחה ותחזוקה"
 
@@ -1254,7 +1254,7 @@ msgstr "בתגובה על %s."
 msgid "The current theme does not support uploading a custom header image."
 msgstr "התבנית אינה תומכת בהעלאת תמונות כותרת."
 
-#: wp-admin/about.php:65
+#: wp-admin/about.php:68
 msgid "Formatting Shortcuts"
 msgstr "קיצורי עיצוב"
 
@@ -5018,27 +5018,27 @@ msgstr "הצג סרגל כלים כשצופים באתר"
 
 #. translators: 1: WordPress version number, 2: plural number of bugs. Singular
 #. security issue.
-#: wp-admin/about.php:217
+#: wp-admin/about.php:220
 msgid "<strong>Version %1$s</strong> addressed a security issue and fixed %2$s bug."
 msgid_plural "<strong>Version %1$s</strong> addressed a security issue and fixed %2$s bugs."
 msgstr[0] "<strong>גרסה %1$s</strong> מטפלת בסוגיית אבטחה ובתקלה %2$s."
 msgstr[1] "<strong>גרסה %1$s</strong> מטפלת בסוגיית אבטחה וב-%2$s תקלות."
 
 #. translators: %s: Codex URL
-#: wp-admin/about.php:45 wp-admin/about.php:225
+#: wp-admin/about.php:44 wp-admin/about.php:48 wp-admin/about.php:228
 msgid "For more information, see <a href=\"%s\">the release notes</a>."
 msgstr "למידע נוסף, ראו <a href=\"%s\">הודעת שחרור</a>."
 
 #. translators: 1: WordPress version number, 2: plural number of bugs. More
 #. than one security issue.
-#: wp-admin/about.php:221
+#: wp-admin/about.php:224
 msgid "<strong>Version %1$s</strong> addressed some security issues and fixed %2$s bug."
 msgid_plural "<strong>Version %1$s</strong> addressed some security issues and fixed %2$s bugs."
 msgstr[0] "<strong>גרסה %1$s</strong> מטפלת במספר סוגיות אבטחה ובתקלה %2$s."
 msgstr[1] "<strong>גרסה %1$s</strong> מטפלת במספר סוגיות אבטחה וב-%2$s תקלות."
 
 #. translators: 1: WordPress version number, 2: plural number of bugs.
-#: wp-admin/about.php:43 wp-admin/about.php:213
+#: wp-admin/about.php:46 wp-admin/about.php:216
 msgid "<strong>Version %1$s</strong> addressed %2$s bug."
 msgid_plural "<strong>Version %1$s</strong> addressed %2$s bugs."
 msgstr[0] "<strong>גרסה %1$s</strong> מטפלת בתקלה %2$s."
@@ -5048,7 +5048,7 @@ msgstr[1] "<strong>גרסה %1$s</strong> מטפלת ב-%2$s תקלות."
 msgid "Welcome to your WordPress Dashboard! This is the screen you will see when you log in to your site, and gives you access to all the site management features of WordPress. You can get help for any screen by clicking the Help tab in the upper corner."
 msgstr "ברוכים הבאים ללוח הבקרה של וורדפרס! מסך זה יוצג עם ההתחברות לאתר, הוא נותן גישה לכל תכונות הניהול באתר. ניתן לקבל עזרה עבור כל מסך על ידי לחיצה על הלשונית עזרה."
 
-#: wp-admin/about.php:204
+#: wp-admin/about.php:207
 msgid "Maintenance and Security Release"
 msgstr "גרסת אבטחה ותחזוקה"
 
@@ -5056,16 +5056,16 @@ msgstr "גרסת אבטחה ותחזוקה"
 msgid "What&#8217;s New"
 msgstr "מה חדש"
 
-#: wp-admin/about.php:201
+#: wp-admin/about.php:204
 msgid "Security Release"
 msgstr "גרסת אבטחה"
 
-#: wp-admin/about.php:42 wp-admin/about.php:198
+#: wp-admin/about.php:201
 msgid "Maintenance Release"
 msgstr "גרסת תחזוקה"
 
 #. translators: %s: WordPress version number
-#: wp-admin/about.php:210
+#: wp-admin/about.php:43 wp-admin/about.php:213
 msgid "<strong>Version %s</strong> addressed some security issues."
 msgstr "<strong>גרסה %s</strong> מטפלת בסוגיות אבטחה."
 
@@ -5073,7 +5073,7 @@ msgstr "<strong>גרסה %s</strong> מטפלת בסוגיות אבטחה."
 msgid "This screen allows you to choose your permalink structure. You can choose from common settings or create custom URL structures."
 msgstr "מסך זה מאפשר להגדיר מבנה קישורים רצוי. ניתן לבחור מבין ההגדרות הנפוצות או ליצור מבנה מותאם אישית."
 
-#: wp-admin/about.php:183
+#: wp-admin/about.php:186
 msgid "Return to Updates"
 msgstr "חזרה לשדרוגים"
 
@@ -5365,11 +5365,11 @@ msgstr "כנראה החדרה ישירה של wp-admin/includes/template.php ע�
 msgid "Welcome to WordPress %s"
 msgstr "ברוכים הבאים לוורדפרס %s"
 
-#: wp-admin/about.php:186
+#: wp-admin/about.php:189
 msgid "Go to Dashboard &rarr; Home"
 msgstr "חזרה ללוח הבקרה"
 
-#: wp-admin/about.php:183
+#: wp-admin/about.php:186
 msgid "Return to Dashboard &rarr; Updates"
 msgstr "חזרה לשדרוגים"
 
@@ -5377,7 +5377,7 @@ msgstr "חזרה לשדרוגים"
 msgid "WordPress is created by a worldwide team of passionate individuals."
 msgstr "וורדפרס נוצרה על ידי אנשים בעלי תשוקה מכל רחבי העולם."
 
-#: wp-admin/about.php:112
+#: wp-admin/about.php:115
 msgid "Under the Hood"
 msgstr "מאחורי הקלעים"
 
@@ -7386,7 +7386,7 @@ msgid_plural "Must-Use <span class=\"count\">(%s)</span>"
 msgstr[0] "תוספים אוטומטיים <span class=\"count\">(%s)</span>"
 msgstr[1] "תוספים אוטומטיים <span class=\"count\">(%s)</span>"
 
-#: wp-admin/about.php:186
+#: wp-admin/about.php:189
 msgid "Go to Dashboard"
 msgstr "חזרה ללוח הבקרה"
 

@@ -48,6 +48,30 @@
 					<label class="mc-input-label" style="margin-right: 5px;"><input type="checkbox"></label>
 					<label>Tags</label>
 				</div> -->
+
+				<div class="wiz-input-cont" style="width: 91% !important;margin-bottom: 0px !important;">
+					<label class="mc-input-label" style="float:left;">
+						<table id="wpfc-form-spinner-preload" class="wpfc-form-spinner" cellpadding="0" cellspacing="0" border="0" height="20" width="70" style="border: 1px solid rgb(204, 204, 204); border-collapse: collapse; background: rgb(255, 255, 255);">
+							<tbody>
+								<tr>
+									<td class="wpfc-form-spinner-input-td" rowspan="2" style="padding-right: 2px;height: 100%;">
+										<div class="wpfc-form-spinner-number" style="height: 100%; width: 100%; border: none; padding: 0px; font-size: 14px; text-align: center; outline: none;padding-top:7px;"><?php echo $wpFastestCachePreload_number; ?></div>
+										<input type="hidden" class="wpfc-form-spinner-input" name="wpFastestCachePreload_number" value="<?php echo $wpFastestCachePreload_number; ?>" />
+									</td>
+									<td class="wpfc-form-spinner-up" style="height: 15px; cursor: default; text-align: center; width: 12px; font-size: 9px; padding-left: 4px; padding-right: 8px; border: 1px solid rgb(204, 204, 204); background: rgb(245, 245, 245);">
+										<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAAFCAQAAAAjkz5TAAAACXBIWXMAAAsTAAALEwEAmpwYAAAABGdBTUEAANjr9RwUqgAAACBjSFJNAABtmAAAc44AAPfgAACDwQAAbsQAAOKFAAAxZAAAGGNUHM53AAAAVklEQVR42gTBIQqAMACG0f8YSwPvZRIMxtVlESwWk8EyUJSFIR7Eg1h1xs/3hNBp4h0sQkLJrF9kzL1FiiY8GwcTPrtC87uQ2Al01JcGWjyOhooy/wMANWktnmvt+MQAAAAASUVORK5CYII=" align="right">
+									</td>
+								</tr>
+								<tr>
+									<td class="wpfc-form-spinner-down" style="height: 15px; cursor: default; text-align: center; width: 12px; font-size: 9px; padding-left: 4px; padding-right: 8px; border: 1px solid rgb(204, 204, 204); background: rgb(245, 245, 245);">
+										<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAAFCAQAAAAjkz5TAAAACXBIWXMAAAsTAAALEwEAmpwYAAAABGdBTUEAANjr9RwUqgAAACBjSFJNAABtmAAAc44AAPfgAACDwQAAbsQAAOKFAAAxZAAAGGNUHM53AAAAWElEQVR42gBLALT/AMD/uv+z/6v/ov+Y/472ALf1uv+//7n/s/+c/3/PAKsYovSo/7H/mf969nEhAP8AkxiJ95T/dvZtHv8AAP8A/wB6GHHraR7/AP8AAwCoUy51Bie9nwAAAABJRU5ErkJggg==" align="right">
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</label>
+					<label style="float:left;margin-left:8px;padding-top:4px;">pages per minute</label>
+				</div>
 			</div>
 		</div>
 		<div class="window-buttons-wrapper" style="padding: 0px; display: inline-block; width: 100%; border-top: 1px solid rgb(255, 255, 255); background: none repeat scroll 0px 0px rgb(222, 222, 222); z-index: 999; position: relative; text-align: right; border-radius: 0px 0px 3px 3px;">

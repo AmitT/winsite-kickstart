@@ -115,5 +115,10 @@ window.wpfc.dictionary = {
 	"You can decrease the size of js files" : "JS dosyalarının boyununu küçültebilirsiniz",
 	"Render Blocking Js" : "Oluşturma Engelleyici Js",
 	"Remove render-blocking JavaScript" : "Oluşturma engelleyici JavaScript'i kaldırın",
+	"Preload" : "Önyükleme",
+	"Create the cache of all the site automatically" : "Tüm sitenin cache'ini otomatik oluştur",
+	"CDN Settings" : "CDN Ayarları",
+	"Add New Rule" : "Yeni Kural Ekle",
+	"Timeout Rules" : "Zaman Aşımı Kuralları",
 	"Eliminate render-blocking JavaScript and CSS in above-the-fold content" : "Oluşturmayı önleyen JavaScript ve CSS kodlarını ekranın üst kısmındaki içerikten kaldırın"
 };

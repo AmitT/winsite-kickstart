@@ -25,6 +25,9 @@ Cache system generates a static html file and saves. Other users reach to static
 <br><br>
 Setup of this plugin is so easy. You don't need to modify the .htacces file. It will be modified automatically.
 
+<h4>Multisite Support</h4>
+Wpfc does not support Wordpress Multisite yet.
+
 <h4>Features</h4>
 
 1. Mod_Rewrite which is the fastest method is used in this plugin
@@ -89,6 +92,12 @@ Setup of this plugin is so easy. You don't need to modify the .htacces file. It 
 10. CDN
 
 == Changelog ==
+
+= 0.8.5.8 =
+* to remove hostname from exclude rule
+* to fix file cache problem
+* to change the mobile user-agents
+* to fix Wordfence Security report
 
 = 0.8.5.7 =
 * <strong>[FEATURE]</strong> Preload

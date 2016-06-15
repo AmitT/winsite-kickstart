@@ -511,5 +511,6 @@ span.deleteicon span.cleared {
     height: 180px;
     text-align: center;
 }
+.wpfc-form-spinner, .wpfc-form-spinner-input-td, .wpfc-form-spinner-number, .wpfc-form-spinner-up, .wpfc-form-spinner-down{-webkit-touch-callout:none;-webkit-user-select:none;-khtml-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;}
 
 /* input[type=checkbox]:checked:before {  color: #e14d43;} */

@@ -18,6 +18,11 @@ jQuery( document ).ready(function() {
 			dataType : "json",
 			cache: false, 
 			success: function(data){
+				if(data[1] == "error"){
+					Wpfc_New_Dialog.dialog("wpfc-modal-permission", {close: "default"});
+					Wpfc_New_Dialog.show_button("close");
+				}
+
 				if(typeof WpFcCacheStatics != "undefined"){
 					WpFcCacheStatics.update();
 				}else{
