@@ -19,7 +19,7 @@ window.wpfc.dictionary = {
 	"Cache System"            :  "Cache systeem",
 	"Enable"                  :  "Activeer",
 	"New Post"                :  "Nieuwe post",
-	"Clear all cache files when a post or page is published" :  "Wis alle cache-bestanden wanneer er een post of pagina wordt gepubliceerd",
+	"Clear cache files when a post or page is published" :  "Wis cache-bestanden wanneer er een post of pagina wordt gepubliceerd",
 	"Submit"  				  :  "Verzenden",
 	"Delete Now" 			  :  "Verwijder nu",
 	"You can delete all cache files" :  "U kunt alle cache bestanden te verwijderen",

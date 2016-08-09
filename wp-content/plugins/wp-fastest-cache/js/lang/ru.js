@@ -31,7 +31,7 @@ window.wpfc.dictionary = {
 	"Cache System"	: "Кэширование",
 	"Enable"	: "Включено",
 	"New Post"	: "Новая запись",
-	"Clear all cache files when a post or page is published"	: "Очищать кэш при публикации новой записи или страницы",
+	"Clear cache files when a post or page is published"	: "Очищать кэш при публикации новой записи или страницы",
 	"Submit"	: "Сохранить настройки",
 	"Delete Now"	: "Очистить сейчас",
 	"You can delete all cache files"	: "Нажмите, чтобы удалить все файлы кэша.",

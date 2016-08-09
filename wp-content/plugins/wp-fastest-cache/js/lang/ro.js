@@ -19,7 +19,7 @@ window.wpfc.dictionary = {
 	"Cache System"            :  "Sistem cache",
 	"Enable"                  :  "Activeaza",
 	"New Post"                :  "Post nou",
-	"Clear all cache files when a post or page is published" :  "Sterge tot cache-ul cand un post sau o pagina sunt publicate",
+	"Clear cache files when a post or page is published" :  "Sterge cache-ul cand un post sau o pagina sunt publicate",
 	"Submit"  				  :  "Trimite",
 	"Delete Now" 			  :  "Sterge acum",
 	"You can delete all cache files" :  "Poti goli cache-ul",

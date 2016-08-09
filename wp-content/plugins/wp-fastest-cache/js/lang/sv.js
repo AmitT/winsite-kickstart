@@ -19,7 +19,7 @@ window.wpfc.dictionary = {
     "Cache System"            :  "Cache System" ,
     "Enable"                  :  "Aktivera" ,
     "New Post"                :  "Nytt inlägg" ,
-    "Clear all cache files when a post or page is published" :  "Töm all cache när ett inlägg eller en sida publiceras" ,
+    "Clear all cache files when a post or page is published" :  "Töm cache när ett inlägg eller en sida publiceras" ,
     "Submit"                    :  "Skicka" ,
     "Delete Now"               :  "Radera nu" ,
     "You can delete all cache files" :  "Du kan radera alla cachade filer" ,

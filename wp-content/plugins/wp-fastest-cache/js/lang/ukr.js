@@ -19,7 +19,7 @@ window.wpfc.dictionary = {
 	"Cache System" : "Кеш Системи",
 	"Enable" : "Включити",
 	"New Post" : "Новий Пост",
-	"Clear all cache files when a post or page is published" : "Видалити всі файли кешу, коли пост або сторінка опубліковани",
+	"Clear cache files when a post or page is published" : "Видалити всі файли кешу, коли пост або сторінка опубліковани",
 	"Submit" : "Відправити",
 	"Delete Now" : "Видалити Зараз",
 	"You can delete all cache files" : "ви можете видалили всі кешированні файли",

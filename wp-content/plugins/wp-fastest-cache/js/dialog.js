@@ -12,23 +12,31 @@ var Wpfc_Dialog = {
 
 		jQuery("#" + id).position({my: "center", at: "center", of: window});
 
-		jQuery(".close-wiz").click(function(){
-			self.remove();
+		jQuery(".close-wiz").click(function(e){
+			jQuery(e.target).closest("div[id^='wpfc-modal-']").remove();
 		});
 
 		self.show_buttons();
 	},
-	remove: function(){
-		var self = this;
-		jQuery("#" + self.id).remove();
+	remove: function(clone_modal_id){
+		if(typeof clone_modal_id != "undefined"){
+			jQuery("#" + clone_modal_id).remove();
+		}else{
+			var self = this;
+			jQuery("#" + self.id).remove();
+		}
 	},
 	show_buttons: function(){
 		var self = this;
 		if(typeof self.buttons != "undefined"){
 			jQuery.each(self.buttons, function( index, value ) {
 				jQuery("#" + self.id + " button[action='" + index + "']").show();
-				jQuery("#" + self.id + " button[action='" + index + "']").click(function(){
-					value();
+				jQuery("#" + self.id + " button[action='" + index + "']").click(function(e){
+					if(index == "close"){
+						jQuery(e.target).closest("div[id^='wpfc-modal-']").remove();
+					}else{
+						value();
+					}
 				});
 			});
 		}

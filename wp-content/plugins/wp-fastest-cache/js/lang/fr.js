@@ -24,7 +24,7 @@ window.wpfc.dictionary = {
 	"Browser Caching"		  :"Cache du navigateur",
 	"Enable"                  :"Activer", 
 	"New Post"                :"Nouveau message", 
-	"Clear all cache files when a post or page is published" :"Effacer tous les fichiers de cache quand un article ou une page sont publiés",
+	"Clear cache files when a post or page is published" :"Effacer les fichiers de cache quand un article ou une page sont publiés",
 	"Submit"  				  :"Soumettre",
 	"Delete Now" 			  :"Effacer maintenant",
 	"You can delete all cache files" :"Vous pouvez supprimer tous les fichiers du cache",

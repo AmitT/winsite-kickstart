@@ -36,12 +36,26 @@ jQuery( function ($) {
 	WSI_Generetro.newRun = function( ids, $el, cb, i ) {
 		var currentID = ids.shift();
 
-		// iteration
+		// Initial progress bar value before iteration starts
+		var progressValue = 0;
+
+		// Alert before tab / browser closed during the optimization process.
+		window.onbeforeunload = function ( cancelAlert ) {
+		   cancelAlert = cancelAlert || window.event;
+		   // For IE and Firefox prior to version 4
+		   if ( cancelAlert ) {
+		      cancelAlert.returnValue = 'Are you sure you want to stop the optimization proccess?';
+		   }
+		   // For Safari
+		   return 'Are you sure you want to stop the optimization proccess?';
+		};
+
+		// Iteration
 		if ( i === undefined ) {
 			i = 1;
 		}
 
-		// did we end the loop?
+		// Did we end the loop?
 		if ( currentID === undefined ) {
 			return cb();
 		}
@@ -50,13 +64,17 @@ jQuery( function ($) {
 		WSI_Generetro.singleRun( currentID, function() {
 			$('<li>').text('Completed #' + currentID + ' (' + i + '/' + totalImagesToProcess + ')' ).appendTo($el);
 
-			// re-run
+			progressValue = ( i / totalImagesToProcess ) * 100;
+			$( '#progress-bar' ).val( progressValue );
+			$( '#progress-bar span' ).text( progressValue );
+
+			// Re-run
 			WSI_Generetro.newRun( ids, $el, cb, ++i );
 		} );
 	};
 
 	WSI_Generetro.singleRun = function( id, cb ) {
-		// loop ID by ID and run it
+		// Loop ID by ID and run it
 		var payload = {
 			action: 'wsi-regeneretro',
 			id: id

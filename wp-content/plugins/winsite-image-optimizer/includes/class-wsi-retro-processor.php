@@ -99,7 +99,7 @@ class WSI_Retro_Processor {
 	 */
 	public function settings_section_intro() {
 		?>
-		<p><?php _e( 'Control the way Winsite Image Optimizer works via the settings below.', 'wp_revisions_control' ); ?></p>
+		<p id="winsite-image-optimizer"><?php _e( 'Control the way Winsite Image Optimizer works via the settings below.', 'wp_revisions_control' ); ?></p>
 		<?php
 	}
 
@@ -150,10 +150,16 @@ class WSI_Retro_Processor {
 
 
 	public function regenerate_interface() {
+		$username_exists = (bool) $this->get_setting('imageoptim-username');
 		?>
 		<div class="wrap">
-			<?php screen_icon(); ?>
 			<h2><?php esc_html_e( 'Winsite Image Optimizer', 'mimi' ); ?></h2>
+
+			<?php if ( ! $username_exists ) : ?>
+			<div class="error">
+				<p><?php printf( __( 'Hey! Looks like you haven\'t set up your ImageOptim API yet. Head over to the <a href="%s">settings section</a> and follow the instructions there. It\'s easy!', 'wsi-image-optimizer' ), admin_url( 'options-media.php#winsite-image-optimizer' ) ); ?></p>
+			</div>
+			<?php endif; ?>
 
 			<form id="wsi-regeneretro" method="post">
 				<h3><?php esc_html_e( 'Optimize Your Images', 'wsi-image-optimizer' ); ?></h3>
@@ -161,7 +167,8 @@ class WSI_Retro_Processor {
 				<ul class="wsi-file-list"></ul>
 
 				<?php wp_nonce_field( 'wsi-regeneretro' ) ?>
-				<button class="button button-primary" type="submit">Regenerate Retroactive</button>
+				<progress id='progress-bar' max='100'><span></span>%</progress>
+				<button class="button button-primary" <?php echo $username_exists ?: 'disabled'; ?> type="submit"><?php esc_html_e( 'Regenerate Retroactive', 'wsi-image-optimizer' ); ?></button>
 				<span class="status status-finished"><span class="dashicons dashicons-yes"></span> Finished</span>
 				<span class="spinner"></span>
 			</form>
@@ -172,7 +179,7 @@ class WSI_Retro_Processor {
 		#wsi-regeneretro .status-active { display: inline-block; }
 		#wsi-regeneretro .spinner {
 			float: none;
-			display: inline-block;	
+			display: inline-block;
 		}
 		#wsi-regeneretro .status.status-display {
 			display: inline-block;
@@ -181,6 +188,20 @@ class WSI_Retro_Processor {
 			color: green;
 			cursor: default;
 		}
+		#wsi-regeneretro .wsi-file-list {
+			overflow-y: auto;
+			max-height: 35vh;
+		}
+		progress{
+			display: block;
+			margin-bottom: 20px;
+			height: 20px;
+			min-width: 160px;
+		}
+		progress:not([value]) {
+			display: none;
+		}
+
 		</style>
 		<?php
 	}
@@ -229,12 +250,12 @@ class WSI_Retro_Processor {
 
 		$file = wp_handle_sideload( $file_array, $overrides, $time );
 
+		// get image post
+		$image->guid = $file['url'];
+		$image->post_mime_type = $file['type'];
+
 		// update original attachment
-		$ia = wp_insert_attachment( array(
-			'ID'             => $image->ID,
-			'guid'           => $file['url'],
-			'post_mime_type' => $file['type'],
-		), $file['file'] );
+		$ia = wp_insert_attachment( $image, $file['file'] );
 
 		// update in meta that it got processed
 		update_post_meta( $image->ID, '_wsi_photonized', '1' );

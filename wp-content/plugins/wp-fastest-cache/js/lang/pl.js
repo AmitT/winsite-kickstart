@@ -19,7 +19,7 @@ window.wpfc.dictionary = {
     "Cache System"            :  "System buforowania" ,
     "Enable"                  :  "Włącz" ,
     "New Post"                :  "Nowy post" ,
-    "Clear all cache files when a post or page is published" :  "Wyczyść wszystkie zbuforowane pliki, gdy opublikowano nowy post lub stronę" ,
+    "Clear cache files when a post or page is published" :  "Wyczyść zbuforowane pliki, gdy opublikowano nowy post lub stronę" ,
     "Submit"                    :  "Wyślij" ,
     "Delete Now"               :  "Usuń teraz" ,
     "You can delete all cache files" :  "Możesz usunąć wszystkie pliki cache" ,

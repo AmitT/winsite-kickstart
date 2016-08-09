@@ -133,39 +133,12 @@
 							$this->deleteCache(true);
 						}else if($_POST["wpFastestCachePage"] == "cacheTimeout"){
 							$this->addCacheTimeout();
-						}else if($_POST["wpFastestCachePage"] == "exclude"){
-							$this->save_exclude_pages();
 						}
 					}else{
 						die("Forbidden");
 					}
 				}
 			}
-		}
-
-		public function save_exclude_pages(){
-			$rules = array();
-
-			for($i = 1; $i < count($_POST); $i++){
-				$rule = array();
-
-				if(isset($_POST["wpfc-exclude-rule-prefix-".$i]) && $_POST["wpfc-exclude-rule-prefix-".$i] && $_POST["wpfc-exclude-rule-content-".$i]){
-					$rule["prefix"] = $_POST["wpfc-exclude-rule-prefix-".$i];
-					$rule["content"] = $_POST["wpfc-exclude-rule-content-".$i];
-
-					array_push($rules, $rule);
-				}
-			}
-
-			$data = json_encode($rules);
-
-			if(get_option("WpFastestCacheExclude")){
-				update_option("WpFastestCacheExclude", $data);
-			}else{
-				add_option("WpFastestCacheExclude", $data, null, "yes");
-			}
-
-			$this->systemMessage = array("Options have been saved", "success");
 		}
 
 		public function addCacheTimeout(){
@@ -220,7 +193,6 @@
 
 
 			wp_enqueue_script("wpfc-cdn", plugins_url("wp-fastest-cache/js/cdn/cdn.js"), array(), time(), false);
-			//wp_enqueue_script("wpfc-cdn-maxcdn", plugins_url("wp-fastest-cache/js/cdn/maxcdn.js"), array(), time(), false);
 
 
 			wp_enqueue_script("wpfc-language", plugins_url("wp-fastest-cache/js/language.js"), array(), time(), false);
@@ -557,6 +529,12 @@
 				$ifIsNotSecure = "RewriteCond %{HTTPS} !=on";
 			}
 
+			if($this->is_trailing_slash()){
+				$trailing_slash_rule = "RewriteCond %{REQUEST_URI} \/$"."\n";
+			}else{
+				//toDo
+			}
+
 			$data = "# BEGIN WpFastestCache"."\n".
 					"<IfModule mod_rewrite.c>"."\n".
 					"RewriteEngine On"."\n".
@@ -568,6 +546,7 @@
 					"RewriteCond %{REQUEST_METHOD} !POST"."\n".
 					$ifIsNotSecure."\n".
 					"RewriteCond %{REQUEST_URI} !(\/){2}$"."\n".
+					$trailing_slash_rule.
 					"RewriteCond %{QUERY_STRING} !.+"."\n".$loggedInUser.
 					'RewriteCond %{HTTP:Profile} !^[a-z0-9\"]+ [NC]'."\n".$mobile;
 			
@@ -609,32 +588,6 @@
 					"</FilesMatch>"."\n".
 					"# END WpFastestCache"."\n";
 			return preg_replace("/\n+/","\n", $data);
-		}
-
-		public function excludeRules(){
-			$htaccess_rules = "";
-
-			if($rules_json = get_option("WpFastestCacheExclude")){
-				if($rules_json != "null"){
-					$rules_std = json_decode($rules_json);
-
-					foreach ($rules_std as $key => $value) {
-						if($value->prefix == "startwith"){
-							$htaccess_rules = $htaccess_rules."RewriteCond %{REQUEST_URI} !^/".$value->content."\n";
-						}
-
-						if($value->prefix == "contain"){
-							$htaccess_rules = $htaccess_rules."RewriteCond %{REQUEST_URI} !".$value->content."\n";
-						}
-
-						if($value->prefix == "exact"){
-							$htaccess_rules = $htaccess_rules."RewriteCond %{REQUEST_URI} !\/".$value->content."\n";
-						}
-					}
-				}
-			}
-
-			return $htaccess_rules;
 		}
 
 		public function ruleForWpContent(){
@@ -778,6 +731,8 @@
 
 			$wpFastestCacheStatus = isset($this->options->wpFastestCacheStatus) ? 'checked="checked"' : "";
 			$wpFastestCacheTimeOut = isset($this->cronJobSettings["period"]) ? $this->cronJobSettings["period"] : "";
+
+			$wpFastestCacheUpdatePost = isset($this->options->wpFastestCacheUpdatePost) ? 'checked="checked"' : "";
 			?>
 			
 			<div class="wrap">
@@ -837,30 +792,6 @@
 							<?php include(WPFC_MAIN_PATH."templates/update_now.php"); ?>
 
 							<?php include(WPFC_MAIN_PATH."templates/preload.php"); ?>
-							<script type="text/javascript">
-								jQuery("#wpFastestCachePreload").click(function(){
-
-									if(typeof jQuery(this).attr("checked") != "undefined"){
-										if(jQuery("div[id^='wpfc-modal-preload-']").length === 0){
-											Wpfc_New_Dialog.dialog("wpfc-modal-preload", {close: function(){
-												Wpfc_New_Dialog.clone.find("div.window-content input").each(function(){
-													if(typeof jQuery(this).attr("checked") != "undefined"){
-														jQuery("div.tab1 div[template-id='wpfc-modal-preload'] div.window-content input[name='" + jQuery(this).attr("name") + "']").attr("checked", true);
-													}else{
-														jQuery("div.tab1 div[template-id='wpfc-modal-preload'] div.window-content input[name='" + jQuery(this).attr("name") + "']").attr("checked", false);
-													}
-
-													Wpfc_New_Dialog.clone.remove();
-												});
-											}});
-
-											Wpfc_New_Dialog.show_button("close");
-											WPFC_SPINNER.init("wpfc-form-spinner-preload", 6);
-										}
-										
-									}
-								});
-							</script>
 
 							<div class="questionCon">
 								<div class="question">Logged-in Users</div>
@@ -886,8 +817,20 @@
 
 							<div class="questionCon">
 								<div class="question">New Post</div>
-								<div class="inputCon"><input type="checkbox" <?php echo $wpFastestCacheNewPost; ?> id="wpFastestCacheNewPost" name="wpFastestCacheNewPost"><label for="wpFastestCacheNewPost">Clear all cache files when a post or page is published</label></div>
+								<div class="inputCon"><input type="checkbox" <?php echo $wpFastestCacheNewPost; ?> id="wpFastestCacheNewPost" name="wpFastestCacheNewPost"><label for="wpFastestCacheNewPost">Clear cache files when a post or page is published</label></div>
 							</div>
+
+							<?php include(WPFC_MAIN_PATH."templates/newpost.php"); ?>
+
+							<div class="questionCon">
+								<div class="question">Update Post</div>
+								<div class="inputCon"><input type="checkbox" <?php echo $wpFastestCacheUpdatePost; ?> id="wpFastestCacheUpdatePost" name="wpFastestCacheUpdatePost"><label for="wpFastestCacheUpdatePost">Clear cache files when a post or page is updated</label></div>
+								<div class="get-info"><a target="_blank" href="http://www.wpfastestcache.com/tutorial/to-clear-cache-after-update"><img src="<?php echo plugins_url("wp-fastest-cache/images/info.png"); ?>" /></a></div>
+							</div>
+
+							<?php include(WPFC_MAIN_PATH."templates/updatepost.php"); ?>
+
+
 							<div class="questionCon">
 								<div class="question">Minify HTML</div>
 								<div class="inputCon"><input type="checkbox" <?php echo $wpFastestCacheMinifyHtml; ?> id="wpFastestCacheMinifyHtml" name="wpFastestCacheMinifyHtml"><label for="wpFastestCacheMinifyHtml">You can decrease the size of page</label></div>
@@ -995,13 +938,41 @@
 							<?php if(class_exists("WpFastestCachePowerfulHtml")){ ?>
 								<?php if(method_exists("WpFastestCachePowerfulHtml", "render_blocking")){ ?>
 									<?php
-
-									$tester_arr = array("berkatan.com",
-														"tr-TR",
-														"nl-NL",
-														"fr-FR",
-														"es-ES",
+									$tester_arr = array(
 														"de-DE",
+														"es_CL",
+														"es_AR",
+														"es_GT",
+														"es_PE",
+														"es_VE",
+														"es_CO",
+														"es_MX",
+														"es_ES",
+														"es-ES",
+														"fr-FR",
+														"fr-BE",
+														"fr-CA",
+														"fr-FR",
+														"it-IT",
+														"ja",
+														"nl-NL",
+														"pt-PT",
+														"pt-BR",
+														"tr-TR",
+														"berkatan.com",
+														"worthynews.com",
+														"beherit.pl",
+														"freshonlinejobs.com",
+														"chelly.id",
+														"spycoupon.in",
+														"comfortableshoeguide.com",
+														"043web.nl",
+														"ifra.nl",
+														"goflre.com",
+														"highhouseinsurance.com",
+														"silongedu.com",
+														"ssn.localhost",
+														"speedskatingnews.info",
 														"vicuras.dk",
 														"juicycherries.ie",
 														"citymapxl.com",
@@ -1065,22 +1036,23 @@
 														);
 
 									if(in_array(get_bloginfo('language'), $tester_arr) || in_array(str_replace("www.", "", $_SERVER["HTTP_HOST"]), $tester_arr)){ ?>
-										<div class="questionCon">
-											<div class="question">Render Blocking Js</div>
-											<div class="inputCon"><input type="checkbox" <?php echo $wpFastestCacheRenderBlocking; ?> id="wpFastestCacheRenderBlocking" name="wpFastestCacheRenderBlocking"><label for="wpFastestCacheRenderBlocking">Remove render-blocking JavaScript</label> <b style="color:red;">(BETA)</b></div>
-											<div class="get-info"><a target="_blank" href="http://www.wpfastestcache.com/premium/render-blocking-js/"><img src="<?php echo plugins_url("wp-fastest-cache/images/info.png"); ?>" /></a></div>
-										</div>
-
-										<?php if(false && method_exists("WpFastestCachePowerfulHtml", "render_blocking_css")){ ?>
-											<div class="questionCon">
-												<div class="question">Render Blocking CSS</div>
-												<div class="inputCon"><input type="checkbox" <?php echo $wpFastestCacheRenderBlockingCss; ?> id="wpFastestCacheRenderBlockingCss" name="wpFastestCacheRenderBlockingCss"><label for="wpFastestCacheRenderBlockingCss">Remove render-blocking Css</label> <b style="color:red;">(BETA)</b></div>
-											</div>
-										<?php } ?>
-
-
+										
 									<?php } ?>
 								<?php } ?>
+							<?php } ?>
+
+							<?php if(class_exists("WpFastestCachePowerfulHtml") && method_exists("WpFastestCachePowerfulHtml", "render_blocking")){ ?>
+							<div class="questionCon">
+								<div class="question">Render Blocking Js</div>
+								<div class="inputCon"><input type="checkbox" <?php echo $wpFastestCacheRenderBlocking; ?> id="wpFastestCacheRenderBlocking" name="wpFastestCacheRenderBlocking"><label for="wpFastestCacheRenderBlocking">Remove render-blocking JavaScript</label></div>
+								<div class="get-info"><a target="_blank" href="http://www.wpfastestcache.com/premium/render-blocking-js/"><img src="<?php echo plugins_url("wp-fastest-cache/images/info.png"); ?>" /></a></div>
+							</div>
+							<?php }else{ ?>
+							<div class="questionCon disabled">
+								<div class="question">Render Blocking Js</div>
+								<div class="inputCon"><input type="checkbox" <?php echo $wpFastestCacheRenderBlocking; ?> id="wpFastestCacheRenderBlocking" name="wpFastestCacheRenderBlocking"><label for="wpFastestCacheRenderBlocking">Remove render-blocking JavaScript</label></div>
+								<div class="get-info"><a target="_blank" href="http://www.wpfastestcache.com/premium/render-blocking-js/"><img src="<?php echo plugins_url("wp-fastest-cache/images/info.png"); ?>" /></a></div>
+							</div>
 							<?php } ?>
 
 							<div class="questionCon">
@@ -1222,6 +1194,8 @@
 							<div class="wpfc-timeout-rule-line-middle">
 								<input type="text" name="wpfc-timeout-rule-content">
 								<input type="text" name="wpfc-timeout-rule-schedule">
+								<input type="text" name="wpfc-timeout-rule-hour">
+								<input type="text" name="wpfc-timeout-rule-minute">
 							</div>
 						</div>
 						<!-- item sample -->
@@ -1554,8 +1528,6 @@
 				    	</div>
 				    </div>
 				    <div class="tab6" style="padding-left:20px;">
-				    	<h2 style="padding-bottom:10px;float:left;">Exclude Pages</h2>
-
 				    	<!-- samples start: clones -->
 				    	<div class="wpfc-exclude-rule-line" style="display:none;">
 							<div class="wpfc-exclude-rule-line-left">
@@ -1569,10 +1541,11 @@
 							</div>
 							<div class="wpfc-exclude-rule-line-middle">
 								<input type="text" name="wpfc-exclude-rule-content" style="width:390px;">
+								<input type="text" name="wpfc-exclude-rule-type" style="width:90px;">
 							</div>
 						</div>
 						<!-- item sample -->
-	    				<div class="wpfc-exclude-item" tabindex="1" prefix="" content="" style="position: relative;display:none;">
+	    				<div class="wpfc-exclude-item" tabindex="1" type="" prefix="" content="" style="position: relative;display:none;">
 	    					<div class="app">
 				    			<div class="wpfc-exclude-item-form-title">Title M</div>
 				    			<span class="wpfc-exclude-item-details wpfc-exclude-item-url"></span>
@@ -1580,13 +1553,56 @@
 			    		</div>
 		    			<!-- samples end -->
 
+		    			<h2 style="padding-bottom:10px;float:left;">Exclude Pages</h2>
+
 				    	<div style="float:left;margin-top:-37px;padding-left:608px;">
-					    	<button type="button" class="wpfc-add-new-exclude-button wpfc-dialog-buttons" style="display: inline-block;padding: 4px 10px;">
+					    	<button data-type="page" type="button" class="wpfc-add-new-exclude-button wpfc-dialog-buttons" style="display: inline-block;padding: 4px 10px;">
 					    		<span>Add New Rule</span>
 					    	</button>
 				    	</div>
 
-				    	<div class="wpfc-exclude-list" style="display: block;width:98%;float:left;">
+				    	<div class="wpfc-exclude-page-list" style="display: block;width:98%;float:left;">
+
+				    	</div>
+
+				    	<div class="exclude_section_clear">
+				    		<div></div>
+				    	</div>
+
+
+
+
+				    	<h2 style="padding-bottom:10px;float:left;">Exclude User-Agents</h2>
+
+				    	<div style="float:left;margin-top:-37px;padding-left:608px;">
+					    	<button data-type="useragent" type="button" class="wpfc-add-new-exclude-button wpfc-dialog-buttons" style="display: inline-block;padding: 4px 10px;">
+					    		<span>Add New Rule</span>
+					    	</button>
+				    	</div>
+
+				    	<div class="wpfc-exclude-useragent-list" style="display: block;width:98%;float:left;">
+
+				    	</div>
+
+
+
+
+				    	<div class="exclude_section_clear">
+				    		<div></div>
+				    	</div>
+
+
+
+
+				    	<h2 style="padding-bottom:10px;float:left;">Exclude CSS</h2>
+
+				    	<div style="float:left;margin-top:-37px;padding-left:608px;">
+					    	<button data-type="css" type="button" class="wpfc-add-new-exclude-button wpfc-dialog-buttons" style="display: inline-block;padding: 4px 10px;">
+					    		<span>Add New Rule</span>
+					    	</button>
+				    	</div>
+
+				    	<div class="wpfc-exclude-css-list" style="display: block;width:98%;float:left;">
 
 				    	</div>
 
@@ -1613,34 +1629,37 @@
 				    	</script>
 				    </div>
 
-				    <?php include_once(WPFC_MAIN_PATH."templates/cdn/onlyonecdn.html"); ?>
-
 				    <div class="tab7" style="padding-left:20px;">
 				    	<h2 style="padding-bottom:10px;">CDN Settings</h2>
 				    	<div>
 				    		<div class="integration-page" style="display: block;width:98%;float:left;">
 
-				    			<div wpfc-cdn-name="maxcdn" class="int-item">
-				    				<img src="data:image/png;base64,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"/>
+				    			<div wpfc-cdn-name="maxcdn" class="int-item int-item-left">
+				    				<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC0AAAAtCAYAAAA6GuKaAAAAAXNSR0IArs4c6QAAAAlwSFlzAAALEwAACxMBAJqcGAAACatJREFUWAnFWGtsFccVPjO7flw/A35gGwx+tRTZ2EkTUqo2j1L6IsEVVFXoj/5oS1pVyc9UVZSqqfr40/6L2qhqQVVSVUrDI6G4pUkJSeS0KiIo4GAIwfEjtjF+YTC28b13d6bf2b177+7eew0G4450786cOXPON+c1syvoNlrfw3X5pcWFlTrHuJ9M8YAg2kgkarXUJcKmXBLCgvirpGkIz7OkVGdM0n9V78RozcmLc7eqGnoW30bbW1bJXHOrIfVXAewBErQOPwK47C2hSVs0QpLeIVsf0fP0ennH6eHsizLPLAr0pS+3VuaWiu+SFN+C4tYk0IXAhvWyxtQGzpLQ+2ne3lN26MxgmDXb+KZAv3sv5ayrb/uKYYhfkdYbEQqCVDaRi6BL8GLDWtEFYaufTs7OvfKJIz3RG0m4IejxnRuqDTP3aU1itzApsiRgw6gYvEUWcuHFaCz285qD5wbCLP7xgqAndrRsEKa5V+TQZ+8IWD8S7hv4WdSl5uK7yw93nwhPe+OsoMfa2+4xC2gv4veeZQHsIXKt3mNre3fFvvff9sj+Z0bQ499sXW8I+VfsvG3BiuCXtJR9RmXpXjVv7cpk8TTQ4+3ra2RBZL+QyxQS2TYLi2tLn4lr3V61r6vPz8bOSLafEUmZn/9jYfyfATMiVCdhipYcIZ/lQywJEp0A6Cd2tG0D6+PLGsN+NOE+A5f628UrSh7zTyXD4+L2T5bnRyLHyBAbM8YxH8iLOUT8WrL1udbzj6tGDn5JNOh7jWlK98fm9Jaqw26YmN5cfn5kNypFOmCUevPBBsr70hNE0XmPfUmeamaS7MEusrqOkuqBSDZKXkg00wxRlxMhAKCneNbZm3M8r5D/wo5b00IjhhhqIir+yeskiyt4zZI3PTtF82/upWjHX0iPQ3xuSIVTBnVfNCa2VL96qt+J6dwivZWkbkkDzGshQH1INP/P50KSlm4oCldQ5NGnqPBHfyRRBrnxkGwOIVPU55h6O89IJzNNuQ23tUBShpZR/N8dpK5cCpOXdJzTeB/l73rSDRM7XTTC4tGxh5uLZElpUQXC5sEFkwxJonAHi3cfTZe0xJTcTe0k6yA0bG03tjcbxeY6k/Lk/UKK2gVBc3ZDSPS131Pupp0kcgsCUC0kkz30Adcn0CEdhd5s2kRGWW2AT02NUPyDTsxzKkky6+8mY1VjgIfzxmz5PMV63wnQHbGSSlQBbTEFiYeS9+IgW/oorzChMDh1/cAvyDp2AZkPMHCrKCYqfPq5NNDR4wdo/vk9Lh9KqFxDVPTMS2RUrQ8IlFXIfAOg2bpOqUhMsz00fYFN07KglT1xSpPRcB+JnGBN0vMzpEZ6UGch3XSViCroXN3srXSfyia77ySQgo9rMif4BH7XpoJ8GOFmGQTr44CRGwAaoXGj5mYvmY33gjOYr/ZEn1umPDJ4jdpmlMeVAak6fp3s3lOYTJDZ0pX4rawJ8PFATY85HkubAEGTXinxX5ppMkBjlyMyjKqGAJkHavxj0jPoeKDRNeru5qlAU9PjpCdBYm+w2y1NsraRZFFwc3gzwoFzLj00EtKEEgVQpdlZCzcGDdmyBH4PNXsYCnAAJWMPbjfq2SPBZo/BI/z+7YtRox6vmZwnvqZmpkgNI9yyNaENmXjNz8bi0mEZWVtPshT+9DUdmyOrB3EK6ziWhsv5cDBrW31cbtfuOY4TCn0GzZZGCTBWb0gQ8Eg0NTVEegwMXhh5E94Tb6ds6WveOOOTFYCL49QtaSkuPXMZ9RulzkiYDx6Rq8tJFpakmBI9u/+9lJXBx3cMedeqdD72yCzIWUDDPnNs6cG0lX4Cg2aXr0uPU3tyiBQfkl6cchI2bsYfE1JNTU8gTlESPSDgEysAuqI+xeT0EM992FwcSn05EmK6wlPd/jgLMSDToACGM9eGShgY7Y+7iThOGQxvDk8+MFImRRfNHjnnJqEXz4xpVQkZd1W7DIl/HY8BNCoMHz4eb4DDmeqTZKnOED04BGhZFSGjsjFIx8i6gDhF/XYUcDwXAffq4EHBi6yBrmCFwRJjLTYX8oienyZ7YCDlubBGbARL35b8bQ3vYpey7YxPOKMO1cAIFhkdj8IqJ6DAleSchEhCWZoepwrHPD4NpFwOj/BBFW5qfJA0nzXB6HLZWI3Ss3ZMvCGvj0+PwB2dWUFzEtZ/Oiyf1GVk+TjI3l5gcVm9Nq3uOofKEOKZPcKNHYOri1nX5o59//bYR7jggACAaQ001Oh3jehMr6x/q38eGfkPCE1I9bEzBa+UZobDwho47bqcFTAf4tBYgxKGy5K/cRKqUZjPqzC4eHFZNFY1+NmcvtWL8smVJUvTQh8uO9Iz7eSotqOvAfL5tIzlOOVDJXRbY5kW110AcBorimTxyCROTHY574U3yOHW0IxDBQngb3w3YZkOIv8E+qAhhAdVnA7zjMNScfDcCKy1z7GYx88KAFrWVJOIhBRgSg2e8TidJ2/OzBBG9vB591DxyiK4zU99LrCWB+rqKDxyJRVuIQ6hRUfFK6cRZ1ifnLP0H0jjE65JTQ54djlbZ2aMrv/tN7BSwgT8dC4/F1MKeIOoMtE3X8ChAZN7kQa69d4RV46nCDXfOv8fmpu9ijWJWJAGAPe6HmFZ/oYxrDyMVb8F2QnhAMvlHa27KFf+GfY3k1bnrOcw8ICwQK6j/PnEvxqgnSTy8zEvX1m9ZOUxN04229HvDJ0/vrLyrdcvkycwxt6eLH/51O8cPvylLI3ByIf2waoWsRVvMt9LJgRzOFxhaZ6IxJMdASOna03M+x/OlfwG8pgfMmHlA2rMesG/POFzl9Tc3R2LCfFLHKPvu9HuZ13mPiOzdB+K2jOVb3Xz5TfZAqCZWv3SqX5bq+8gCT9Kc1Vy2R3uwAk6TiMqph+v2NeFTA62NNA8je/CJ/F9mEOkZ9ktDkR8Qmtt/7D81a43gnDd0YKBNfH11s+IPLGHv15m/JCTSeLt0NiECt+lLf398v2ZAbP4jJb29JYf6jqOIN+OUHkR1UPdsXBh03FIIOlsW29bCDBjW9DSHnj+ClVcWfIYLt/P8ucph84l7nZbwmQAO6QF/VqNWn8KJ10mFTcF2ls4+o2NDYYhfyCF2ImDp8mhc7kNlVyPP+vT86+t+5E3f9dx6/myQ91ns/KHJhYF2lvrgDflI1j8CG5em1HHS28KOBbw9RKPE6gOHcrQHZmqg6cn2/OWQHvCJr/WVEJFeWu0Nr+I0/0hHJSNpHAL0VSIT0EGgk/B7bP4KnQFV4Re3NI67Wt0zIxf6115tBfn+K21/wH7aEobBFiHqgAAAABJRU5ErkJggg=="/>
 				    				<div class="app">
 				    					<div style="font-weight:bold;font-size:14px;">CDN by MaxCDN</div>
 				    					<p>Experts in Content Delivery Network Services</p>
 				    				</div>
-				    				<div class="meta">
-				    					<span class="connected"></span>
-				    				</div>
+				    				<div class="meta"></div>
 				    			</div>
 
 
 				    			<div wpfc-cdn-name="other" class="int-item">
-				    				<!-- <img src=""/> -->
-				    				<div class="app" style="margin-left: 137px;">
+				    				<img src="data:image/png;base64,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"/>
+				    				<div class="app">
 				    					<div style="font-weight:bold;font-size:14px;">Other CDN Providers</div>
 				    					<p>You can use any cdn provider.</p>
 				    				</div>
-				    				<div class="meta">
-				    					<span class="connected"></span>
+				    				<div class="meta"></div>
+				    			</div>
+
+				    			<div wpfc-cdn-name="photon" class="int-item">
+				    				<img src="data:image/png;base64,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"/>
+				    				<div class="app">
+				    					<div style="font-weight:bold;font-size:14px;">CDN by Photon</div>
+				    					<p>Wordpress Content Delivery Network Services</p>
 				    				</div>
+				    				<div class="meta"></div>
 				    			</div>
 
 				    		</div>
@@ -1649,20 +1668,29 @@
 				    		(function() {
 					    		<?php
 					    			$cdn_values = get_option("WpFastestCacheCDN");
-					    			if($cdn_values){
-					    				$cdn_values_arr = json_decode($cdn_values);
 
-					    				if($cdn_values_arr->id == "amazonaws" || $cdn_values_arr->id == "keycdn" || $cdn_values_arr->id == "cdn77"){
-					    					$cdn_values_arr->id = "other";
+					    			if($cdn_values){
+					    				$std_obj = json_decode($cdn_values);
+					    				$cdn_values_arr = array();
+
+					    				if(is_array($std_obj)){
+											$cdn_values_arr = $std_obj;
+										}else{
+											array_push($cdn_values_arr, $std_obj);
+										}
+
+					    				foreach ($cdn_values_arr as $cdn_key => $cdn_value) {
+						    				if($cdn_value->id == "amazonaws" || $cdn_value->id == "keycdn" || $cdn_value->id == "cdn77"){
+						    					$cdn_value->id = "other";
+						    				}
+						    				?>jQuery("div[wpfc-cdn-name='<?php echo $cdn_value->id;?>']").find("div.meta").addClass("isConnected");<?php
 					    				}
-					    				?>
-					    					jQuery("div[wpfc-cdn-name='<?php echo $cdn_values_arr->id;?>']").find("span.connected").text("Connected");
-					    				<?php
 					    			}
 					    		?>
-				    			jQuery(".int-item").click(function(e){
+				    			jQuery("div.integration-page .int-item").click(function(e){
 				    				jQuery("#revert-loader-toolbar").show();
-				    				
+				    				jQuery("div[id='wpfc-modal-maxcdn'], div[id='wpfc-modal-other'], div[id='wpfc-modal-photon']").remove();
+
 					    			jQuery.ajax({
 										type: 'GET', 
 										url: ajaxurl,
@@ -1675,19 +1703,27 @@
 													data.id = "other";
 												}
 											}
-											
-											if(data.id && jQuery(e.currentTarget).attr("wpfc-cdn-name") != data.id){
-												Wpfc_New_Dialog.dialog("wpfc-modal-onlyonecdn", {close: "default"});
 
-												Wpfc_New_Dialog.show_button("close");
+
+											WpfcCDN.init({"id" : jQuery(e.currentTarget).attr("wpfc-cdn-name"),
+							    				"template_main_url" : "<?php echo plugins_url('wp-fastest-cache/templates/cdn'); ?>",
+							    				"values" : data
+							    			});
+
+
+											
+											// if(data.id && jQuery(e.currentTarget).attr("wpfc-cdn-name") != data.id){
+											// 	Wpfc_New_Dialog.dialog("wpfc-modal-onlyonecdn", {close: "default"});
+
+											// 	Wpfc_New_Dialog.show_button("close");
 												
-												jQuery("#revert-loader-toolbar").hide();
-											}else{
-							    				WpfcCDN.init({"id" : jQuery(e.currentTarget).attr("wpfc-cdn-name"),
-							    					"template_main_url" : "<?php echo plugins_url('wp-fastest-cache/templates/cdn'); ?>",
-							    					"values" : data
-							    				});
-											}
+											// 	jQuery("#revert-loader-toolbar").hide();
+											// }else{
+							    // 				WpfcCDN.init({"id" : jQuery(e.currentTarget).attr("wpfc-cdn-name"),
+							    // 					"template_main_url" : "<?php echo plugins_url('wp-fastest-cache/templates/cdn'); ?>",
+							    // 					"values" : data
+							    // 				});
+											// }
 										}
 									});
 				    			});
@@ -1795,6 +1831,28 @@
 						});
 					}
 				};
+			</script>
+			<script type="text/javascript">
+				jQuery("#wpFastestCachePreload").click(function(){
+					if(typeof jQuery(this).attr("checked") != "undefined"){
+						if(jQuery("div[id^='wpfc-modal-preload-']").length === 0){
+							Wpfc_New_Dialog.dialog("wpfc-modal-preload", {close: function(){
+								Wpfc_New_Dialog.clone.find("div.window-content input").each(function(){
+									if(typeof jQuery(this).attr("checked") != "undefined"){
+										jQuery("div.tab1 div[template-id='wpfc-modal-preload'] div.window-content input[name='" + jQuery(this).attr("name") + "']").attr("checked", true);
+									}else{
+										jQuery("div.tab1 div[template-id='wpfc-modal-preload'] div.window-content input[name='" + jQuery(this).attr("name") + "']").attr("checked", false);
+									}
+
+									Wpfc_New_Dialog.clone.remove();
+								});
+							}});
+
+							Wpfc_New_Dialog.show_button("close");
+							WPFC_SPINNER.init("wpfc-form-spinner-preload", 6);
+						}
+					}
+				});
 			</script>
 
 			<?php if(!class_exists("WpFastestCacheImageOptimisation")){ ?>

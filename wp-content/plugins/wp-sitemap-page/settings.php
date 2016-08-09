@@ -364,6 +364,8 @@ switch ($current_tab) {
 				<li><strong>[wp_sitemap_page only="page" sort="menu_order"]</strong> <?php printf(__('To display the pages sorted by menu order. Possible values are: %1$s.', 'wp_sitemap_page'), '\'post_title\', \'menu_order\', \'post_date\', \'post_modified\', \'ID\', \'post_author\', \'post_name\''); ?></li>
 				<li><strong>[wp_sitemap_page only="post"]</strong> <?php _e('To display the posts by category', 'wp_sitemap_page'); ?></li>
 				<li><strong>[wp_sitemap_page only="post" sort="count"]</strong> <?php printf(__('To display the posts by category. Categories sorted by number of posts. Possible values are: %1$s', 'wp_sitemap_page'), '\'id\', \'name\', \'slug\', \'count\', \'term_group\''); ?></li>
+				<li><strong>[wp_sitemap_page only="post" sort="post_name" order="ASC"]</strong> <?php printf(__('To display the posts by category. Posts sorted by name with ascendent order. Possible values for "order" attribute are: %1$s', 'wp_sitemap_page'), '\'ASC\', \'DESC\''); ?></li>
+				<li><strong>[wp_sitemap_page display_category_title_wording="false"]</strong> <?php _e('To hide the word "category" on the title of each category', 'wp_sitemap_page'); ?></li>
 				<li><strong>[wp_sitemap_page only="category"]</strong> <?php _e('To display the categories', 'wp_sitemap_page'); ?></li>
 				<li><strong>[wp_sitemap_page only="category" sort="count"]</strong> <?php printf(__('To display the categories sorted by number of posts. Possible values are: %1$s', 'wp_sitemap_page'), '\'id\', \'name\', \'slug\', \'count\', \'term_group\''); ?></li>
 				<li><strong>[wp_sitemap_page only="tag"]</strong> <?php _e('To display the tags', 'wp_sitemap_page'); ?></li>
@@ -399,10 +401,9 @@ switch ($current_tab) {
 			</div><!-- .inside -->
 		</div><!-- .postbox -->
 		
-		
 		<?php
 		break;
-		
+	
 	// DEFAULT
 	default:
 		// nothing but do
@@ -430,7 +431,7 @@ switch ($current_tab) {
 							$url_author = ( $is_fr===true ? 'http://tonyarchambeau.com/' : 'http://en.tonyarchambeau.com/' );
 							?>
 							<p><img src="<?php echo WSP_USER_PLUGIN_URL; ?>/images/icon-html-code-24.png" alt="" style="vertical-align:middle;" /> <?php printf(__('Developed by <a href="%1$s">Tony Archambeau</a>.', 'wp_sitemap_page'), $url_author); ?></p>
-							<p><img src="<?php echo WSP_USER_PLUGIN_URL; ?>/images/icon-star-24.png" alt="" style="vertical-align:middle;" /> <a href="http://wordpress.org/plugins/wp-sitemap-page/" target="_blank"><?php _e('Rate the plugin on Wordpress.org'); ?></a></p>
+							<p><img src="<?php echo WSP_USER_PLUGIN_URL; ?>/images/icon-star-24.png" alt="" style="vertical-align:middle;" /> <a href="https://wordpress.org/support/view/plugin-reviews/wp-sitemap-page?filter=5" target="_blank"><?php _e('Rate the plugin on Wordpress.org'); ?></a></p>
 							<p><img src="<?php echo WSP_USER_PLUGIN_URL; ?>/images/icon-coin-24.png" alt="" style="vertical-align:middle;" /> <a href="<?php echo WSP_DONATE_LINK; ?>" target="_blank"><?php _e('Donate', 'wp_sitemap_page'); ?></a></p>
 							<?php
 							// Display the author for Russian audience

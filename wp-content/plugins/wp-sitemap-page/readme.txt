@@ -3,8 +3,8 @@ Contributors: funnycat
 Donate link: http://www.infowebmaster.fr/dons.php
 Tags: sitemap, generator, page list, site map, html sitemap, sitemap generator, dynamic sitemap, seo
 Requires at least: 3.0
-Tested up to: 4.2.2
-Stable tag: 1.5.6
+Tested up to: 4.6
+Stable tag: 1.6
 License: GPLv2 or later
 
 
@@ -88,6 +88,8 @@ This plugin is available through the following languages :
 *   Romanian (`ro_RO`)
 *   Indonesian (`id_ID`)
 *   Japanese (`ja`)
+*   Ukranian (`ru`)
+*   Chinese (`zh_CN`)
 
 If you want to add another language, feel free to [contact me](http://en.tonyarchambeau.com/contact.html) in order to send the file with the correct translation files (.mo and .po). Thanks a lot!
 
@@ -99,6 +101,10 @@ If you want to add another language, feel free to [contact me](http://en.tonyarc
 
 == Changelog ==
 
+= 1.6 =
+* Add main CSS class wrapper to add a style for the entire sitemap
+* Possibility to sort the posts ascendent or descendent
+* Add Ukranian and Chinese translations
 = 1.5.6 =
 * Oups, the last translations were not send properly. Here it is.
 = 1.5.5 =

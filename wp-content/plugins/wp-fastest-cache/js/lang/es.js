@@ -19,7 +19,7 @@ window.wpfc.dictionary = {
 	"Cache System"            :"Sistema de cache", 
 	"Enable"                  :"Activar", 
 	"New Post"                :"Nueva entrada", 
-	"Clear all cache files when a post or page is published" :"Borrar todo el cache cuando se publiquen una entrada o página nuevas",
+	"Clear cache files when a post or page is published" :"Borrar el cache cuando se publiquen una entrada o página nuevas",
 	"Submit"  				  :"Guardar",
 	"Delete Now" 			  :"Borrar ahora",
 	"You can delete all cache files" :"Borrar todos los archivos en el cache.",

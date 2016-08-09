@@ -17,7 +17,7 @@ window.wpfc.dictionary = {
 	"Cache System" : "Välimuisti", 
 	"Enable" : "Ota käyttöön", 
 	"New Post" : "Uusi kirjoitus", 
-	"Clear all cache files when a post or page is published" : "Poista kaikki tallenteet välimuistista kun sivu- tai artikkeli julkaistaan.",
+	"Clear cache files when a post or page is published" : "Poista tallenteet välimuistista kun sivu- tai artikkeli julkaistaan.",
 	"Submit" : "Lähetä",
 	"Delete Now" : "Poista nyt",
 	"You can delete all cache files" : "Poistaa kaikki välimuistissa olevat tiedostot",

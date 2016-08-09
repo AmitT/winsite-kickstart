@@ -19,7 +19,7 @@ window.wpfc.dictionary = {
 	"Cache System"            :  "Cache Sistemi",
 	"Enable"                  :  "Açık",
 	"New Post"                :  "Yeni Yazı",
-	"Clear all cache files when a post or page is published" :  "Yeni bir yazı veya sayfa eklenirse tüm önbelleği temizle",
+	"Clear cache files when a post or page is published" :  "Yeni bir yazı veya sayfa eklenirse önbelleği temizle",
 	"Submit"  				  :  "Gönder",
 	"Delete Now" 			  :  "Temizle Şimdi",
 	"You can delete all cache files" :  "Tüm önbelleği temizleyebilirsiniz",

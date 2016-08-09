@@ -6,6 +6,7 @@
 		private $blockCache = false;
 		private $err = "";
 		public $cacheFilePath = "";
+		public $exclude_rules = false;
 
 		public function __construct(){
 			//to fix: PHP Notice: Undefined index: HTTP_USER_AGENT
@@ -18,6 +19,14 @@
 			$this->set_cdn();
 
 			$this->set_cache_file_path();
+
+			$this->set_exclude_rules();
+		}
+
+		public function set_exclude_rules(){
+			if($json_data = get_option("WpFastestCacheExclude")){
+				$this->exclude_rules = json_decode($json_data);
+			}
 		}
 
 		public function set_cache_file_path(){
@@ -43,25 +52,46 @@
 			}
 
 			$this->cacheFilePath = $this->cacheFilePath ? rtrim($this->cacheFilePath, "/")."/" : "";
+
+			if(strlen($_SERVER["REQUEST_URI"]) > 1){ // for the sub-pages
+				if(!preg_match("/\.html/i", $_SERVER["REQUEST_URI"])){
+					if($this->is_trailing_slash()){
+						if(!preg_match("/\/$/", $_SERVER["REQUEST_URI"])){
+							$this->cacheFilePath = false;
+						}
+					}else{
+						//toDo
+					}
+				}
+			} 
 		}
 
 		public function set_cdn(){
 			$cdn_values = get_option("WpFastestCacheCDN");
 			if($cdn_values){
-				$std = json_decode($cdn_values);
+				$std_obj = json_decode($cdn_values);
+				$arr = array();
 
-				$std->originurl = trim($std->originurl);
-				$std->originurl = trim($std->originurl, "/");
-				$std->originurl = preg_replace("/http(s?)\:\/\/(www\.)?/i", "", $std->originurl);
+				if(is_array($std_obj)){
+					$arr = $std_obj;
+				}else{
+					array_push($arr, $std_obj);
+				}
 
-				$std->cdnurl = trim($std->cdnurl);
-				$std->cdnurl = trim($std->cdnurl, "/");
-				
-				if(!preg_match("/https\:\/\//", $std->cdnurl)){
-					$std->cdnurl = "//".preg_replace("/http(s?)\:\/\/(www\.)?/i", "", $std->cdnurl);
+				foreach ($arr as $key => &$std) {
+					$std->originurl = trim($std->originurl);
+					$std->originurl = trim($std->originurl, "/");
+					$std->originurl = preg_replace("/http(s?)\:\/\/(www\.)?/i", "", $std->originurl);
+
+					$std->cdnurl = trim($std->cdnurl);
+					$std->cdnurl = trim($std->cdnurl, "/");
+					
+					if(!preg_match("/https\:\/\//", $std->cdnurl)){
+						$std->cdnurl = "//".preg_replace("/http(s?)\:\/\/(www\.)?/i", "", $std->cdnurl);
+					}
 				}
 				
-				$this->cdn = $std;
+				$this->cdn = $arr;
 			}
 		}
 
@@ -97,7 +127,11 @@
 				}
 
 				if(preg_match("/\?/", $_SERVER["REQUEST_URI"]) && !preg_match("/\/\?fdx\_switcher\=true/", $_SERVER["REQUEST_URI"])){ // for WP Mobile Edition
-					return 0;
+					if(defined('WPFC_CACHE_QUERYSTRING') && WPFC_CACHE_QUERYSTRING){
+						//
+					}else{
+						return 0;
+					}
 				}
 
 				if(preg_match("/(".$this->get_excluded_useragent().")/", $_SERVER['HTTP_USER_AGENT'])){
@@ -137,6 +171,10 @@
 
 				if($this->exclude_page()){
 					//echo "<!-- Wp Fastest Cache: Exclude Page -->"."\n";
+					return 0;
+				}
+
+				if(preg_match("/Empty\sUser\sAgent/i", $_SERVER['HTTP_USER_AGENT'])){ // not to show the cache for command line
 					return 0;
 				}
 
@@ -236,11 +274,12 @@
 			$preg_match_rule = "";
 			$request_url = trim($_SERVER["REQUEST_URI"], "/");
 
-			if($json_data = get_option("WpFastestCacheExclude")){
-				$std = json_decode($json_data);
+			if($this->exclude_rules){
 
-				foreach((array)$std as $key => $value){
-					if(isset($value->prefix) && $value->prefix){
+				foreach((array)$this->exclude_rules as $key => $value){
+					$value->type = isset($value->type) ? $value->type : "page";
+
+					if(isset($value->prefix) && $value->prefix && $value->type == "page"){
 						$value->content = trim($value->content);
 						$value->content = trim($value->content, "/");
 
@@ -262,6 +301,10 @@
 							if(preg_match("/".$preg_match_rule."/i", $request_url)){
 								return true;
 							}
+						}
+					}else if($value->type == "useragent"){
+						if(preg_match("/".preg_quote($value->content, "/")."/i", $_SERVER['HTTP_USER_AGENT'])){
+							return true;
 						}
 					}
 				}
@@ -439,9 +482,9 @@
 
 		public function cacheDate($buffer){
 			if($this->isMobile() && class_exists("WpFcMobileCache")){
-				$comment = "<!-- Mobile: WP Fastest Cache file was created in ".$this->creationTime()." seconds, on ".date("d-m-y G:i:s")." -->";
+				$comment = "<!-- Mobile: WP Fastest Cache file was created in ".$this->creationTime()." seconds, on ".date("d-m-y G:i:s", current_time('timestamp'))." -->";
 			}else{
-				$comment = "<!-- WP Fastest Cache file was created in ".$this->creationTime()." seconds, on ".date("d-m-y G:i:s")." -->";
+				$comment = "<!-- WP Fastest Cache file was created in ".$this->creationTime()." seconds, on ".date("d-m-y G:i:s", current_time('timestamp'))." -->";
 			}
 
 			if(defined('WPFC_REMOVE_FOOTER_COMMENT') && WPFC_REMOVE_FOOTER_COMMENT){
@@ -623,9 +666,9 @@
 			$wptouch_smartphone_list[] = array( 'Firefox', 'Mobile' ); // Firefox OS devices
 			$wptouch_smartphone_list[] = array( 'IEMobile/11', 'Touch' ); // Windows IE 11 touch devices
 			$wptouch_smartphone_list[] = array( 'IEMobile/10', 'Touch' ); // Windows IE 10 touch devices
-			$wptouch_smartphone_list[] = 'IEMobile/9.0'; // Windows Phone OS 9
-			$wptouch_smartphone_list[] = 'IEMobile/8.0'; // Windows Phone OS 8
-			$wptouch_smartphone_list[] = 'IEMobile/7.0'; // Windows Phone OS 7
+			$wptouch_smartphone_list[] = array( 'IEMobile/9.0' ); // Windows Phone OS 9
+			$wptouch_smartphone_list[] = array( 'IEMobile/8.0' ); // Windows Phone OS 8
+			$wptouch_smartphone_list[] = array( 'IEMobile/7.0' ); // Windows Phone OS 7
 			$wptouch_smartphone_list[] = array( 'OPiOS', 'Mobile' ); // Opera Mini iOS
 			$wptouch_smartphone_list[] = array( 'Coast', 'Mobile' ); // Opera Coast iOS
 

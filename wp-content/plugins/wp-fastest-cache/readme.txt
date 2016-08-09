@@ -1,8 +1,7 @@
 === WP Fastest Cache ===
 Contributors: emrevona
 Donate link: http://profiles.wordpress.org/emrevona/
-Tags: cache, caching, performance, wp-cache, super cache, total cache, quick cache, wordpress cache, wp cache, wordpress caching, nginx cache, browser cache, page cache, advanced cache, disk cache, fastest cache, cache plugin, wordpress cache plugin, Mod_Rewrite Cache, wp super cache, minify css cache, minify js cache, minify css, minify js, combine css, combine css cache, combine js, combine js cache, minify html cache, nginx, optimize, minify, cdn, woocommerce, plugin, post, posts, google, ajax, comments, seo, gzip, gzip compression, gzip cache, google page speed, ylow, speed, pagespeed
-
+Tags: cache, performance, wp-cache, total cache, super cache
 Requires at least: 3.3
 Tested up to: 4.5
 Stable tag: 4.5
@@ -42,6 +41,7 @@ Wpfc does not support Wordpress Multisite yet.
 10. SSL support
 11. CDN support
 12. Preload Cache - Create the cache of all the site automatically
+13. Exclude pages and user-agents
 
 <h4>Performance Optimization</h4>
 
@@ -83,15 +83,37 @@ Wpfc does not support Wordpress Multisite yet.
 1. Performance Comparison
 2. Without Cache
 3. With Cache
-4. Main Page
-5. Delete All File Page
-6. All cached files are deleted at the determinated time
-7. Block caching for post and pages (TinyMCE)
-8. Clean cached files via admin toolbar easily
-9. Exclude page
-10. CDN
+4. Main Settings Page
+5. Preload
+6. New Post
+7. Update Cache
+8. Delete Cache
+9. All cached files are deleted at the determinated time
+10. Block caching for post and pages (TinyMCE)
+11. Clean cached files via admin toolbar easily
+12. Exclude Page
+13. CDN
+14. Enter CDN Information
+15. File Types
+16. Specify Sources
 
 == Changelog ==
+
+= 0.8.6.0 =
+* to fix the problem about replacing url after minify css
+* to add "start with" option to the cache timeout
+* to add uninstall feature
+* to add "user-agent" option to the exclude page
+* to convert cache time to local time
+* to exclude WhatsApp user-agent
+
+= 0.8.5.9 =
+* to remove X-Wap-Profile from htaccess
+* to show warning lightbox if the cache cannot be deleted
+* <strong>[FEATURE]</strong> Set preload number
+* refactoring of is_wptouch_smartphone()
+* <strong>[FEATURE]</strong> to clear only the homepage cache
+* wp nonces added for security
 
 = 0.8.5.8 =
 * to remove hostname from exclude rule
