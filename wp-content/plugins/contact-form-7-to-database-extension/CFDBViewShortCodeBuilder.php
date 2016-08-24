@@ -1830,7 +1830,7 @@ class CFDBViewShortCodeBuilder extends CFDBView {
                 jQuery('#unbuffered_cntl').attr("checked", false);
                 jQuery('#orderby_cntl').val(<?php echo json_encode($this->requestParams['postedOrderby']) ?>);
                 jQuery('#torderby_cntl').val(<?php echo json_encode($this->requestParams['postedTOrderby']) ?>);
-                jQuery('#header_cntl').prop("checked", <?php echo $this->requestParams['$postedHeader'] == 'false' ? 'false' : 'true' ?>); // default = true
+                jQuery('#header_cntl').prop("checked", <?php echo $this->requestParams['postedHeader'] == 'false' ? 'false' : 'true' ?>); // default = true
                 jQuery('#headers_cntl').val(<?php echo json_encode($this->requestParams['postedHeaders']) ?>);
                 jQuery('#id_cntl').val(<?php echo json_encode($this->requestParams['postedId']) ?>);
                 jQuery('#class_cntl').val(<?php echo json_encode($this->requestParams['postedClass']) ?>);
