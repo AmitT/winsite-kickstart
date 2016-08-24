@@ -173,7 +173,7 @@ msgstr "שפרו את עיצוב האתר תוך שימוש ב<a href=\"%s\">ת�
 msgid "The home page features your choice of up to 6 posts prominently displayed in a grid or slider, controlled by a <a href=\"%1$s\">tag</a>; you can change the tag and layout in <a href=\"%2$s\">Appearance &rarr; Customize</a>. If no posts match the tag, <a href=\"%3$s\">sticky posts</a> will be displayed instead."
 msgstr "מאפייני העמוד הראשי מאפשרים להציג עד 6 פוסטים המוצגים באופן קבוע ברשת או בסליידר, דרך <a href=\"%1$s\">התגית הזו</a>; ניתן לשנות את התגית והפריסה במסך <a href=\"%2$s\">עיצוב &larr; התאמה אישית</a>. אם אין פוסטים בתגית, יוצגו במקום זאת <a href=\"%3$s\">הפוסטים הדביקים</a>."
 
-#. #-#-#-#-#  twentyfourteen.pot (Twenty Fourteen 1.7)  #-#-#-#-#
+#. #-#-#-#-#  twentyfourteen.pot (Twenty Fourteen 1.8)  #-#-#-#-#
 #. Theme Name of the plugin/theme
 #: inc/customizer.php:142
 msgid "Twenty Fourteen"
@@ -431,7 +431,7 @@ msgstr "נראה שלא נמצא כלום במיקום הזה. אולי תנסו
 msgid "Not Found"
 msgstr "לא נמצא"
 
-#. #-#-#-#-#  twentyfourteen.pot (Twenty Fourteen 1.7)  #-#-#-#-#
+#. #-#-#-#-#  twentyfourteen.pot (Twenty Fourteen 1.8)  #-#-#-#-#
 #. Author URI of the plugin/theme
 #: footer.php:21
 msgid "https://wordpress.org/"

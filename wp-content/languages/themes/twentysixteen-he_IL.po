@@ -322,7 +322,7 @@ msgstr "צוות וורדפרס"
 msgid "https://wordpress.org/themes/twentysixteen/"
 msgstr "https://he.wordpress.org/themes/twentysixteen/"
 
-#. #-#-#-#-#  twentysixteen.pot (Twenty Sixteen 1.2)  #-#-#-#-#
+#. #-#-#-#-#  twentysixteen.pot (Twenty Sixteen 1.3)  #-#-#-#-#
 #. Author URI of the plugin/theme
 #: footer.php:51
 msgid "https://wordpress.org/"
