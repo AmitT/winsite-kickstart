@@ -87,34 +87,41 @@ define('NONCE_SALT',       'Q<tU6_9vMOeKFC`E>YcnTvX`E@bR<Gc6+&Jc!L.hdt[sxxr2/^8l
 					error_reporting(E_ALL|E_STRICT);
 
 					// Enable WP_DEBUG mode
-					define( 'WP_DEBUG', true );
+					// define( 'WP_DEBUG', true );
 
 					// Enable Debug logging to the /wp-content/debug.log file
-					define( 'WP_DEBUG_LOG', true );
+					// define( 'WP_DEBUG_LOG', true );
 
 					// Enable display of errors and warnings
-					define( 'WP_DEBUG_DISPLAY', true );
+					// define( 'WP_DEBUG_DISPLAY', true );
 					@ini_set( 'display_errors', 1 );
 
 					// Use dev versions of core JS and CSS files (only needed if you are modifying these core files)
-					define( 'SCRIPT_DEBUG', true );
+					// define( 'SCRIPT_DEBUG', true );
+
 				} else {
 
+					// Disable strict error reporting
+					error_reporting(0);
+
 					// Enable WP_DEBUG mode
-					define( 'WP_DEBUG', false );
+					// define( 'WP_DEBUG', false );
 
 					// Enable Debug logging to the /wp-content/debug.log file
-					define( 'WP_DEBUG_LOG', false );
+					// define( 'WP_DEBUG_LOG', false );
 
 					// Disable display of errors and warnings
-					define( 'WP_DEBUG_DISPLAY', false );
+					// define( 'WP_DEBUG_DISPLAY', false );
 					@ini_set( 'display_errors', 0 );
 
 					// Use dev versions of core JS and CSS files (only needed if you are modifying these core files)
-					define( 'SCRIPT_DEBUG', false );
+					// define( 'SCRIPT_DEBUG', false );
+
+					/** Limit post revisions to 5. */
+					define( 'WP_POST_REVISIONS', 5);
 				}
 
 				/** Limit post revisions to 5. */
-				define( 'WP_POST_REVISIONS', 5);
+				// define( 'WP_POST_REVISIONS', 5);
 				/** disallow wp files editor. */
 				define( 'DISALLOW_FILE_EDIT', true );
