@@ -249,8 +249,9 @@
 						$woocommerce_ids = array();
 
 						//wc_get_page_id('product')
+						//wc_get_page_id('product-category')
 						
-						array_push($woocommerce_ids, wc_get_page_id('cart'), wc_get_page_id('checkout'), wc_get_page_id('receipt'), wc_get_page_id('confirmation'), wc_get_page_id('product-category'));
+						array_push($woocommerce_ids, wc_get_page_id('cart'), wc_get_page_id('checkout'), wc_get_page_id('receipt'), wc_get_page_id('confirmation'));
 
 						if (in_array($page_id[1], $woocommerce_ids)) {
 							return true;
@@ -259,8 +260,9 @@
 				}
 
 				//"\/product"
+				//"\/product-category"
 
-				array_push($list, "\/cart", "\/checkout", "\/receipt", "\/confirmation", "\/product-category", "\/wc-api\/");
+				array_push($list, "\/cart", "\/checkout", "\/receipt", "\/confirmation", "\/wc-api\/");
 			}
 
 			if(preg_match("/".implode("|", $list)."/i", $_SERVER["REQUEST_URI"])){
@@ -323,7 +325,9 @@
 		public function callback($buffer){
 			$buffer = $this->checkShortCode($buffer);
 
-			if(preg_match("/Mediapartners-Google|Google\sWireless\sTranscoder/i", $_SERVER['HTTP_USER_AGENT'])){
+			if(!$this->cacheFilePath){
+				return $buffer."<!-- permalink_structure ends with slash (/) but REQUEST_URI does not end with slash (/) -->";
+			}else if(preg_match("/Mediapartners-Google|Google\sWireless\sTranscoder/i", $_SERVER['HTTP_USER_AGENT'])){
 				return $buffer;
 			}else if($this->is_xml($buffer)){
 				return $buffer;
@@ -361,6 +365,18 @@
 				return $buffer;
 			}else{				
 				$content = $buffer;
+
+				if(isset($this->options->wpFastestCacheRenderBlocking) && method_exists("WpFastestCachePowerfulHtml", "render_blocking")){
+					if(class_exists("WpFastestCachePowerfulHtml")){
+						$powerful_html = new WpFastestCachePowerfulHtml();
+
+						if(isset($this->options->wpFastestCacheRenderBlockingCss)){
+							$content = $powerful_html->render_blocking($content, true);
+						}else{
+							$content = $powerful_html->render_blocking($content);
+						}
+					}
+				}
 
 				if(isset($this->options->wpFastestCacheCombineCss)){
 					require_once "css-utilities.php";
@@ -401,7 +417,10 @@
 				}
 
 				if(class_exists("WpFastestCachePowerfulHtml")){
-					$powerful_html = new WpFastestCachePowerfulHtml();
+					if(!$powerful_html){
+						$powerful_html = new WpFastestCachePowerfulHtml();
+					}
+
 					$powerful_html->set_html($content);
 
 					if(isset($this->options->wpFastestCacheCombineJsPowerFul) && method_exists("WpFastestCachePowerfulHtml", "combine_js_in_footer")){
@@ -421,7 +440,7 @@
 					}
 
 					if(isset($this->options->wpFastestCacheMinifyJs) && method_exists("WpFastestCachePowerfulHtml", "minify_js_in_body")){
-						$content = $powerful_html->minify_js_in_body($this);
+						$content = $powerful_html->minify_js_in_body($this, $this->exclude_rules);
 					}
 				}
 
@@ -436,12 +455,12 @@
 						// url()
 						$content = preg_replace_callback("/(url)\(([^\)]+)\)/i", array($this, 'cdn_replace_urls'), $content);
 					}
+					
+					if(isset($this->options->wpFastestCacheLazyLoad)){
+						include_once plugin_dir_path( __FILE__ )."pro/library/lazy-load.php";
 
-					if(isset($this->options->wpFastestCacheRenderBlocking) && method_exists("WpFastestCachePowerfulHtml", "render_blocking")){
-						if(isset($this->options->wpFastestCacheRenderBlockingCss)){
-							$content = $powerful_html->render_blocking($content, true);
-						}else{
-							$content = $powerful_html->render_blocking($content);
+						if(method_exists("WpFastestCacheLazyLoad", "images_to_lazyload")){
+							$content = WpFastestCacheLazyLoad::images_to_lazyload($content, $this->options->wpFastestCacheLazyLoad_type);
 						}
 					}
 					
@@ -556,6 +575,16 @@
 						   				$cache_statics = new WpFastestCacheStatics($extension, strlen($buffer));
 						   				$cache_statics->update_db();
 									}
+				   				}
+
+				   				if($extension == "html"){
+				   					if(!file_exists(WPFC_WP_CONTENT_DIR."/cache/index.html")){
+				   						@file_put_contents(WPFC_WP_CONTENT_DIR."/cache/index.html", "");
+				   					}
+				   				}else{
+				   					if(!file_exists(WPFC_WP_CONTENT_DIR."/cache/wpfc-minified/index.html")){
+				   						@file_put_contents(WPFC_WP_CONTENT_DIR."/cache/wpfc-minified/index.html", "");
+				   					}
 				   				}
 
 							}else{

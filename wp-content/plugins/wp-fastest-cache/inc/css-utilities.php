@@ -315,11 +315,11 @@
 
 					$original_content_length = strlen($cssContent);
 
-					$cssContent = $this->fixPathsInCssContent($cssContent, $url);
-					
 					if(isset($this->wpfc->options->wpFastestCacheMinifyCss) && $this->wpfc->options->wpFastestCacheMinifyCss){
 						$cssContent = $this->_process($cssContent);
 					}
+
+					$cssContent = $this->fixPathsInCssContent($cssContent, $url);
 
 					if(isset($this->wpfc->options->wpFastestCacheMinifyCssPowerFul) && $this->wpfc->options->wpFastestCacheMinifyCssPowerFul){
 						if(class_exists("WpFastestCachePowerfulHtml")){

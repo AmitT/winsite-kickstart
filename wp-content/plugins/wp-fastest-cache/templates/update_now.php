@@ -1,4 +1,4 @@
-<div id="wpfc-modal-updatenow" style="display:none;top: 10.5px; left: 226px; position: absolute; padding: 6px; height: auto; width: 446px; z-index: 10001;">
+<div template-id="wpfc-modal-updatenow" style="display:none;top: 10.5px; left: 226px; position: absolute; padding: 6px; height: auto; width: 446px; z-index: 10001;">
 	<div style="height: 100%; width: 100%; background: none repeat scroll 0% 0% rgb(0, 0, 0); position: absolute; top: 0px; left: 0px; z-index: -1; opacity: 0.5; border-radius: 8px;">
 	</div>
 	<div style="z-index: 600; border-radius: 3px;">

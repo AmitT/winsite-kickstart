@@ -198,6 +198,8 @@
 					clone_modal.find(".wpfc-condition-text").text("If User-Agent");
 				}else if(e.type == "css"){
 					clone_modal.find(".wpfc-condition-text").text("If CSS Url");
+				}else if(e.type == "js"){
+					clone_modal.find(".wpfc-condition-text").text("If JS Url");
 				}
 
 				jQuery("#wpfc-modal-exclude").after(clone_modal);
@@ -276,7 +278,7 @@
 					request_uri = "";
 				}
 
-				if(type == "page" || type == "css"){
+				if(type == "page" || type == "css" || type == "js"){
 					return "<?php echo home_url();?>" + "/" + request_uri;
 				}else if(type == "useragent"){
 					return "User-Agent: " + request_uri;
@@ -320,6 +322,8 @@
 						clone_modal.find(".wpfc-condition-text").text("If User-Agent");
 					}else if(clone_modal_type == "css"){
 						clone_modal.find(".wpfc-condition-text").text("If CSS Url");
+					}else if(clone_modal_type == "js"){
+						clone_modal.find(".wpfc-condition-text").text("If JS Url");
 					}
 				}
 

@@ -17,6 +17,23 @@
 			$this->setJsLinks();
 		}
 
+		public function check_exclude($js_url = false){
+			if($js_url){
+				foreach((array)$this->wpfc->exclude_rules as $key => $value){
+
+					if(isset($value->prefix) && $value->prefix && $value->type == "js"){
+						if($value->prefix == "contain"){
+							$preg_match_rule = preg_quote($value->content, "/");
+						}
+
+						if(preg_match("/".$preg_match_rule."/i", $js_url)){
+							return true;
+						}
+					}
+				}
+			}
+		}
+
 		public function combine_js(){
 			if(count($this->jsLinks) > 0){
 				$prev_content = "";
@@ -26,6 +43,12 @@
 					if(!preg_match("/<script[^>]+json[^>]+>.+/", $script_tag) && !preg_match("/<script[^>]+text\/template[^>]+>.+/", $script_tag)){
 						if($href = $this->checkInternal($script_tag)){
 							if(strpos($this->jsLinksExcept, $href) === false){
+								if($this->check_exclude($href)){
+									$this->mergeJs($prev_content, $this->jsLinks[$key - 1]);
+									$prev_content = "";
+									continue;
+								}
+
 								$minifiedJs = $this->minify($href);
 
 								if($minifiedJs){
@@ -124,7 +147,9 @@
 			$document_write = $this->find_tags("document.write(", ")");
 
 			foreach ($comment_tags as $key => $value) {
-				$this->jsLinksExcept = $value["text"].$this->jsLinksExcept;
+				if(preg_match("/<script/i", $value["text"]) && preg_match("/<\/script/i", $value["text"])){
+					$this->jsLinksExcept = $value["text"].$this->jsLinksExcept;
+				}
 			}
 
 			foreach ($document_write as $key => $value) {
