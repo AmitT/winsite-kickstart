@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the 4.6.x package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2016-09-03 21:57:20+0000\n"
+"PO-Revision-Date: 2016-09-25 19:56:49+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -303,7 +303,7 @@ msgstr "ארעה שגיאה לא ידועה"
 msgid "Network Activate"
 msgstr "הפעל ברשת"
 
-#: wp-includes/wp-db.php:1792 wp-includes/wp-db.php:1798
+#: wp-includes/wp-db.php:1797 wp-includes/wp-db.php:1803
 msgid "Unable to retrieve the error message from MySQL"
 msgstr "אין אפשרות לאחזר את הודעת השגיאה מתוך MySQL"
 
@@ -946,66 +946,66 @@ msgstr "כותרת:"
 msgid "Author:"
 msgstr "מאת:"
 
-#: wp-includes/wp-db.php:1690
+#: wp-includes/wp-db.php:1695
 msgid "Are you sure that the database server is not under particularly heavy load?"
 msgstr "האם אתה בטוח ששרת מסד הנתונים איננו נמצא תחת עומס כבד במיוחד?"
 
 #. translators: %s: database host
-#: wp-includes/wp-db.php:1684
+#: wp-includes/wp-db.php:1689
 msgid "This means that we lost contact with the database server at %s. This could mean your host&#8217;s database server is down."
 msgstr "משמעות דבר היא כי אבד הקשר עם שרת מסד הנתונים %s. יתכן ששרת מסד הנתונים של חברת האכסון נפל."
 
-#: wp-includes/wp-db.php:1680
+#: wp-includes/wp-db.php:1685
 msgid "Error reconnecting to the database"
 msgstr "שגיאת בהתחברות למסד הנתונים"
 
-#: wp-includes/wp-db.php:1585
+#: wp-includes/wp-db.php:1590
 msgid "Are you sure that you have typed the correct hostname?"
 msgstr "האם אתה בטוח שהקלדת נכון את שרת מסד נתונים?"
 
-#: wp-includes/wp-db.php:1586 wp-includes/wp-db.php:1689
+#: wp-includes/wp-db.php:1591 wp-includes/wp-db.php:1694
 msgid "Are you sure that the database server is running?"
 msgstr "האם אתה בטוח שהשרת פועל?"
 
 #. translators: %s: support forums URL
-#: wp-includes/wp-db.php:1591 wp-includes/wp-db.php:1695
+#: wp-includes/wp-db.php:1596 wp-includes/wp-db.php:1700
 msgid "If you&#8217;re unsure what these terms mean you should probably contact your host. If you still need help you can always visit the <a href=\"%s\">WordPress Support Forums</a>."
 msgstr "אם אינך בטוח מה משמעות המונחים הללו, סביר להניח שאתה צריך ליצור קשר עם ספק האכסון שלך. אם אתה עדיין זקוק לעזרה אתה תמיד יכול לבקר <a href=\"%s\">פורום התמיכה של וורדפרס</a>."
 
 #. translators: 1: wp-config.php. 2: database host
-#: wp-includes/wp-db.php:1578
+#: wp-includes/wp-db.php:1583
 msgid "This either means that the username and password information in your %1$s file is incorrect or we can&#8217;t contact the database server at %2$s. This could mean your host&#8217;s database server is down."
 msgstr "זה אומר ששם המשתמש והסיסמה בקובץ %1$s אינם נכונים או שלא ניתן ליצור קשר עם שרת מסד הנתונים ב-%2$s. יכול להיות ששרת מסד הנתונים של חברת האכסון אינו פעיל."
 
-#: wp-includes/wp-db.php:1584
+#: wp-includes/wp-db.php:1589
 msgid "Are you sure you have the correct username and password?"
 msgstr "האם אתה בטוח ששם המשתמש והסיסמה נכונים?"
 
 #. translators: %s: support forums URL
-#: wp-includes/wp-db.php:1123
+#: wp-includes/wp-db.php:1128
 msgid "If you don&#8217;t know how to set up a database you should <strong>contact your host</strong>. If all else fails you may find help at the <a href=\"%s\">WordPress Support Forums</a>."
 msgstr "אם אינך יודע איך ליצור מסדי נתונים, יש <strong>ליצור קשר עם ספק האיחסון</strong>. אם שום דבר לא עזר, ניתן למצוא עזרה <a href=\"%s\">בפורום התמיכה של וורדפרס</a>."
 
 #. translators: 1: database user, 2: database name
-#: wp-includes/wp-db.php:1108
+#: wp-includes/wp-db.php:1113
 msgid "Does the user %1$s have permission to use the %2$s database?"
 msgstr "האם למשתמש %1$s יש הרשאות להשתמש במסד הנתונים %2$s?"
 
 #. translators: %s: database name
-#: wp-includes/wp-db.php:1099
+#: wp-includes/wp-db.php:1104
 msgid "We were able to connect to the database server (which means your username and password is okay) but not able to select the %s database."
 msgstr "ניתן להתחבר למסד הנתונים (מה שאומר ששם המשתמש והסיסמה נכונים) אבל לא ניתן לבחור את מסד הנתונים %s."
 
-#: wp-includes/wp-db.php:1104
+#: wp-includes/wp-db.php:1109
 msgid "Are you sure it exists?"
 msgstr "אתה בטוח שהוא קיים?"
 
 #. translators: %s: database name
-#: wp-includes/wp-db.php:1115
+#: wp-includes/wp-db.php:1120
 msgid "On some systems the name of your database is prefixed with your username, so it would be like <code>username_%1$s</code>. Could that be the problem?"
 msgstr "במערכות מסוימות השם של מסד הנתונים מקבל את הקידומת של שם המשתמש, משהו בסגנון <code>username_%1$s</code>. האם זו הבעיה במקרה הנוכחי?"
 
-#: wp-includes/wp-db.php:1095
+#: wp-includes/wp-db.php:1100
 msgid "Can&#8217;t select database"
 msgstr "לא ניתן לבחור מסד נתונים"
 
@@ -1551,7 +1551,7 @@ msgstr "הקישור לאיפוס הסיסמה לא תקף. ניתן לקבל ק
 msgid "Your password reset link has expired. Please request a new link below."
 msgstr "פג תוקפו של הקישור לאיפוס הסיסמה. ניתן לקבל קישור חדש בהמשך."
 
-#: wp-includes/wp-db.php:1376 wp-includes/wp-db.php:1393
+#: wp-includes/wp-db.php:1381 wp-includes/wp-db.php:1398
 msgid "WordPress database error:"
 msgstr "שגיאה במסד הנתונים של וורדפרס:"
 
@@ -2461,7 +2461,7 @@ msgstr "כבר קיים מונח עם השם והמזהה הזה בטקסונו�
 
 #. translators: %s: database access abstraction class, usually wpdb or a class
 #. extending wpdb
-#: wp-includes/wp-db.php:1175
+#: wp-includes/wp-db.php:1180
 msgid "%s must set a database connection for use with escaping."
 msgstr "%s חייב להגדיר חיבור למס הנתונים לשימוש עם escaping."
 
@@ -3537,7 +3537,7 @@ msgstr "קרתה תקלה לא צפויה. משהו כנראה נפגם ב WordP
 msgid "Invalid menu ID."
 msgstr "מספר תפריט לא תקני."
 
-#: wp-includes/wp-db.php:1291
+#: wp-includes/wp-db.php:1296
 msgid "The query argument of %s must have a placeholder."
 msgstr "הפרמטרים של השאילתה %s חייבת לכלול placeholder."
 
@@ -3681,8 +3681,8 @@ msgstr "קו אופקי"
 msgid "https://wordpress.org/"
 msgstr "https://he.wordpress.org/"
 
-#: wp-includes/admin-bar.php:147 wp-includes/wp-db.php:1124
-#: wp-includes/wp-db.php:1592 wp-includes/wp-db.php:1696 wp-login.php:801
+#: wp-includes/admin-bar.php:147 wp-includes/wp-db.php:1129
+#: wp-includes/wp-db.php:1597 wp-includes/wp-db.php:1701 wp-login.php:801
 msgid "https://wordpress.org/support/"
 msgstr "https://wordpress.org/support/"
 
@@ -4213,7 +4213,7 @@ msgstr "ביטול בחירה"
 #: wp-includes/class-wp-xmlrpc-server.php:4559
 #: wp-includes/class-wp-xmlrpc-server.php:4572
 msgid "Sorry, that file cannot be edited."
-msgstr "סליחה, קובץ זה אינו ניתן לעריכה."
+msgstr "לא ניתן לערוך את הקובץ."
 
 #: wp-includes/media.php:3385
 msgid ""
@@ -5221,7 +5221,7 @@ msgid "Database Error"
 msgstr "שגיאה במסד הנתונים"
 
 #: wp-includes/functions.php:3647 wp-includes/ms-load.php:471
-#: wp-includes/wp-db.php:1574
+#: wp-includes/wp-db.php:1579
 msgid "Error establishing a database connection"
 msgstr "שגיאת התחברות למסד הנתונים"
 
@@ -6221,34 +6221,9 @@ msgstr "גרסת התוכנה"
 msgid "Time Zone"
 msgstr "אזור זמן"
 
-#: wp-includes/class-wp-xmlrpc-server.php:4522
-#: wp-includes/class-wp-xmlrpc-server.php:5903
-msgid "Either there are no posts, or something went wrong."
-msgstr "בעיה: או שאין פוסטים, או שמשהו השתבש."
-
 #: wp-includes/class-wp-xmlrpc-server.php:6234
 msgid "Is there no link to us?"
 msgstr "אין קישור אלינו?"
-
-#: wp-includes/class-wp-xmlrpc-server.php:6279
-msgid "The source URL and the target URL cannot both point to the same resource."
-msgstr "בעיה: כתובות המקור והיעד לא יכולות להיות זהות."
-
-#: wp-includes/class-wp-xmlrpc-server.php:6287
-msgid "The pingback has already been registered."
-msgstr "בעיה: הפינגבאק הזה נרשם כבר."
-
-#: wp-includes/class-wp-xmlrpc-server.php:6312
-msgid "The source URL does not exist."
-msgstr "בעיה: כתובת המקור לא קיימת."
-
-#: wp-includes/class-wp-xmlrpc-server.php:6369
-msgid "The source URL does not contain a link to the target URL, and so cannot be used as a source."
-msgstr "בעיה: כתובת המקור לא מכילה קישור ליעד, ולכן אי אפשר להשתמש בה."
-
-#: wp-includes/class-wp-xmlrpc-server.php:6401
-msgid "Pingback from %1$s to %2$s registered. Keep the web talking! :-)"
-msgstr "בעיה: נשלח פינגבאק מ-%1$s אל-%2$s."
 
 #: wp-includes/class-wp-xmlrpc-server.php:503
 msgid "Allow new users to sign up"
@@ -6370,11 +6345,11 @@ msgstr "כתובת היעד שנבחרה לא קיימת."
 msgid "You must be registered to comment"
 msgstr "צריך להתחבר למערכת כדי להשתתף בדיון"
 
-#: wp-includes/wp-db.php:1364
+#: wp-includes/wp-db.php:1369
 msgid "WordPress database error %1$s for query %2$s"
 msgstr "שגיאת מסד נתונים %1$s לשאילתה %2$s"
 
-#: wp-includes/wp-db.php:1362
+#: wp-includes/wp-db.php:1367
 msgid "WordPress database error %1$s for query %2$s made by %3$s"
 msgstr "שגיאת מסד נתונים %1$s לשאילתה %2$s נוצרה על ידי %3$s"
 
@@ -6391,6 +6366,31 @@ msgstr "אין לך הרשאות לראות את פרטי הפוסט."
 #: wp-includes/class-wp-xmlrpc-server.php:3474
 msgid "Sorry, the comment could not be edited. Something wrong happened."
 msgstr "לא ניתן לערוך את התגובה. ארעה תקלה."
+
+#: wp-includes/class-wp-xmlrpc-server.php:6369
+msgid "The source URL does not contain a link to the target URL, and so cannot be used as a source."
+msgstr "כתובת המקור לא מכילה קישור ליעד, ולכן אי אפשר להשתמש בה."
+
+#: wp-includes/class-wp-xmlrpc-server.php:6279
+msgid "The source URL and the target URL cannot both point to the same resource."
+msgstr "כתובות המקור והיעד לא יכולות להיות זהות."
+
+#: wp-includes/class-wp-xmlrpc-server.php:6312
+msgid "The source URL does not exist."
+msgstr "כתובת המקור לא קיימת."
+
+#: wp-includes/class-wp-xmlrpc-server.php:6287
+msgid "The pingback has already been registered."
+msgstr "הפינגבאק הזה כבר נרשם."
+
+#: wp-includes/class-wp-xmlrpc-server.php:6401
+msgid "Pingback from %1$s to %2$s registered. Keep the web talking! :-)"
+msgstr "נשלח פינגבאק מ-%1$s אל-%2$s."
+
+#: wp-includes/class-wp-xmlrpc-server.php:4522
+#: wp-includes/class-wp-xmlrpc-server.php:5903
+msgid "Either there are no posts, or something went wrong."
+msgstr "או שאין פוסטים, או שמשהו השתבש."
 
 #: wp-includes/class-wp-theme.php:783
 msgid "Gray"
@@ -6489,10 +6489,6 @@ msgstr "%1$s על %2$s"
 msgid "Untitled"
 msgstr "ללא כותרת"
 
-#: wp-includes/widgets.php:1345
-msgid "RSS Error: %s"
-msgstr "בעיה ב-RSS: %s"
-
 #: wp-includes/widgets.php:1354
 msgid "Give the feed a title (optional):"
 msgstr "כותרת לפיד (לא חובה):"
@@ -6545,10 +6541,6 @@ msgstr "%s היא אפשרות מוגנת של וורדפרס ואי אפשר ל
 #: wp-includes/functions.php:2121
 msgid "Empty filename"
 msgstr "שם הקובץ ריק"
-
-#: wp-includes/functions.php:2525
-msgid "WordPress Failure Notice"
-msgstr "וורדפרס &raquo; בעיה"
 
 #: wp-includes/functions.php:4485
 msgid "Select a city"
@@ -7183,10 +7175,6 @@ msgstr "הפוסט האחרון"
 msgid "Revision"
 msgstr "גרסה"
 
-#: wp-includes/user.php:1432
-msgid "Cannot create a user with an empty login name."
-msgstr "אי אפשר ליצור משתמש בלי שם משתמש"
-
 #: wp-includes/script-loader.php:718
 msgid "Saving..."
 msgstr "שומרת&#8230;"
@@ -7412,7 +7400,7 @@ msgstr[1] "%s תגובות ממתינות לאישור:"
 msgid "<strong>ERROR</strong>: Your account has been marked as a spammer."
 msgstr "<strong>שגיאה</strong>: חשבון משתמש זה סומן כחשבון זבל."
 
-#: wp-includes/wp-db.php:3207
+#: wp-includes/wp-db.php:3212
 msgid "<strong>ERROR</strong>: WordPress %1$s requires MySQL %2$s or higher"
 msgstr "<strong>שגיאה</strong>: וורדפרס %1$s זקוקה ל-MySQL %2$s או גרסה חדשה יותר"
 
@@ -7828,6 +7816,18 @@ msgstr "לא ניתן ליצור את המשתמש"
 #: wp-includes/pluggable.php:1726
 msgid "[%s] New User Registration"
 msgstr "[%s] רישום משתמש חדש"
+
+#: wp-includes/user.php:1432
+msgid "Cannot create a user with an empty login name."
+msgstr "אי אפשר ליצור משתמש ללא שם משתמש."
+
+#: wp-includes/widgets.php:1345
+msgid "RSS Error: %s"
+msgstr "שגיאת RSS: %s"
+
+#: wp-includes/functions.php:2525
+msgid "WordPress Failure Notice"
+msgstr "הודעת כישלון וורדפרס"
 
 #: wp-includes/class-wp-theme.php:782
 msgid "Blue"
