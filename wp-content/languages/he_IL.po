@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the 4.6.x package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2016-08-23 18:26:27+0000\n"
+"PO-Revision-Date: 2016-09-03 21:57:20+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -303,7 +303,7 @@ msgstr "ארעה שגיאה לא ידועה"
 msgid "Network Activate"
 msgstr "הפעל ברשת"
 
-#: wp-includes/wp-db.php:1782 wp-includes/wp-db.php:1788
+#: wp-includes/wp-db.php:1792 wp-includes/wp-db.php:1798
 msgid "Unable to retrieve the error message from MySQL"
 msgstr "אין אפשרות לאחזר את הודעת השגיאה מתוך MySQL"
 
@@ -324,11 +324,6 @@ msgstr "אין לך הרשאות לראות טיוטות."
 #: wp-includes/script-loader.php:127 wp-includes/script-loader.php:499
 msgid "Sorry, you are not allowed to do that."
 msgstr "אין לך הרשאות לעשות את זה."
-
-#. translators: %s: site title
-#: wp-includes/pluggable.php:1685
-msgid "[%s] Password Changed"
-msgstr "[%s] סיסמה שונתה"
 
 #: wp-includes/script-loader.php:392
 msgctxt "password strength"
@@ -368,6 +363,11 @@ msgid ""
 msgstr ""
 "אם אתה בטוח שאתה רוצה לעשות זאת?\n"
 "ייתכן שהשינויים שבוצעו בתגובה יאבדו."
+
+#. translators: %s: site title
+#: wp-includes/pluggable.php:1685
+msgid "[%s] Password Changed"
+msgstr "[%s] שינוי סיסמה"
 
 #: wp-includes/media-template.php:1235
 msgid "Image crop area preview. Requires mouse interaction."
@@ -590,11 +590,11 @@ msgstr "כנס"
 
 #. translators: 1: PHP class name, 2: PHP parent class name, 3: version number,
 #. 4: __construct() method
-#: wp-includes/functions.php:3765
+#: wp-includes/functions.php:3766
 msgid "The called constructor method for %1$s in %2$s is <strong>deprecated</strong> since version %3$s! Use %4$s instead."
 msgstr "המתודה constructor ב-%1$s ב-%2$s <strong>לא קיימת</strong> מגרסה %3$s! השתמשו ב-%4$s במקום."
 
-#: wp-includes/functions.php:5122
+#: wp-includes/functions.php:5123
 msgid "Close dialog"
 msgstr "סגור חלון"
 
@@ -732,12 +732,12 @@ msgstr "https://codex.wordpress.org/Debugging_a_WordPress_Network"
 msgid "Read the <a href=\"%s\" target=\"_blank\">bug report</a> page. Some of the guidelines there may help you figure out what went wrong."
 msgstr "ההנחיות בעמוד <a href=\"%s\" target=\"_blank\">דיווח תקלות</a> עשויות לעזור להבין מה השתבש."
 
-#: wp-includes/functions.php:3993
+#: wp-includes/functions.php:3994
 msgid "https://codex.wordpress.org/Debugging_in_WordPress"
 msgstr "https://codex.wordpress.org/Debugging_in_WordPress"
 
 #. translators: %s: Codex URL
-#: wp-includes/functions.php:3992
+#: wp-includes/functions.php:3993
 msgid "Please see <a href=\"%s\">Debugging in WordPress</a> for more information."
 msgstr "למידע נוסף כנסו ל<a href=\"%s\">ניפוי תקלות בוורדפרס</a>."
 
@@ -946,66 +946,66 @@ msgstr "כותרת:"
 msgid "Author:"
 msgstr "מאת:"
 
-#: wp-includes/wp-db.php:1680
+#: wp-includes/wp-db.php:1690
 msgid "Are you sure that the database server is not under particularly heavy load?"
 msgstr "האם אתה בטוח ששרת מסד הנתונים איננו נמצא תחת עומס כבד במיוחד?"
 
 #. translators: %s: database host
-#: wp-includes/wp-db.php:1674
+#: wp-includes/wp-db.php:1684
 msgid "This means that we lost contact with the database server at %s. This could mean your host&#8217;s database server is down."
 msgstr "משמעות דבר היא כי אבד הקשר עם שרת מסד הנתונים %s. יתכן ששרת מסד הנתונים של חברת האכסון נפל."
 
-#: wp-includes/wp-db.php:1670
+#: wp-includes/wp-db.php:1680
 msgid "Error reconnecting to the database"
 msgstr "שגיאת בהתחברות למסד הנתונים"
 
-#: wp-includes/wp-db.php:1575
+#: wp-includes/wp-db.php:1585
 msgid "Are you sure that you have typed the correct hostname?"
 msgstr "האם אתה בטוח שהקלדת נכון את שרת מסד נתונים?"
 
-#: wp-includes/wp-db.php:1576 wp-includes/wp-db.php:1679
+#: wp-includes/wp-db.php:1586 wp-includes/wp-db.php:1689
 msgid "Are you sure that the database server is running?"
 msgstr "האם אתה בטוח שהשרת פועל?"
 
 #. translators: %s: support forums URL
-#: wp-includes/wp-db.php:1581 wp-includes/wp-db.php:1685
+#: wp-includes/wp-db.php:1591 wp-includes/wp-db.php:1695
 msgid "If you&#8217;re unsure what these terms mean you should probably contact your host. If you still need help you can always visit the <a href=\"%s\">WordPress Support Forums</a>."
 msgstr "אם אינך בטוח מה משמעות המונחים הללו, סביר להניח שאתה צריך ליצור קשר עם ספק האכסון שלך. אם אתה עדיין זקוק לעזרה אתה תמיד יכול לבקר <a href=\"%s\">פורום התמיכה של וורדפרס</a>."
 
 #. translators: 1: wp-config.php. 2: database host
-#: wp-includes/wp-db.php:1568
+#: wp-includes/wp-db.php:1578
 msgid "This either means that the username and password information in your %1$s file is incorrect or we can&#8217;t contact the database server at %2$s. This could mean your host&#8217;s database server is down."
 msgstr "זה אומר ששם המשתמש והסיסמה בקובץ %1$s אינם נכונים או שלא ניתן ליצור קשר עם שרת מסד הנתונים ב-%2$s. יכול להיות ששרת מסד הנתונים של חברת האכסון אינו פעיל."
 
-#: wp-includes/wp-db.php:1574
+#: wp-includes/wp-db.php:1584
 msgid "Are you sure you have the correct username and password?"
 msgstr "האם אתה בטוח ששם המשתמש והסיסמה נכונים?"
 
 #. translators: %s: support forums URL
-#: wp-includes/wp-db.php:1113
+#: wp-includes/wp-db.php:1123
 msgid "If you don&#8217;t know how to set up a database you should <strong>contact your host</strong>. If all else fails you may find help at the <a href=\"%s\">WordPress Support Forums</a>."
 msgstr "אם אינך יודע איך ליצור מסדי נתונים, יש <strong>ליצור קשר עם ספק האיחסון</strong>. אם שום דבר לא עזר, ניתן למצוא עזרה <a href=\"%s\">בפורום התמיכה של וורדפרס</a>."
 
 #. translators: 1: database user, 2: database name
-#: wp-includes/wp-db.php:1098
+#: wp-includes/wp-db.php:1108
 msgid "Does the user %1$s have permission to use the %2$s database?"
 msgstr "האם למשתמש %1$s יש הרשאות להשתמש במסד הנתונים %2$s?"
 
 #. translators: %s: database name
-#: wp-includes/wp-db.php:1089
+#: wp-includes/wp-db.php:1099
 msgid "We were able to connect to the database server (which means your username and password is okay) but not able to select the %s database."
 msgstr "ניתן להתחבר למסד הנתונים (מה שאומר ששם המשתמש והסיסמה נכונים) אבל לא ניתן לבחור את מסד הנתונים %s."
 
-#: wp-includes/wp-db.php:1094
+#: wp-includes/wp-db.php:1104
 msgid "Are you sure it exists?"
 msgstr "אתה בטוח שהוא קיים?"
 
 #. translators: %s: database name
-#: wp-includes/wp-db.php:1105
+#: wp-includes/wp-db.php:1115
 msgid "On some systems the name of your database is prefixed with your username, so it would be like <code>username_%1$s</code>. Could that be the problem?"
 msgstr "במערכות מסוימות השם של מסד הנתונים מקבל את הקידומת של שם המשתמש, משהו בסגנון <code>username_%1$s</code>. האם זו הבעיה במקרה הנוכחי?"
 
-#: wp-includes/wp-db.php:1085
+#: wp-includes/wp-db.php:1095
 msgid "Can&#8217;t select database"
 msgstr "לא ניתן לבחור מסד נתונים"
 
@@ -1437,11 +1437,11 @@ msgstr "הסיסמה החדשה נשמרה."
 
 #: wp-includes/script-loader.php:408
 msgid "Hide password"
-msgstr "הסתרת סיסמה"
+msgstr "הסתר סיסמה"
 
 #: wp-includes/script-loader.php:407
 msgid "Show password"
-msgstr "הצגת סיסמה"
+msgstr "הצג סיסמה"
 
 #: wp-includes/class-wp-customize-nav-menus.php:373
 msgid "Menu Name"
@@ -1551,7 +1551,7 @@ msgstr "הקישור לאיפוס הסיסמה לא תקף. ניתן לקבל ק
 msgid "Your password reset link has expired. Please request a new link below."
 msgstr "פג תוקפו של הקישור לאיפוס הסיסמה. ניתן לקבל קישור חדש בהמשך."
 
-#: wp-includes/wp-db.php:1366 wp-includes/wp-db.php:1383
+#: wp-includes/wp-db.php:1376 wp-includes/wp-db.php:1393
 msgid "WordPress database error:"
 msgstr "שגיאה במסד הנתונים של וורדפרס:"
 
@@ -1608,7 +1608,7 @@ msgid "The %s directory of the develop repository must be used for RTL."
 msgstr "לצורך RTL יש להשתמש בספרייה %s במאגר הפיתוח."
 
 #. translators: 1: PHP class name, 2: version number, 3: __construct() method
-#: wp-includes/functions.php:3769
+#: wp-includes/functions.php:3770
 msgid "The called constructor method for %1$s is <strong>deprecated</strong> since version %2$s! Use %3$s instead."
 msgstr "המתודה constructor ב-%1$s <strong>לא קיימת</strong> מגרסה %2$s! השתמשו ב-%3$s במקום."
 
@@ -1869,10 +1869,6 @@ msgstr "תוצאות החיפוש יעודכנו במהלך ההקלדה."
 msgid "Search menu items&hellip;"
 msgstr "חיפוש פריטים בתפריט&hellip;"
 
-#: wp-includes/class-wp-customize-nav-menus.php:621
-msgid "New menu name"
-msgstr "שפ תפריט"
-
 #: wp-includes/class-wp-customize-nav-menus.php:609
 msgid "Add a Menu"
 msgstr "תפריט חדש"
@@ -1910,6 +1906,10 @@ msgstr "התאמת &#9656; %s"
 #: wp-includes/class-wp-customize-nav-menus.php:760
 msgid "Add Menu Items"
 msgstr "הוספת תפריטים"
+
+#: wp-includes/class-wp-customize-nav-menus.php:621
+msgid "New menu name"
+msgstr "שם תפריט חדש"
 
 #. translators: 1: item name, 2: item position, 3: parent item name
 #: wp-includes/class-wp-customize-nav-menus.php:425
@@ -2036,7 +2036,7 @@ msgstr "מחלקות CSS"
 msgid "Title Attribute"
 msgstr "תיאור הכותרת"
 
-#: wp-includes/class-wp-editor.php:1431
+#: wp-includes/class-wp-editor.php:1439
 #: wp-includes/customize/class-wp-customize-nav-menu-item-control.php:105
 #: wp-includes/media-template.php:1001
 msgid "Open link in a new tab"
@@ -2361,7 +2361,7 @@ msgid "1 Comment<span class=\"screen-reader-text\"> on %s</span>"
 msgstr "תגובה אחת<span class=\"screen-reader-text\"> על %s</span>"
 
 #: wp-includes/class-wp-customize-nav-menus.php:788
-#: wp-includes/class-wp-editor.php:1426 wp-includes/media-template.php:813
+#: wp-includes/class-wp-editor.php:1434 wp-includes/media-template.php:813
 msgid "Link Text"
 msgstr "טקסט לקישור"
 
@@ -2461,7 +2461,7 @@ msgstr "כבר קיים מונח עם השם והמזהה הזה בטקסונו�
 
 #. translators: %s: database access abstraction class, usually wpdb or a class
 #. extending wpdb
-#: wp-includes/wp-db.php:1165
+#: wp-includes/wp-db.php:1175
 msgid "%s must set a database connection for use with escaping."
 msgstr "%s חייב להגדיר חיבור למס הנתונים לשימוש עם escaping."
 
@@ -2850,7 +2850,7 @@ msgstr "ערוך פרטים נוספים"
 msgid "Close media panel"
 msgstr "סגור את פאנל המדיה"
 
-#: wp-includes/class-wp-editor.php:1452
+#: wp-includes/class-wp-editor.php:1460
 msgid "Search or use up and down arrow keys to select an item."
 msgstr "חפש, או השתמש בחצי המקלדת כדי לבחור פריט"
 
@@ -3537,7 +3537,7 @@ msgstr "קרתה תקלה לא צפויה. משהו כנראה נפגם ב WordP
 msgid "Invalid menu ID."
 msgstr "מספר תפריט לא תקני."
 
-#: wp-includes/wp-db.php:1281
+#: wp-includes/wp-db.php:1291
 msgid "The query argument of %s must have a placeholder."
 msgstr "הפרמטרים של השאילתה %s חייבת לכלול placeholder."
 
@@ -3681,8 +3681,8 @@ msgstr "קו אופקי"
 msgid "https://wordpress.org/"
 msgstr "https://he.wordpress.org/"
 
-#: wp-includes/admin-bar.php:147 wp-includes/wp-db.php:1114
-#: wp-includes/wp-db.php:1582 wp-includes/wp-db.php:1686 wp-login.php:801
+#: wp-includes/admin-bar.php:147 wp-includes/wp-db.php:1124
+#: wp-includes/wp-db.php:1592 wp-includes/wp-db.php:1696 wp-login.php:801
 msgid "https://wordpress.org/support/"
 msgstr "https://wordpress.org/support/"
 
@@ -4105,7 +4105,7 @@ msgstr "האתר שחיפשת, %s, אינו קיים, אבל אתה יכול ל�
 msgid "%1$s %2$s, %3$s @ %4$s:%5$s"
 msgstr "%2$s ב%1$s, %3$s בשעה %4$s:%5$s"
 
-#: wp-includes/functions.php:5135
+#: wp-includes/functions.php:5136
 msgid "The login page will open in a new window. After logging in you can close it and return to this page."
 msgstr "עמוד ההתחברות יפתח בחלונית חדשה. אחרי ההתחברות ניתן לסגור את החלונית ולחזור לעמוד זה."
 
@@ -4135,7 +4135,7 @@ msgctxt "label"
 msgid "Search for:"
 msgstr "חפש:"
 
-#: wp-includes/functions.php:5133 wp-includes/script-loader.php:461
+#: wp-includes/functions.php:5134 wp-includes/script-loader.php:461
 msgid "Session expired"
 msgstr "פג תוקף ה-Session"
 
@@ -5216,12 +5216,12 @@ msgstr "תיעוד"
 msgid "&hellip;"
 msgstr "&hellip;"
 
-#: wp-includes/functions.php:3642
+#: wp-includes/functions.php:3643
 msgid "Database Error"
 msgstr "שגיאה במסד הנתונים"
 
-#: wp-includes/functions.php:3646 wp-includes/ms-load.php:471
-#: wp-includes/wp-db.php:1564
+#: wp-includes/functions.php:3647 wp-includes/ms-load.php:471
+#: wp-includes/wp-db.php:1574
 msgid "Error establishing a database connection"
 msgstr "שגיאת התחברות למסד הנתונים"
 
@@ -5355,7 +5355,7 @@ msgstr "Preload"
 msgid "Destination directory for file streaming does not exist or is not writable."
 msgstr "ספריית היעד של הקובץ לא קיימת או לא זמינה."
 
-#: wp-includes/class-http.php:532
+#: wp-includes/class-http.php:535
 msgid "There are no HTTP transports available which can complete the requested request."
 msgstr "אין HTTP transports זמינים שיכולים להשלים את הבקשה."
 
@@ -5364,11 +5364,11 @@ msgctxt "post format"
 msgid "Format"
 msgstr "סוג תוכן"
 
-#: wp-includes/class-wp-editor.php:1420
+#: wp-includes/class-wp-editor.php:1428
 msgid "Enter the destination URL"
 msgstr "כתובת לקישור חיצוני"
 
-#: wp-includes/class-wp-editor.php:1434
+#: wp-includes/class-wp-editor.php:1442
 msgid "Or link to existing content"
 msgstr "או קישור פנימי באתר"
 
@@ -5392,11 +5392,11 @@ msgstr "תגי שאילתא מותנים אינם פועלים בטרם הרצת
 msgid "The user is already active."
 msgstr "המשתמש כבר פעיל."
 
-#: wp-includes/functions.php:3990
+#: wp-includes/functions.php:3991
 msgid "(This message was added in version %s.)"
 msgstr "(הודעה זו נוספה בגרסה %s.)"
 
-#: wp-includes/functions.php:3995
+#: wp-includes/functions.php:3996
 msgid "%1$s was called <strong>incorrectly</strong>. %2$s %3$s"
 msgstr "%1$s נקרא <strong>בצורה לא תקינה</strong>. %2$s %3$s"
 
@@ -5428,7 +5428,7 @@ msgstr "אודיו"
 msgid "Invalid post format"
 msgstr "סוג תוכן לא תקני."
 
-#: wp-includes/class-wp-editor.php:1451
+#: wp-includes/class-wp-editor.php:1459
 msgid "No search term specified. Showing recent items."
 msgstr "לא הוזנו מילים לחיפוש. מוצגים פריטים אחרונים."
 
@@ -5643,7 +5643,7 @@ msgstr "הנהלת הרשת"
 
 #: wp-includes/ms-functions.php:845 wp-includes/ms-functions.php:930
 msgid "[%1$s] Activate %2$s"
-msgstr "[%1s] להפעיל את האתר %2s"
+msgstr "[%1$s] להפעיל את האתר %2$s"
 
 #: wp-includes/load.php:133
 msgid "Your server is running PHP version %1$s but WordPress %2$s requires at least %3$s."
@@ -6370,11 +6370,11 @@ msgstr "כתובת היעד שנבחרה לא קיימת."
 msgid "You must be registered to comment"
 msgstr "צריך להתחבר למערכת כדי להשתתף בדיון"
 
-#: wp-includes/wp-db.php:1354
+#: wp-includes/wp-db.php:1364
 msgid "WordPress database error %1$s for query %2$s"
 msgstr "שגיאת מסד נתונים %1$s לשאילתה %2$s"
 
-#: wp-includes/wp-db.php:1352
+#: wp-includes/wp-db.php:1362
 msgid "WordPress database error %1$s for query %2$s made by %3$s"
 msgstr "שגיאת מסד נתונים %1$s לשאילתה %2$s נוצרה על ידי %3$s"
 
@@ -6550,7 +6550,7 @@ msgstr "שם הקובץ ריק"
 msgid "WordPress Failure Notice"
 msgstr "וורדפרס &raquo; בעיה"
 
-#: wp-includes/functions.php:4484
+#: wp-includes/functions.php:4485
 msgid "Select a city"
 msgstr "בחירת עיר"
 
@@ -6978,10 +6978,6 @@ msgstr ""
 "שם משתמש:\n"
 "%s"
 
-#: wp-includes/pluggable.php:1726
-msgid "[%s] New User Registration"
-msgstr "[%s] רישום משתמשים חדשים"
-
 #: wp-includes/post-template.php:130
 msgid "Protected: %s"
 msgstr "מוגן: %s"
@@ -7165,11 +7161,11 @@ msgstr "התגובה הזאת קיימת; נראה שכבר אמרת את זה."
 msgid "Automatically add paragraphs"
 msgstr "לחלק אוטומטית לפסקאות"
 
-#: wp-includes/functions.php:4529 wp-includes/functions.php:4533
+#: wp-includes/functions.php:4530 wp-includes/functions.php:4534
 msgid "UTC"
 msgstr "UTC"
 
-#: wp-includes/functions.php:4537
+#: wp-includes/functions.php:4538
 msgid "Manual Offsets"
 msgstr "התאמות ידניות"
 
@@ -7313,13 +7309,13 @@ msgstr "תגובה לפוסט: &quot;%1$s&quot; מאת &quot;%2$s&quot;"
 msgid "new WordPress Loop"
 msgstr "לולאת וורדפרס חדשה"
 
-#: wp-includes/functions.php:3706 wp-includes/functions.php:3830
-#: wp-includes/functions.php:3945
+#: wp-includes/functions.php:3707 wp-includes/functions.php:3831
+#: wp-includes/functions.php:3946
 msgid "%1$s is <strong>deprecated</strong> since version %2$s! Use %3$s instead."
 msgstr "%1$s <strong>לא קיים</strong> מאז גרסה %2$s! השתמשו ב %3$s במקום."
 
-#: wp-includes/functions.php:3708 wp-includes/functions.php:3832
-#: wp-includes/functions.php:3947
+#: wp-includes/functions.php:3709 wp-includes/functions.php:3833
+#: wp-includes/functions.php:3948
 msgid "%1$s is <strong>deprecated</strong> since version %2$s with no alternative available."
 msgstr "%1$s <strong>לא קיים</strong> מאז גרסה %2$s ואין תחליף חלופי."
 
@@ -7416,7 +7412,7 @@ msgstr[1] "%s תגובות ממתינות לאישור:"
 msgid "<strong>ERROR</strong>: Your account has been marked as a spammer."
 msgstr "<strong>שגיאה</strong>: חשבון משתמש זה סומן כחשבון זבל."
 
-#: wp-includes/wp-db.php:3197
+#: wp-includes/wp-db.php:3207
 msgid "<strong>ERROR</strong>: WordPress %1$s requires MySQL %2$s or higher"
 msgstr "<strong>שגיאה</strong>: וורדפרס %1$s זקוקה ל-MySQL %2$s או גרסה חדשה יותר"
 
@@ -7504,7 +7500,7 @@ msgstr "יש לנסות שנית."
 msgid "Log in"
 msgstr "התחבר"
 
-#: wp-includes/functions.php:5134 wp-includes/user.php:280
+#: wp-includes/functions.php:5135 wp-includes/user.php:280
 msgid "Please log in again."
 msgstr "נא להתחבר מחדש."
 
@@ -7549,7 +7545,7 @@ msgstr "הקובץ ריק. יש לנסות קובץ אחר."
 msgid "Tag Cloud"
 msgstr "ענן תגיות"
 
-#: wp-includes/functions.php:3892
+#: wp-includes/functions.php:3893
 msgid "%1$s was called with an argument that is <strong>deprecated</strong> since version %2$s with no alternative available."
 msgstr "%1$s הופעל עם ארגומנט אשר <strong>אינו קיים</strong> החל מגרסה %2$s וללא תחליף זמין."
 
@@ -7589,7 +7585,7 @@ msgstr "נמחק."
 msgid "Trash it: %s"
 msgstr "מחיקה: %s"
 
-#: wp-includes/class-wp-editor.php:936 wp-includes/class-wp-editor.php:1416
+#: wp-includes/class-wp-editor.php:936 wp-includes/class-wp-editor.php:1424
 #: wp-includes/script-loader.php:419
 msgid "Insert/edit link"
 msgstr "הוספת/עריכת קישור"
@@ -7690,7 +7686,7 @@ msgstr "תקציר פינגבאק:"
 msgid "Upload failed."
 msgstr "העלאה נכשלה."
 
-#: wp-includes/class-http.php:963 wp-includes/class-wp-http-curl.php:232
+#: wp-includes/class-http.php:966 wp-includes/class-wp-http-curl.php:232
 #: wp-includes/class-wp-http-curl.php:271
 msgid "Too many redirects."
 msgstr "יותר מדי הפניות."
@@ -7732,7 +7728,7 @@ msgstr "וורדפרס &lsaquo;שגיאה"
 msgid "Could not open handle for fopen() to %s"
 msgstr "לא ניתן לפתוח את %s באמצעות fopen()"
 
-#: wp-includes/functions.php:3890
+#: wp-includes/functions.php:3891
 msgid "%1$s was called with an argument that is <strong>deprecated</strong> since version %2$s! %3$s"
 msgstr "%1$s נקרא באמצעות ארגומנט שכבר <strong>לא קיים</strong> מגרסה %2$s! %3$s"
 
@@ -7828,6 +7824,10 @@ msgstr "%1$s [גרסה נוכחית]"
 #: wp-includes/ms-functions.php:981
 msgid "Could not create user"
 msgstr "לא ניתן ליצור את המשתמש"
+
+#: wp-includes/pluggable.php:1726
+msgid "[%s] New User Registration"
+msgstr "[%s] רישום משתמש חדש"
 
 #: wp-includes/class-wp-theme.php:782
 msgid "Blue"
@@ -7947,7 +7947,7 @@ msgid "Strength indicator"
 msgstr "חוזק סיסמה"
 
 #: wp-includes/admin-bar.php:736 wp-includes/class-wp-customize-widgets.php:418
-#: wp-includes/functions.php:3583
+#: wp-includes/functions.php:3584
 msgid "Widgets"
 msgstr "וידג'טים"
 
@@ -8273,10 +8273,6 @@ msgstr "תוספים"
 msgid "Content"
 msgstr "תוכן"
 
-#: wp-includes/comment-template.php:1593 wp-includes/script-loader.php:508
-msgid "Reply"
-msgstr "להגיב"
-
 #: wp-includes/comment-template.php:1083
 msgid "Pingback"
 msgstr "פינגבאק"
@@ -8430,7 +8426,7 @@ msgid "Header"
 msgstr "תמונת כותרת"
 
 #: wp-includes/class-wp-customize-nav-menus.php:784
-#: wp-includes/class-wp-editor.php:1422
+#: wp-includes/class-wp-editor.php:1430
 #: wp-includes/customize/class-wp-customize-nav-menu-item-control.php:91
 #: wp-includes/media-template.php:371 wp-includes/media-template.php:550
 #: wp-includes/media.php:3351
@@ -8478,7 +8474,7 @@ msgid "Search Categories"
 msgstr "חיפוש קטגוריות"
 
 #: wp-includes/admin-bar.php:810 wp-includes/admin-bar.php:811
-#: wp-includes/class-wp-editor.php:1438 wp-includes/media.php:3353
+#: wp-includes/class-wp-editor.php:1446 wp-includes/media.php:3353
 msgid "Search"
 msgstr "חיפוש"
 
@@ -8494,7 +8490,7 @@ msgstr "שמירה"
 msgid "Save as Pending"
 msgstr "שמור והמתן לאישור"
 
-#: wp-includes/class-wp-editor.php:871 wp-includes/class-wp-editor.php:1463
+#: wp-includes/class-wp-editor.php:871 wp-includes/class-wp-editor.php:1471
 #: wp-includes/media.php:3355 wp-includes/script-loader.php:406
 #: wp-includes/script-loader.php:456 wp-includes/script-loader.php:531
 msgid "Cancel"
@@ -8529,7 +8525,7 @@ msgstr "פורסם כפרטי"
 msgid "Dismiss"
 msgstr "סגור"
 
-#: wp-includes/class-wp-editor.php:872 wp-includes/class-wp-editor.php:1417
+#: wp-includes/class-wp-editor.php:872 wp-includes/class-wp-editor.php:1425
 #: wp-includes/script-loader.php:261 wp-includes/script-loader.php:342
 #: wp-includes/script-loader.php:457 wp-includes/script-loader.php:951
 msgid "Close"
@@ -8555,7 +8551,7 @@ msgstr "עריכת תגית"
 msgid "Add Media"
 msgstr "הוספת מדיה"
 
-#: wp-includes/class-wp-editor.php:1466 wp-includes/script-loader.php:421
+#: wp-includes/class-wp-editor.php:1474 wp-includes/script-loader.php:421
 msgid "Add Link"
 msgstr "הוספת קישור"
 
@@ -8599,6 +8595,10 @@ msgstr "תוצאות חיפוש עבור &quot;%s&quot;&rlm;"
 msgid "(no title)"
 msgstr "(ללא כותרת)"
 
+#: wp-includes/comment-template.php:1593 wp-includes/script-loader.php:508
+msgid "Reply"
+msgstr "הגב"
+
 #: wp-includes/class-wp-editor.php:895 wp-includes/media-template.php:377
 #: wp-includes/media-template.php:556 wp-includes/revision.php:34
 #: wp-includes/script-loader.php:557
@@ -8618,7 +8618,7 @@ msgstr "ממתין לאישור"
 msgid "Draft"
 msgstr "טיוטה"
 
-#: wp-includes/class-wp-editor.php:1365
+#: wp-includes/class-wp-editor.php:1373
 msgid "Y/m/d"
 msgstr "d/m/Y"
 
