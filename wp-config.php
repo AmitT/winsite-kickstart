@@ -51,77 +51,49 @@ define('SECURE_AUTH_SALT', '/=nt5d,B>}<C@f_(mhwXp+!9,lIcm@{JL)-k+}gx<LXTiFgp4T;|
 define('LOGGED_IN_SALT',   ',BboTFAs%=+%s$$z^6I6#eq`cTc]Eg~JUCG/,TYY|467AeQ5M,J(V/luTz*0dcMH');
 define('NONCE_SALT',       'Q<tU6_9vMOeKFC`E>YcnTvX`E@bR<Gc6+&Jc!L.hdt[sxxr2/^8lh%4mbe barD,');
 
-				/**#@-*/
 
-				/**
-				* WordPress Database Table prefix.
-				*
-				* You can have multiple installations in one database if you give each a unique
-				* prefix. Only numbers, letters, and underscores please!
-				*/
-				$table_prefix  = 'wpks_';
+/**
+* WordPress Database Table prefix.
+*
+* You can have multiple installations in one database if you give each a unique
+* prefix. Only numbers, letters, and underscores please!
+*/
+$table_prefix  = 'wpks_';
 
-				/* That's all, stop editing! Happy blogging. */
+/* That's all, stop editing! Happy blogging. */
 
-				/** Absolute path to the WordPress directory. */
-				if ( !defined('ABSPATH') )
-				define('ABSPATH', dirname(__FILE__) . '/');
+/** Absolute path to the WordPress directory. */
+if ( !defined('ABSPATH') )
+define('ABSPATH', dirname(__FILE__) . '/');
 
-				/** Sets up WordPress vars and included files. */
-				require_once(ABSPATH . 'wp-settings.php');
+/** Sets up WordPress vars and included files. */
+require_once(ABSPATH . 'wp-settings.php');
 
 
-				/**
-				* For developers: WordPress debugging mode.
-				*
-				* Change this to true to enable the display of notices during development.
-				* It is strongly recommended that plugin and theme developers use WP_DEBUG
-				* in their development environments.
-				*/
+/**
+* For developers: WordPress debugging mode.
+*
+* Change this to true to enable the display of notices during development.
+* It is strongly recommended that plugin and theme developers use WP_DEBUG
+* in their development environments.
+*/
 
-				// Set host name
-				$host = $_SERVER['SERVER_NAME'];
-				if ( $host === 'localhost' || $host === 'win-sites.co.il' || $host === 'win-site.info' ) {
+// Set host name
+$host = $_SERVER['SERVER_NAME'];
+if ( $host === 'localhost' || $host === 'win-sites.co.il' || $host === 'win-site.info' ) {
 
-					// Enable strict error reporting
-					error_reporting(E_ALL|E_STRICT);
+	// Enable strict error reporting
+	error_reporting(E_ALL|E_STRICT);
+	@ini_set( 'display_errors', 1 );
+} else {
 
-					// Enable WP_DEBUG mode
-					// define( 'WP_DEBUG', true );
+	// Disable strict error reporting
+	error_reporting(0);
+	@ini_set( 'display_errors', 0 );
 
-					// Enable Debug logging to the /wp-content/debug.log file
-					// define( 'WP_DEBUG_LOG', true );
+	/** Limit post revisions to 5. */
+	define( 'WP_POST_REVISIONS', 5);
+}
 
-					// Enable display of errors and warnings
-					// define( 'WP_DEBUG_DISPLAY', true );
-					@ini_set( 'display_errors', 1 );
-
-					// Use dev versions of core JS and CSS files (only needed if you are modifying these core files)
-					// define( 'SCRIPT_DEBUG', true );
-
-				} else {
-
-					// Disable strict error reporting
-					error_reporting(0);
-
-					// Enable WP_DEBUG mode
-					// define( 'WP_DEBUG', false );
-
-					// Enable Debug logging to the /wp-content/debug.log file
-					// define( 'WP_DEBUG_LOG', false );
-
-					// Disable display of errors and warnings
-					// define( 'WP_DEBUG_DISPLAY', false );
-					@ini_set( 'display_errors', 0 );
-
-					// Use dev versions of core JS and CSS files (only needed if you are modifying these core files)
-					// define( 'SCRIPT_DEBUG', false );
-
-					/** Limit post revisions to 5. */
-					define( 'WP_POST_REVISIONS', 5);
-				}
-
-				/** Limit post revisions to 5. */
-				// define( 'WP_POST_REVISIONS', 5);
-				/** disallow wp files editor. */
-				define( 'DISALLOW_FILE_EDIT', true );
+/** disallow wp files editor. */
+define( 'DISALLOW_FILE_EDIT', true );
