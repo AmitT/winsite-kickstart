@@ -107,6 +107,7 @@ window.wpfc.dictionary = {
     "Error Occured" : "Fel uppstod",
     "/wp-content/plugins/ is not writable" : "/wp-content/plugins/ är inte skrivbar",
     "Please read the tutorial" : "Vänligen läs handledningen",
+    "Remove render-blocking JavaScript" : "Ta bort Javascript som blockerar rendering",
     "You need to activate the premium plugin manually" : "Du måste aktivera premium-tillägget manuellt",
     "Continue" : "Fortsätt"
 };

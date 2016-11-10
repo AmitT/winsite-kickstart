@@ -127,5 +127,6 @@ window.wpfc.dictionary = {
 	"Read More"                                                                                                                                                         : "もっとみる",
 	"[Read More]"                                                                                                                                                       : "[もっとみる]",
 	"Mobile Cache"                                                                                                                                                      : "モバイルキャッシュ",
+	"Remove render-blocking JavaScript" : "レンダリングをブロックする JavaScript を除去してください",
 	"Optimize All"                                                                                                                                                 : "すべての最適化",
 };

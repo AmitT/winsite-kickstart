@@ -74,7 +74,7 @@ if ( ! class_exists( 'ITSEC_Core' ) ) {
 		public function init( $plugin_file, $plugin_name ) {
 			global $itsec_globals, $itsec_logger, $itsec_lockout;
 
-			$this->plugin_build = 4043; // used to trigger updates
+			$this->plugin_build = 4044; // used to trigger updates
 			$this->plugin_file = $plugin_file;
 			$this->plugin_dir = dirname( $plugin_file ) . '/';
 			$this->current_time = current_time( 'timestamp' );

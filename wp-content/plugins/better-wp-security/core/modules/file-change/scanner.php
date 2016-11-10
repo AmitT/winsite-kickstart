@@ -497,7 +497,7 @@ final class ITSEC_File_Change_Scanner {
 
 			$dirs = array(
 				'wp-admin/',
-				'wp-includes/',
+				WPINC . '/',
 				$content_dir[ sizeof( $content_dir ) - 1 ] . '/',
 				$content_dir[ sizeof( $content_dir ) - 1 ] . '/uploads/',
 				$content_dir[ sizeof( $content_dir ) - 1 ] . '/themes/',

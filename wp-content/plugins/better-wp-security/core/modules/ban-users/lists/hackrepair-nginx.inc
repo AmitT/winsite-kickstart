@@ -47,7 +47,6 @@ if ($http_user_agent ~* "^GrabNet"){return 403;}
 if ($http_user_agent ~* "^Grafula"){return 403;}
 if ($http_user_agent ~* "^harvest"){return 403;}
 if ($http_user_agent ~* "^HMView"){return 403;}
-if ($http_user_agent ~* "^ia_archiver"){return 403;}
 if ($http_user_agent ~* "^Image Stripper"){return 403;}
 if ($http_user_agent ~* "^Image Sucker"){return 403;}
 if ($http_user_agent ~* "^InterGET"){return 403;}
@@ -105,7 +104,6 @@ if ($http_user_agent ~* "^turnit"){return 403;}
 if ($http_user_agent ~* "^vikspider"){return 403;}
 if ($http_user_agent ~* "^VoidEYE"){return 403;}
 if ($http_user_agent ~* "^Web Image Collector"){return 403;}
-if ($http_user_agent ~* "^Web Sucker"){return 403;}
 if ($http_user_agent ~* "^WebAuto"){return 403;}
 if ($http_user_agent ~* "^WebBandit"){return 403;}
 if ($http_user_agent ~* "^WebCopier"){return 403;}

@@ -57,5 +57,6 @@ window.wpfc.dictionary = {
 	"Combine Css" : "Combinar CSS",
 	"*** Attention ***" : "*** Atención ***",
 	"Open .htaccess and remove this rule" : "Abra el archivo .htaccess y remueva esta línea",
+	"Remove render-blocking JavaScript" : "Quitar el JavaScript que bloquea la visualización de contenido",
 	"If your server does not support mod_expires.c, this option can cause the Internel Server Error (500). If you see such error please do the steps below." : "Si activa esta opción y su servidor no tiene mod_expires.c instalado puede generar un error de servidor 500. En ese caso, siga estos pasos para resolverlo"
 };

@@ -113,5 +113,6 @@ window.wpfc.dictionary = {
    "Combine Js Plus" : "Combine JS Plus",
    "More powerful minify css" : "Minimizador de CSS mais poderoso!",
    "Minify Js" : "Minify JS",
+   "Remove render-blocking JavaScript" : "Remova JavaScript que bloqueia a conversão",
    "You can decrease the size of js files" : "Permite reduzir o tamanho dos arquivos JavaScript."
 };

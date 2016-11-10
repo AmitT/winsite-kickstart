@@ -16,10 +16,6 @@
 			$this->setCronJobSettings();
 			$this->addButtonOnEditor();
 			add_action('admin_enqueue_scripts', array($this, 'addJavaScript'));
-
-			if($this->isPluginActive('ninja-forms/ninja-forms.php')){
-				$this->create_auto_cache_timeout("twicedaily", 43200);
-			}
 		}
 
 		public function create_auto_cache_timeout($recurrance, $interval){
@@ -602,7 +598,11 @@
 				$http_host = strstr($http_host, '/', true);
 			}
 
-			return "RewriteCond %{HTTP_HOST} ".$http_host;
+			if(preg_match("/www\./", home_url())){
+				$http_host = "www.".$http_host;
+			}
+
+			return "RewriteCond %{HTTP_HOST} ^".$http_host;
 		}
 
 		public function ruleForWpContent(){

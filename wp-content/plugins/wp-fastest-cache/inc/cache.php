@@ -21,6 +21,24 @@
 			$this->set_cache_file_path();
 
 			$this->set_exclude_rules();
+
+			$this->set_content_url();
+		}
+
+		public function set_content_url(){
+			$content_url = content_url();
+
+			// Hide My WP
+			if($this->isPluginActive('hide_my_wp/hide-my-wp.php')){
+				$hide_my_wp = get_option("hide_my_wp");
+
+				if(isset($hide_my_wp["new_content_path"]) && $hide_my_wp["new_content_path"]){
+					$hide_my_wp["new_content_path"] = trim($hide_my_wp["new_content_path"], "/");
+					$content_url = str_replace("wp-content", $hide_my_wp["new_content_path"], $content_url);
+				}
+			}
+
+			define("WPFC_CONTENT_URL", $content_url);
 		}
 
 		public function set_exclude_rules(){
@@ -368,12 +386,14 @@
 
 				if(isset($this->options->wpFastestCacheRenderBlocking) && method_exists("WpFastestCachePowerfulHtml", "render_blocking")){
 					if(class_exists("WpFastestCachePowerfulHtml")){
-						$powerful_html = new WpFastestCachePowerfulHtml();
+						if(!$this->is_amp($content)){
+							$powerful_html = new WpFastestCachePowerfulHtml();
 
-						if(isset($this->options->wpFastestCacheRenderBlockingCss)){
-							$content = $powerful_html->render_blocking($content, true);
-						}else{
-							$content = $powerful_html->render_blocking($content);
+							if(isset($this->options->wpFastestCacheRenderBlockingCss)){
+								$content = $powerful_html->render_blocking($content, true);
+							}else{
+								$content = $powerful_html->render_blocking($content);
+							}
 						}
 					}
 				}
@@ -417,7 +437,7 @@
 				}
 
 				if(class_exists("WpFastestCachePowerfulHtml")){
-					if(!$powerful_html){
+					if(!isset($powerful_html)){
 						$powerful_html = new WpFastestCachePowerfulHtml();
 					}
 
@@ -631,6 +651,21 @@
 			}
 
 			return $content;
+		}
+
+		public function is_amp($content){
+			$request_uri = trim($_SERVER["REQUEST_URI"], "/");
+
+			// https://wordpress.org/plugins/amp/
+			if($this->isPluginActive('amp/amp.php')){
+				if(preg_match("/amp$/", $request_uri)){
+					if(preg_match("/<html[^\>]+amp[^\>]*>/i", $content)){
+						return true;
+					}
+				}
+			}
+
+			return false;
 		}
 
 		public function isMobile(){

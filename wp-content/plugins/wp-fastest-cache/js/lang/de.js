@@ -109,6 +109,10 @@ window.wpfc.dictionary = {
     "Please read the tutorial" : "Lesen Sie bitte die Anleitung",
     "You need to activate the premium plugin manually" : "Sie müssen das Premium Plugin manuell aktivieren",
     "Continue" : "Weiter",
+    "Create the cache of all the site automatically" : "Das Cache der ganzen Seite automatisch bilden",
+    "Clear cache files when a post or page is updated" : "Die Cache-Dateien reinigen, wenn ein Beitrag oder eine Seite aktualisiert wird",
+    "You can decrease the size of js files" : "Sie können die Größe der js-Dateien verringern",
+    "Minify Js" : "JavaScript reduzieren",
     "Render Blocking Js" : "Rendering Blockierer Js",
     "Remove render-blocking JavaScript" : "Entfernen Sie JavaScript, das das Rendering blockiert"
 };

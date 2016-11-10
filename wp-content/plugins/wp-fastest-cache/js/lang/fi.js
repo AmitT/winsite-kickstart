@@ -114,5 +114,6 @@ window.wpfc.dictionary = {
 	"Start With" : "Alkaa",
 	"Contain" : "Sisältää",
 	"Exact" : "On tarkasti",
+	"Remove render-blocking JavaScript" : "Poista hahmontamisen estävä JavaScript-koodi",
 	"Discover Features" : "Uusia ominaisuuksia"
 };

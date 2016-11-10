@@ -48,6 +48,8 @@ final class ITSEC_Mail {
 			);
 
 			$footer .= $this->replace_all( $callout, $replacements );
+		} else {
+			$this->add_divider();
 		}
 
 		$footer .= $this->get_template( 'footer.html' );
@@ -94,9 +96,11 @@ final class ITSEC_Mail {
 		$this->content .= $module;
 	}
 
-	public function add_info_box( $content ) {
+	public function add_info_box( $content, $icon_type = 'info' ) {
+		$icon_url = "http://ithemes.com/email_images/itsec-$icon_type-icon.png";
+
 		$module = $this->get_template( 'info-box.html' );
-		$module = $this->replace( $module, 'content', $content );
+		$module = $this->replace_all( $module, compact( 'content', 'icon_url' ) );
 
 		$this->content .= $module;
 	}
@@ -108,11 +112,16 @@ final class ITSEC_Mail {
 		$this->content .= $module;
 	}
 
-	public function add_section_heading( $content, $icon_type ) {
-		$icon_url = "https://ithemes.com/email_images/itsec-icon-$icon_type.png";
+	public function add_section_heading( $content, $icon_type = false ) {
+		if ( empty( $icon_type ) ) {
+			$heading = $this->get_template( 'section-heading.html' );
+			$heading = $this->replace_all( $heading, compact( 'content' ) );
+		} else {
+			$icon_url = "https://ithemes.com/email_images/itsec-icon-$icon_type.png";
 
-		$heading = $this->get_template( 'section-heading.html' );
-		$heading = $this->replace_all( $heading, compact( 'content', 'icon_url' ) );
+			$heading = $this->get_template( 'section-heading-with-icon.html' );
+			$heading = $this->replace_all( $heading, compact( 'content', 'icon_url' ) );
+		}
 
 		$this->content .= $heading;
 	}
@@ -144,8 +153,8 @@ final class ITSEC_Mail {
 		return $this->content;
 	}
 
-	public function send( $to, $subject ) {
-		return wp_mail( $to, $subject, $this->content, array( 'Content-Type: text/html; charset=UTF-8' ) );
+	public function send( $to, $subject, $attachments = array() ) {
+		return wp_mail( $to, $subject, $this->content, array( 'Content-Type: text/html; charset=UTF-8' ), $attachments );
 	}
 
 	private function get_template( $template ) {

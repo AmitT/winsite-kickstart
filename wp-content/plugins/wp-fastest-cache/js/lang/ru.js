@@ -134,5 +134,6 @@ window.wpfc.dictionary = {
 	"Mobile Cache"	: "Мобильный кэш",
 	"Optimize All"	: "Оптимизировать все",
 	"CDN Settings"	: "Настройки CDN",
+	"Remove render-blocking JavaScript" : "Удалите код JavaScript, препятствующий отображению",
 	"Only available in Premium version"	: "Доступно только в премиум-версии"
 };

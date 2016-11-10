@@ -109,6 +109,7 @@ window.wpfc.dictionary = {
     "Error Occured" : "Wystąpił błąd",
     "/wp-content/plugins/ is not writable" : "/wp-content/plugins/ nie jest edytowalny",
     "Please read the tutorial" : "Proszę przeczytać poradnik",
+    "Remove render-blocking JavaScript" : "Usuń kod JavaScript blokujący renderowanie",
     "You need to activate the premium plugin manually" : "Musisz aktywować wersję premium ręcznie",
     "Continue" : "Kontynuuj"
 };

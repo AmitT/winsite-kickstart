@@ -112,6 +112,6 @@ window.wpfc.dictionary = {
 	"You need to activate the premium plugin manually" : "Je moet de premie plugin handmatig activeren",
 	"Continue" : "Doorgaan",
 	"Minify Js" : "Verklein JS",
+	"Remove render-blocking JavaScript" : "Verwijder JavaScript-code die het laden blokkeert",
 	"You can decrease the size of js files" : "Je kunt de grootte van JS bestanden verkleinen"
-
 };

@@ -3,7 +3,7 @@
 Plugin Name: WP Fastest Cache
 Plugin URI: http://wordpress.org/plugins/wp-fastest-cache/
 Description: The simplest and fastest WP Cache system
-Version: 0.8.6.1
+Version: 0.8.6.2
 Author: Emre Vona
 Author URI: http://tr.linkedin.com/in/emrevona
 Text Domain: wp-fastest-cache
@@ -74,7 +74,24 @@ GNU General Public License for more details.
 				$this->rm_folder_recursively($this->getWpContentDir()."/cache/tmpWpfc");
 			}
 
-			if(isset($_POST) && isset($_POST["yiw_action"])){
+
+			if(isset($_POST) && isset($_POST["_ninja_forms_display_submit"])){
+				if(isset($_POST["_wpnonce"]) && $_POST["_wpnonce"]){
+					if(isset($_POST["_form_id"]) && $_POST["_form_id"]){
+						//for Ninja Forms
+						include_once ABSPATH."wp-includes/pluggable.php";
+
+						$_POST["_wpnonce"] = wp_create_nonce('nf_form_'.$_POST["_form_id"]);
+					}
+				}
+			}else if(isset($_POST) && isset($_POST["action"]) && $_POST["action"] == "cptch_reload"){
+				if(isset($_POST["cptch_nonce"]) && $_POST["cptch_nonce"]){
+					//for Mailchimp mc4wp.com
+					include_once ABSPATH."wp-includes/pluggable.php";
+
+					$_POST["cptch_nonce"] = wp_create_nonce('cptch', 'cptch_nonce');
+				}
+			}else if(isset($_POST) && isset($_POST["yiw_action"])){
 				if(isset($_POST["_wpnonce"]) && $_POST["_wpnonce"]){
 					//for yithemes contact form
 					include_once ABSPATH."wp-includes/pluggable.php";
@@ -667,7 +684,7 @@ GNU General Public License for more details.
 
 		public function register_my_custom_menu_page(){
 			if(function_exists('add_menu_page')){ 
-				add_menu_page("WP Fastest Cache Settings", "WP Fastest Cache", 'manage_options', "wpfastestcacheoptions", array($this, 'optionsPage'), plugins_url("wp-fastest-cache/images/icon-32x32.png"), 99);
+				add_menu_page("WP Fastest Cache Settings", "WP Fastest Cache", 'manage_options', "wpfastestcacheoptions", array($this, 'optionsPage'), plugins_url("wp-fastest-cache/images/icon-32x32.png"));
 				wp_enqueue_style("wp-fastest-cache", plugins_url("wp-fastest-cache/css/style.css"), array(), time(), "all");
 			}
 						
@@ -707,7 +724,11 @@ GNU General Public License for more details.
 
 				foreach ($paths as $key => $value){
 					if(file_exists($value)){
-						$this->rm_folder_recursively($value);
+						if(preg_match("/\/(all|wpfc-mobile-cache)\/index\.html$/i", $value)){
+							@unlink($value);
+						}else{
+							$this->rm_folder_recursively($value);
+						}
 					}
 				}
 
@@ -1283,8 +1304,14 @@ GNU General Public License for more details.
 
 						$rule->content = trim($rule->content, "/");
 
-						@rename($this->getWpContentDir()."/cache/all/".$rule->content, $this->getWpContentDir()."/cache/tmpWpfc/".time());
-						@rename($this->getWpContentDir()."/cache/wpfc-mobile-cache/".$rule->content, $this->getWpContentDir()."/cache/tmpWpfc/mobile_".time());
+						$files = glob($this->getWpContentDir()."/cache/all/".$rule->content."*");
+
+						foreach ((array)$files as $file) {
+							$mobile_file = str_replace("/cache/all/", "/cache/wpfc-mobile-cache/", $file);
+							
+							@rename($file, $this->getWpContentDir()."/cache/tmpWpfc/".time());
+							@rename($mobile_file, $this->getWpContentDir()."/cache/tmpWpfc/mobile_".time());
+						}
 				}else if($rule->prefix == "exact"){
 					$rule->content = trim($rule->content, "/");
 

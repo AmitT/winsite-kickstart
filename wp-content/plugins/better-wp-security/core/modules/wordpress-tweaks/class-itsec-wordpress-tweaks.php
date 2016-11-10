@@ -145,7 +145,7 @@ final class ITSEC_WordPress_Tweaks {
 			wp_deregister_script( 'jquery-core' );
 
 			wp_register_script( 'jquery', false, array( 'jquery-core', 'jquery-migrate' ), '1.11.0' );
-			wp_register_script( 'jquery-core', '/wp-includes/js/jquery/jquery.js', false, '1.11.0' );
+			wp_register_script( 'jquery-core', '/' . WPINC . '/js/jquery/jquery.js', false, '1.11.0' );
 
 			wp_enqueue_script( 'jquery' );
 			wp_enqueue_script( 'jquery-core' );

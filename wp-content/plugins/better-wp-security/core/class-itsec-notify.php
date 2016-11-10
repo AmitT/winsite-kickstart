@@ -67,7 +67,11 @@ class ITSEC_Notify {
 		}
 
 
-		return $this->send_daily_digest();
+		$result = $this->send_daily_digest();
+
+		delete_site_transient( 'itsec_notification_running' );
+
+		return $result;
 	}
 
 	/**
@@ -92,11 +96,11 @@ class ITSEC_Notify {
 
 		$mail->add_section_heading( esc_html__( 'Lockouts', 'better-wp-security' ), 'lock' );
 
-		$host_count = sizeof( $itsec_lockout->get_lockouts( 'host', true ) );
 		$user_count = sizeof( $itsec_lockout->get_lockouts( 'user', true ) );
+		$host_count = sizeof( $itsec_lockout->get_lockouts( 'host', true ) );
 
 		if ( $host_count > 0 || $user_count > 0 ) {
-			$mail->add_lockouts_summary( $host_count, $user_count );
+			$mail->add_lockouts_summary( $user_count, $host_count );
 			$send_email = true;
 		} else {
 			$mail->add_text( esc_html__( 'No lockouts since the last email check.', 'better-wp-security' ) );

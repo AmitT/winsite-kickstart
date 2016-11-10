@@ -100,6 +100,19 @@ Wpfc does not support Wordpress Multisite yet.
 
 == Changelog ==
 
+= 0.8.6.2 =
+* to update user-agents with Microsoft Edge
+* to fix duplicate menu problem
+* to create /cache/index.html for security
+* to create /cache/wpfc-minified/index.html for security
+* to execute render blocking js before css and js (premium)
+* to fix Undefined variable: trailing_slash_rule
+* <strong>[FEATURE]</strong> Clear Cache for Specific Page <a href="http://www.wpfastestcache.com/tutorial/clear-cache-for-specific-page/">Details</a>
+* to add http_host condition into htaccess
+* <strong>[FEATURE]</strong> Compatible with Mailchimp mc4wp.com
+* <strong>[FEATURE]</strong> Compatible with Hide My WP <a href="http://www.wpfastestcache.com/features/hide-my-wp/">Details</a>
+* <strong>[FEATURE]</strong> Compatible with AMP
+
 = 0.8.6.1 =
 * <strong>[FEATURE]</strong>  exclude css sources
 * to fix Non-trailing Slash problem

@@ -109,7 +109,7 @@ window.wpfc.dictionary = {
 	"Error Occured" : "A intervenit o eroare",
 	"/wp-content/plugins/ is not writable" : "/wp-content/plugins/ nu are drepturi de scriere",
 	"Please read the tutorial" : "Va rugam sa cititi tutorial-ul",
+	"Remove render-blocking JavaScript" : "Eliminați JavaScript care blochează redarea conținutului",
 	"You need to activate the premium plugin manually" : "Trebuie sa activati versiunea premium manual",
 	"Continue" : "Continuati"
-
 };

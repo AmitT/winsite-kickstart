@@ -95,7 +95,7 @@
 						$combined_link = "";
 
 						$cachFilePath = WPFC_WP_CONTENT_DIR."/cache/wpfc-minified/".$combined_name;
-						$cssLink = str_replace(array("http:", "https:"), "", content_url())."/cache/wpfc-minified/".$combined_name;
+						$cssLink = str_replace(array("http:", "https:"), "", WPFC_CONTENT_URL)."/cache/wpfc-minified/".$combined_name;
 
 						$GLOBALS["wp_fastest_cache"]->images_in_css["name"] = $GLOBALS["wp_fastest_cache"]->images_in_css["name"].$cachFilePath;
 
@@ -300,7 +300,7 @@
 			$this->url = $url;
 
 			$cachFilePath = WPFC_WP_CONTENT_DIR."/cache/wpfc-minified/".md5($url);
-			$cssLink = content_url()."/cache/wpfc-minified/".md5($url);
+			$cssLink = WPFC_CONTENT_URL."/cache/wpfc-minified/".md5($url);
 
 			if(is_dir($cachFilePath)){
 				if($cssFiles = @scandir($cachFilePath, 1)){
