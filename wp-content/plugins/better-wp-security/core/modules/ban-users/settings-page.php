@@ -30,7 +30,7 @@ final class ITSEC_Ban_Users_Settings_Page extends ITSEC_Module_Settings_Page {
 			<td>
 				<?php $form->add_checkbox( 'default' ); ?>
 				<label for="itsec-ban-users-default"><?php _e( 'Enable HackRepair.com\'s blacklist feature', 'better-wp-security' ); ?></label>
-				<p class="description"><?php printf( __( 'As a getting-started point you can include the blacklist developed by Jim Walker of <a href="%s" target="_blank">HackRepair.com</a>.', 'better-wp-security' ), 'http://hackrepair.com/blog/how-to-block-bots-from-seeing-your-website-bad-bots-and-drive-by-hacks-explained' ); ?></p>
+				<p class="description"><?php esc_html_e( 'As a getting-started point you can include the blacklist developed by Jim Walker.', 'better-wp-security' ); ?></p>
 			</td>
 		</tr>
 		<tr>
@@ -57,7 +57,7 @@ final class ITSEC_Ban_Users_Settings_Page extends ITSEC_Module_Settings_Page {
 					<li><?php _e( 'Enter only 1 IP address or 1 IP address range per line.', 'better-wp-security' ); ?></li>
 					<li><?php _e( 'Note: You cannot ban yourself.', 'better-wp-security' ); ?></li>
 				</ul>
-				<p><?php printf( __( '<a href="%s" target="_blank">Lookup IP Address.</a>', 'better-wp-security' ), 'http://ip-lookup.net/domain-lookup.php' ); ?></p>
+				<p><a href="<?php echo esc_url( ITSEC_Lib::get_trace_ip_link() ); ?>" target="_blank" rel="noopener noreferrer"><?php esc_html_e( 'Lookup IP Address.', 'better-wp-security' ); ?></a></p>
 			</td>
 		</tr>
 		<tr class="itsec-ban-users-enable_ban_lists-content">

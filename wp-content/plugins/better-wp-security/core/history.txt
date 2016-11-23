@@ -459,3 +459,12 @@
 	Enhancement: Added a note that the Filter Request Methods setting in System Tweaks should not be enabled if the WordPress REST API is used. This is becasue the DELETE HTTP method is blocked when the setting is enabled.
 	New Feature: Added setting to block requests for PHP files in the plugins directory in System Tweaks.
 	New Feature: Added setting to block requests for PHP files in the themes directory in System Tweaks.
+2.6.1
+	Bug Fix: Remote IP is now correctly identified if the server is behind a reverse proxy that sends requests with more than one IP listed in a single header.
+	Bug Fix: Fixed the link for a user in the logs page so that it properly works on sites that are inside a subdirectory.
+	Bug Fix: Improved how Strong Password Enforcement works on password resets to improve compatibility with various plugins.
+	Bug Fix: Improved the logic for determining whether a user should have Strong Password Enforcement applied. This covers situations where the user may have a custom role, a customized default role, or added capabilities beyond their role.
+	Enhancement: Improved the logic for determing the requesting IP address to better handle situations where the site is behind a reverse proxy.
+	Enhancement: Strong Password Enforcement now uses a PHP port of zxcvbn to ensure that a strong password was selected.
+	Enhancement: All links in Security that have target="_blank" now have added rel attributes to protect against tabnapping.
+	Misc: Updated remaining ip-lookup.net links to instead link to traceip.net in keeping with other links that were previously updated to traceip.net.

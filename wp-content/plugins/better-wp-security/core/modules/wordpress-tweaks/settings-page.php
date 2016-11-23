@@ -6,49 +6,49 @@ final class ITSEC_WordPress_Tweaks_Settings_Page extends ITSEC_Module_Settings_P
 		$this->title = __( 'WordPress Tweaks', 'better-wp-security' );
 		$this->description = __( 'Advanced settings that improve security by changing default WordPress behavior.', 'better-wp-security' );
 		$this->type = 'recommended';
-		
+
 		parent::__construct();
 	}
-	
+
 	protected function render_description( $form ) {
-		
+
 ?>
 	<p><?php _e( 'These are advanced settings that may be utilized to further strengthen the security of your WordPress site.', 'better-wp-security' ); ?></p>
 <?php
-		
+
 	}
-	
+
 	protected function render_settings( $form ) {
 		$settings = $form->get_options();
-		
-		
+
+
 		$xmlrpc_options = array(
 			'2' => __( 'Disable XML-RPC (recommended)', 'better-wp-security' ),
 			'1' => __( 'Disable Pingbacks', 'better-wp-security' ),
 			'0' => __( 'Enable XML-RPC', 'better-wp-security' ),
 		);
-		
+
 		$allow_xmlrpc_multiauth_options = array(
 			false => __( 'Block (recommended)', 'better-wp-security' ),
 			true  => __( 'Allow', 'better-wp-security' ),
 		);
-		
-		
+
+
 		$jquery_version = ITSEC_Modules::get_setting( $this->id, 'jquery_version' );
 		$jquery_version_is_safe = ITSEC_Lib::is_jquery_version_safe();
-		
+
 		if ( empty( $jquery_version ) ) {
-			$jquery_description = sprintf( __( 'Your current jQuery version is undetermined. Please <a href="%1$s" target="_blank">check your homepage</a> to see if you even need this feature' ), site_url() );
+			$jquery_description = sprintf( __( 'Your current jQuery version is undetermined. Please <a href="%1$s" target="_blank" rel="noopener noreferrer">check your homepage</a> to see if you even need this feature' ), site_url() );
 		} else {
 			$jquery_description = sprintf( __( 'Your current jQuery version is %1$s' ), $jquery_version );
 		}
-		
+
 		if ( $jquery_version_is_safe ) {
 			$jquery_description_color = 'green';
 		} else {
 			$jquery_description_color = 'red';
 		}
-		
+
 ?>
 	<p><?php _e( 'Note: These settings are listed as advanced because they block common forms of attacks but they can also block legitimate plugins and themes that rely on the same techniques. When activating the settings below, we recommend enabling them one by one to test that everything on your site is still working as expected.', 'better-wp-security' ); ?></p>
 	<p><?php _e( 'Remember, some of these settings might conflict with other plugins or themes, so test your site after enabling each setting.', 'better-wp-security' ); ?></p>
@@ -116,9 +116,9 @@ final class ITSEC_WordPress_Tweaks_Settings_Page extends ITSEC_Module_Settings_P
 					<label for="itsec-wordpress-tweaks-safe_jquery"><?php _e( 'Enqueue a safe version of jQuery', 'better-wp-security' ); ?></label>
 					<p class="description"><?php _e( 'Remove the existing jQuery version used and replace it with a safe version (the version that comes default with WordPress).', 'better-wp-security' ); ?></p>
 				<?php endif; ?>
-				
+
 				<p class="description" style="color: <?php echo esc_attr( $jquery_description_color ); ?>"><?php echo $jquery_description; ?></p>
-				<p class="description"><?php printf( __( 'Note that this only checks the homepage of your site and only for users who are logged in. This is done intentionally to save resources. If you think this is in error <a href="%s" target="_blank">click here to check again.</a> This will open your homepage in a new window allowing the plugin to determine the version of jQuery actually being used. You can then come back here and reload this page to see your version.', 'better-wp-security' ), site_url() ); ?></p>
+				<p class="description"><?php printf( __( 'Note that this only checks the homepage of your site and only for users who are logged in. This is done intentionally to save resources. If you think this is in error <a href="%s" target="_blank" rel="noopener noreferrer">click here to check again.</a> This will open your homepage in a new window allowing the plugin to determine the version of jQuery actually being used. You can then come back here and reload this page to see your version.', 'better-wp-security' ), site_url() ); ?></p>
 			</td>
 		</tr>
 		<tr>
@@ -147,7 +147,7 @@ final class ITSEC_WordPress_Tweaks_Settings_Page extends ITSEC_Module_Settings_P
 		</tr>
 	</table>
 <?php
-		
+
 	}
 }
 

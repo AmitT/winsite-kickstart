@@ -1,9 +1,9 @@
 === iThemes Security (formerly Better WP Security) ===
 Contributors: ithemes, chrisjean, gerroald, mattdanner
 Tags: security, security plugin, malware, hack, secure, block, SSL, admin, htaccess, lockdown, login, protect, protection, anti virus, attack, injection, login security, maintenance, permissions, prevention, authentication, administration, password, brute force, ban, permissions, bots, user agents, xml rpc, security log
-Requires at least: 4.2
+Requires at least: 4.4
 Tested up to: 4.6.1
-Stable tag: 5.7.0
+Stable tag: 5.7.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -187,6 +187,16 @@ Free support may be available with the help of the community in the <a href="htt
 5. Free malware scan powered by Sucuri SiteCheck.
 
 == Changelog ==
+
+= 5.7.1 =
+ * Bug Fix: Remote IP is now correctly identified if the server is behind a reverse proxy that sends requests with more than one IP listed in a single header.
+ * Bug Fix: Fixed the link for a user in the logs page so that it properly works on sites that are inside a subdirectory.
+ * Bug Fix: Improved how Strong Password Enforcement works on password resets to improve compatibility with various plugins.
+ * Bug Fix: Improved the logic for determining whether a user should have Strong Password Enforcement applied. This covers situations where the user may have a custom role, a customized default role, or added capabilities beyond their role.
+ * Enhancement: Improved the logic for determing the requesting IP address to better handle situations where the site is behind a reverse proxy.
+ * Enhancement: Strong Password Enforcement now uses a PHP port of zxcvbn to ensure that a strong password was selected.
+ * Enhancement: All links in Security that have target="_blank" now have added rel attributes to protect against tabnapping.
+ * Misc: Updated remaining ip-lookup.net links to instead link to traceip.net in keeping with other links that were previously updated to traceip.net.
 
 = 5.7.0 =
  * Bug Fix: Fixed data save issue that could cause multiple notification emails to be sent in a short period of time.
@@ -1609,5 +1619,5 @@ This release is a complete rewrite from the ground up. Special thanks to Cory Mi
 
 == Upgrade Notice ==
 
-= 5.7.0 =
-Version 5.7.0 contains many bug fixes and adds new optional features. It is recommended for all users.
+= 5.7.1 =
+Version 5.7.1 contains many bug fixes and improvements. It is recommended for all users.
