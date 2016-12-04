@@ -225,7 +225,7 @@ class ITSEC_Backup {
 		}
 
 		if ( 2 !== $this->settings['method'] || true === $one_time ) {
-			require_once( ITSEC_Core::get_core_dir() . 'lib/class-itsec-mailer.php' );
+			require_once( ITSEC_Core::get_core_dir() . 'lib/class-itsec-mail.php' );
 			$mail = new ITSEC_Mail();
 			$mail->add_header( esc_html__( 'Database Backup', 'better-wp-security' ), sprintf( wp_kses( __( 'Site Database Backup for <b>%s</b>', 'better-wp-security' ), array( 'b' => array() ) ), date_i18n( get_option( 'date_format' ) ) ) );
 			$mail->add_info_box( esc_html__( 'Attached is the database backup file for your site.', 'better-wp-security' ), 'attachment' );
@@ -240,23 +240,17 @@ class ITSEC_Backup {
 			$mail->add_footer();
 
 
-			$raw_recipients = ITSEC_Modules::get_setting( 'global', 'backup_email' );
-			$recipients = array();
-
-			foreach ( $raw_recipients as $recipient ) {
-				$recipient = trim( $recipient );
-
-				if ( is_email( $recipient ) ) {
-					$recipients[] = $recipient;
-				}
-			}
+			$recipients = ITSEC_Modules::get_setting( 'global', 'backup_email' );
+			$mail->set_recipients( $recipients );
 
 			$subject = sprintf( esc_html__( '[%s] Database Backup', 'better-wp-security' ), esc_url( network_home_url() ) );
 			$subject = apply_filters( 'itsec_backup_email_subject', $subject );
+			$mail->set_subject( $subject, false );
 
 			$attachment = array( "$dir/$file$fileext" );
+			$mail->add_attachment( $attachment );
 
-			$mail_success = $mail->send( $recipients, $subject, $attachment );
+			$mail_success = $mail->send();
 		}
 
 		if ( 1 === $this->settings['method'] ) {

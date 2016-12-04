@@ -3,7 +3,7 @@ Contributors: ithemes, chrisjean, gerroald, mattdanner
 Tags: security, security plugin, malware, hack, secure, block, SSL, admin, htaccess, lockdown, login, protect, protection, anti virus, attack, injection, login security, maintenance, permissions, prevention, authentication, administration, password, brute force, ban, permissions, bots, user agents, xml rpc, security log
 Requires at least: 4.4
 Tested up to: 4.6.1
-Stable tag: 5.7.1
+Stable tag: 5.8.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -187,6 +187,11 @@ Free support may be available with the help of the community in the <a href="htt
 5. Free malware scan powered by Sucuri SiteCheck.
 
 == Changelog ==
+
+= 5.8.0 =
+ * Enhancement: Updated the lockouts notification email to a new design. This new design also cleaned up the translation strings to allow better translations.
+ * New Feature: Added a "Protect Against Tabnapping" feature in the WordPress Tweaks section. Details of what this feature protects against can be found here: https://www.jitbit.com/alexblog/256-targetblank---the-most-underestimated-vulnerability-ever/
+ * Misc: Updated the description for the Lockout Period setting to indicate that the default value of 15 minutes is recommended.
 
 = 5.7.1 =
  * Bug Fix: Remote IP is now correctly identified if the server is behind a reverse proxy that sends requests with more than one IP listed in a single header.
@@ -1619,5 +1624,5 @@ This release is a complete rewrite from the ground up. Special thanks to Cory Mi
 
 == Upgrade Notice ==
 
-= 5.7.1 =
-Version 5.7.1 contains many bug fixes and improvements. It is recommended for all users.
+= 5.8.0 =
+Version 5.8.0 adds a new feature to protect against tabnapping. It is recommended for all users.

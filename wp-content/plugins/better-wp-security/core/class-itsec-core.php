@@ -624,6 +624,10 @@ if ( ! class_exists( 'ITSEC_Core' ) ) {
 			return network_admin_url( 'admin.php?page=itsec&module=security-check' );
 		}
 
+		public static function get_settings_module_url( $module ) {
+			return network_admin_url( 'admin.php?page=itsec&module=' . $module );
+		}
+
 		public static function set_interactive( $interactive ) {
 			$self = self::get_instance();
 			$self->interactive = (bool) $interactive;

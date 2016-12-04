@@ -18,6 +18,7 @@ final class ITSEC_Wordpress_Tweaks_Settings extends ITSEC_Settings {
 			'force_unique_nicename'       => false,
 			'disable_unused_author_pages' => false,
 			'jquery_version'              => '',
+			'block_tabnapping'            => false,
 		);
 	}
 }

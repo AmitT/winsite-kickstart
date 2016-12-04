@@ -27,20 +27,21 @@ class ITSEC_WordPress_Tweaks_Validator extends ITSEC_Validator {
 		$this->sanitize_setting( 'bool', 'login_errors', __( 'Login Error Messages', 'better-wp-security' ) );
 		$this->sanitize_setting( 'bool', 'force_unique_nicename', __( 'Force Unique Nickname', 'better-wp-security' ) );
 		$this->sanitize_setting( 'bool', 'disable_unused_author_pages', __( 'Disable Extra User Archives', 'better-wp-security' ) );
+		$this->sanitize_setting( 'bool', 'block_tabnapping', __( 'Protect Against Tabnapping', 'better-wp-security' ) );
 	}
-	
+
 	protected function validate_settings() {
 		if ( ! $this->can_save() ) {
 			return;
 		}
-		
-		
+
+
 		$previous_settings = ITSEC_Modules::get_settings( $this->get_id() );
-		
+
 		if ( $this->settings['file_editor'] !== $previous_settings['file_editor'] ) {
 			ITSEC_Response::regenerate_wp_config();
 		}
-		
+
 		if ( $this->settings['disable_xmlrpc'] !== $previous_settings['disable_xmlrpc'] || $this->settings['comment_spam'] !== $previous_settings['comment_spam'] ) {
 			ITSEC_Response::regenerate_server_config();
 		}
