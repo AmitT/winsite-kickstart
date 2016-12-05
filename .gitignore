@@ -13,5 +13,5 @@ wp-content/upgrade/
 wp-content/uploads/
 wp-content/wp-cache-config.php
 searchreplacedb2.php
-_MACOSX/
+*_MACOSX/
 *.DS_Store
