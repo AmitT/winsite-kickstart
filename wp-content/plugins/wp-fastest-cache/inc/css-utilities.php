@@ -95,14 +95,15 @@
 						$combined_link = "";
 
 						$cachFilePath = WPFC_WP_CONTENT_DIR."/cache/wpfc-minified/".$combined_name;
-						$cssLink = str_replace(array("http:", "https:"), "", WPFC_CONTENT_URL)."/cache/wpfc-minified/".$combined_name;
-
-						$GLOBALS["wp_fastest_cache"]->images_in_css["name"] = $GLOBALS["wp_fastest_cache"]->images_in_css["name"].$cachFilePath;
+						$cssLink = str_replace(array("http:", "https:"), "", WPFC_WP_CONTENT_URL)."/cache/wpfc-minified/".$combined_name;
 
 						if(is_dir($cachFilePath)){
 							if($cssFiles = @scandir($cachFilePath, 1)){
-
 								$combined_link = '<link rel="stylesheet" type="text/css" href="'.$cssLink."/".$cssFiles[0].'" media="'.$group_value[0]["media"].'"/>';
+
+								if($css_content = $this->wpfc->read_file($cssLink."/".$cssFiles[0])){
+									$combined_link = $this->to_inline($combined_link, $css_content);
+								}
 							}
 						}else{
 							$combined_css = $this->create_content(array_reverse($group_value));
@@ -114,13 +115,14 @@
 									$combined_css = preg_replace_callback("/(url)\(([^\)]+)\)/i", array($this->wpfc, 'cdn_replace_urls'), $combined_css);
 								}
 
-								$GLOBALS["wp_fastest_cache"]->set_images_in_css($combined_css);
 
 								$this->wpfc->createFolder($cachFilePath, $combined_css, "css", time(), true);
 								
 								if(is_dir($cachFilePath)){
 									if($cssFiles = @scandir($cachFilePath, 1)){
 										$combined_link = '<link rel="stylesheet" type="text/css" href="'.$cssLink."/".$cssFiles[0].'" media="'.$group_value[0]["media"].'"/>';
+
+										$combined_link = $this->to_inline($combined_link, $combined_css);
 									}
 								}
 							}
@@ -184,16 +186,14 @@
 							$minifiedCss = $this->minify($href);
 
 							if($minifiedCss){
-								$GLOBALS["wp_fastest_cache"]->set_images_in_css($minifiedCss["cssContent"]);
-
 								$prefixLink = str_replace(array("http:", "https:"), "", $minifiedCss["url"]);
 								$text = preg_replace("/href\=[\"\'][^\"\']+[\"\']/", "href='".$prefixLink."'", $text);
 
+								$text = $this->to_inline($text, $minifiedCss["cssContent"]);
+
 								$this->html = substr_replace($this->html, $text, $value["start"], ($value["end"] - $value["start"] + 1));
 
-								$GLOBALS["wp_fastest_cache"]->images_in_css["name"] = $GLOBALS["wp_fastest_cache"]->images_in_css["name"].md5($minifiedCss["url"]);
 							}
-
 
 						}
 					}
@@ -201,6 +201,24 @@
 			}
 
 			return $this->html;
+		}
+
+		public function to_inline($link, $css_content){
+			if(!isset($GLOBALS["wp_fastest_cache_options"]->wpFastestCacheRenderBlocking)){
+				return $link;
+			}
+
+			if(!preg_match("/\smedia\=[\'\"]all[\'\"]/i", $link)){
+				return $link;
+			}
+
+			if(isset($css_content["11000"])){
+				return $link;
+			}
+
+			$link = "<style>".$css_content."</style>";
+
+			return $link;
 		}
 
 		public function tags_reorder(){
@@ -222,14 +240,24 @@
 
 		public function set_except_tags(){
 			$comment_tags = $this->find_tags("<!--", "-->");
-			$noscript_tags = $this->find_tags("<noscript", "</noscript>");
 
 			foreach ($comment_tags as $key => $value) {
 				$this->except = $value["text"].$this->except;
 			}
 
-			foreach ($noscript_tags as $key => $value) {
-				$this->except = $value["text"].$this->except;
+			// to execute if html contains <noscript> tag
+			if(preg_match("/<noscript/i", $this->html)){
+				$noscript_tags = $this->find_tags("<noscript", "</noscript>");
+
+				foreach ($noscript_tags as $key => $value) {
+					$this->except = $value["text"].$this->except;
+
+					if(isset($GLOBALS["wp_fastest_cache_options"]->wpFastestCacheLazyLoad)){
+						// to set noscript for lazy load
+						// <noscript><img src="http://google.com/image.jpg"></noscript>
+						$GLOBALS["wp_fastest_cache"]->noscript = $value["text"].$GLOBALS["wp_fastest_cache"]->noscript;
+					}
+				}
 			}
 
 			// $("head").append( "<link rel='stylesheet' id='ms-fonts'  href='//fonts.googleapis.com/css?family=Exo+2:regular' type='text/css' media='all' />" );
@@ -300,7 +328,7 @@
 			$this->url = $url;
 
 			$cachFilePath = WPFC_WP_CONTENT_DIR."/cache/wpfc-minified/".md5($url);
-			$cssLink = WPFC_CONTENT_URL."/cache/wpfc-minified/".md5($url);
+			$cssLink = WPFC_WP_CONTENT_URL."/cache/wpfc-minified/".md5($url);
 
 			if(is_dir($cachFilePath)){
 				if($cssFiles = @scandir($cachFilePath, 1)){

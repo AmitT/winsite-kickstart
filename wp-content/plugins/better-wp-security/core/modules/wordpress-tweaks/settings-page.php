@@ -33,6 +33,11 @@ final class ITSEC_WordPress_Tweaks_Settings_Page extends ITSEC_Module_Settings_P
 			true  => __( 'Allow', 'better-wp-security' ),
 		);
 
+		$rest_api_options = array(
+			'restrict-access' => esc_html__( 'Restricted Access (recommended)', 'better-wp-security' ),
+			'default-access'  => esc_html__( 'Default Access', 'better-wp-security' ),
+		);
+
 
 		$jquery_version = ITSEC_Modules::get_setting( $this->id, 'jquery_version' );
 		$jquery_version_is_safe = ITSEC_Lib::is_jquery_version_safe();
@@ -105,6 +110,17 @@ final class ITSEC_WordPress_Tweaks_Settings_Page extends ITSEC_Module_Settings_P
 				<ul>
 					<li><?php echo wp_kses( __( '<strong>Block</strong> - Blocks XML-RPC requests that contain multiple login attempts. This setting is highly recommended.', 'better-wp-security' ), array( 'strong' => array() ) ); ?></li>
 					<li><?php echo wp_kses( __( '<strong>Allow</strong> - Allows XML-RPC requests that contain multiple login attempts. Only use this setting if a service requires it.', 'better-wp-security' ), array( 'strong' => array() ) ); ?></li>
+				</ul>
+			</td>
+		</tr>
+		<tr>
+			<th scope="row"><label for="itsec-wordpress-tweaks-rest_api"><?php esc_html_e( 'REST API', 'better-wp-security' ); ?></label></th>
+			<td>
+				<p><?php printf( wp_kses( __( 'The <a href="%1$s">WordPress REST API</a> is part of WordPress and provides developers with new ways to manage WordPress. By default, it could give public access to information that you believe is private on your site. For more details, see our post about the WordPress REST API <a href="%1$s">here</a>.', 'better-wp-security' ), array( 'a' => array( 'href' => array() ) ) ), esc_url( 'https://ithemes.com/security/wordpress-rest-api-restrict-access' ) ); ?></p>
+				<?php $form->add_select( 'rest_api', $rest_api_options ); ?>
+				<ul>
+					<li><?php echo wp_kses( __( '<strong>Restricted Access</strong> - Restrict access to most REST API data. This means that most requests will require a logged in user or a user with specific privileges, blocking public requests for potentially-private data. We recommend selecting this option.', 'better-wp-security' ), array( 'strong' => array() ) ); ?></li>
+					<li><?php echo wp_kses( __( '<strong>Default Access</strong> - Access to REST API data is left as default. Information including published posts, user details, and media library entries is available for public access.', 'better-wp-security' ), array( 'strong' => array() ) ); ?></li>
 				</ul>
 			</td>
 		</tr>

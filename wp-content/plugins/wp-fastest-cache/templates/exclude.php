@@ -194,13 +194,25 @@
 				clone_modal.find("input[name='wpfc-exclude-rule-content']").val(jQuery(this).attr("content"));
 				clone_modal.find("input[name='wpfc-exclude-rule-type']").val(jQuery(this).attr("type"));
 
-				if(e.type == "useragent"){
-					clone_modal.find(".wpfc-condition-text").text("If User-Agent");
-				}else if(e.type == "css"){
-					clone_modal.find(".wpfc-condition-text").text("If CSS Url");
-				}else if(e.type == "js"){
-					clone_modal.find(".wpfc-condition-text").text("If JS Url");
+				if(e.type != "page"){
+					if(e.type == "useragent"){
+						clone_modal.find(".wpfc-condition-text").text("If User-Agent");
+					}else if(e.type == "css"){
+						clone_modal.find(".wpfc-condition-text").text("If CSS Url");
+					}else if(e.type == "js"){
+						clone_modal.find(".wpfc-condition-text").text("If JS Url");
+					}else if(e.type == "cookie"){
+						clone_modal.find(".wpfc-condition-text").text("If Cookie");
+					}
+
+					clone_modal.find("select[name='wpfc-exclude-rule-prefix'] option").each(function(){
+						if(this.value != "contain"){
+							jQuery(this).remove();
+						}
+					});
 				}
+				
+
 
 				jQuery("#wpfc-modal-exclude").after(clone_modal);
 
@@ -282,6 +294,8 @@
 					return "<?php echo home_url();?>" + "/" + request_uri;
 				}else if(type == "useragent"){
 					return "User-Agent: " + request_uri;
+				}else if(type == "cookie"){
+					return "Cookie: " + request_uri;
 				}
 
 		},
@@ -324,6 +338,8 @@
 						clone_modal.find(".wpfc-condition-text").text("If CSS Url");
 					}else if(clone_modal_type == "js"){
 						clone_modal.find(".wpfc-condition-text").text("If JS Url");
+					}else if(clone_modal_type == "cookie"){
+						clone_modal.find(".wpfc-condition-text").text("If Cookie");
 					}
 				}
 

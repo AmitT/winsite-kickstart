@@ -472,3 +472,12 @@
 	Enhancement: Updated the lockouts notification email to a new design. This new design also cleaned up the translation strings to allow better translations.
 	New Feature: Added a "Protect Against Tabnapping" feature in the WordPress Tweaks section. Details of what this feature protects against can be found here: https://www.jitbit.com/alexblog/256-targetblank---the-most-underestimated-vulnerability-ever/
 	Misc: Updated the description for the Lockout Period setting to indicate that the default value of 15 minutes is recommended.
+2.7.1 - 2016-12-06 - Chris Jean
+	Bug Fix: Fixed issue that could cause database backup emails to be sent without the backup zip attached.
+2.8.0 - 2016-12-08 - Chris Jean
+	New Feature: Added a "REST API" feature in the WordPress Tweaks section. This new feature allows you to block or restrict access to the REST API.
+2.8.1 - 2016-12-15 - Chris Jean
+	Bug Fix: Removed "comodo" from the list of user agents blocked by the HackRepair.com blacklist. This ensures that Comodo's AutoSSL feature of cPanel/WHM is able to function.
+2.9.0 - 2016-12-28 - Chris Jean
+	Updated Feature: Updated the "REST API" feature in the WordPress Tweaks section. The feature now has proper support for protecting privacy on your site without preventing the REST API from functioning.
+	Enhancement: Updated Security Check to enforce setting the "REST API" setting to "Restricted Access".

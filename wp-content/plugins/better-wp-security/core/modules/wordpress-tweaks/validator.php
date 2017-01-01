@@ -23,6 +23,7 @@ class ITSEC_WordPress_Tweaks_Validator extends ITSEC_Validator {
 		$this->sanitize_setting( 'positive-int', 'disable_xmlrpc', __( 'XML-RPC', 'better-wp-security' ) );
 		$this->sanitize_setting( array( 0, 1, 2 ), 'disable_xmlrpc', __( 'XML-RPC', 'better-wp-security' ) );
 		$this->sanitize_setting( 'bool', 'allow_xmlrpc_multiauth', __( 'Multiple Authentication Attempts per XML-RPC Request', 'better-wp-security' ) );
+		$this->sanitize_setting( array( 'default-access', 'restrict-access' ), 'rest_api', __( 'REST API', 'better-wp-security' ) );
 		$this->sanitize_setting( 'bool', 'safe_jquery', __( 'Replace jQuery With a Safe Version', 'better-wp-security' ) );
 		$this->sanitize_setting( 'bool', 'login_errors', __( 'Login Error Messages', 'better-wp-security' ) );
 		$this->sanitize_setting( 'bool', 'force_unique_nicename', __( 'Force Unique Nickname', 'better-wp-security' ) );

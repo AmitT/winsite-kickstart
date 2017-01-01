@@ -1,15 +1,17 @@
 var Wpfc_New_Dialog = {
+	template_id: "",
 	id : "",
 	buttons: [],
 	clone: "",
 	current_page_number: 1,
 	total_page_number: 0,
-	dialog: function(id, buttons){
+	dialog: function(id, buttons, callback){
 		var self = this;
 		self.clone = jQuery("div[template-id='" + id + "']").clone();
 
 		self.total_page_number = self.clone.find("div[wpfc-page]").length;
 
+		self.template_id = id;
 		self.id = id + "-" + new Date().getTime();
 		self.buttons = buttons;
 		
@@ -29,6 +31,12 @@ var Wpfc_New_Dialog = {
 		self.update_ids_for_label();
 		
 		self.show_buttons();
+
+		if(typeof callback != "undefined"){
+			if(typeof callback == "function"){
+				callback(self);
+			}
+		}
 	},
 	remove: function(button){
 		jQuery(button).closest("div[id^='wpfc-modal-']").remove();
@@ -98,13 +106,37 @@ var Wpfc_New_Dialog = {
 	},
 	update_ids_for_label: function(){
 		var self = this;
+		var input;
 		var id = "";
 
 		self.clone.find("div.window-content div.wiz-input-cont").each(function(){
-			id = jQuery(this).find("label.mc-input-label input").attr("id") + self.id;
+			input = jQuery(this).find("label.mc-input-label input");
 
-			jQuery(this).find("label.mc-input-label input").attr("id", id);
-			jQuery(this).find("label").last().attr("for", id);
+			if(input.length){
+				id = input.attr("id") + self.id;
+
+				jQuery(this).find("label.mc-input-label input").attr("id", id);
+				jQuery(this).find("label").last().attr("for", id);
+			}
+		});
+	},
+	set_values_from_tmp_to_real: function(){
+		var self = this;
+
+		Wpfc_New_Dialog.clone.find("div.window-content input, div.window-content select").each(function(){
+			if(jQuery(this).prop("tagName") == "SELECT"){
+				jQuery("div.tab1 div[template-id='" + self.template_id + "'] div.window-content select[name='" + jQuery(this).attr("name") + "']").val(jQuery(this).val());
+			}else if(jQuery(this).prop("tagName") == "INPUT"){
+				if(jQuery(this).attr("type") == "checkbox"){
+					if(typeof jQuery(this).attr("checked") != "undefined"){
+						jQuery("div.tab1 div[template-id='" + self.template_id + "'] div.window-content input[name='" + jQuery(this).attr("name") + "']").attr("checked", true);
+					}else{
+						jQuery("div.tab1 div[template-id='" + self.template_id + "'] div.window-content input[name='" + jQuery(this).attr("name") + "']").attr("checked", false);
+					}
+				}else{
+					//toDo
+				}
+			}
 		});
 	}
 };

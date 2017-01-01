@@ -161,7 +161,7 @@
 			$this->url = $url;
 
 			$cachFilePath = WPFC_WP_CONTENT_DIR."/cache/wpfc-minified/".md5($url);
-			$jsLink = WPFC_CONTENT_URL."/cache/wpfc-minified/".md5($url);
+			$jsLink = WPFC_WP_CONTENT_URL."/cache/wpfc-minified/".md5($url);
 
 			if(is_dir($cachFilePath)){
 				return array("cachFilePath" => $cachFilePath, "jsContent" => "", "url" => $jsLink);
@@ -220,7 +220,7 @@
 
 				$jsFiles[0] = preg_replace("/\.gz$/", "", $jsFiles[0]);
 				
-				$prefixLink = str_replace(array("http:", "https:"), "", WPFC_CONTENT_URL);
+				$prefixLink = str_replace(array("http:", "https:"), "", WPFC_WP_CONTENT_URL);
 				$newLink = "<script src='".$prefixLink."/cache/wpfc-minified/".$name."/".$jsFiles[0]."' type=\"text/javascript\"></script>";
 
 				$script_tag = substr($this->html, $value["start"], ($value["end"] - $value["start"] + 1));

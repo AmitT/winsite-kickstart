@@ -247,8 +247,7 @@ class ITSEC_Backup {
 			$subject = apply_filters( 'itsec_backup_email_subject', $subject );
 			$mail->set_subject( $subject, false );
 
-			$attachment = array( "$dir/$file$fileext" );
-			$mail->add_attachment( $attachment );
+			$mail->add_attachment( "$dir/$file$fileext" );
 
 			$mail_success = $mail->send();
 		}

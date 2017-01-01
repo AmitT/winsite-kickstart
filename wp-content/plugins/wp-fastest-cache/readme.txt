@@ -3,8 +3,8 @@ Contributors: emrevona
 Donate link: http://profiles.wordpress.org/emrevona/
 Tags: cache, performance, wp-cache, total cache, super cache
 Requires at least: 3.3
-Tested up to: 4.6
-Stable tag: 4.6
+Tested up to: 4.7
+Stable tag: 4.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -100,6 +100,14 @@ Wpfc does not support Wordpress Multisite yet.
 
 == Changelog ==
 
+= 0.8.6.3 =
+* to be able to hide toolbar [<a target="_blank" href="http://www.wpfastestcache.com/features/hide-toolbar-link/">Details</a>]
+* <strong>[FEATURE]</strong> Compatible with Yet Another Stars Rating
+* <strong>[FEATURE]</strong> Cache Timeout with Hour and Minute [<a target="_blank" href="http://www.wpfastestcache.com/features/cache-timeout-with-hour-and-minute/">Details</a>]
+* to add style for manually preload
+* to fix htaccess popup
+* <strong>[FEATURE]</strong>  exclude cookie
+
 = 0.8.6.2 =
 * to update user-agents with Microsoft Edge
 * to fix duplicate menu problem
@@ -107,10 +115,10 @@ Wpfc does not support Wordpress Multisite yet.
 * to create /cache/wpfc-minified/index.html for security
 * to execute render blocking js before css and js (premium)
 * to fix Undefined variable: trailing_slash_rule
-* <strong>[FEATURE]</strong> Clear Cache for Specific Page <a href="http://www.wpfastestcache.com/tutorial/clear-cache-for-specific-page/">Details</a>
+* <strong>[FEATURE]</strong> Clear Cache for Specific Page [<a target="_blank" href="http://www.wpfastestcache.com/tutorial/clear-cache-for-specific-page/">Details</a>]
 * to add http_host condition into htaccess
 * <strong>[FEATURE]</strong> Compatible with Mailchimp mc4wp.com
-* <strong>[FEATURE]</strong> Compatible with Hide My WP <a href="http://www.wpfastestcache.com/features/hide-my-wp/">Details</a>
+* <strong>[FEATURE]</strong> Compatible with Hide My WP [<a target="_blank" href="http://www.wpfastestcache.com/features/hide-my-wp/">Details</a>]
 * <strong>[FEATURE]</strong> Compatible with AMP
 
 = 0.8.6.1 =
