@@ -69,7 +69,11 @@
 					$this->cacheFilePath = $this->getWpContentDir()."/cache/".$wpfc_mobile->get_folder_name()."".$_SERVER["REQUEST_URI"];
 				}
 			}else{
-				$this->cacheFilePath = $this->getWpContentDir()."/cache/all".$_SERVER["REQUEST_URI"];
+				if($this->isPluginActive('gtranslate/gtranslate.php')){
+					$this->cacheFilePath = $this->getWpContentDir()."/cache/all/".$_SERVER["HTTP_X_GT_LANG"];
+				}else{
+					$this->cacheFilePath = $this->getWpContentDir()."/cache/all/".$_SERVER["REQUEST_URI"];
+				}
 
 				// qTranslate: in name.com/de REQUEST_URI is "/" instead of "/de" so need to check it
 				// if(isset($_SERVER["HTTP_COOKIE"]) && $_SERVER["HTTP_COOKIE"]){
@@ -166,7 +170,9 @@
 				}
 
 				if(preg_match("/\?/", $_SERVER["REQUEST_URI"]) && !preg_match("/\/\?fdx\_switcher\=true/", $_SERVER["REQUEST_URI"])){ // for WP Mobile Edition
-					if(defined('WPFC_CACHE_QUERYSTRING') && WPFC_CACHE_QUERYSTRING){
+					if(preg_match("/\?amp(\=1)?/i", $_SERVER["REQUEST_URI"])){
+						//
+					}else if(defined('WPFC_CACHE_QUERYSTRING') && WPFC_CACHE_QUERYSTRING){
 						//
 					}else{
 						return 0;
@@ -257,34 +263,13 @@
 
 					if($create_cache){
 						$this->startTime = microtime(true);
+
 						add_action( 'get_footer', array($this, "wp_print_scripts_action"));
-
-						if(isset($this->options->wpFastestCacheLazyLoad)){
-							if(!class_exists("WpFastestCacheLazyLoad")){
-								include_once $this->get_premium_path("lazy-load.php");
-							}
-
-							if(method_exists("WpFastestCacheLazyLoad",'get_js_source_new')){
-								add_action('wp_head', array($this, "wp_print_lazy_load_new_script_action"));
-							}else{
-								//anymore to use get_js_source_new() for header
-								//Later we should remove the following line
-								add_action('get_footer', array($this, "wp_print_lazy_load_script_action"));
-							}
-						}
 
 						ob_start(array($this, "callback"));
 					}
 				}
 			}
-		}
-
-		public function wp_print_lazy_load_new_script_action(){
-			echo WpFastestCacheLazyLoad::get_js_source_new();
-		}
-
-		public function wp_print_lazy_load_script_action(){
-			echo WpFastestCacheLazyLoad::get_js_source();
 		}
 
 		public function wp_print_scripts_action(){
@@ -393,6 +378,13 @@
 		public function callback($buffer){
 			$buffer = $this->checkShortCode($buffer);
 
+			// for Wordfence: not to cache 503 pages
+			if(defined('DONOTCACHEPAGE') && $this->isPluginActive('wordfence/wordfence.php')){
+				if(function_exists("http_response_code") && http_response_code() == 503){
+					return $buffer."<!-- DONOTCACHEPAGE is defined as TRUE -->";
+				}
+			}
+
 			if(preg_match("/Mediapartners-Google|Google\sWireless\sTranscoder/i", $_SERVER['HTTP_USER_AGENT'])){
 				return $buffer;
 			}else if($this->is_xml($buffer)){
@@ -409,8 +401,6 @@
 				}else{
 					return $buffer."<!-- \$_COOKIE['wp_woocommerce_session'] has been set -->";
 				}
-			}else if(defined('DONOTCACHEPAGE') && $this->isPluginActive('wordfence/wordfence.php')){ // for Wordfence: not to cache 503 pages
-				return $buffer."<!-- DONOTCACHEPAGE is defined as TRUE -->";
 			}else if($this->isPasswordProtected($buffer)){
 				return $buffer."<!-- Password protected content has been detected -->";
 			}else if($this->isWpLogin($buffer)){
@@ -528,11 +518,28 @@
 						$content = preg_replace_callback("/\{\"concatemoji\"\:\"[^\"]+\"\}/i", array($this, 'cdn_replace_urls'), $content);
 					}
 					
-					if(isset($this->options->wpFastestCacheLazyLoad)){
-						$content = $powerful_html->lazy_load($content);
-					}
-					
+
 					$content = str_replace("<!--WPFC_FOOTER_START-->", "", $content);
+
+
+					if(isset($this->options->wpFastestCacheLazyLoad)){
+						// to excude Lazy Load if the page is amp
+						if(!preg_match("/<html[^\>]+amp[^\>]*>/i", $content)){
+							if(!class_exists("WpFastestCacheLazyLoad")){
+								include_once $this->get_premium_path("lazy-load.php");
+							}
+
+							$content = $powerful_html->lazy_load($content);
+
+							if(method_exists("WpFastestCacheLazyLoad",'get_js_source_new')){
+								$lazy_load_js = WpFastestCacheLazyLoad::get_js_source_new();
+							}else if(method_exists("WpFastestCacheLazyLoad",'get_js_source')){
+								$lazy_load_js = WpFastestCacheLazyLoad::get_js_source();
+							}
+
+							$content = preg_replace("/\s*<\/head>/i", $lazy_load_js."</head>", $content, 1);
+						}
+					}
 
 					if($this->cacheFilePath){
 						$this->createFolder($this->cacheFilePath, $content);

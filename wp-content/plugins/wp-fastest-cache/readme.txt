@@ -100,6 +100,18 @@ Wpfc does not support Wordpress Multisite yet.
 
 == Changelog ==
 
+= 0.8.6.4 =
+* <strong>[FEATURE]</strong> Compatible with kk Star Ratings
+* to add aac, mp3, ogg extension for CDN
+* to serve wp-emoji-release.min.js via cdn if CDN integration has been added
+* not to show the cache for comment authors
+* <strong>[FEATURE]</strong> Database Cleanup
+* to show how to enable gzip warning for Nginx
+* to fix the check cdn-url issue which is cURL error 6: Couldn't resolve host 
+* to check http_response_code is 503 or not if DONOTCACHEPAGE is set
+* to fix the warnings about clearing cache
+* to fix the issue if a js source is called as ?site=site.com
+
 = 0.8.6.3 =
 * to be able to hide toolbar [<a target="_blank" href="http://www.wpfastestcache.com/features/hide-toolbar-link/">Details</a>]
 * <strong>[FEATURE]</strong> Compatible with Yet Another Stars Rating
@@ -546,63 +558,27 @@ Wpfc does not support Wordpress Multisite yet.
 
 = 0.7 =
 * <strong>[FEATURE]</strong> works with Wordfence properly
-
-= 0.6.9 =
 * <strong>[FEATURE]</strong> 404 pages are not cached
-
-= 0.6.8 =
 * urls which includes words that wp-content, wp-admin, wp-includes are not cached
 * The issue about cache timeout has been solved
-
-= 0.6.7 =
 * <strong>[FEATURE]</strong> Cache Timeout has been added
-
-= 0.6.6 =
 * <strong>[FEATURE]</strong> Spanish language has been added
-
-= 0.6.5 =
 * <strong>[FEATURE]</strong> Minify html
-
-= 0.6.4 =
 * <strong>[FEATURE]</strong> Supported languages: Russian, Ukrainian and Turkish
-
-= 0.6.3 =
 * <strong>[FEATURE]</strong> "Block Cache For Posts and Pages" has been added as a icon for TinyMCE and  Quicktags editor
-
-= 0.6.2 =
 * Cache file is not created if the file is exist
-
-= 0.6.1 =
 * Cached files are deleted after deactivation of the plugin
 
 = 0.6 =
 * Cached file is not updated after comment because of security reasons
-
-= 0.5.9 =
 * Checking corruption of html
-
-= 0.5.8 =
 * Creation time of file has been added
-
-= 0.5.7 =
 * "Not cached version" text has been removed
-
-= 0.5.6 =
 * Some style changes
-
-= 0.5.5 =
 * System works under sub wp sites
-
-= 0.5.4 =
 * Plugin URI has been added
-
-= 0.5.3 =
 * Dir path has been removed from not cached version 
-
-= 0.5.2 =
 * Some styles changes
-
-= 0.5.1 =
 * Some styles changes
 
 = 0.5 =

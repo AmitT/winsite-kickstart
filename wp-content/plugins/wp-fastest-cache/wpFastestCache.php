@@ -3,7 +3,7 @@
 Plugin Name: WP Fastest Cache
 Plugin URI: http://wordpress.org/plugins/wp-fastest-cache/
 Description: The simplest and fastest WP Cache system
-Version: 0.8.6.3
+Version: 0.8.6.4
 Author: Emre Vona
 Author URI: http://tr.linkedin.com/in/emrevona
 Text Domain: wp-fastest-cache
@@ -74,6 +74,12 @@ GNU General Public License for more details.
 			add_action( 'wp_ajax_wpfc_cache_statics_get', array($this, 'wpfc_cache_statics_get_callback'));
 
 			add_action( 'wp_ajax_wpfc_update_premium', array($this, 'wpfc_update_premium_callback'));
+
+			add_action( 'wp_ajax_wpfc_db_statics', array($this, 'wpfc_db_statics_callback'));
+			add_action( 'wp_ajax_wpfc_db_fix', array($this, 'wpfc_db_fix_callback'));
+
+
+			
 
 
 			add_action( 'rate_post', array($this, 'wp_postratings_clear_fastest_cache'), 10, 2);
@@ -273,6 +279,56 @@ GNU General Public License for more details.
 			}
 		}
 
+		public function wpfc_db_fix_callback(){
+			if($this->isPluginActive("wp-fastest-cache-premium/wpFastestCachePremium.php")){
+				include_once $this->get_premium_path("db.php");
+
+				if(class_exists("WpFastestCacheDatabaseCleanup")){
+					WpFastestCacheDatabaseCleanup::clean($_GET["type"]);
+				}else{
+					die(json_encode(array("success" => false, "showupdatewarning" => true, "message" => "Only available in Premium version")));
+				}
+
+			}else{
+				die(json_encode(array("success" => false, "message" => "Only available in Premium version")));
+			}
+		}
+
+		public function wpfc_db_statics_callback(){
+			global $wpdb;
+
+            $statics = array("all_warnings" => 0,
+                             "post_revisions" => 0,
+                             "trashed_contents" => 0,
+                             "trashed_spam_comments" => 0,
+                             "trackback_pingback" => 0,
+                             "transient_options" => 0
+                            );
+
+
+            $element = "SELECT * FROM `$wpdb->posts` WHERE post_type = 'revision';";
+            $statics["post_revisions"] = $wpdb->query( $element );
+            $statics["all_warnings"] = $statics["all_warnings"] + $wpdb->query( $element );
+
+            $element = "SELECT * FROM `$wpdb->posts` WHERE post_status = 'trash';";
+            $statics["trashed_contents"] = $wpdb->query( $element );
+            $statics["all_warnings"] = $statics["all_warnings"] + $wpdb->query( $element );
+
+            $element = "SELECT * FROM `$wpdb->comments` WHERE comment_approved = 'spam' OR comment_approved = 'trash' ;";
+            $statics["trashed_spam_comments"] = $wpdb->query( $element );
+            $statics["all_warnings"] = $statics["all_warnings"] + $wpdb->query( $element );
+
+            $element = "SELECT * FROM `$wpdb->comments` WHERE comment_type = 'trackback' OR comment_type = 'pingback' ;";
+            $statics["trackback_pingback"] = $wpdb->query( $element );
+            $statics["all_warnings"] = $statics["all_warnings"] + $wpdb->query( $element );
+
+            $element = "SELECT * FROM `$wpdb->options` WHERE option_name LIKE '%\_transient\_%' ;";
+            $statics["transient_options"] = $wpdb->query( $element );
+            $statics["all_warnings"] = $statics["all_warnings"] + $wpdb->query( $element );
+
+            die(json_encode($statics));
+		}
+
 		public function is_trailing_slash(){
 			// no need to check if Custom Permalinks plugin is active (https://tr.wordpress.org/plugins/custom-permalinks/)
 			if($this->isPluginActive("custom-permalinks/custom-permalinks.php")){
@@ -379,7 +435,7 @@ GNU General Public License for more details.
 					echo json_encode($res);
 					exit;
 				}
-
+				$host = str_replace("www.", "", $_SERVER["HTTP_HOST"]);
 				$_GET["url"] = strip_tags($_GET["url"]);
 				$_GET["url"] = str_replace(array("'", '"'), "", $_GET["url"]);
 				
@@ -397,6 +453,11 @@ GNU General Public License for more details.
 					if($response->get_error_code() == "http_request_failed"){
 						if($response->get_error_message() == "Failure when receiving data from the peer"){
 							$res = array("success" => true);
+						}else if(preg_match("/cURL\serror\s6/i", $response->get_error_message())){
+							//cURL error 6: Couldn't resolve host
+							if(preg_match("/".preg_quote($host, "/")."/i", $_GET["url"])){
+								$res = array("success" => true);
+							}
 						}
 					}
 				}else{
@@ -1044,6 +1105,7 @@ GNU General Public License for more details.
 
 			$cache_path = $this->getWpContentDir()."/cache/all";
 			$minified_cache_path = $this->getWpContentDir()."/cache/wpfc-minified";
+			$widget_cache_path = $this->getWpContentDir()."/cache/wpfc-widget-cache";
 
 			if(class_exists("WpFcMobileCache")){
 				$wpfc_mobile = new WpFcMobileCache();
@@ -1059,6 +1121,13 @@ GNU General Public License for more details.
 				}
 			}else{
 				$created_tmpWpfc = true;
+			}
+
+			//to clear widget cache path
+			if(is_dir($widget_cache_path)){
+				if(@rename($widget_cache_path, $this->getWpContentDir()."/cache/tmpWpfc/".time())){
+					//DONE
+				}
 			}
 
 			if(is_dir($cache_path)){
@@ -1496,11 +1565,19 @@ GNU General Public License for more details.
 		    		$i++;
 		    	}
 		        if ('.' === $file || '..' === $file) continue;
-		        if (is_dir("$dir/$file")) $this->rm_folder_recursively("$dir/$file", $i);
-		        else @unlink("$dir/$file");
+		        if (is_dir("$dir/$file")){
+		        	$this->rm_folder_recursively("$dir/$file", $i);
+		        }else{
+		        	if(file_exists("$dir/$file")){
+		        		@unlink("$dir/$file");
+		        	}
+		        }
 		    }
 		    
-		    @rmdir($dir);
+		    if(is_dir($dir) && !isset($files[2])){
+		    	@rmdir($dir);
+		    }
+
 		    return true;
 		}
 

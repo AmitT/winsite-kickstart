@@ -198,7 +198,12 @@
 						return $src[1];
 					}
 
-					if(@strpos($src[1], $httpHost)){
+					if(preg_match("/".preg_quote($httpHost, "/")."/i", $src[1])){
+						//<script src="https://server1.opentracker.net/?site=www.site.com"></script>
+						if(preg_match("/[\?\=].*".preg_quote($httpHost, "/")."/i", $src[1])){
+							return false;
+						}
+
 						return $src[1];
 					}
 				}

@@ -193,14 +193,12 @@
 
 			wp_enqueue_script("wpfc-language", plugins_url("wp-fastest-cache/js/language.js"), array(), time(), false);
 			wp_enqueue_script("wpfc-schedule", plugins_url("wp-fastest-cache/js/schedule.js"), array(), time(), true);
+			wp_enqueue_script("wpfc-db", plugins_url("wp-fastest-cache/js/db.js"), array(), time(), true);
 
 			
 			if(class_exists("WpFastestCacheImageOptimisation")){
-
 				if(file_exists(WPFC_WP_PLUGIN_DIR."/wp-fastest-cache-premium/pro/js/statics.js")){
 					wp_enqueue_script("wpfc-statics", plugins_url("wp-fastest-cache-premium/pro/js/statics.js"), array(), time(), false);
-				}else{
-					wp_enqueue_script("wpfc-statics", plugins_url("wp-fastest-cache/js/statics.js"), array(), time(), false);
 				}
 
 				if(file_exists(WPFC_WP_PLUGIN_DIR."/wp-fastest-cache-premium/pro/js/premium.js")){
@@ -782,7 +780,27 @@
 
 						array_push($tabs, array("id"=>"wpfc-cdn","title"=>"CDN"));
 
-						//array_push($tabs, array("id"=>"wpfc-db","title"=>"DB"));
+
+
+
+
+						$tester_arr_db = array(
+									"tr-TR",
+									"berkatan.com",
+									"yenihobiler.com",
+									"hobiblogu.com",
+									"modafikirleri.com",
+									"pamsenfashion.com",
+									"gingerdomain.com",
+									"pamsen.com"
+									);
+
+						if(in_array(get_bloginfo('language'), $tester_arr_db) || in_array(str_replace("www.", "", $_SERVER["HTTP_HOST"]), $tester_arr_db)){
+							array_push($tabs, array("id"=>"wpfc-db","title"=>"DB"));
+						}
+
+
+
 
 						foreach ($tabs as $key => $value){
 							$checked = "";
@@ -834,10 +852,12 @@
 							<div class="questionCon">
 								<div class="question">Mobile Theme</div>
 								<div class="inputCon"><input type="checkbox" <?php echo $wpFastestCacheMobileTheme; ?> id="wpFastestCacheMobileTheme" name="wpFastestCacheMobileTheme"><label for="wpFastestCacheMobileTheme">Create cache for mobile theme</label></div>
+								<div class="get-info"><a target="_blank" href="http://www.wpfastestcache.com/premium/mobile-cache/"><img src="<?php echo plugins_url("wp-fastest-cache/images/info.png"); ?>" /></a></div>
 							</div>
 
 							<?php 
 								$tester_arr_mobile = array(
+									"tr-TR",
 									"berkatan.com",
 									"yenihobiler.com",
 									"hobiblogu.com",
@@ -856,6 +876,7 @@
 							<div class="questionCon disabled">
 								<div class="question">Mobile Theme</div>
 								<div class="inputCon"><input type="checkbox" id="wpFastestCacheMobileTheme"><label for="wpFastestCacheMobileTheme">Create cache for mobile theme</label></div>
+								<div class="get-info"><a target="_blank" href="http://www.wpfastestcache.com/premium/mobile-cache/"><img src="<?php echo plugins_url("wp-fastest-cache/images/info.png"); ?>" /></a></div>
 							</div>
 							<?php } ?>
 
@@ -973,6 +994,12 @@
 								<div class="get-info"><a target="_blank" href="http://www.wpfastestcache.com/optimization/enable-gzip-compression/"><img src="<?php echo plugins_url("wp-fastest-cache/images/info.png"); ?>" /></a></div>
 							</div>
 
+							<?php
+								if(isset($_SERVER["SERVER_SOFTWARE"]) && $_SERVER["SERVER_SOFTWARE"] && preg_match("/nginx/i", $_SERVER["SERVER_SOFTWARE"])){
+									include_once(WPFC_MAIN_PATH."templates/nginx_gzip.php"); 
+								}
+							?>
+
 							<div class="questionCon">
 								<div class="question">Browser Caching</div>
 								<div class="inputCon"><input type="checkbox" <?php echo $wpFastestCacheLBC; ?> id="wpFastestCacheLBC" name="wpFastestCacheLBC"><label for="wpFastestCacheLBC">Reduce page load times for repeat visitors</label></div>
@@ -1030,7 +1057,10 @@
 											"pembeportakal.com",
 											"artclinic.org",
 											"rogers-immobilien.de",
-											"polyamory.dating"
+											"polyamory.dating",
+											"mygamer.com",
+											"gingerdomain.com",
+											"topclassprinting.com"
 											);
 														
 							if(in_array(get_bloginfo('language'), $tester_arr) || in_array(str_replace("www.", "", $_SERVER["HTTP_HOST"]), $tester_arr)){ ?>
@@ -1471,43 +1501,42 @@
 					    				</button>
 					    				<script type="text/javascript">
 					    					jQuery(document).ready(function(){
-
-				    							// if(jQuery(".tab5").is(":visible")){
-										    	// 	wpfc_premium_page();
-									    		// }
-
-									    		// jQuery("#wpfc-premium").change(function(e){
-									    		// 	wpfc_premium_page();
-									    		// });
-
 									    		wpfc_premium_page();
 
 									    		function wpfc_premium_page(){
 										    		jQuery(document).ready(function(){
-							    						if(typeof Wpfc_Premium == "undefined"){
-							    							jQuery("#wpfc-update-premium-button").attr("class", "wpfc-btn primaryCta");
+						    							Wpfc_Premium.check_update("<?php echo $this->get_premium_version(); ?>", '<?php echo "http://api.wpfastestcache.net/premium/newdownload/".str_replace(array("http://", "www."), "", $_SERVER["HTTP_HOST"])."/".get_option("WpFc_api_key"); ?>', '<?php echo plugins_url('wp-fastest-cache/templates'); ?>');
 
-							    							jQuery("#wpfc-update-premium-button").click(function(){
-							    								jQuery("#revert-loader-toolbar").show();
-							    								
-																jQuery.get('<?php echo plugins_url('wp-fastest-cache/templates'); ?>' + "/update_error.php?error_message=" + "You use old version of premium. " + "&apikey=" + '<?php echo get_option("WpFc_api_key"); ?>', function( data ) {
-																	jQuery("body").append(data);
-																	Wpfc_Dialog.dialog("wpfc-modal-updateerror");
-																	jQuery("#revert-loader-toolbar").hide();
-																});
-							    							});
-							    						}else{
-							    							Wpfc_Premium.check_update("<?php echo $this->get_premium_version(); ?>", '<?php echo "http://api.wpfastestcache.net/premium/newdownload/".str_replace(array("http://", "www."), "", $_SERVER["HTTP_HOST"])."/".get_option("WpFc_api_key"); ?>', '<?php echo plugins_url('wp-fastest-cache/templates'); ?>');
+														var counter = 0;
+														var looper = setInterval(function(){
+														    counter++;
 
-							    							setTimeout(function(){
-								    							if(jQuery("#wpfc-update-premium-button").attr("class") == "wpfc-btn primaryCta"){
-								    								Wpfc_Dialog.dialog("wpfc-modal-updatenow");
-								    							}
-							    							}, 1000);
-							    						}
+														    if(counter >= 4){
+														        clearInterval(looper);
+														    }
+
+														    if(jQuery("#wpfc-update-premium-button").attr("class") == "wpfc-btn primaryCta"){
+														    	clearInterval(looper);
+														    	
+							    								if(jQuery("div[id^='wpfc-modal-updatenow-']").length === 0){
+							    									Wpfc_New_Dialog.dialog("wpfc-modal-updatenow", {close: function(){
+																		Wpfc_New_Dialog.clone.find("div.window-content input").each(function(){
+																			if(jQuery(this).attr("checked")){
+																				var id = jQuery(this).attr("action-id");
+																				jQuery("div.tab1 div[template-id='wpfc-modal-updatenow'] div.window-content input#" + id).attr("checked", true);
+																			}
+																		});
+
+																		Wpfc_New_Dialog.clone.remove();
+																	}});
+
+																	Wpfc_New_Dialog.show_button("close");
+																}
+							    							}
+
+														}, 1000);
 										    		});
 									    		}
-
 					    					});
 					    				</script>
 					    				<script type="text/javascript">
@@ -1790,72 +1819,90 @@
 				    <div class="tab8" style="padding-left:20px;">
 				    	<h2 style="padding-bottom:10px;">Database Cleanup</h2>
 				    	<div>
+
+			    		<?php if(!$this->isPluginActive("wp-fastest-cache-premium/wpFastestCachePremium.php")){ ?>
+				    			<style type="text/css">
+				    				div.tab8 h2{
+				    					opacity: 0.3 !important;
+				    				}
+				    				div.tab8 .integration-page{
+				    					opacity: 0.3 !important;
+				    				}
+				    			</style>
+				    			
+				    			<div style="z-index:9999;width: 160px; height: 60px; position: absolute; margin-left: 230px; margin-top: 25px; color: white;">
+						    		<div style="font-family:sans-serif;font-size:13px;text-align: center; border-radius: 5px; float: left; background-color: rgb(51, 51, 51); color: white; width: 147px; padding: 20px 50px;">
+						    			<label>Only available in Premium version</label>
+						    		</div>
+						    	</div>
+			    		<?php } ?>
+
 				    		<div class="integration-page" style="display: block;width:98%;float:left;">
 
-				    			<div wpfc-db-name="all" class="int-item int-item-left">
+				    			<div wpfc-db-name="all_warnings" class="int-item int-item-left">
 				    				<div style="float:left;width:45px;height:45px;margin-right:12px;">
 				    					<span class="flaticon-technology"></span> 
 				    				</div>
 				    				<div class="app db">
-				    					<div style="font-weight:bold;font-size:14px;">ALL</div>
+				    					<div style="font-weight:bold;font-size:14px;">ALL <span class="db-number">(0)</span></div>
 				    					<p>Run the all options</p>
 				    				</div>
 				    				<div class="meta"></div>
 				    			</div>
 
-				    			<div wpfc-db-name="revisions" class="int-item int-item-right">
+				    			<div wpfc-db-name="post_revisions" class="int-item int-item-right">
 				    				<div style="float:left;width:45px;height:45px;margin-right:12px;">
 				    					<span class="flaticon-draft"></span> 
 				    				</div>
 				    				<div class="app db">
-				    					<div style="font-weight:bold;font-size:14px;">Post Revisions</div>
+				    					<div style="font-weight:bold;font-size:14px;">Post Revisions <span class="db-number">(0)</span></div>
 				    					<p>Clean the all post revisions</p>
 				    				</div>
 				    				<div class="meta"></div>
 				    			</div>
 
-				    			<div wpfc-db-name="contents" class="int-item int-item-left">
+				    			<div wpfc-db-name="trashed_contents" class="int-item int-item-left">
 				    				<div style="float:left;width:45px;height:45px;margin-right:12px;">
 				    					<span class="flaticon-recycling"></span> 
 				    				</div>
 				    				<div class="app db">
-				    					<div style="font-weight:bold;font-size:14px;">Trashed Contents</div>
+				    					<div style="font-weight:bold;font-size:14px;">Trashed Contents <span class="db-number">(0)</span></div>
 				    					<p>Clean the all trashed posts & pages</p>
 				    				</div>
 				    				<div class="meta"></div>
 				    			</div>
 
-				    			<div wpfc-db-name="comments" class="int-item int-item-right">
+				    			<div wpfc-db-name="trashed_spam_comments" class="int-item int-item-right">
 				    				<div style="float:left;width:45px;height:45px;margin-right:12px;">
 				    					<span class="flaticon-interface"></span> 
 				    				</div>
 				    				<div class="app db">
-				    					<div style="font-weight:bold;font-size:14px;">Trashed & Spam Comments</div>
+				    					<div style="font-weight:bold;font-size:14px;">Trashed & Spam Comments <span class="db-number">(0)</span></div>
 				    					<p>Clean the all comments from trash & spam</p>
 				    				</div>
 				    				<div class="meta"></div>
 				    			</div>
 
-				    			<div wpfc-db-name="pingback" class="int-item int-item-left">
+				    			<div wpfc-db-name="trackback_pingback" class="int-item int-item-left">
 				    				<div style="float:left;width:45px;height:45px;margin-right:12px;">
 				    					<span class="flaticon-pingback"></span> 
 				    				</div>
 				    				<div class="app db">
-				    					<div style="font-weight:bold;font-size:14px;">Trackbacks and Pingbacks</div>
+				    					<div style="font-weight:bold;font-size:14px;">Trackbacks and Pingbacks <span class="db-number">(0)</span></div>
 				    					<p>Clean the all trackbacks and pingbacks</p>
 				    				</div>
 				    				<div class="meta"></div>
 				    			</div>
 
-				    			<div wpfc-db-name="transient" class="int-item int-item-right">
+				    			<div wpfc-db-name="transient_options" class="int-item int-item-right">
 				    				<div style="float:left;width:45px;height:45px;margin-right:12px;">
 				    					<span class="flaticon-file"></span> 
 				    				</div>
 				    				<div class="app db">
-				    					<div style="font-weight:bold;font-size:14px;">Transient Options</div>
+				    					<div style="font-weight:bold;font-size:14px;">Transient Options <span class="db-number">(0)</span></div>
 				    					<p>Clean the all transient options</p>
 				    				</div>
-				    				<div class="meta success"></div>
+				    				<div class="meta"></div>
 				    			</div>
 
 
