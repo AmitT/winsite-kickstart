@@ -81,6 +81,7 @@ sitemap.*
 # track this file .gitignore (i.e. do NOT ignore it)
 !.gitignore
 !.gitmodules
+!.gitattributes
 
 # track .editorconfig file (i.e. do NOT ignore it)
 !.editorconfig
