@@ -25,6 +25,7 @@ Thumbs.db
 *.sublime-project
 *.sublime-workspace
 *.komodoproject
+*.idea/
 
 # ignore log files and databases
 *.log
@@ -77,7 +78,7 @@ sitemap.*
 # -------------------------
 # BEGIN Whitelisted Files
 # -------------------------
- 
+
 # track this file .gitignore (i.e. do NOT ignore it)
 !.gitignore
 !.gitmodules
