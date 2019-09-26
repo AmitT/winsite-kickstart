@@ -13,10 +13,12 @@
 # ignore all files starting with . or ~
 ~*
 
-# ignore everything in the root except the "public_html" directory.
+# ignore everything in the root except the "wp-content" directory.
 /*
-!public_html/
-!.env.example
+!wp-content/
+!composer.json
+!wp-config.php
+*vendor/
 
 # ignore OS generated files
 ehthumbs.db
@@ -90,3 +92,12 @@ sitemap.*
 # track readme.md in the root (i.e. do NOT ignore it)
 !readme.md
 
+# ignore everything in the "wp-content" directory, except:
+# "mu-plugins" directory
+# "themes" directory
+wp-content/*
+!wp-content/mu-plugins/
+!wp-content/themes/
+
+# ignore specific themes
+wp-content/themes/twenty*/

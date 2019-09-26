@@ -1,0 +1,12 @@
+{
+    "name": "amitt/wp-git",
+    "require": {
+        "vlucas/phpdotenv": "^3.6"
+    },
+    "authors": [
+        {
+            "name": "Amit Tal",
+            "email": "amitprobable@gmail.com"
+        }
+    ]
+}
