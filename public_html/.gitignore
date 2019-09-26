@@ -18,7 +18,7 @@
 !wp-content/
 !composer.json
 !wp-config.php
-*vendor/
+!vendor/
 
 # ignore OS generated files
 ehthumbs.db
