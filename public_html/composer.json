@@ -1,7 +1,17 @@
 {
     "name": "amitt/wp-git",
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://wpackagist.org"
+        }
+    ],
     "require": {
-        "vlucas/phpdotenv": "^3.6"
+        "php": ">=7.0",
+        "vlucas/phpdotenv": "^3.6",
+        "wpackagist-plugin/wordpress-seo": "*",
+        "wpackagist-plugin/better-wp-security": "*",
+        "wpackagist-plugin/wp-sitemap-page": "*"
     },
     "authors": [
         {
