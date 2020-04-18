@@ -6,7 +6,7 @@
  * @link https://codex.wordpress.org/Editing_wp-config.php
  */
 require_once __DIR__ . '/vendor/autoload.php';
-$dotenv = Dotenv\Dotenv::create(__DIR__ . '/../')->load();
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__. '/../')->load();
 
 // ** MySQL settings - You can get this info from your web host ** //
 /*
