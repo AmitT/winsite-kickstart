@@ -12,22 +12,22 @@ $dotenv = Dotenv\Dotenv::createImmutable(__DIR__. '/../')->load();
 /*
  * The name of the database for WordPress
  */
-define('DB_NAME', getenv('DB_NAME'));
+define('DB_NAME', $_ENV['DB_NAME']);
 
 /*
  * MySQL database username
  */
-define('DB_USER', getenv('DB_USER'));
+define('DB_USER', $_ENV['DB_USER']);
 
 /*
  * MySQL database password
  */
-define('DB_PASSWORD', getenv('DB_PASSWORD'));
+define('DB_PASSWORD', $_ENV['DB_PASSWORD']);
 
 /*
  * MySQL hostname
  */
-define('DB_HOST', getenv('DB_HOST'));
+define('DB_HOST', $_ENV['DB_HOST']);
 
 /*
  * Database Charset to use in creating database tables.
@@ -65,7 +65,7 @@ define('NONCE_SALT', '');
  * You can have multiple installations in one database if you give each
  * a unique prefix. Only numbers, letters, and underscores please!
  */
-$table_prefix = getenv('DB_PREFIX');
+$table_prefix = $_ENV['DB_PREFIX'];
 
 /*
  * For developers: WordPress debugging mode.
@@ -79,7 +79,7 @@ $table_prefix = getenv('DB_PREFIX');
  *
  * @link https://codex.wordpress.org/Debugging_in_WordPress
  */
-define('WP_DEBUG', getenv('WP_DEBUG'));
+define('WP_DEBUG', $_ENV['WP_DEBUG']);
 
 /* That's all, stop editing! Happy publishing. */
 
